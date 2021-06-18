@@ -1,2 +1,19 @@
 # virtual environments
 venv/
+
+# environment variables
+.env
+
+# pycache
+*.py[cod]
+__pycache__
+
+# Logs
+logs
+*.log
+
+# collected static file directory
+staticfiles/
+
+# Pycharm
+.idea/*

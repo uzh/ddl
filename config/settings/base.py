@@ -1,9 +1,18 @@
+import os
+
+from dotenv import load_dotenv
 from pathlib import Path
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 ALLOWED_HOSTS = []
+
+# APPLICATION DEFINITIONS
+# ------------------------------------------------------------------------------
+SECRET_KEY = os.environ['DJANGO_SECRET']
 
 # APPLICATION DEFINITIONS
 # ------------------------------------------------------------------------------
@@ -53,6 +62,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'HOST': '127.0.0.1',
         'PORT': '5432',
+        'NAME': os.environ['DJANGO_DB_NAME'],
+        'USER': os.environ['DJANGO_DB_USER'],
+        'PASSWORD': os.environ['DJANGO_DB_PW']
     }
 }
 
@@ -88,6 +100,8 @@ USE_TZ = True
 # STATIC FILES
 # ------------------------------------------------------------------------------
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 
 # DEFAULT PRIMARY KEY FIELD TYPE
 # ------------------------------------------------------------------------------
