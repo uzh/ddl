@@ -17,6 +17,7 @@ SECRET_KEY = os.environ['DJANGO_SECRET']
 # APPLICATION DEFINITIONS
 # ------------------------------------------------------------------------------
 INSTALLED_APPS = [
+    'mainpage.apps.MainpageConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
