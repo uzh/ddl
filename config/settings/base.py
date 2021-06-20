@@ -18,15 +18,26 @@ SECRET_KEY = os.environ['DJANGO_SECRET']
 # ------------------------------------------------------------------------------
 INSTALLED_APPS = [
     'mainpage.apps.MainpageConfig',
+    'djangocms_admin_style',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'cms',
+    'menus',
+    'treebeard',
+    'sekizai',
+    'filer',
+    'easy_thumbnails',
+    'mptt',
+    'djangocms_text_ckeditor',
 ]
 
 MIDDLEWARE = [
+    'cms.middleware.utils.ApphookReloadMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -34,6 +45,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -41,7 +57,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -49,6 +65,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'sekizai.context_processors.sekizai',
+                'cms.context_processors.cms_settings',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -88,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # INTERNATIONALIZATION
 # ------------------------------------------------------------------------------
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Europe/Zurich'
 
@@ -101,9 +120,38 @@ USE_TZ = True
 # STATIC FILES
 # ------------------------------------------------------------------------------
 STATIC_URL = '/static/'
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # DEFAULT PRIMARY KEY FIELD TYPE
 # ------------------------------------------------------------------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# DJANGO-CMS
+# ------------------------------------------------------------------------------
+SITE_ID = 1
+
+LANGUAGES = [
+    ('en', 'English'),
+    ('de', 'German'),
+]
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+CMS_TEMPLATES = [
+    ('base.html', 'Base template'),
+]
+
+
+# DJANGO-FILER
+# ------------------------------------------------------------------------------
+THUMBNAIL_HIGH_RESOLUTION = True
+
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters'
+)
