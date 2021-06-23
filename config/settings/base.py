@@ -135,13 +135,13 @@ SITE_ID = 1
 
 LANGUAGES = [
     ('en', 'English'),
-    ('de', 'German'),
 ]
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 CMS_TEMPLATES = [
-    ('base.html', 'Base template'),
+    ('mainpage/cms_base_1col.html', 'CMS Base 1 Column'),
+    ('mainpage/cms_landing.html', 'CMS Landing Page'),
 ]
 
 

@@ -1,0 +1,31 @@
+{% extends "mainpage/base.html" %}
+{% load static i18n cms_tags menu_tags sekizai_tags %}
+
+{% block header_content %}
+<div class="container has-text-centered">
+    {% show_menu 0 100 0 100 "mainpage/navigation/cms_nav.html" %}
+    <div class="columns">
+        <div class="column">
+            <!-- <img src="{% static 'mainpage/img/DataDonationLab_logo_rz.svg' %}" alt="Data Donation Lab Brand" > -->
+        </div>
+    </div>
+</div>
+{% endblock header_content %}
+
+{% block main_content %}
+<div class="container">
+    <div class="columns">
+        <div class="column is-one-fifth"></div>
+        <div class="column has-text-black">
+            {% placeholder "content" %}
+        </div>
+        <div class="column is-one-fifth"></div>
+    </div>
+</div>
+{% endblock main_content %}
+
+{% block footer_content %}
+<div class="container has-text-centered">
+    {% include "mainpage/footer/cms_footer.html" %}
+</div>
+{% endblock footer_content %}
