@@ -8,8 +8,6 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-ALLOWED_HOSTS = ['.datadonation.uzh.ch', '.data-donation.uzh.ch', 'localhost']
-
 # APPLICATION DEFINITIONS
 # ------------------------------------------------------------------------------
 SECRET_KEY = os.environ['DJANGO_SECRET']
@@ -17,6 +15,7 @@ SECRET_KEY = os.environ['DJANGO_SECRET']
 # APPLICATION DEFINITIONS
 # ------------------------------------------------------------------------------
 INSTALLED_APPS = [
+    'mainpage.apps.MainpageConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
