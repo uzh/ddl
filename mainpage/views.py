@@ -1,5 +1,4 @@
 from django.views.generic import TemplateView
 
-
-class HomeView(TemplateView):
-    template_name = "mainpage/test.html"
+class MainView(TemplateView):
+    template_name = 'mainpage/base.html'

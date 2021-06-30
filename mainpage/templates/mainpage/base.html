@@ -1,0 +1,52 @@
+{% load static i18n cms_tags sekizai_tags %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}{% page_attribute page_title %}{% endblock %}</title>
+    <meta name="description" content="This is the official website of the Data Donation Lab.">
+
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'mainpage/img/favicons/ddl_favicon_black.svg' %}">
+
+    {% block site_css %}
+    <link rel="stylesheet" href="{% static 'mainpage/css/base.css' %}">
+    {% endblock site_css %}
+
+    {% block extra_head %}
+    {% endblock extra_head %}
+
+    {% render_block "css" %}
+  </head>
+
+  <body>
+    {% cms_toolbar %}
+    <div class="body_wrapper">
+      <div id="header">
+        {% block header_content %}
+        {% endblock header_content %}
+      </div>
+
+      <div id="main">
+        {% block main_content %}
+        {% endblock main_content %}
+      </div>
+
+      <div id="footer">
+        {% block footer_content %}
+        {% endblock footer_content %}
+      </div>
+    </div>
+
+    {% block site_js %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="{% static 'mainpage/js/base.js' %}"></script>
+    {% endblock site_js %}
+
+    {% render_block "js" %}
+  </body>
+
+</html>

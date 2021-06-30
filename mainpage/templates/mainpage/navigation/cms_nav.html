@@ -1,0 +1,39 @@
+{% load static cms_tags menu_tags cache %}
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="level-item" href="">
+            <img id="header-brand-full" class="custom-brand" src="{% static 'mainpage/img/ddl_logos/ddl_logo_black.svg' %}" alt="Data Donation Lab Brand">
+            <img id="header-brand-small" class="custom-brand is-hidden" src="{% static 'mainpage/img/ddl_logos/ddl_slider_black.svg' %}" alt="Data Donation Lab Brand">
+        </a>
+
+        <a id="navbar-burger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasic" class="navbar-menu">
+
+        <div class="navbar-end">
+            {% for child in children %}
+            <div class="navbar-item child{% if child.selected %} selected{% endif %}{% if child.ancestor %} ancestor{% endif %}{% if child.sibling %} sibling{% endif %}{% if child.descendant %} descendant{% endif %}">
+                <a class="has-text-black nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">{{ child.get_menu_title }}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</nav>
+
+<div id="modal-nav" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        {% for child in children %}
+        <div class="modal-nav-item child{% if child.selected %} selected{% endif %}{% if child.ancestor %} ancestor{% endif %}{% if child.sibling %} sibling{% endif %}{% if child.descendant %} descendant{% endif %}">
+            <a class="modal-nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">{{ child.get_menu_title }}</a>
+        </div>
+        {% endfor %}
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>

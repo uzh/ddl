@@ -1,0 +1,14 @@
+{% extends "mainpage/cms/cms_base.html" %}
+{% load static i18n cms_tags menu_tags sekizai_tags %}
+
+{% block main_content %}
+<div class="container">
+    <div class="columns">
+        <div class="column is-one-fifth"></div>
+        <div class="column has-text-black">
+            {% placeholder "content" %}
+        </div>
+        <div class="column is-one-fifth"></div>
+    </div>
+</div>
+{% endblock main_content %}
