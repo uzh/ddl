@@ -10,15 +10,17 @@
     <title>{% block title %}{% page_attribute page_title %}{% endblock %}</title>
     <meta name="description" content="This is the official website of the Data Donation Lab.">
 
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'mainpage/img/DDL_favicon.svg' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'mainpage/img/favicons/ddl_favicon_black.svg' %}">
 
     {% block site_css %}
     <link rel="stylesheet" href="{% static 'mainpage/css/base.css' %}">
     {% endblock site_css %}
 
+    <!--
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,600;1,600&family=Chakra+Petch:wght@500&family=Roboto&family=Sarabun&family=Tomorrow&display=swap" rel="stylesheet">
+    -->
 
     {% block extra_head %}
     {% endblock extra_head %}

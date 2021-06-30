@@ -140,8 +140,8 @@ LANGUAGES = [
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 CMS_TEMPLATES = [
-    ('mainpage/cms_base_1col.html', 'CMS Base 1 Column'),
-    ('mainpage/cms_landing.html', 'CMS Landing Page'),
+    ('mainpage/cms/cms_1col.html', 'CMS 1 Column'),
+    ('mainpage/cms/cms_landing.html', 'CMS Landing Page'),
 ]
 
 

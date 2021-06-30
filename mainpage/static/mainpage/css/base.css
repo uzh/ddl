@@ -10213,6 +10213,35 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   padding: 3rem 1.5rem 6rem;
 }
 
+@font-face {
+  font-family: Sarabun;
+  src: url("../fonts/sarabun/Sarabun-Regular.ttf");
+}
+@font-face {
+  font-family: Sarabun;
+  src: url("../fonts/sarabun/Sarabun-Italic.ttf");
+  font-style: italic;
+}
+@font-face {
+  font-family: Sarabun;
+  src: url("../fonts/sarabun/Sarabun-SemiBold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: Sarabun;
+  src: url("../fonts/sarabun/Sarabun-SemiBoldItalic.ttf");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: Bai Jamjuree;
+  src: url("../fonts/bai_jamjuree/BaiJamjuree-Medium.ttf");
+}
+@font-face {
+  font-family: Bai Jamjuree;
+  src: url("../fonts/bai_jamjuree/BaiJamjuree-MediumItalic.ttf");
+  font-style: italic;
+}
 html,
 body {
   height: 100%;
