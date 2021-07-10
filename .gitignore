@@ -1,5 +1,6 @@
 # virtual environments
 venv/
+media/
 
 # environment variables
 .env

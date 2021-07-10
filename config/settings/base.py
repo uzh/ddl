@@ -32,6 +32,13 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'mptt',
     'djangocms_text_ckeditor',
+    'aldryn_apphooks_config',
+    'parler',
+    'taggit',
+    'taggit_autosuggest',
+    'meta',
+    'sortedm2m',
+    'djangocms_blog',
 ]
 
 MIDDLEWARE = [
@@ -120,8 +127,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # DEFAULT PRIMARY KEY FIELD TYPE
 # ------------------------------------------------------------------------------
@@ -129,7 +136,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # DJANGO-CMS
 # ------------------------------------------------------------------------------
-SITE_ID = 1
+SITE_ID = 2
 
 LANGUAGES = [
     ('en', 'English'),
@@ -141,6 +148,16 @@ CMS_TEMPLATES = [
     ('mainpage/cms/cms_1col.html', 'CMS 1 Column'),
     ('mainpage/cms/cms_landing.html', 'CMS Landing Page'),
 ]
+
+
+# DJANGO CMS BLOG
+# ------------------------------------------------------------------------------
+META_SITE_PROTOCOL = 'http'  # set 'http' for non ssl enabled websites
+META_USE_SITES = True
+
+META_USE_OG_PROPERTIES = True
+META_USE_TWITTER_PROPERTIES = True
+META_USE_SCHEMAORG_PROPERTIES = True
 
 
 # DJANGO-FILER
