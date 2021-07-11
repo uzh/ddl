@@ -1,0 +1,24 @@
+<div class="columns highlight-section is-vcentered">
+
+    {% if instance.alignment == 'left' %}
+    <div class="column highlight-title highlight-title-left" {% if instance.background %}style="background: url('{{ instance.background.url }}');"{% endif %}>
+        <h2>{{ instance.title }}</h2>
+    </div>
+    <div class="column highlight-body highlight-body-right">
+        <p>{{ instance.text|safe }}</p>
+    </div>
+
+    {% elif instance.alignment == 'right' %}
+    <div class="column highlight-title highlight-title-right is-hidden-tablet" {% if instance.background %}style="background: url('{{ instance.background.url }}');"{% endif %}>
+        <h2>{{ instance.title }}</h2>
+    </div>
+    <div class="column highlight-body highlight-body-left">
+        <p>{{ instance.text|safe }}</p>
+    </div>
+    <div class="column highlight-title highlight-title-right is-hidden-mobile" {% if instance.background %}style="background: url('{{ instance.background.url }}');"{% endif %}>
+        <h2>{{ instance.title }}</h2>
+    </div>
+
+    {% endif %}
+
+</div>

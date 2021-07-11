@@ -1,4 +1,10 @@
-{% load static %}
+{% load static cms_tags sekizai_tags %}
+
+<div class="columns is-vcentered">
+    <div class="column">
+        {% static_placeholder "Footer Top" %}
+    </div>
+</div>
 
 <div class="columns is-vcentered">
     <div class="column level-item">
@@ -15,7 +21,13 @@
 
     <div class="column">
         <a href="https://www.dizh.ch" target="_blank">
-            <img src="{% static "mainpage/img/ext_logos/dizh_logo.jpg" %}" alt="DIZH Brand" >
+            <img src="{% static "mainpage/img/ext_logos/DIZH.png" %}" alt="DIZH Brand" >
         </a>
+    </div>
+</div>
+
+<div class="columns is-vcentered">
+    <div class="column">
+        {% static_placeholder "Footer Bottom" %}
     </div>
 </div>

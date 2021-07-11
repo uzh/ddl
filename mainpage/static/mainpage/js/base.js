@@ -1,7 +1,7 @@
 
 // When the user scrolls down 50px from the top of the document, resize the header's font size
 $(window).on("scroll", function() {
-    var s = 110 - Math.min(110, $(document).scrollTop());
+    var s = 80 - Math.min(80, $(document).scrollTop());
     $("#header-brand-full").height(s);
 
     if (s <= 52) {

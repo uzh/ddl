@@ -18,13 +18,13 @@
     </header>
     {% endblock %}
 
-    <div class="blog-items columns is-flex-wrap-wrap">
+    <div class="blog-items columns is-flex-wrap-wrap is-justify-content-space-around">
         {% for post in post_list %}
             <div class="column is-5 p-0">
                 {% include "mainpage/blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
             </div>
         {% empty %}
-            <p class="blog-empty">{% trans "No article found." %}</p>
+            <p class="blog-empty">{% trans "No articles found." %}</p>
         {% endfor %}
     </div>
 

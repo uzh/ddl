@@ -53,9 +53,9 @@
     {% if post.related.exists %}
         <section class="post-detail-list">
             <h3>Related Articles</h3>
-            <div class="columns">
+            <div class="columns is-flex-wrap-wrap is-justify-content-space-around">
                 {% for related in post.related.all %}
-                <div class="column is-4 p-0">
+                <div class="column is-5 p-0">
                     {% include "mainpage/blog/includes/blog_item.html" with post=related image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
                 </div>
                 {% endfor %}
