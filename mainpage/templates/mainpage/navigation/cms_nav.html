@@ -1,4 +1,4 @@
-{% load static cms_tags menu_tags cache %}
+{% load static i18n cms_tags menu_tags cache %}
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
@@ -22,6 +22,21 @@
                 <a class="nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">{{ child.get_menu_title }}</a>
             </div>
             {% endfor %}
+
+            <div class="nav-divider">
+                <div></div>
+            </div>
+
+            <div class="navbar-item navbar-item-add">
+                <a class="nav-addition nav-social-container" href="https://twitter.com/DataDonation" target="_blank">
+                    <img class="nav-social-logo" src="{% static 'mainpage/img/ext_logos/twitter_white.svg' %}">
+                </a>
+            </div>
+
+            <div class="navbar-item navbar-item-add">
+                {% include 'mainpage/components/language_selector.html' %}
+            </div>
+
         </div>
     </div>
 </nav>
@@ -34,6 +49,17 @@
             <a class="modal-nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">{{ child.get_menu_title }}</a>
         </div>
         {% endfor %}
+
+        <div class="modal-nav-addition">
+            <div class="navbar-item navbar-item-add">
+                <a class="nav-addition nav-social-container" href="https://twitter.com/DataDonation" target="_blank">
+                    <img class="nav-social-logo" src="{% static 'mainpage/img/ext_logos/twitter_white.svg' %}">
+                </a>
+            </div>
+            <div class="navbar-item navbar-item-add">
+                {% include 'mainpage/components/language_selector.html' %}
+            </div>
+        </div>
     </div>
     <button class="modal-close is-large" aria-label="close"></button>
 </div>

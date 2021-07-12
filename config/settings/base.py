@@ -1,5 +1,6 @@
 import os
 
+from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -140,7 +141,53 @@ SITE_ID = 2
 
 LANGUAGES = [
     ('en', 'English'),
+    ('de', 'Deutsch')
 ]
+
+CMS_LANGUAGES = {
+    1: [
+        {
+            'code': 'en',
+            'name': _('English'),
+            'fallbacks': ['de'],
+            'public': True,
+            'hide_untranslated': True,
+            'redirect_on_fallback': False,
+        },
+        {
+            'code': 'de',
+            'name': _('Deutsch'),
+            'fallbacks': ['en'],
+            'redirect_on_fallback': True,
+            'public': True,
+            'hide_untranslated': False,
+        },
+    ],
+    2: [
+        {
+            'code': 'en',
+            'name': _('English'),
+            'fallbacks': ['de'],
+            'public': True,
+            'hide_untranslated': True,
+            'redirect_on_fallback': False,
+        },
+        {
+            'code': 'de',
+            'name': _('Deutsch'),
+            'fallbacks': ['en'],
+            'redirect_on_fallback': True,
+            'public': True,
+            'hide_untranslated': False,
+        },
+    ],
+    'default': {
+        'fallbacks': ['en', 'de', 'fr'],
+        'redirect_on_fallback': True,
+        'public': True,
+        'hide_untranslated': False,
+    }
+}
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
@@ -148,7 +195,6 @@ CMS_TEMPLATES = [
     ('mainpage/cms/cms_1col.html', 'CMS 1 Column'),
     ('mainpage/cms/cms_landing.html', 'CMS Landing Page'),
 ]
-
 
 # DJANGO CMS BLOG
 # ------------------------------------------------------------------------------
