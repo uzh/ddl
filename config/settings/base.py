@@ -141,8 +141,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # DJANGO-CMS
 # ------------------------------------------------------------------------------
-SITE_ID = 2
-
 LANGUAGES = [
     ('en', 'English'),
     ('de', 'Deutsch')
