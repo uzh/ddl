@@ -1,6 +1,5 @@
 {% load i18n %}{% spaceless %}
 <div class="plugin plugin-blog">
-    <p>This is the latest_entries.html</p>
     <div class="blog-latest-entries">
     {% for post in posts_list %}
         {% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
