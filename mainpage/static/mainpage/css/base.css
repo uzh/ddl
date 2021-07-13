@@ -10255,6 +10255,7 @@ body {
 p {
   padding-left: 30px;
   padding-right: 30px;
+  font-size: 1.1rem;
 }
 
 .body_wrapper {
@@ -10693,6 +10694,74 @@ p {
   padding-left: 30px;
   padding-right: 30px;
   color: white;
+}
+
+/* SIDE MENU */
+.side-menu-container {
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  padding: 20px 20px 30px 20px;
+  font-family: "Sarabun", sans-serif;
+}
+@media screen and (max-width: 768px) {
+  .side-menu-container {
+    margin-bottom: 30px;
+  }
+}
+.side-menu-container .selected {
+  font-weight: bold;
+}
+.side-menu-container .inner-menu {
+  padding-left: 15px;
+}
+.side-menu-container .inner-menu {
+  padding-top: 5px;
+}
+.side-menu-container .child {
+  line-height: 1.25;
+  padding-bottom: 5px;
+}
+.side-menu-container a {
+  color: black;
+}
+
+.side-menu-container > ul:first-of-type > li:first-of-type > a:first-of-type {
+  color: #009c94;
+}
+
+.side-menu-container > ul:first-of-type > li:first-of-type > ul:first-of-type > li {
+  padding-top: 5px;
+}
+
+.info-content {
+  padding: 20px 40px 50px 40px;
+}
+.info-content h1,
+.info-content h2,
+.info-content h3,
+.info-content h4,
+.info-content h5,
+.info-content h6 {
+  padding-left: 0;
+  line-height: 1.2;
+}
+.info-content h2 {
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+.info-content h3 {
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+.info-content h4,
+.info-content h5,
+.info-content h6 {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+.info-content p {
+  padding-left: 0;
+  line-height: 1.6;
 }
 
 /*# sourceMappingURL=base.css.map */

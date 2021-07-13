@@ -198,6 +198,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 CMS_TEMPLATES = [
     ('mainpage/cms/cms_1col.html', 'CMS 1 Column'),
     ('mainpage/cms/cms_landing.html', 'CMS Landing Page'),
+    ('mainpage/cms/cms_side_menu.html', 'CMS Side Menu'),
 ]
 
 # DJANGO CMS BLOG
