@@ -10421,6 +10421,9 @@ p {
 #footer img {
   max-width: 205px;
 }
+#footer .img-restricted {
+  height: 85px;
+}
 
 /* HIGHLIGHT SECTION */
 .highlight-section {
@@ -10643,6 +10646,53 @@ p {
 
 .post-detail-list margin-top {
   margin-top: 30px;
+}
+
+/* FORM */
+.cms-form {
+  font-family: "Sarabun", sans-serif;
+  padding: 20px;
+}
+.cms-form label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.cms-form label:not(:last-child) {
+  margin-bottom: 0.5em;
+}
+.cms-form input {
+  box-shadow: inset 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
+  max-width: 100%;
+  width: 100%;
+  background-color: white;
+  border-color: #dbdbdb;
+  border-radius: 4px;
+  box-shadow: none;
+  display: inline-flex;
+  font-size: 1rem;
+  height: 2.5em;
+  justify-content: flex-start;
+  line-height: 1.5;
+  padding-bottom: calc(0.5em - 1px);
+  padding-left: calc(0.75em - 1px);
+  padding-right: calc(0.75em - 1px);
+  padding-top: calc(0.5em - 1px);
+  position: relative;
+  vertical-align: top;
+}
+.cms-form button {
+  margin-top: 10px;
+}
+
+.cms-form-success-message {
+  border-radius: 4px;
+  background: #009c94;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: white;
 }
 
 /*# sourceMappingURL=base.css.map */
