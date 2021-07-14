@@ -10327,6 +10327,10 @@ p {
   padding-top: 1px;
 }
 
+.navbar-burger-custom {
+  font-size: 1.8rem;
+}
+
 .language-selection {
   appearance: none;
   -webkit-appearance: none;
@@ -10535,6 +10539,7 @@ p {
   .highlight-body {
     margin-left: 30px;
     margin-right: 30px;
+    padding-top: 20px !important;
   }
 }
 
@@ -10553,6 +10558,18 @@ p {
 }
 
 /* BLOG/NEWS */
+@media screen and (max-width: 768px) {
+  .columns {
+    margin: 0 !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .column {
+    padding: 0;
+  }
+}
+
 .post-item {
   padding: 20px;
   margin-bottom: 20px;
