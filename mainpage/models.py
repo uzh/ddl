@@ -27,3 +27,8 @@ class HighlightBox(CMSPlugin):
         choices=ALIGN_CHOICES,
         default='none'
     )
+
+    external_image = models.CharField(
+        max_length=250,
+        blank=True
+    )

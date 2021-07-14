@@ -1,7 +1,7 @@
 <div class="columns highlight-section is-vcentered">
 
     {% if instance.alignment == 'left' %}
-    <div class="column highlight-title highlight-title-left" {% if instance.background %}style="background: url('{{ instance.background.url }}');"{% endif %}>
+    <div class="column highlight-title highlight-title-left" style="background: url({% if instance.background %}'{{ instance.background.url }}'{% elif instance.external_image %}'{{ instance.external_image }}'{% endif %});">
         <h2>{{ instance.title }}</h2>
     </div>
     <div class="column highlight-body highlight-body-right">
@@ -9,13 +9,13 @@
     </div>
 
     {% elif instance.alignment == 'right' %}
-    <div class="column highlight-title highlight-title-right is-hidden-tablet" {% if instance.background %}style="background: url('{{ instance.background.url }}');"{% endif %}>
+    <div class="column highlight-title highlight-title-right is-hidden-tablet" style="background: url({% if instance.background %}'{{ instance.background.url }}'{% elif instance.external_image %}'{{ instance.external_image }}'{% endif %});">
         <h2>{{ instance.title }}</h2>
     </div>
     <div class="column highlight-body highlight-body-left">
         <p>{{ instance.text|safe }}</p>
     </div>
-    <div class="column highlight-title highlight-title-right is-hidden-mobile" {% if instance.background %}style="background: url('{{ instance.background.url }}');"{% endif %}>
+    <div class="column highlight-title highlight-title-right is-hidden-mobile" style="background: url({% if instance.background %}'{{ instance.background.url }}'{% elif instance.external_image %}'{{ instance.external_image }}'{% endif %});">
         <h2>{{ instance.title }}</h2>
     </div>
 
