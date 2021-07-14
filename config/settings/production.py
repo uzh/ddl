@@ -1,4 +1,5 @@
 from .base import *
+import os
 
 ALLOWED_HOSTS = [
     'datadonation.uzh.ch',
@@ -8,15 +9,51 @@ ALLOWED_HOSTS = [
     'idikmzdatad01.uzh.ch',
 ]
 
+SITE_ID = 1
+
 # DEBUG
 # ------------------------------------------------------------------------------
 DEBUG = False
 
-SITE_ID = 1
 
+# SECURITY SETTINGS
+# ------------------------------------------------------------------------------
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 X_FRAME_OPTIONS = 'DENY'
 
 SECURE_HSTS_SECONDS = 3600
 SECURE_SSL_REDIRECT = True
+
+
+# LOGGING
+# ------------------------------------------------------------------------------
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'datadlab.log'),
+            'maxBytes': 1024*1024*15,
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+    }
+}
