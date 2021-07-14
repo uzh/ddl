@@ -43,7 +43,7 @@ LOGGING = {
     'handlers': {
         'file': {
             'level': 'DEBUG',
-            'class': 'logging.FileHandler',
+            'class': 'logging.handlers.RotatingFileHandler',
             'filename': os.path.join(BASE_DIR, 'datadlab.log'),
             'maxBytes': 1024*1024*15,
             'formatter': 'verbose'
