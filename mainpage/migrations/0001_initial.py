@@ -13,7 +13,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.FILER_IMAGE_MODEL),
-        ('cms', '0023_auto_20210713_1745'),
     ]
 
     operations = [
