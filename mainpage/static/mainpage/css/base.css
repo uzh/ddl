@@ -10874,7 +10874,7 @@ p {
 .info-content h4,
 .info-content h5,
 .info-content h6 {
-  padding-left: 0;
+  padding-left: 0 !important;
   line-height: 1.2;
 }
 .info-content h2 {
