@@ -10447,9 +10447,6 @@ p {
   -o-hyphens: auto;
   hyphens: auto;
 }
-#main ul {
-  padding-right: 30px;
-}
 #main .container {
   padding-top: 150px;
   padding-bottom: 40px;
@@ -10840,6 +10837,9 @@ p {
     margin-bottom: 30px;
   }
 }
+.side-menu-container a {
+  color: black;
+}
 .side-menu-container .selected {
   font-weight: bold;
 }
@@ -10852,9 +10852,6 @@ p {
 .side-menu-container .child {
   line-height: 1.25;
   padding-bottom: 5px;
-}
-.side-menu-container a {
-  color: black;
 }
 
 .side-menu-container > ul:first-of-type > li:first-of-type > a:first-of-type {
