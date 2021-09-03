@@ -237,7 +237,7 @@ h4,
 h5,
 h6 {
   font-weight: bold;
-  font-family: "Bai Jamjuree", sans-serif;
+  font-family: "GT Cinetype", sans-serif;
 }
 
 h1 {
@@ -10240,6 +10240,10 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   font-family: Bai Jamjuree;
   src: url("../fonts/bai_jamjuree/BaiJamjuree-MediumItalic.ttf");
   font-style: italic;
+}
+@font-face {
+  font-family: GT Cinetype;
+  src: url("../fonts/gt_cinetype/GT-Cinetype-Bold-Italic.ttf");
 }
 html,
 body {
