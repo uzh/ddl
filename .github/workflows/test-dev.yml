@@ -1,0 +1,58 @@
+name: Test Dev
+
+on:
+  push:
+    branches: [ dev ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: ${{ secrets.DJANGO_DB_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.DJANGO_DB_PW }}
+          POSTGRES_DB: ${{ secrets.DJANGO_DB_NAME }}
+        ports:
+        - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run Migrations
+      env:
+        DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
+        DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
+        DJANGO_DB_NAME: ${{ secrets.DJANGO_DB_NAME }}
+        DJANGO_DB_USER: ${{ secrets.DJANGO_DB_USER }}
+        DJANGO_DB_PW: ${{ secrets.DJANGO_DB_PW }}
+      run: python manage.py migrate
+    - name: Run Tests
+      env:
+        DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
+        DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
+        DJANGO_DB_NAME: ${{ secrets.DJANGO_DB_NAME }}
+        DJANGO_DB_USER: ${{ secrets.DJANGO_DB_USER }}
+        DJANGO_DB_PW: ${{ secrets.DJANGO_DB_PW }}        
+      run: |
+        python manage.py test
+
+  merge-dev:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Merge dev -> stage
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
