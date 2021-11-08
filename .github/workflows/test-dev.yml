@@ -56,6 +56,8 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
+          git fetch --all
+          git pull --all
           git checkout stage
           git merge dev
           git push
