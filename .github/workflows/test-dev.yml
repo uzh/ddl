@@ -51,8 +51,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - name: Merge dev -> stage
-        uses: devmasx/merge-branch@master
-        with:
-          type: now
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git checkout stage
+          git merge dev
+          git push
