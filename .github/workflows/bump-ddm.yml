@@ -1,0 +1,61 @@
+name: Bump DDM
+
+on:
+  repository_dispatch:
+    types: [new-ddm-version]
+
+jobs:
+  test-and-bump-ddm:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: ${{ secrets.DJANGO_DB_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.DJANGO_DB_PW }}
+          POSTGRES_DB: ${{ secrets.DJANGO_DB_NAME }}
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.client_payload.ref }}
+      - name: Set up Python 3.6
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.6
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install --upgrade django-ddm
+      - name: Run migrations
+        env:
+          DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
+          DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
+          DJANGO_DB_NAME: ${{ secrets.DJANGO_DB_NAME }}
+          DJANGO_DB_USER: ${{ secrets.DJANGO_DB_USER }}
+          DJANGO_DB_PW: ${{ secrets.DJANGO_DB_PW }}
+        run: python manage.py migrate
+      - name: Run tests
+        env:
+          DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
+          DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
+          DJANGO_DB_NAME: ${{ secrets.DJANGO_DB_NAME }}
+          DJANGO_DB_USER: ${{ secrets.DJANGO_DB_USER }}
+          DJANGO_DB_PW: ${{ secrets.DJANGO_DB_PW }}
+        run: python manage.py test ddm
+      - name: Update requirements and commit
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git fetch --all
+          git pull --all
+          git checkout dev
+          newddmversion=$(pip show django-ddm | grep Version: | cut -d' ' -f2 )
+          sed -i "s/django-ddm.*/c\django-ddm==$newddmversion" requirements.txt
+          git add .
+          git commit -m "[automated]: Bump django-ddm version in requirements.txt."
+          git push
