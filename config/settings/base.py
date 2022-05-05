@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'aldryn_forms',
     'aldryn_forms.contrib.email_notifications',
     'emailit',
+    'ckeditor',
+    'ddm',
+    'webpack_loader'
 ]
 
 MIDDLEWARE = [
@@ -219,3 +222,16 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters'
 )
+
+
+# DJANGO-DDM
+# ------------------------------------------------------------------------------
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': True,
+        'BUNDLE_DIR_NAME': 'ddm/vue/',
+        'STATS_FILE': os.path.join(STATIC_ROOT, 'ddm/vue/webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
+    }
+}
