@@ -38,14 +38,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install --upgrade django-ddm
-      - name: Run migrations
+      - name: Run migrations and collect static files
         env:
           DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
           DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
           DJANGO_DB_NAME: ${{ secrets.DJANGO_DB_NAME }}
           DJANGO_DB_USER: ${{ secrets.DJANGO_DB_USER }}
           DJANGO_DB_PW: ${{ secrets.DJANGO_DB_PW }}
-        run: python manage.py migrate
+        run: |
+          python manage.py migrate
+          python manage.py collectstatic
       - name: Run tests
         env:
           DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
