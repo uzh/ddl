@@ -59,7 +59,7 @@ jobs:
       - name: Update requirements and commit
         run: |
           newddmversion=$(pip show django-ddm | grep Version: | cut -d' ' -f2 )
-          sed -i "s/django-ddm.*/c\django-ddm==$newddmversion" requirements.txt
+          sed -i "s/django-ddm.*/django-ddm==$newddmversion/" requirements.txt
           git add .
           git commit -m "[automated]: Bump django-ddm version in requirements.txt."
           git push
