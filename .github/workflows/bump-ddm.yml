@@ -56,10 +56,15 @@ jobs:
           DJANGO_DB_USER: ${{ secrets.DJANGO_DB_USER }}
           DJANGO_DB_PW: ${{ secrets.DJANGO_DB_PW }}
         run: python manage.py test ddm
-      - name: Update requirements and commit
+      - name: Update requirements and commit to dev
         run: |
           newddmversion=$(pip show django-ddm | grep Version: | cut -d' ' -f2 )
           sed -i "s/django-ddm.*/django-ddm==$newddmversion/" requirements.txt
           git add .
           git commit -m "[automated]: Bump django-ddm version in requirements.txt."
           git push
+      - name: Merge dev into stage
+        run: |
+        git checkout stage
+        git merge dev
+        git push
