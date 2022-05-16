@@ -9,16 +9,18 @@ jobs:
 
     runs-on: ubuntu-latest
     services:
-      postgres:
-        image: postgres
+      mysql:
+        image: mysql
         env:
-          POSTGRES_USER: ${{ secrets.DJANGO_DB_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.DJANGO_DB_PW }}
-          POSTGRES_DB: ${{ secrets.DJANGO_DB_NAME }}
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: ddmtestdb
         ports:
-        - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.8
@@ -33,17 +35,19 @@ jobs:
       env:
         DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
         DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
-        DJANGO_DB_NAME: ${{ secrets.DJANGO_DB_NAME }}
-        DJANGO_DB_USER: ${{ secrets.DJANGO_DB_USER }}
-        DJANGO_DB_PW: ${{ secrets.DJANGO_DB_PW }}
-      run: python manage.py migrate
+        DJANGO_DB_NAME: ddmtestdb
+        DJANGO_DB_USER: root
+        DJANGO_DB_PW: password
+      run: |
+        python manage.py migrate
+        python manage.py collectstatic
     - name: Run Tests
       env:
         DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
         DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
-        DJANGO_DB_NAME: ${{ secrets.DJANGO_DB_NAME }}
-        DJANGO_DB_USER: ${{ secrets.DJANGO_DB_USER }}
-        DJANGO_DB_PW: ${{ secrets.DJANGO_DB_PW }}        
+        DJANGO_DB_NAME: ddmtestdb
+        DJANGO_DB_USER: root
+        DJANGO_DB_PW: password
       run: |
         python manage.py test
 
