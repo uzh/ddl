@@ -1,8 +1,8 @@
-{% load static cms_tags sekizai_tags %}
+{% load static wagtail_snippets %}
 
 <div class="columns is-vcentered">
     <div class="column">
-        {% static_placeholder "Footer Top" %}
+
     </div>
 </div>
 
@@ -27,7 +27,7 @@
 </div>
 
 <div class="columns is-vcentered">
-    <div class="column">
-        {% static_placeholder "Footer Bottom" %}
+    <div class="column footer-text">
+      {% footer %}
     </div>
 </div>
