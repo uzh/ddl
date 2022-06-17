@@ -149,6 +149,7 @@ THUMBNAIL_PROCESSORS = (
 # WAGTAIL
 # ------------------------------------------------------------------------------
 WAGTAIL_SITE_NAME = 'Data Donation Lab'
+WAGTAILADMIN_BASE_URL = 'https://datadonation.uzh.ch'
 
 
 # DJANGO-DDM
