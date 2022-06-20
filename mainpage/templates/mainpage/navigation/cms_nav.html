@@ -1,66 +1,67 @@
-{% load static i18n cms_tags menu_tags cache %}
+{% load static i18n %}
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a class="level-item" href="/">
-            <img id="header-brand-full" class="custom-brand" src="{% static 'mainpage/img/ddl_logos/ddl_logo_black.svg' %}" alt="Data Donation Lab Brand">
-            <img id="header-brand-small" class="custom-brand is-hidden" src="{% static 'mainpage/img/ddl_logos/ddl_slider_black.svg' %}" alt="Data Donation Lab Brand">
+<nav aria-label="main navigation" class="navbar" role="navigation">
+  <div class="navbar-brand">
+    <a class="level-item" href="/">
+      <img alt="Data Donation Lab Brand" class="custom-brand" id="header-brand-full"
+           src="{% static 'mainpage/img/ddl_logos/ddl_logo_black.svg' %}">
+      <img alt="Data Donation Lab Brand" class="custom-brand is-hidden" id="header-brand-small"
+           src="{% static 'mainpage/img/ddl_logos/ddl_slider_black.svg' %}">
+    </a>
+
+    <a aria-expanded="false" aria-label="menu" class="navbar-burger navbar-burger-custom"
+       data-target="navbarBasicExample" id="navbar-burger" role="button">
+      <!--<span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>-->
+      &#x2630;
+    </a>
+  </div>
+
+  <div class="navbar-menu" id="navbarBasic">
+
+    <div class="navbar-end">
+      {% include 'mainpage/components/main_nav_menu.html' %}
+
+      <div class="nav-divider">
+        <div></div>
+      </div>
+
+      <div class="navbar-item navbar-item-add">
+        <a class="nav-addition nav-social-container" href="https://twitter.com/DataDonation" target="_blank">
+          <img class="nav-social-logo" src="{% static 'mainpage/img/ext_logos/twitter_white.svg' %}">
         </a>
+      </div>
 
-        <a id="navbar-burger" role="button" class="navbar-burger navbar-burger-custom" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <!--<span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>-->
-            &#x2630;
-        </a>
+      <div class="navbar-item navbar-item-add">
+        {% include 'mainpage/components/lang_selector.html' %}
+      </div>
+
     </div>
-
-    <div id="navbarBasic" class="navbar-menu">
-
-        <div class="navbar-end">
-            {% for child in children %}
-            <div class="navbar-item child{% if child.selected %} selected{% endif %}{% if child.ancestor %} ancestor{% endif %}{% if child.sibling %} sibling{% endif %}{% if child.descendant %} descendant{% endif %}">
-                <a class="nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">{{ child.get_menu_title }}</a>
-            </div>
-            {% endfor %}
-
-            <div class="nav-divider">
-                <div></div>
-            </div>
-
-            <div class="navbar-item navbar-item-add">
-                <a class="nav-addition nav-social-container" href="https://twitter.com/DataDonation" target="_blank">
-                    <img class="nav-social-logo" src="{% static 'mainpage/img/ext_logos/twitter_white.svg' %}">
-                </a>
-            </div>
-
-            <div class="navbar-item navbar-item-add">
-                {% include 'mainpage/components/language_selector.html' %}
-            </div>
-
-        </div>
-    </div>
+  </div>
 </nav>
 
-<div id="modal-nav" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-        {% for child in children %}
-        <div class="modal-nav-item child{% if child.selected %} selected{% endif %}{% if child.ancestor %} ancestor{% endif %}{% if child.sibling %} sibling{% endif %}{% if child.descendant %} descendant{% endif %}">
-            <a class="modal-nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">{{ child.get_menu_title }}</a>
-        </div>
-        {% endfor %}
-
-        <div class="modal-nav-addition">
-            <div class="navbar-item navbar-item-add">
-                <a class="nav-addition nav-social-container" href="https://twitter.com/DataDonation" target="_blank">
-                    <img class="nav-social-logo" src="{% static 'mainpage/img/ext_logos/twitter_white.svg' %}">
-                </a>
-            </div>
-            <div class="navbar-item navbar-item-add">
-                {% include 'mainpage/components/language_selector.html' %}
-            </div>
-        </div>
+<div class="modal" id="modal-nav">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    {% for child in children %}
+    <div
+        class="modal-nav-item child{% if child.selected %} selected{% endif %}{% if child.ancestor %} ancestor{% endif %}{% if child.sibling %} sibling{% endif %}{% if child.descendant %} descendant{% endif %}">
+      <a class="modal-nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">{{
+        child.get_menu_title }}</a>
     </div>
-    <button class="modal-close is-large" aria-label="close"></button>
+    {% endfor %}
+
+    <div class="modal-nav-addition">
+      <div class="navbar-item navbar-item-add">
+        <a class="nav-addition nav-social-container" href="https://twitter.com/DataDonation" target="_blank">
+          <img class="nav-social-logo" src="{% static 'mainpage/img/ext_logos/twitter_white.svg' %}">
+        </a>
+      </div>
+      <div class="navbar-item navbar-item-add">
+        {% include 'mainpage/components/lang_selector.html' %}
+      </div>
+    </div>
+  </div>
+  <button aria-label="close" class="modal-close is-large"></button>
 </div>

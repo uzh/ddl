@@ -19,3 +19,6 @@ staticfiles/
 
 # Pycharm
 .idea/*
+
+# sqlite database
+*.sqlite
