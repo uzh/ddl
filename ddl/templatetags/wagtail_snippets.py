@@ -1,5 +1,5 @@
 from django import template
-from mainpage.models import Footer
+from ddl.models import Footer
 
 register = template.Library()
 

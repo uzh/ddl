@@ -4,9 +4,9 @@
   <div class="navbar-brand">
     <a class="level-item" href="/">
       <img alt="Data Donation Lab Brand" class="custom-brand" id="header-brand-full"
-           src="{% static 'mainpage/img/ddl_logos/ddl_logo_black.svg' %}">
+           src="{% static 'ddl/img/ddl_logos/ddl_logo_black.svg' %}">
       <img alt="Data Donation Lab Brand" class="custom-brand is-hidden" id="header-brand-small"
-           src="{% static 'mainpage/img/ddl_logos/ddl_slider_black.svg' %}">
+           src="{% static 'ddl/img/ddl_logos/ddl_slider_black.svg' %}">
     </a>
 
     <a aria-expanded="false" aria-label="menu" class="navbar-burger navbar-burger-custom"
@@ -21,7 +21,7 @@
   <div class="navbar-menu" id="navbarBasic">
 
     <div class="navbar-end">
-      {% include 'mainpage/components/main_nav_menu.html' %}
+      {% include 'ddl/components/main_nav_menu.html' %}
 
       <div class="nav-divider">
         <div></div>
@@ -29,12 +29,12 @@
 
       <div class="navbar-item navbar-item-add">
         <a class="nav-addition nav-social-container" href="https://twitter.com/DataDonation" target="_blank">
-          <img class="nav-social-logo" src="{% static 'mainpage/img/ext_logos/twitter_white.svg' %}">
+          <img class="nav-social-logo" src="{% static 'ddl/img/ext_logos/twitter_white.svg' %}">
         </a>
       </div>
 
       <div class="navbar-item navbar-item-add">
-        {% include 'mainpage/components/lang_selector.html' %}
+        {% include 'ddl/components/lang_selector.html' %}
       </div>
 
     </div>
@@ -55,11 +55,11 @@
     <div class="modal-nav-addition">
       <div class="navbar-item navbar-item-add">
         <a class="nav-addition nav-social-container" href="https://twitter.com/DataDonation" target="_blank">
-          <img class="nav-social-logo" src="{% static 'mainpage/img/ext_logos/twitter_white.svg' %}">
+          <img class="nav-social-logo" src="{% static 'ddl/img/ext_logos/twitter_white.svg' %}">
         </a>
       </div>
       <div class="navbar-item navbar-item-add">
-        {% include 'mainpage/components/lang_selector.html' %}
+        {% include 'ddl/components/lang_selector.html' %}
       </div>
     </div>
   </div>

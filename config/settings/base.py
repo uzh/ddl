@@ -16,7 +16,7 @@ SECRET_KEY = os.environ['DJANGO_SECRET']
 # APPLICATION DEFINITIONS
 # ------------------------------------------------------------------------------
 INSTALLED_APPS = [
-    'mainpage.apps.MainpageConfig',
+    'ddl.apps.DdlConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # USER AUTHORIZATION AND PASSWORD VALIDATION
 # ------------------------------------------------------------------------------
-AUTH_USER_MODEL = "mainpage.User"
+AUTH_USER_MODEL = "ddl.User"
 
 AUTH_PASSWORD_VALIDATORS = [
     {

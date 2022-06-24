@@ -11,11 +11,11 @@
     <title>{% block title %}{% endblock %}</title>
     <meta name="description" content="This is the official website of the Data Donation Lab.">
 
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'mainpage/img/favicons/ddl_favicon_black.svg' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'ddl/img/favicons/ddl_favicon_black.svg' %}">
 
     {% block site_css %}
-    <link rel="stylesheet" href="{% static 'mainpage/css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'mainpage/css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'ddl/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'ddl/css/custom.css' %}">
     {% endblock site_css %}
 
     {% block extra_head %}
@@ -27,7 +27,7 @@
       <div id="header">
         {% block header_content %}
         <div class="container has-text-centered pl-6 pr-6">
-          {% include "mainpage/navigation/cms_nav.html" %}
+          {% include "ddl/navigation/cms_nav.html" %}
         </div>
         {% endblock header_content %}
       </div>
@@ -40,7 +40,7 @@
       <div id="footer">
         {% block footer_content %}
         <div class="container has-text-centered">
-          {% include "mainpage/footer/cms_footer.html" %}
+          {% include "ddl/footer/cms_footer.html" %}
         </div>
         {% endblock footer_content %}
       </div>
@@ -48,7 +48,7 @@
 
     {% block site_js %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="{% static 'mainpage/js/base.js' %}"></script>
+    <script src="{% static 'ddl/js/base.js' %}"></script>
     {% endblock site_js %}
   </body>
 

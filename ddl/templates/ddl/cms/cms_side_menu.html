@@ -1,4 +1,4 @@
-{% extends "mainpage/cms/cms_base.html" %}
+{% extends "ddl/cms/cms_base.html" %}
 {% load static i18n cms_tags menu_tags sekizai_tags %}
 
 {% block main_content %}
@@ -8,7 +8,7 @@
         <div class="column is-3-tablet is-one-fifth-desktop">
             <div class="side-menu-container">
                 <ul>
-                    {% show_sub_menu 100 0 100 "mainpage/navigation/cms_side_menu.html" %}
+                    {% show_sub_menu 100 0 100 "ddl/navigation/cms_side_menu.html" %}
                 </ul>
             </div>
         </div>
