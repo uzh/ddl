@@ -1,6 +1,5 @@
 import os
 
-from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -27,6 +26,8 @@ INSTALLED_APPS = [
     'ddm',
     'ckeditor',
     'webpack_loader',
+    'rest_framework',
+    'rest_framework.authtoken',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
