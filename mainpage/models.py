@@ -1,6 +1,10 @@
 from ckeditor.fields import RichTextField
+
+from django.contrib.auth.models import AbstractUser
 from django.db import models
+
 from modelcluster.fields import ParentalKey
+
 from wagtail.models import Page
 from wagtail.fields import StreamField
 from wagtail import blocks
@@ -126,3 +130,9 @@ class Footer(models.Model):
 
     def __str__(self):
         return self.text
+
+
+# CUSTOM USER MODEL
+# ------------------------------------------------------------------------------
+class User(AbstractUser):
+    pass

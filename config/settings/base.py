@@ -77,8 +77,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# PASSWORD VALIDATION
+# USER AUTHORIZATION AND PASSWORD VALIDATION
 # ------------------------------------------------------------------------------
+AUTH_USER_MODEL = "mainpage.User"
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -123,17 +125,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-
-# DJANGO CMS BLOG
-# ------------------------------------------------------------------------------
-# META_SITE_PROTOCOL = 'http'  # set 'http' for non ssl enabled websites
-# META_USE_SITES = True
-#
-# META_USE_OG_PROPERTIES = True
-# META_USE_TWITTER_PROPERTIES = True
-# META_USE_SCHEMAORG_PROPERTIES = True
-
-
 # DJANGO-FILER
 # ------------------------------------------------------------------------------
 THUMBNAIL_HIGH_RESOLUTION = True
@@ -145,12 +136,10 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
-
 # WAGTAIL
 # ------------------------------------------------------------------------------
 WAGTAIL_SITE_NAME = 'Data Donation Lab'
 WAGTAILADMIN_BASE_URL = 'https://datadonation.uzh.ch'
-
 
 # DJANGO-DDM
 # ------------------------------------------------------------------------------
@@ -162,4 +151,7 @@ WEBPACK_LOADER = {
         'POLL_INTERVAL': 0.1,
         'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
     }
+}
+DDM_SETTINGS = {
+    'EMAIL_PERMISSION_CHECK':  r'.*(\.|@)uzh\.ch$',
 }
