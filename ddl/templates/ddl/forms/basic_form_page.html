@@ -13,7 +13,7 @@
       <form id="cms-form" action="{% pageurl page %}" class="cms-form" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit">
+        <input type="submit" value="{{ page.submit_label }}" class="button is-light">
       </form>
     </div>
     <div class="column is-1-tablet is-hidden-desktop-only is-1-fullhd"></div>

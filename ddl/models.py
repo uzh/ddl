@@ -110,11 +110,13 @@ class FormPage(AbstractEmailForm):
 
     intro = RichTextField(blank=True)
     thank_you_text = RichTextField(blank=True)
+    submit_label = models.CharField(max_length=100)
 
     content_panels = AbstractEmailForm.content_panels + [
         FormSubmissionsPanel(),
         FieldPanel('intro', classname="full"),
         InlinePanel('form_fields', label="Form fields"),
+        FieldPanel('submit_label', classname="full"),
         FieldPanel('thank_you_text', classname="full"),
         MultiFieldPanel([
             FieldRowPanel([
