@@ -3436,21 +3436,26 @@ a.tag:hover {
   font-size: 14px;
 }
 
+.cms-form,
 .label {
   color: hsl(0deg, 0%, 21%);
   display: block;
   font-size: 1rem;
   font-weight: 700;
 }
+.cms-form:not(:last-child),
 .label:not(:last-child) {
   margin-bottom: 0.5em;
 }
+.cms-form.is-small,
 .label.is-small {
   font-size: 0.75rem;
 }
+.cms-form.is-medium,
 .label.is-medium {
   font-size: 1.25rem;
 }
+.cms-form.is-large,
 .label.is-large {
   font-size: 1.5rem;
 }
@@ -10709,7 +10714,8 @@ p {
 .cms-form label:not(:last-child) {
   margin-bottom: 0.5em;
 }
-.cms-form input {
+.cms-form input[type=text],
+.cms-form input[type=email] {
   box-shadow: inset 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
   max-width: 100%;
   width: 100%;
@@ -10728,6 +10734,9 @@ p {
   padding-top: calc(0.5em - 1px);
   position: relative;
   vertical-align: top;
+}
+.cms-form input[type=checkbox] {
+  cursor: pointer;
 }
 .cms-form button {
   margin-top: 10px;
