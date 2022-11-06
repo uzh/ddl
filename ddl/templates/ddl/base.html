@@ -47,8 +47,30 @@
     </div>
 
     {% block site_js %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="{% static 'ddl/js/jquery-3.6.1.min.js %}"></script>
     <script src="{% static 'ddl/js/base.js' %}"></script>
+
+    <!-- TODO: Include the following script depending on cookie settings. -->
+    <script>
+      // Matomo
+      var _paq = _paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['setAPIUrl', "https://webstats.uzh.ch/"]); // overlay fix
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//webstats.uzh.ch/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', '407']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript';
+        g.async=true;
+        g.defer=true;
+        g.src=u+'piwik.js';
+        s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+
     {% endblock site_js %}
   </body>
 
