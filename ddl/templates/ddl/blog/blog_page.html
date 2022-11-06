@@ -1,0 +1,25 @@
+{% extends "ddl/base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block main_content %}
+
+<div class="container">
+  <div class="columns">
+    <div class="column is-1-tablet is-hidden-desktop-only is-1-fullhd"></div>
+    <div class="column content has-text-black blog-post-single">
+      <h1>{{ page.title }}</h1>
+      <h2>{{ page.sub_title }}</h2>
+
+      <div class="blog-post-meta">
+        <i>Published on {{ page.date }}{% if page.author %} by {% if page.author_email %}<a href="mailto:{{ page.author_email }}">{{ page.author }}</a>{% else %}{{ page.author }}{% endif %}{% endif %}</i>
+      </div>
+
+      {% include_block page.body %}
+
+    </div>
+    <div class="column is-1-tablet is-hidden-desktop-only is-1-fullhd"></div>
+  </div>
+</div>
+
+{% endblock %}

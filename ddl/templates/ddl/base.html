@@ -1,0 +1,77 @@
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="This is the official website of the Data Donation Lab.">
+
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'ddl/img/favicons/ddl_favicon_black.svg' %}">
+
+    {% block site_css %}
+    <link rel="stylesheet" href="{% static 'ddl/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'ddl/css/custom.css' %}">
+    {% endblock site_css %}
+
+    {% block extra_head %}
+    {% endblock extra_head %}
+  </head>
+
+  <body>
+    <div class="body_wrapper">
+      <div id="header">
+        {% block header_content %}
+        <div class="container has-text-centered pl-6 pr-6">
+          {% include "ddl/navigation/cms_nav.html" %}
+        </div>
+        {% endblock header_content %}
+      </div>
+
+      <div id="main">
+        {% block main_content %}
+        {% endblock main_content %}
+      </div>
+
+      <div id="footer">
+        {% block footer_content %}
+        <div class="container has-text-centered">
+          {% include "ddl/footer/cms_footer.html" %}
+        </div>
+        {% endblock footer_content %}
+      </div>
+    </div>
+
+    {% block site_js %}
+    <script src="{% static 'ddl/js/jquery-3.6.1.min.js %}"></script>
+    <script src="{% static 'ddl/js/base.js' %}"></script>
+
+    <!-- TODO: Include the following script depending on cookie settings. -->
+    <script>
+      // Matomo
+      var _paq = _paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['setAPIUrl', "https://webstats.uzh.ch/"]); // overlay fix
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//webstats.uzh.ch/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', '407']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript';
+        g.async=true;
+        g.defer=true;
+        g.src=u+'piwik.js';
+        s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+
+    {% endblock site_js %}
+  </body>
+
+</html>

@@ -1,0 +1,17 @@
+{% extends "ddl/base.html" %}
+{% load static i18n cms_tags menu_tags sekizai_tags %}
+
+{% block header_content %}
+<div class="container has-text-centered pl-6 pr-6">
+    {% show_menu 0 100 0 100 "ddl/navigation/cms_nav.html" %}
+</div>
+{% endblock header_content %}
+
+{% block main_content %}
+{% endblock main_content %}
+
+{% block footer_content %}
+<div class="container has-text-centered">
+    {% include "ddl/footer/cms_footer.html" %}
+</div>
+{% endblock footer_content %}
