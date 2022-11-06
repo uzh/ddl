@@ -1,0 +1,30 @@
+{% load static %}
+
+
+<div id="side-menu" class="side-menu-container">
+  <ul>
+  {% with root_page=page.get_knowledge_root %}
+
+    <li class="child{% if root_page.get_url == request.path %} selected{% endif %}" style="font-family: 'GT Cinetype', sans-serif;">
+      <a class="nav-link" href="{{ root_page.url }}">{{ root_page.title }}</a>
+    </li>
+    <ul>
+    {% for  sub_page in root_page.get_children.live %}
+      <li class="child{% if sub_page.get_url == request.path %} selected{% endif %}">
+        <a class="nav-link" href="{{ sub_page.url }}">{{ sub_page.title }}</a>
+
+        {% for  sub2_page in sub_page.get_children.live %}
+        <ul>
+          <li class="child{% if sub2_page.get_url == request.path %} selected{% endif %}">
+            <a class="nav-link" href="{{ sub2_page.url }}">{{ sub2_page.title }}</a>
+          </li>
+        </ul>
+        {% empty %}
+        {% endfor %}
+      </li>
+    {% endfor %}
+    </ul>
+
+  {% endwith %}
+  </ul>
+</div>

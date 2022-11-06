@@ -1,0 +1,36 @@
+{% extends "ddl/base.html" %}
+{% load static i18n wagtailcore_tags %}
+
+{% block main_content %}
+
+<div class="container">
+  <div class="columns">
+
+    <div class="column is-3-tablet is-one-fifth-desktop">
+      {% include "ddl/navigation/side_nav.html" %}
+    </div>
+
+    <div class="content column info-content has-text-black">
+      {% for block in page.body %}
+
+      {% if block.block_type == "heading" %}
+      <h1>{{ block.value }}</h1>
+      {% elif block.block_type == "paragraph" %}
+      <div class="paragraph-block content">
+        {{ block.value }}
+      </div>
+      {% elif block.block_type == "list" %}
+      <div class="list-block">
+        {% include_block block %}
+      </div>
+      {% elif block.block_type == "image" %}
+      {% elif block.block_type == "highlight" %}
+      {% include_block block %}
+      {% endif %}
+
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock main_content %}
