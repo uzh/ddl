@@ -8,7 +8,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{{ page.title }}{% endblock %}</title>
     <meta name="description" content="This is the official website of the Data Donation Lab.">
 
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'ddl/img/favicons/ddl_favicon_black.svg' %}">

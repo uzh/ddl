@@ -10800,6 +10800,12 @@ p {
   padding-top: 5px;
 }
 
+.modal-language .lang-selection,
+.modal-language .lang-selection:hover {
+  font-size: 1.3rem;
+  padding-top: 7px;
+}
+
 .info-content {
   padding: 20px 40px 50px 40px;
 }

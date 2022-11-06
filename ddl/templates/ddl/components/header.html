@@ -18,7 +18,7 @@
   <div class="navbar-menu" id="navbarBasic">
 
     <div class="navbar-end">
-      {% include 'ddl/components/main_nav_menu.html' %}
+      {% include 'ddl/navigation/head_nav.html' %}
 
       <div class="nav-divider">
         <div></div>
@@ -41,11 +41,14 @@
 <div class="modal" id="modal-nav">
   <div class="modal-background"></div>
   <div class="modal-content">
-    {% for child in children %}
-    <div
-        class="modal-nav-item child{% if child.selected %} selected{% endif %}{% if child.ancestor %} ancestor{% endif %}{% if child.sibling %} sibling{% endif %}{% if child.descendant %} descendant{% endif %}">
-      <a class="modal-nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">{{
-        child.get_menu_title }}</a>
+
+    <div class="modal-nav-item child{% if page.get_parent.title == 'Root' %} selected{% endif %}">
+      <a class="modal-nav-link" href="/{{ request.LANGUAGE_CODE }}/">Home</a>
+    </div>
+
+    {% for  menu_page in page.get_root.get_children.0.get_children.live.in_menu %}
+    <div class="modal-nav-item child{% if menu_page.get_url in request.path %} selected{% endif %}">
+      <a class="modal-nav-link" href="{{ menu_page.url }}">{{ menu_page.title }}</a>
     </div>
     {% endfor %}
 
@@ -55,10 +58,11 @@
           <img class="nav-social-logo" src="{% static 'ddl/img/logos/external/twitter_logo_white.svg' %}">
         </a>
       </div>
-      <div class="navbar-item navbar-item-add">
+      <div class="navbar-item navbar-item-add modal-language">
         {% include 'ddl/components/language_selector.html' %}
       </div>
     </div>
   </div>
+
   <button aria-label="close" class="modal-close is-large"></button>
 </div>
