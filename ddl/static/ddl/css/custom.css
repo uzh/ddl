@@ -31,14 +31,16 @@
     padding-left: 30px;
 }
 
-.cms-form input,
+.cms-form input[type="text"],
+.cms-form input[type="email"],
 .cms-form textarea {
     -moz-appearance: none;
     -webkit-appearance: none;
     align-items: center;
     border: 1px solid #dbdbdb;
 }
-.cms-form input:focus,
+.cms-form input[type="text"]:focus,
+.cms-form input[type="email"]:focus,
 .cms-form textarea:focus {
     outline: none;
     border-color: #d36a45;
@@ -47,6 +49,10 @@
 .cms-form input[type="submit"] {
     width: auto;
     cursor: pointer;
+    margin-top: 20px;
+}
+.cms-form input[type="checkbox"] {
+
 }
 .cms-form textarea {
     width: 100%;
@@ -55,10 +61,3 @@
     font-size: 0.8rem;
     color: grey;
 }
-
-
-
-
-
-
-background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 11%, rgb(245, 245, 245) 30%, rgb(231, 231, 231) 100%);

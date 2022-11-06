@@ -98,6 +98,38 @@ class BlogIndexPage(Page):
         return context
 
 
+# KNOWLEDGE CENTER
+# ------------------------------------------------------------------------------
+class KnowledgePage(Page):
+    template = 'ddl/knowledge_page.html'
+    knowledge_root = models.BooleanField(default=False)
+
+    body = StreamField([
+        ('heading', blocks.CharBlock(form_classname="full title", icon='title')),
+        ('paragraph', blocks.RichTextBlock(icon='pilcrow')),
+        ('list', blocks.ListBlock(blocks.CharBlock(label="List"), icon='list-ul')),
+        ('image', ImageChooserBlock()),
+        ('highlight', HighlightBlock()),
+    ], use_json_field=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('knowledge_root'),
+        FieldPanel('body', classname='full'),
+    ]
+
+    subpage_types = ['KnowledgePage']
+
+    def get_knowledge_root(self):
+        if self.knowledge_root:
+            return self
+        else:
+            page = self.get_parent().get_specific()
+            if not hasattr(page, 'knowledge_root'):
+                return None
+            root = page.get_knowledge_root()
+            return root
+
+
 # FORMS
 # ------------------------------------------------------------------------------
 class FormField(AbstractFormField):

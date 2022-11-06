@@ -3436,21 +3436,26 @@ a.tag:hover {
   font-size: 14px;
 }
 
+.cms-form,
 .label {
   color: hsl(0deg, 0%, 21%);
   display: block;
   font-size: 1rem;
   font-weight: 700;
 }
+.cms-form:not(:last-child),
 .label:not(:last-child) {
   margin-bottom: 0.5em;
 }
+.cms-form.is-small,
 .label.is-small {
   font-size: 0.75rem;
 }
+.cms-form.is-medium,
 .label.is-medium {
   font-size: 1.25rem;
 }
+.cms-form.is-large,
 .label.is-large {
   font-size: 1.5rem;
 }
@@ -10709,7 +10714,8 @@ p {
 .cms-form label:not(:last-child) {
   margin-bottom: 0.5em;
 }
-.cms-form input {
+.cms-form input[type=text],
+.cms-form input[type=email] {
   box-shadow: inset 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
   max-width: 100%;
   width: 100%;
@@ -10729,6 +10735,9 @@ p {
   position: relative;
   vertical-align: top;
 }
+.cms-form input[type=checkbox] {
+  cursor: pointer;
+}
 .cms-form button {
   margin-top: 10px;
 }
@@ -10744,40 +10753,57 @@ p {
 }
 
 /* SIDE MENU */
-.side-menu-container {
+#side-menu {
   background-color: #f4f4f4;
   border-radius: 5px;
   padding: 20px 20px 30px 20px;
-  font-family: "Sarabun", sans-serif;
+  font-family: "Figtree", sans-serif;
 }
 @media screen and (max-width: 768px) {
-  .side-menu-container {
+  #side-menu {
     margin-bottom: 30px;
   }
 }
-.side-menu-container a {
+#side-menu a {
   color: black;
 }
-.side-menu-container .selected {
-  font-weight: bold;
+#side-menu .selected {
+  font-weight: 500;
 }
-.side-menu-container .inner-menu {
+#side-menu .inner-menu {
   padding-left: 15px;
 }
-.side-menu-container .inner-menu {
+#side-menu .inner-menu {
   padding-top: 5px;
 }
-.side-menu-container .child {
+#side-menu .child {
   line-height: 1.25;
   padding-bottom: 5px;
 }
-
-.side-menu-container > ul:first-of-type > li:first-of-type > a:first-of-type {
-  color: #009c94;
+#side-menu ul {
+  padding-right: 0px;
+  padding-top: 3px;
+  margin-bottom: 0px;
+  font-size: 1rem;
+}
+#side-menu ul li {
+  font-size: 1rem;
+}
+#side-menu ul:first-of-type {
+  padding-left: 0px;
+}
+#side-menu ul:first-of-type > ul {
+  padding-left: 15px;
 }
 
 .side-menu-container > ul:first-of-type > li:first-of-type > ul:first-of-type > li {
   padding-top: 5px;
+}
+
+.modal-language .lang-selection,
+.modal-language .lang-selection:hover {
+  font-size: 1.3rem;
+  padding-top: 7px;
 }
 
 .info-content {
