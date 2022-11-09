@@ -10,23 +10,6 @@
     font-size: 0.8rem;
 }
 
-.blog-post-single > h1 {
-    padding-left: 30px !important;
-    margin-bottom: 0px;
-}
-.blog-post-single > h2 {
-    margin-top: 0px !important;
-}
-.blog-post-single ol,
-.blog-post-single ul {
-    padding-left: 30px !important;
-}
-
-.blog-post-meta {
-    padding-left: 30px;
-    margin-bottom: 20px;
-}
-
 .cms-form {
     padding-left: 30px;
 }

@@ -10700,6 +10700,19 @@ p {
   margin-top: 30px;
 }
 
+.blog-post-single h1 {
+  padding-left: 30px !important;
+  margin-bottom: 0px;
+}
+.blog-post-single h2 {
+  margin-top: 0px !important;
+  font-family: "Figtree";
+}
+.blog-post-single ol,
+.blog-post-single ul {
+  padding-left: 30px !important;
+}
+
 /* FORM */
 .cms-form {
   font-family: "Figtree", sans-serif;
