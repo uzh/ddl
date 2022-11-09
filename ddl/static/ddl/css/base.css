@@ -10696,7 +10696,6 @@ p {
 }
 
 .blog-post-meta {
-  padding-left: 30px;
   margin-bottom: 20px;
 }
 
@@ -10704,17 +10703,26 @@ p {
   margin-top: 30px;
 }
 
+.blog-post-single {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.blog-post-single p,
+.blog-post-single h2,
+.blog-post-single h3,
+.blog-post-single h4 {
+  padding-left: 0px !important;
+}
 .blog-post-single h1 {
-  padding-left: 30px !important;
   margin-bottom: 0px;
 }
 .blog-post-single h2 {
   margin-top: 0px !important;
   font-family: "Figtree";
 }
-.blog-post-single ol,
-.blog-post-single ul {
-  padding-left: 30px !important;
+.blog-post-single .block-image {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 /* FORM */
