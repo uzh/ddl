@@ -6,7 +6,6 @@
 
   {% if value.alignment == 'left' %}
   <div class="highlight-title highlight-title-left" style="background: url({% if img %}'{{ img.full_url }}'{% endif %});">
-    <h2>{{ value.title|richtext }}</h2>
   </div>
   <div class="column highlight-body highlight-body-right">
     <p>{{ value.text|richtext }}</p>
@@ -14,13 +13,11 @@
 
   {% elif value.alignment == 'right' %}
   <div class="highlight-title highlight-title-right is-hidden-tablet" style="background: url({% if img %}'{{ img.full_url }}'{% endif %});">
-    <h2>{{ value.title|richtext }}</h2>
   </div>
   <div class="column highlight-body highlight-body-left">
     <p>{{ value.text|richtext }}</p>
   </div>
   <div class="highlight-title highlight-title-right is-hidden-mobile" style="background: url({% if img %}'{{ img.full_url }}'{% endif %});">
-    <h2>{{ value.title|richtext }}</h2>
   </div>
   {% endif %}
 
