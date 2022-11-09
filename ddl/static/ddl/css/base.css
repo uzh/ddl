@@ -10269,27 +10269,6 @@ p {
   font-size: 1.8rem;
 }
 
-.language-selection {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  outline: none;
-  -moz-padding-start: 0;
-  font-size: 0.7rem;
-  color: white;
-  background-color: transparent;
-  border: none;
-}
-
-.language-selection::-ms-expand {
-  display: none;
-}
-
-.language-selection:hover {
-  cursor: pointer;
-}
-
 #modal-nav .modal-background {
   background: rgba(255, 255, 255, 0.94);
 }
@@ -10328,12 +10307,12 @@ p {
 #modal-nav .nav-social-logo {
   height: 24px;
 }
-#modal-nav .language-selection-form {
-  line-height: 1.2;
-  padding-top: 6px;
-}
-#modal-nav .language-selection {
-  font-size: 1.5rem;
+
+.lang-selection,
+.lang-selection:hover {
+  font-size: 0.8rem;
+  color: white;
+  padding-top: 2px;
 }
 
 #header {
@@ -10398,6 +10377,13 @@ p {
 #main b {
   font-weight: bold;
 }
+#main a {
+  color: #00746e;
+  font-weight: 400;
+}
+#main a:hover {
+  color: #004e4a;
+}
 #main .container {
   padding-top: 150px;
   padding-bottom: 40px;
@@ -10416,6 +10402,19 @@ p {
 }
 #footer .img-restricted {
   height: 85px;
+}
+
+.footer-text p {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #dddddd;
+}
+.footer-text a {
+  color: #dddddd;
+  text-decoration: none;
+}
+.footer-text a:hover {
+  color: #fff;
 }
 
 /* HIGHLIGHT SECTION */
@@ -10696,6 +10695,11 @@ p {
   padding-bottom: 5px;
 }
 
+.blog-post-meta {
+  padding-left: 30px;
+  margin-bottom: 20px;
+}
+
 .post-detail-list margin-top {
   margin-top: 30px;
 }
@@ -10717,6 +10721,7 @@ p {
 .cms-form {
   font-family: "Figtree", sans-serif;
   padding: 20px;
+  padding-left: 30px;
 }
 .cms-form label {
   display: block;
@@ -10748,11 +10753,50 @@ p {
   position: relative;
   vertical-align: top;
 }
+.cms-form input[type=text],
+.cms-form input[type=email],
+.cms-form textarea {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  align-items: center;
+  border: 1px solid #dbdbdb;
+}
+.cms-form input[type=text]:focus,
+.cms-form input[type=email]:focus,
+.cms-form textarea:focus {
+  outline: none;
+  border-color: #009c94;
+  box-shadow: 0 0 0 0.125em rgba(0, 156, 148, 0.18);
+}
 .cms-form input[type=checkbox] {
   cursor: pointer;
 }
+.cms-form input[type=submit] {
+  width: auto;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.cms-form textarea {
+  width: 100%;
+}
 .cms-form button {
   margin-top: 10px;
+}
+.cms-form .helptext {
+  color: #6a6a6a;
+  font-weight: 300;
+}
+.cms-form ul {
+  padding-left: 0px !important;
+}
+.cms-form li {
+  list-style-type: none;
+}
+.cms-form li input {
+  margin-right: 5px;
+}
+.cms-form li label {
+  font-weight: 300;
 }
 
 .cms-form-success-message {
