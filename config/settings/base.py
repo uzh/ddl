@@ -12,12 +12,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # ------------------------------------------------------------------------------
 SECRET_KEY = os.environ['DJANGO_SECRET']
 
-# APPLICATION DEFINITIONS
-# ------------------------------------------------------------------------------
 INSTALLED_APPS = [
     'ddl.apps.DdlConfig',
     'django.contrib.admin',
     'django.contrib.auth',
+    'mozilla_django_oidc',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -55,6 +54,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'mozilla_django_oidc.middleware.SessionRefresh',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -140,7 +145,22 @@ THUMBNAIL_PROCESSORS = (
 # WAGTAIL
 # ------------------------------------------------------------------------------
 WAGTAIL_SITE_NAME = 'Data Donation Lab'
-WAGTAILADMIN_BASE_URL = 'https://datadonation.uzh.ch'
+WAGTAILADMIN_BASE_URL = os.getenv('WAGTAILADMIN_BASE_URL', 'https://datadonation.uzh.ch')
+
+# OIDC Authentication (mozilla_django_oidc)
+# ------------------------------------------------------------------------------
+OIDC_RP_CLIENT_ID = os.environ['OIDC_RP_CLIENT_ID']
+OIDC_RP_CLIENT_SECRET = os.environ['OIDC_RP_CLIENT_SECRET']
+
+# Stage Settings
+OIDC_OP_AUTHORIZATION_ENDPOINT = os.getenv('OIDC_OP_AUTHORIZATION_ENDPOINT', 'https://login.eduid.ch/idp/profile/oidc/authorize')
+OIDC_OP_TOKEN_ENDPOINT = os.getenv('OIDC_OP_TOKEN_ENDPOINT', 'https://login.eduid.ch/idp/profile/oidc/token')
+OIDC_OP_USER_ENDPOINT = os.getenv('OIDC_OP_USER_ENDPOINT', 'https://login.eduid.ch/idp/profile/oidc/userinfo')
+
+# Redirect targets:
+LOGIN_REDIRECT_URL = '/ddm/researcher/'
+LOGOUT_REDIRECT_URL = '/ddm/'
+
 
 # DJANGO-DDM
 # ------------------------------------------------------------------------------
