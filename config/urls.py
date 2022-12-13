@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.urls import path, include
 
 from wagtail.admin import urls as wagtailadmin_urls
@@ -12,7 +13,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('cms/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
-    path(r'ddm/', include('ddm.urls'))
+    path(r'ddm/', include('ddm.urls')),
+    path('oidc/', include('mozilla_django_oidc.urls')),
+    path('login/', auth_views.LoginView.as_view(template_name='ddl/registration/login.html'), name='login'),
 ]
 
 urlpatterns += i18n_patterns(
