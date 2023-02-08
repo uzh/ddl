@@ -45,6 +45,8 @@ jobs:
           DJANGO_DB_NAME: ${{ secrets.DJANGO_DB_NAME }}
           DJANGO_DB_USER: ${{ secrets.DJANGO_DB_USER }}
           DJANGO_DB_PW: ${{ secrets.DJANGO_DB_PW }}
+          OIDC_RP_CLIENT_ID: ${{ secrets.OIDC_RP_CLIENT_ID }}
+          OIDC_RP_CLIENT_SECRET: ${{ secrets.OIDC_RP_CLIENT_SECRET }}
         run: |
           python manage.py migrate
           python manage.py collectstatic
@@ -55,6 +57,8 @@ jobs:
           DJANGO_DB_NAME: ${{ secrets.DJANGO_DB_NAME }}
           DJANGO_DB_USER: ${{ secrets.DJANGO_DB_USER }}
           DJANGO_DB_PW: ${{ secrets.DJANGO_DB_PW }}
+          OIDC_RP_CLIENT_ID: ${{ secrets.OIDC_RP_CLIENT_ID }}
+          OIDC_RP_CLIENT_SECRET: ${{ secrets.OIDC_RP_CLIENT_SECRET }}
         run: python manage.py test ddm
       - name: Update requirements and commit to dev
         run: |
