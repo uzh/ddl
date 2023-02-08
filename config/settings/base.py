@@ -149,8 +149,8 @@ WAGTAILADMIN_BASE_URL = os.getenv('WAGTAILADMIN_BASE_URL', 'https://datadonation
 
 # OIDC Authentication (mozilla_django_oidc)
 # ------------------------------------------------------------------------------
-OIDC_RP_CLIENT_ID = os.environ['OIDC_RP_CLIENT_ID']
-OIDC_RP_CLIENT_SECRET = os.environ['OIDC_RP_CLIENT_SECRET']
+OIDC_RP_CLIENT_ID = os.getenv('OIDC_RP_CLIENT_ID', None)
+OIDC_RP_CLIENT_SECRET = os.getenv('OIDC_RP_CLIENT_SECRET', None)
 
 # Stage Settings
 OIDC_OP_AUTHORIZATION_ENDPOINT = os.getenv('OIDC_OP_AUTHORIZATION_ENDPOINT', 'https://login.eduid.ch/idp/profile/oidc/authorize')
