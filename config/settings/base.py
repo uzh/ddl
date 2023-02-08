@@ -150,6 +150,8 @@ WAGTAILADMIN_BASE_URL = os.getenv('WAGTAILADMIN_BASE_URL', 'https://datadonation
 
 # OIDC Authentication (mozilla_django_oidc)
 # ------------------------------------------------------------------------------
+OIDC_RP_SIGN_ALGO = 'RS256'
+OIDC_OP_JWKS_ENDPOINT = 'https://login.eduid.ch/idp/profile/oidc/keyset'
 OIDC_RP_CLIENT_ID = os.getenv('OIDC_RP_CLIENT_ID', None)
 OIDC_RP_CLIENT_SECRET = os.getenv('OIDC_RP_CLIENT_SECRET', None)
 
