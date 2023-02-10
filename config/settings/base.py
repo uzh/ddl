@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'ddm',
     'ddm.stats',
     'ckeditor',
+    'ckeditor_uploader',
     'webpack_loader',
     'rest_framework',
     'rest_framework.authtoken',
@@ -77,6 +78,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
+                'ddm.context_processors.add_ddm_version',
             ],
         },
     },
@@ -89,18 +91,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 AUTH_USER_MODEL = "ddl.User"
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator', },
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', },
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator', },
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', },
 ]
 
 # INTERNATIONALIZATION
@@ -178,4 +172,17 @@ WEBPACK_LOADER = {
 }
 DDM_SETTINGS = {
     'EMAIL_PERMISSION_CHECK':  r'.*(\.|@)uzh\.ch$',
+}
+
+# CKEditor
+# ------------------------------------------------------------------------------
+CKEDITOR_RESTRICT_BY_USER = True
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': 300,
+    },
 }
