@@ -173,6 +173,9 @@ DDM_SETTINGS = {
     'EMAIL_PERMISSION_CHECK':  r'.*(\.|@)uzh\.ch$',
 }
 
+DDM_DEFAULT_HEADER_IMG_LEFT = '/static/ddl/img/logos/ddl/ddl_logo_black.svg'
+DDM_DEFAULT_HEADER_IMG_RIGHT = '/static/ddl/img/logos/external/uzh_logo_d_pos.svg'
+
 # CKEditor
 # ------------------------------------------------------------------------------
 CKEDITOR_RESTRICT_BY_USER = True
