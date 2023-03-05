@@ -16,14 +16,14 @@ urlpatterns = [
     path(r'ddm/', include('ddm.urls')),
     path('oidc/', include('mozilla_django_oidc.urls')),
     path('login/', auth_views.LoginView.as_view(template_name='ddl/registration/login.html'), name='login'),
-    path('ddm/login/', auth_views.LoginView.as_view(template_name='ddm/admin/auth/login.html'), name='ddm-login'),
+    path('ddm/login/', auth_views.LoginView.as_view(template_name='ddm/admin/auth/login_oidc.html'), name='ddm-login'),
     path('ddm/logout/', auth_views.LogoutView.as_view(), name='ddm-logout'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 urlpatterns += i18n_patterns(
-    path('', include(wagtail_urls)),
-    prefix_default_language=False
+     path('', include(wagtail_urls)),
+     prefix_default_language=True
 )
 
 if settings.DEBUG:

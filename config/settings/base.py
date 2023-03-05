@@ -47,13 +47,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
     'mozilla_django_oidc.middleware.SessionRefresh',
 ]
@@ -154,8 +154,8 @@ OIDC_OP_TOKEN_ENDPOINT = os.getenv('OIDC_OP_TOKEN_ENDPOINT', 'https://login.edui
 OIDC_OP_USER_ENDPOINT = os.getenv('OIDC_OP_USER_ENDPOINT', 'https://login.eduid.ch/idp/profile/oidc/userinfo')
 
 # Redirect targets:
-LOGIN_REDIRECT_URL = '/ddm/researcher/'
-LOGOUT_REDIRECT_URL = '/ddm/'
+LOGIN_REDIRECT_URL = '/ddm/projects/'
+LOGOUT_REDIRECT_URL = '/ddm/login/'
 
 
 # DJANGO-DDM
