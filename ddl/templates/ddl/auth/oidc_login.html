@@ -1,0 +1,53 @@
+{% extends 'ddl/base.html' %}
+
+{% load static %}
+
+{% block page_title %}Data Donation Module: Login{% endblock %}
+
+{% block header %}{% endblock header %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'ddm/css/research-interface-base.css' %}">
+<link rel="stylesheet" href="{% static 'ddm/css/bootstrap/bootstrap.min.css' %}">
+{% endblock extra_head %}
+
+{% block main_content %}
+
+<div class="container">
+  <div class="columns">
+    <div class="column is-1-tablet is-hidden-desktop-only is-2-fullhd"></div>
+    <div class="column content has-text-black">
+      <div class="row">
+        <img alt="Data Donation Module" style="height: 100px" alt="" src="{% static 'ddm/img/logos/DDM_Logo_Schwarz.svg' %}">
+      </div>
+      <h4 class="text-center">Data Donation Module Login</h4>
+      <p class="mt-4">
+        The Data Donation Module (DDM) is an application that researchers can use to
+        collect data donations from citizens.
+      </p>
+      <p>
+        This Instance of DDM is hosted by the Data Donation Lab.
+        It is currently restricted to members of the University of Zurich.
+      </p>
+      <p>
+        If you are a UZH member, you can click on the button below and login/sign up.
+        You will be redirected to the SWITCH edu-ID authentication page, where you can log in
+        with your UZH credentials.
+      </p>
+      <p>
+        Once logged in, you can set up your data donation project and start your data donation collection.
+        For more information on the application and how to use it, visit the following resources:
+      </p>
+      <ul>
+        <li><a href="https://uzh.github.io/ddm/ddm/main/index.html" target="_blank">DDM Documentation</a></li>
+        <li><a href="https://github.com/uzh/ddm" target="_blank">DDM Source Code</a></li>
+      </ul>
+      <div class="row mt-3 justify-content-center text-center">
+        <a class="ddm-btn-large mt-3 w-75" href="{% url 'oidc_authentication_init' %}">Login or register</a>
+      </div>
+    </div>
+    <div class="column is-1-tablet is-hidden-desktop-only is-2-fullhd"></div>
+  </div>
+</div>
+
+{% endblock %}
