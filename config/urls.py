@@ -4,6 +4,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
+from django.views.generic import TemplateView
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
@@ -18,6 +19,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='ddl/registration/login.html'), name='login'),
     path('ddm/login/', auth_views.LoginView.as_view(template_name='ddl/auth/oidc_login.html'), name='ddm-login'),
     path('ddm/logout/', auth_views.LogoutView.as_view(), name='ddm-logout'),
+    path('ddm/contact/', TemplateView.as_view(template_name='ddl/custom-ddm/contact.html'), name='ddm-contact'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 

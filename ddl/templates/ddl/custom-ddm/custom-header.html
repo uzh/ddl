@@ -1,0 +1,35 @@
+{% load static %}
+
+<div>
+  <div class="ddm-header">
+    <div class="container fs-6 fw-light">
+      <nav aria-label="main navigation" class="navbar" role="navigation">
+        <div class="navbar-brand">
+          <a class="ddm-nav-icon" href="{% url 'project-list' %}">
+            <img alt="Data Donation Module" height="40" alt=""
+                 src="{% static 'ddm/img/logos/DDM_Logo_Schwarz.svg' %}">
+          </a>
+        </div>
+
+        <div class="navbar-menu" id="navbarBasic">
+
+          <div class="navbar-end">
+
+            <div class="navbar-item child">
+              <a class="nav-link" href="https://uzh.github.io/ddm/ddm/main/for_researchers.html" target="_blank">Documentation</a>
+            </div>
+
+            <div class="navbar-item child">
+              <a class="nav-link" href="{% url 'ddm-contact' %}">Contact</a>
+            </div>
+
+            <div class="navbar-item child">
+              <a class="nav-link" href="{% url 'ddm-logout' %}">Logout</a>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>

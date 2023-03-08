@@ -1,0 +1,47 @@
+{% extends "ddm/admin/base.html" %}
+
+{% load static i18n %}
+
+{% block page_title %}Contact{% endblock %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'ddl/css/custom-ddm.css' %}">
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'ddl/img/favicons/ddl_favicon_black.svg' %}">
+{% endblock %}
+
+{% block header %}{% include "ddl/custom-ddm/custom-header.html" %}{% endblock %}
+
+
+{% block main_heading %}Contact{% endblock %}
+
+{% block main_body %}
+<div>
+  <p>This <i>Data Donation Module</i> instance is maintained by the <a hreaf="https://datadonation.uzh.ch">Data Donation Lab</a>.</p>
+
+  <h2>General Requests</h2>
+  <p>
+    For general inquiries, please send a message to <a href="mailto:n.pfiffner@ikmz.uzh.ch?subject=Inquiry Regarding DDM:">n.pfiffner@ikmz.uzh.ch</a>.
+  </p>
+  <p>
+    If you have questions regarding the operation of the application, please first consult the
+    <a href="https://uzh.github.io/ddm/ddm/main/for_researchers.html">Documentation</a> for a solution or explanation of your problem.
+  </p>
+
+  <h2>Bug Reports & Feature Requests</h2>
+  <p>
+    For bug reports and feature requests, please either send a message to <a href="mailto:n.pfiffner@ikmz.uzh.ch?subject=DDM Bug Report/Feature Request:">n.pfiffner@ikmz.uzh.ch</a>
+    or open a new issue in the <a href="https://github.com/uzh/ddm/issues" target="_blank">DDM GitHub repository</a>.
+    In any case, please provide a detailed description of the problem you are experiencing or the feature you want to suggest.
+  </p>
+
+  <p class="mt-5">
+    <a href="{% url 'project-list' %}">&#129040; back to my projects</a>
+  </p>
+</div>
+{% endblock %}
+
+{% block footer %}{% include "ddl/custom-ddm/custom-footer.html" %}{% endblock %}
+
+{% block breadcrumbs %}
+Contact
+{% endblock %}

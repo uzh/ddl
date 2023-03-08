@@ -1,0 +1,23 @@
+@font-face {
+    font-family: Bai Jamjuree;
+    src: url("../fonts/bai_jamjuree/BaiJamjuree-Medium.ttf");
+}
+.navbar-end {
+    align-items: stretch;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+.navbar-item {
+    padding-left: 20px;
+    padding-right: 20px;
+    text-transform: uppercase;
+    font-family: Bai Jamjuree;
+    font-weight: 400 !important;
+}
+.nav-link {
+    color: black !important;
+}
+.ddl-ddm-footer {
+    font-size: 0.9rem;
+}
