@@ -38,6 +38,40 @@ class HighlightBlock(blocks.StructBlock):
         template = 'ddl/components/highlight_block.html'
 
 
+class LandingPage(Page):
+    template = 'ddl/landing_page.html'
+
+    body_top = StreamField([
+        ('heading', blocks.CharBlock(form_classname="full title", icon='title')),
+        ('paragraph', blocks.RichTextBlock(icon='pilcrow')),
+        ('list', blocks.ListBlock(blocks.CharBlock(label="List"), icon='list-ul')),
+        ('image', ImageChooserBlock()),
+        ('highlight', HighlightBlock()),
+    ], use_json_field=True)
+
+    body_bottom = StreamField([
+        ('heading', blocks.CharBlock(form_classname="full title", icon='title')),
+        ('paragraph', blocks.RichTextBlock(icon='pilcrow')),
+        ('list', blocks.ListBlock(blocks.CharBlock(label="List"), icon='list-ul')),
+        ('image', ImageChooserBlock()),
+        ('highlight', HighlightBlock()),
+    ], use_json_field=True, blank=True)
+
+    include_news = models.BooleanField(default=False)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('body_top', classname='full'),
+        FieldPanel('body_bottom', classname='full'),
+        FieldPanel('include_news'),
+    ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        # Add extra variables and return the updated context
+        context['blog_posts'] = BlogPage.objects.all().live().order_by('-date')
+        return context
+
+
 class BasicPage(Page):
     body = StreamField([
         ('heading', blocks.CharBlock(form_classname="full title", icon='title')),
