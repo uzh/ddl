@@ -1,0 +1,216 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{% block title %}Individual Report{% endblock %}</title>
+
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'digital_meal/img/DigitalMeal_favicon.svg' %}">
+
+  {% block site_css %}
+  <link rel="stylesheet" href="{% static 'digital_meal/css/bootstrap/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'digital_meal/css/base.css' %}">
+  {% endblock site_css %}
+
+  {% block extra_head %}
+  {% endblock extra_head %}
+</head>
+
+{% load static %}
+
+<body>
+<div id="report">
+
+  <div class="report-section position-relative" style="padding-bottom: 200px; padding-top: 25px;">
+
+    <div class="report-content container">
+      <div class="text-end row">
+        <div class="col">
+          <img alt="Data Donation Lab Logo" src="{% static 'digital_meal/img/ddl_logo_black.svg' %}" height="70px">
+          <img alt="UZH Logo" src="{% static 'digital_meal/img/UZH_logo.svg' %}" height="70px">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row">
+          <h1 class="mt-5 pb-3 col col-lg-6">Deine personalisierte Auswertung deiner Fitbit-Daten</h1>
+        </div>
+
+        <div class="row d-flex flex-row">
+          <div class="pt-3 col col-lg-4">
+            <img alt="Symbolbild FitBit Studie" src="{% static 'digital_meal/img/Steps.png' %}" height="180px">
+          </div>
+          <div class="col col-lg-6 text-end">
+            <p>In dieser persönlichen Auswertung findest Du Informationen zu Deinen persönlichen Fitbit-Daten.
+            </p>
+            <p>
+              Scrolle nach unten, um mehr zu erfahren.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SCHLAF -->
+  <div class="section-container">
+
+    <div class="position-relative">
+      <div class="custom-shape-divider-bottom-1691418846">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="report-section flash-yellow-background position-relative">
+      <div class="report-content">
+        <h2>Dein Schlaf</h2>
+        <div>
+          <p>
+            Informationen zu Schlafdaten
+          </p>
+        </div>
+        <div class="d-flex justify-content-center">[evt. Grafik]</div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- AKTIVITÄTEN -->
+  <div class="section-container">
+
+    <div class="position-relative">
+      <div class="custom-shape-divider-bottom-1691418846">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill" style="fill: #D0C3FF"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="report-section" style="background: #D0C3FF">
+      <div class="report-content d-flex flex-row">
+        <div class="pe-5">
+          <h2>Deine Aktivitäten der letzten Wochen</h2>
+          <p class="text-start">
+            In den letzten Wochen hat dein FitBit-Gerät an X Tagen Aktivitäten aufgezeichnet.
+          </p>
+        </div>
+        <div class="detailed-use-plot">
+          [evt. GRAFIK]
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Weitere Daten -->
+  <div class="section-container">
+
+    <div class="position-relative">
+      <div class="custom-shape-divider-bottom-1691418846">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill" style="fill: #5CDB95"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="report-section section-green-background overflow-hidden">
+
+        <div class="report-content d-flex flex-row pb-5 align-content-stretch pt-5">
+          <div class="ps-5 pe-5 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+            <h2>Weitere Daten</h2>
+            <p class="text-center">
+              Hier könnte ein informativer Text stehen.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+  </div>
+
+
+  <!-- Weitere Daten -->
+  <div class="section-container">
+
+    <div class="position-relative">
+      <div class="custom-shape-divider-bottom-1691418846">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill" style="fill: #e83e3e"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="report-section" style="background-color: #e83e3e">
+      <div class="report-content" style="color: white">
+        <h2>Weitere Daten</h2>
+
+        <div>
+          <p>
+            Hier könnte ein informativer Text stehen und auf eine Grafik überleiten.
+            Die folgenden Daten wurden zur Herzfrequenz ausgelesen: {{ heart_rate_data }}
+          </p>
+          <p>
+            In dieser Grafik siehst du etwas informatives:
+          </p>
+        </div>
+        <div class="d-flex justify-content-center pt-5">[GRAFIK]</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section-container">
+
+    <div class="position-relative">
+      <div class="custom-shape-divider-bottom-1691418846">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill" style="fill: #ffffff"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="report-section">
+      <div class="report-content">
+        <h3>Über diesen Report</h3>
+
+        <p>
+          Dieser Report wurde automatisch basierend auf deinen hochgeladenen Daten generiert. Er ist für eine befristete
+          Zeit für Personen, die über den Link verfügen, abrufbar.
+          Wenn du diesen Report später nochmals ansehen möchtest, kannst du ihn als PDF speichern.
+        </p>
+
+        <p>
+          Das <b>Data Donation Lab</b> ist eine Initiative von Forschenden der Universität Zürich.
+          Wir legen grossen Wert auf die Sicherheit Ihrer Daten. In diesem Report sind grösstenteils aggregierte und vereinzelt
+          explizite Werte integriert, die aber keinen Rückschluss auf Dich als Person zulassen.
+        </p>
+
+        <p>
+          Bei Fragen oder Inputs kannst du uns jederzeit mit einer E-Mail an <a href="mailto:datadonation@ikmz.uzh.ch">datadonation@ikmz.uzh.ch</a> kontaktieren.
+        </p>
+
+        <div class="text-center">
+          <img alt="Data Donation Lab Logo" src="{% static 'digital_meal/img/ddl_logo_black.svg' %}" height="70px">
+          <img alt="UZH Logo" src="{% static 'digital_meal/img/UZH_logo.svg' %}" height="70px">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<script src="{% static 'digital_meal/js/jquery/jquery-3.6.2.min.js' %}"></script>
+<script src="{% static 'digital_meal/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'digital_meal/js/bokeh/bokeh-3.1.1.min.js' %}"></script>
+
+</body>
+
+</html>
