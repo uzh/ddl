@@ -41,6 +41,8 @@ def get_video_title_dict(watch_history):
     """
     titles = {}
     for video in watch_history:
+        if not all(k in video for k in ['titleUrl', 'title']):
+            continue
         video_id = video['titleUrl'].replace('https://www.youtube.com/watch?v=', '')
         title = video['title'].strip()
         titles[video_id] = title
