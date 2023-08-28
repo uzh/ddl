@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'ddm',
+    'ddm_pooled',
     'digital_meal',
     'ckeditor',
     'ckeditor_uploader',
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
     'mozilla_django_oidc.middleware.SessionRefresh',
+    'ddm_pooled.middleware.PooledProjectMiddleware'
 ]
 
 AUTHENTICATION_BACKENDS = [
