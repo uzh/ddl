@@ -12,21 +12,22 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cms/', include(wagtailadmin_urls)),
-    path('documents/', include(wagtaildocs_urls)),
-    path(r'ddm/', include('ddm.urls')),
-    path('oidc/', include('mozilla_django_oidc.urls')),
-    path('login/', auth_views.LoginView.as_view(template_name='ddl/registration/login.html'), name='login'),
-    path('ddm/login/', auth_views.LoginView.as_view(template_name='ddl/auth/oidc_login.html'), name='ddm-login'),
-    path('ddm/logout/', auth_views.LogoutView.as_view(), name='ddm-logout'),
-    path('ddm/contact/', TemplateView.as_view(template_name='ddl/custom-ddm/contact.html'), name='ddm-contact'),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
+    # path('cms/', include(wagtailadmin_urls)),
+    # path('documents/', include(wagtaildocs_urls)),
+    # path(r'ddm/', include('ddm.urls')),
+    # path('oidc/', include('mozilla_django_oidc.urls')),
+    # path('login/', auth_views.LoginView.as_view(template_name='ddl/registration/login.html'), name='login'),
+    # path('ddm/login/', auth_views.LoginView.as_view(template_name='ddl/auth/oidc_login.html'), name='ddm-login'),
+    # path('ddm/logout/', auth_views.LogoutView.as_view(), name='ddm-logout'),
+    # path('ddm/contact/', TemplateView.as_view(template_name='ddl/custom-ddm/contact.html'), name='ddm-contact'),
+    # path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('scientifica/', include('digital_meal.urls'))
 ]
 
-urlpatterns += i18n_patterns(
-     path('', include(wagtail_urls)),
-     prefix_default_language=True
-)
+# urlpatterns += i18n_patterns(
+#      path('', include(wagtail_urls)),
+#      prefix_default_language=True
+# )
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + \

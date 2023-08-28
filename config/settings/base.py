@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'ddm',
+    'digital_meal',
     'ckeditor',
     'ckeditor_uploader',
     'webpack_loader',
@@ -188,3 +189,15 @@ CKEDITOR_CONFIGS = {
         'width': 300,
     },
 }
+
+
+# DDM API SETTINGS
+# ------------------------------------------------------------------------------
+DDM_API_TOKEN = os.environ['DDM_API_TOKEN']
+DDM_BASE_URL = os.environ['DDM_BASE_URL']
+
+DDM_PROJECT_ID = os.environ['DDM_PROJECT_ID']
+DDM_WATCH_BP_ID = os.environ['DDM_WATCH_BP_ID']
+DDM_SEARCH_BP_ID = os.environ['DDM_SEARCH_BP_ID']
+
+DDM_FITBIT_PROJECT_ID = os.environ['DDM_FITBIT_PROJECT_ID']
