@@ -1,16 +1,10 @@
-from io import BytesIO
-
 import pandas as pd
 import requests
 
 from django.conf import settings
-from django.http import HttpResponse
-from django.template.loader import get_template
 from django.views.generic import TemplateView
 
 from digital_meal.utils import yt_data, yt_plots, fitbit_plots
-
-from xhtml2pdf import pisa
 
 
 class IndividualReport(TemplateView):
@@ -194,20 +188,6 @@ class IndividualFitbitReport(TemplateView):
             'steps_plot': steps_plot
         })
         return context
-
-
-# TODO: Finish this view.
-class IndividualReportPDF(IndividualReport):
-
-    def get(self, request, *args, **kwargs):
-        template = get_template(self.template_name)
-        context = self.get_context_data()
-        html = template.render(context)
-        pdf = BytesIO()
-        pisa.pisaDocument(BytesIO(html.encode('ISO-8859-1')), pdf)
-        response = HttpResponse(pdf.getvalue(), content_type='application/pdf')
-        response['Content-Disposition'] = 'attachment; filename=individual_report.pdf'
-        return response
 
 
 class ScientificaLandingView(TemplateView):
