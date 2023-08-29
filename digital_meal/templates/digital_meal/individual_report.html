@@ -7,7 +7,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>{% block title %}Individual Report{% endblock %}</title>
+  <title>{% block title %}Dein YouTube Report{% endblock %}</title>
 
   <link rel="shortcut icon" type="image/x-icon" href="{% static 'digital_meal/img/DigitalMeal_favicon.svg' %}">
 
@@ -19,8 +19,6 @@
   {% block extra_head %}
   {% endblock extra_head %}
 </head>
-
-{% load static %}
 
 <body>
 <div id="report">
@@ -36,6 +34,7 @@
         </div>
       </div>
 
+      {% if dates_plot or weekday_use_plot or fav_video.n_watched > 1 or channel_plot or n_searches > 0 %}
       <div class="row">
         <div class="row">
           <h1 class="mt-5 pb-3 col col-lg-6">Deine personalisierte Auswertung deiner YouTube-Nutzung</h1>
@@ -56,6 +55,28 @@
           </div>
         </div>
       </div>
+      {% else %}
+      <div class="row">
+        <div class="row">
+          <div class="pt-3 col col-lg-6">
+            <h1 class="mt-5 pb-3">Deine personalisierte Auswertung deiner YouTube-Nutzung</h1>
+          </div>
+          <div class="col col-lg-4 align-items-center" style="padding-top: 100px;">
+            <img alt="Symbolbild FitBit Studie" src="{% static 'digital_meal/img/Steps.png' %}" height="180px">
+          </div>
+        </div>
+
+        <div class="row d-flex flex-row">
+          <p>
+            Danke für das Interesse und die Teilnahme an unserer Studie.
+          </p>
+          <p>
+            Leider konnten wir deine Daten nicht abrufen. Entweder hast du keine
+            Daten gespendet oder es ist beim Abrufen der Daten ein Fehler aufgetreten.
+          </p>
+        </div>
+      </div>
+      {% endif %}
     </div>
   </div>
 
@@ -230,7 +251,7 @@
   {% endif %}
 
 
-  <!-- INTERACTIONS -->
+  <!-- INTERACTIONS
   <div class="section-container">
     <div class="position-relative">
       <div class="custom-shape-divider-bottom-1691418846">
@@ -255,9 +276,8 @@
       </div>
     </div>
   </div>
+  -->
 
-
-  <!-- TOPICS -->
   <div class="section-container">
 
     <div class="position-relative">
@@ -275,7 +295,6 @@
         <p>
           Dieser Report wurde automatisch basierend auf deinen hochgeladenen Daten generiert. Er ist für eine befristete
           Zeit für Personen, die über den Link verfügen, abrufbar.
-          Wenn du diesen Report später nochmals ansehen möchtest, kannst du ihn als PDF speichern.
         </p>
 
         <p>
@@ -285,7 +304,8 @@
         </p>
 
         <p>
-          Bei Fragen oder Inputs kannst du uns jederzeit mit einer E-Mail an <a href="mailto:datadonation@ikmz.uzh.ch">datadonation@ikmz.uzh.ch</a> kontaktieren.
+          Bei Fragen oder Inputs kannst du uns jederzeit mit einer E-Mail an <a href="mailto:datadonation@ikmz.uzh.ch">datadonation@ikmz.uzh.ch</a> kontaktieren
+          oder uns direkt an unserem Scientifica-Stand ansprechen.
         </p>
 
         <div class="text-center">

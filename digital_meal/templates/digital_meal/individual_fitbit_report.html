@@ -7,9 +7,9 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>{% block title %}Individual Report{% endblock %}</title>
+  <title>{% block title %}Dein Fitbit Report{% endblock %}</title>
 
-  <link rel="shortcut icon" type="image/x-icon" href="{% static 'digital_meal/img/DigitalMeal_favicon.svg' %}">
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'ddl/img/favicons/ddl_favicon_black.svg' %}">
 
   {% block site_css %}
   <link rel="stylesheet" href="{% static 'digital_meal/css/bootstrap/bootstrap.min.css' %}">
@@ -19,8 +19,6 @@
   {% block extra_head %}
   {% endblock extra_head %}
 </head>
-
-{% load static %}
 
 <body>
 <div id="report">
@@ -35,29 +33,53 @@
         </div>
       </div>
 
+      {% if sleep_plot or sleep_pulse_plot or activity_plot or steps_plot %}
       <div class="row">
         <div class="row">
-          <h1 class="mt-5 pb-3 col col-lg-6">Deine personalisierte Auswertung deiner Fitbit-Daten</h1>
+          <div class="pt-3 col col-lg-6">
+            <h1 class="mt-5 pb-3">Deine personalisierte Auswertung deiner Fitbit-Daten</h1>
+          </div>
+          <div class="col col-lg-4 align-items-center" style="padding-top: 100px;">
+            <img alt="Symbolbild FitBit Studie" src="{% static 'digital_meal/img/Steps.png' %}" height="180px">
+          </div>
         </div>
 
         <div class="row d-flex flex-row">
-          <div class="pt-3 col col-lg-4">
-            <img alt="Symbolbild FitBit Studie" src="{% static 'digital_meal/img/Steps.png' %}" height="180px">
-          </div>
-          <div class="col col-lg-6 text-end">
-            <p>In dieser persönlichen Auswertung findest Du Informationen zu Deinen persönlichen Fitbit-Daten.
+            <p>In dieser persönlichen Auswertung findest Du Informationen zu Deinen persönlichen Aktivitäts-Daten,<br>
+              wie sie von FitBit aufgezeichnet wurden.
             </p>
             <p>
               Scrolle nach unten, um mehr zu erfahren.
             </p>
-          </div>
         </div>
       </div>
+      {% else %}
+      <div class="row">
+        <div class="row">
+          <div class="pt-3 col col-lg-6">
+            <h1 class="mt-5 pb-3">Deine personalisierte Auswertung deiner Fitbit-Daten</h1>
+          </div>
+          <div class="col col-lg-4 align-items-center" style="padding-top: 100px;">
+            <img alt="Symbolbild FitBit Studie" src="{% static 'digital_meal/img/Steps.png' %}" height="180px">
+          </div>
+        </div>
+
+        <div class="row d-flex flex-row">
+          <p>
+            Danke für das Interesse und die Teilnahme an unserer Studie.
+          </p>
+          <p>
+            Leider konnten wir deine Daten nicht abrufen. Entweder hast du keine
+            Daten gespendet oder es ist beim Abrufen der Daten ein Fehler aufgetreten.
+          </p>
+        </div>
+      </div>
+      {% endif %}
     </div>
   </div>
 
-
   <!-- SCHLAF -->
+  {% if sleep_plot or sleep_pulse_plot  %}
   <div class="section-container">
 
     <div class="position-relative">
@@ -73,17 +95,32 @@
         <h2>Dein Schlaf</h2>
         <div>
           <p>
-            Informationen zu Schlafdaten
+            Die folgenden Schlafdaten wurden aus Deinem FitBit-Datenexport ausgelesen:
           </p>
         </div>
-        <div class="d-flex justify-content-center">[evt. Grafik]</div>
+        <div class="d-flex justify-content-center flex-column align-items-center text-center">
+          {% if sleep_plot %}
+          <div class="col pt-5">
+            <h3>Anzahl Minuten im Tiefschlaf</h3>
+            {{ sleep_plot.div | safe }}
+          </div>
+          {% endif %}
+          {% if sleep_pulse_plot %}
+          <div class="col pt-5">
+            <h3>Ruhepuls im Schlaf</h3>
+            {{ sleep_pulse_plot.div | safe }}
+          </div>
+          {% endif %}
+        </div>
       </div>
     </div>
 
   </div>
+  {% endif %}
 
 
   <!-- AKTIVITÄTEN -->
+  {% if activity_plot %}
   <div class="section-container">
 
     <div class="position-relative">
@@ -97,20 +134,23 @@
     <div class="report-section" style="background: #D0C3FF">
       <div class="report-content d-flex flex-row">
         <div class="pe-5">
-          <h2>Deine Aktivitäten der letzten Wochen</h2>
+          <h2>Dein Aktivitätslevel der letzten Wochen</h2>
           <p class="text-start">
-            In den letzten Wochen hat dein FitBit-Gerät an X Tagen Aktivitäten aufgezeichnet.
+            Unten siehst Du eine Übersicht der von FitBit aufgezeichneten Aktivitäten zwischen
+            {{ activity_date_min }} und {{ activity_date_max }}.
           </p>
         </div>
         <div class="detailed-use-plot">
-          [evt. GRAFIK]
+          {{ activity_plot.div | safe }}
         </div>
       </div>
     </div>
   </div>
+  {% endif %}
 
 
-  <!-- Weitere Daten -->
+  <!-- SCHRITTE -->
+  {% if steps_plot %}
   <div class="section-container">
 
     <div class="position-relative">
@@ -125,19 +165,24 @@
 
         <div class="report-content d-flex flex-row pb-5 align-content-stretch pt-5">
           <div class="ps-5 pe-5 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
-            <h2>Weitere Daten</h2>
+            <h2>Schritte</h2>
             <p class="text-center">
-              Hier könnte ein informativer Text stehen.
+              Unten siehst Du eine Übersicht der von FitBit aufgezeichneten Schritte:
             </p>
           </div>
-
+          <div class="d-flex justify-content-center flex-column align-items-center text-center">
+            <div class="col pt-5">
+              {{ steps_plot.div | safe }}
+            </div>
+          </div>
         </div>
       </div>
 
   </div>
+  {% endif %}
 
 
-  <!-- Weitere Daten -->
+  <!-- Weitere Daten
   <div class="section-container">
 
     <div class="position-relative">
@@ -165,7 +210,7 @@
       </div>
     </div>
   </div>
-
+  -->
 
   <div class="section-container">
 
@@ -183,7 +228,6 @@
         <p>
           Dieser Report wurde automatisch basierend auf deinen hochgeladenen Daten generiert. Er ist für eine befristete
           Zeit für Personen, die über den Link verfügen, abrufbar.
-          Wenn du diesen Report später nochmals ansehen möchtest, kannst du ihn als PDF speichern.
         </p>
 
         <p>
@@ -193,7 +237,8 @@
         </p>
 
         <p>
-          Bei Fragen oder Inputs kannst du uns jederzeit mit einer E-Mail an <a href="mailto:datadonation@ikmz.uzh.ch">datadonation@ikmz.uzh.ch</a> kontaktieren.
+          Bei Fragen oder Inputs kannst du uns jederzeit mit einer E-Mail an <a href="mailto:datadonation@ikmz.uzh.ch">datadonation@ikmz.uzh.ch</a> kontaktieren
+          oder uns direkt an unserem Scientifica-Stand ansprechen.
         </p>
 
         <div class="text-center">
@@ -210,6 +255,10 @@
 <script src="{% static 'digital_meal/js/jquery/jquery-3.6.2.min.js' %}"></script>
 <script src="{% static 'digital_meal/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'digital_meal/js/bokeh/bokeh-3.1.1.min.js' %}"></script>
+{{ activity_plot.script | safe }}
+{{ sleep_plot.script | safe }}
+{{ sleep_pulse_plot.script | safe }}
+{{ steps_plot.script | safe }}
 
 </body>
 

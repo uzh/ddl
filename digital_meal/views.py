@@ -1,5 +1,6 @@
 from io import BytesIO
 
+import pandas as pd
 import requests
 
 from django.conf import settings
@@ -7,7 +8,7 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 from django.views.generic import TemplateView
 
-from digital_meal.utils import yt_data, yt_plots
+from digital_meal.utils import yt_data, yt_plots, fitbit_plots
 
 from xhtml2pdf import pisa
 
@@ -114,15 +115,13 @@ class IndividualFitbitReport(TemplateView):
         and a blueprint id as query parameters.
         """
         api_endpoint = f'{settings.DDM_BASE_URL}api/project/{project_id}/donations'
-        api_token = settings.DDM_API_TOKEN
+        api_token = settings.DDM_FITBIT_API_TOKEN
 
         headers = {
             'Authorization': f'Token {api_token}'
         }
         payload = {
-            'project': project_id,
-            'participant': participant_id,
-            'blueprint': blueprint_id
+            'participants': participant_id
         }
         r = requests.get(api_endpoint, headers=headers, params=payload)
 
@@ -137,12 +136,62 @@ class IndividualFitbitReport(TemplateView):
         # 1) get data from api
         participant_id = self.kwargs['external_participant_id']
         project_id = settings.DDM_FITBIT_PROJECT_ID
-        heart_rate_data = self.get_donation_data(
+        donated_data = self.get_donation_data(
             project_id, participant_id, blueprint_id=32)
+
+        data_lightly_active = donated_data.get('Minuten leichte Aktivität', None)
+        if data_lightly_active:
+            data_lightly_active = pd.DataFrame.from_dict(data_lightly_active[0])
+
+            activity_date_min = data_lightly_active.dateTime.min()
+            activity_date_max = data_lightly_active.dateTime.max()
+        else:
+            activity_date_min = None
+            activity_date_max = None
+
+        data_moderately_active = donated_data.get('Minuten moderate Aktivität', None)
+        if data_moderately_active:
+            data_moderately_active = pd.DataFrame.from_dict(data_moderately_active[0])
+        data_very_active = donated_data.get('Minuten hohe Aktivität', None)
+        if data_very_active:
+            data_very_active = pd.DataFrame.from_dict(data_very_active[0])
+
+        try:
+            activity_plot = fitbit_plots.get_active_minutes_plot(data_lightly_active, data_moderately_active, data_very_active)
+        except:
+            activity_plot = None
+
+        # Schlafdaten
+        data_sleep = donated_data.get('Schlafdaten', None)
+        if data_sleep:
+            data_sleep = pd.DataFrame.from_dict(data_sleep[0])
+        try:
+            sleep_plot = fitbit_plots.get_sleep_plot(data_sleep)
+        except:
+            sleep_plot = None
+
+        try:
+            sleep_pulse_plot = fitbit_plots.get_heart_rate_sleep_plot(data_sleep)
+        except:
+            sleep_pulse_plot = None
+
+        # Schrittdaten
+        data_steps = donated_data.get('Schritte', None)
+        if data_steps:
+            data_steps = pd.DataFrame.from_dict(data_steps[0])
+
+        steps_plot = fitbit_plots.get_steps_plot(data_steps)
 
         # 3) add to context
         context.update({
-            'heart_rate_data': heart_rate_data
+            'data': donated_data,
+            'activity_plot': activity_plot,
+            'activity_date_min': activity_date_min,
+            'activity_date_max': activity_date_max,
+            'sleep_plot': sleep_plot,
+            'sleep_data': data_sleep,
+            'sleep_pulse_plot': sleep_pulse_plot,
+            'steps_plot': steps_plot
         })
         return context
 
