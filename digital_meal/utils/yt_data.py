@@ -23,9 +23,15 @@ def exclude_google_ads_videos(watch_history):
     Excludes all videos shown through Google Ads from the watch history.
     """
     watched_videos = []
+    ad_identifiers = [
+        'Von Google Anzeigen',
+        'From Google Ads',
+        'Des annonces Google',
+        'Da Programmi pubblicitari Google'
+    ]
     for video in watch_history:
         if 'details' in video and len(video['details']) > 0:
-            if video['details'][0]['name'] == 'From Google Ads':
+            if any(ad_id in video['details'][0]['name'] for ad_id in ad_identifiers):
                 continue
             else:
                 watched_videos.append(video)

@@ -39,9 +39,8 @@ def get_timeseries_plot(data):
     x_labels = dates.value_counts().keys().to_list()
     y_values = dates.value_counts().values.tolist()
 
-    # TODO: Calculate custom min, max
     p = figure(
-        x_range=(min(x_labels), min(x_labels) + timedelta(days=120)),
+        x_range=(min(x_labels), max(x_labels) + timedelta(days=120)),
         x_axis_type='datetime',
         height=300, width=1200,
         toolbar_location=None,
@@ -139,6 +138,7 @@ def get_weekday_use_plot(data):
     p.axis.major_tick_line_color = None
     p.axis.major_label_text_font_size = '15px'
     p.yaxis.major_label_text_color = '#FFF0'
+    p.toolbar.active_drag = None
 
     r = p.rect(
         x='Day',
@@ -201,6 +201,7 @@ def get_day_usetime_plot(data):
     p.axis.axis_label_text_color = '#00441B'
     p.axis.major_tick_line_color = None
     p.axis.major_label_text_font_size = '15px'
+    p.toolbar.active_drag = None
 
     r = p.rect(
         x='Day',
@@ -265,6 +266,7 @@ def get_channel_plot(channel_list):
     p.yaxis.axis_label_text_color = 'white'
     p.xaxis.major_label_text_font_size = '15px'
     p.axis.major_label_text_color = 'white'
+    p.toolbar.active_drag = None
 
     script, div = components(p)
     return {'script': script, 'div': div}
@@ -327,5 +329,8 @@ def get_searches_plot(search_history):
 
     p.ygrid.grid_line_color = None
 
-    script, div = components(p)
+    plot = column(p, sizing_mode='stretch_width')
+    script, div = components(plot)
+
+    #script, div = components(p)
     return {'script': script, 'div': div}

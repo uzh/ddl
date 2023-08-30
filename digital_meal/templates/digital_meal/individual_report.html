@@ -242,7 +242,7 @@
           Die Daten, die du hochgeladen hast beinhalten deinen Suchverlauf seit dem {{ date_first_search|date:"j. F Y" }}. Deine am häufigsten verwendeten Suchbegriffe sind:
         </p>
 
-        <div class="d-flex justify-content-center pt-3">
+        <div class="d-flex justify-content-center pt-3" style="overflow-y: scroll">
           {{ search_plot.div | safe }}
         </div>
       </div>

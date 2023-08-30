@@ -23,6 +23,8 @@ def get_sleep_plot(data):
     p.grid.grid_line_color = None
     p.axis.minor_tick_line_color = None
     p.background_fill_color = '#fff2ba'
+    p.toolbar.active_drag = None
+
     script, div = components(p)
     return {'script': script, 'div': div}
 
@@ -45,6 +47,8 @@ def get_heart_rate_sleep_plot(data):
     p.grid.grid_line_color = None
     p.axis.minor_tick_line_color = None
     p.background_fill_color = '#fff2ba'
+    p.toolbar.active_drag = None
+
     script, div = components(p)
     return {'script': script, 'div': div}
 
@@ -66,6 +70,8 @@ def get_steps_plot(data):
     p.grid.grid_line_color = None
     p.axis.minor_tick_line_color = None
     p.background_fill_color = '#bbf3d4'
+    p.toolbar.active_drag = None
+
     script, div = components(p)
     return {'script': script, 'div': div}
 
@@ -107,6 +113,7 @@ def get_active_minutes_plot(light_activity, moderate_activity, high_activity):
         x_axis_type='datetime',
         y_range=(0, max_y + 20),
         toolbar_location=None,
+        height=450
     )
     p.varea_stack(
         stackers=relevant_cols,
@@ -124,6 +131,7 @@ def get_active_minutes_plot(light_activity, moderate_activity, high_activity):
     p.grid.minor_grid_line_color = '#eeeeee'
     p.axis.minor_tick_line_color = None
     p.xaxis.major_label_orientation = math.pi/3
+    p.toolbar.active_drag = None
 
     script, div = components(p)
 
