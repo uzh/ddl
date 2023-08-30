@@ -331,6 +331,4 @@ def get_searches_plot(search_history):
 
     plot = column(p, sizing_mode='stretch_width')
     script, div = components(plot)
-
-    #script, div = components(p)
     return {'script': script, 'div': div}
