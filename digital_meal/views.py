@@ -133,27 +133,34 @@ class IndividualFitbitReport(TemplateView):
         donated_data = self.get_donation_data(
             project_id, participant_id, blueprint_id=32)
 
-        data_lightly_active = donated_data.get('Minuten leichte Aktivität', None)
+        data_lightly_active = donated_data['Minuten leichte Aktivität'][0]
         if data_lightly_active:
-            data_lightly_active = pd.DataFrame.from_dict(data_lightly_active[0])
-
-            activity_date_min = data_lightly_active.dateTime.min()
-            activity_date_max = data_lightly_active.dateTime.max()
+            data_lightly_active = pd.DataFrame.from_dict(data_lightly_active)
         else:
-            activity_date_min = None
-            activity_date_max = None
+            data_lightly_active = None
 
-        data_moderately_active = donated_data.get('Minuten moderate Aktivität', None)
+        data_moderately_active = donated_data['Minuten moderate Aktivität'][0]
         if data_moderately_active:
-            data_moderately_active = pd.DataFrame.from_dict(data_moderately_active[0])
-        data_very_active = donated_data.get('Minuten hohe Aktivität', None)
+            data_moderately_active = pd.DataFrame.from_dict(data_moderately_active)
+        else:
+            data_moderately_active = None
+
+        data_very_active = donated_data['Minuten hohe Aktivität'][0]
         if data_very_active:
-            data_very_active = pd.DataFrame.from_dict(data_very_active[0])
+            data_very_active = pd.DataFrame.from_dict(data_very_active)
+        else:
+            data_very_active = None
 
         try:
-            activity_plot = fitbit_plots.get_active_minutes_plot(data_lightly_active, data_moderately_active, data_very_active)
+            activity_plot, act_date_min, act_date_max = fitbit_plots.get_active_minutes_plot(
+                data_lightly_active,
+                data_moderately_active,
+                data_very_active
+            )
         except:
             activity_plot = None
+            act_date_min = None
+            act_date_max = None
 
         # Schlafdaten
         data_sleep = donated_data.get('Schlafdaten', None)
@@ -180,8 +187,8 @@ class IndividualFitbitReport(TemplateView):
         context.update({
             'data': donated_data,
             'activity_plot': activity_plot,
-            'activity_date_min': activity_date_min,
-            'activity_date_max': activity_date_max,
+            'activity_date_min': act_date_min,
+            'activity_date_max': act_date_max,
             'sleep_plot': sleep_plot,
             'sleep_data': data_sleep,
             'sleep_pulse_plot': sleep_pulse_plot,

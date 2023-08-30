@@ -136,8 +136,8 @@
         <div class="pe-5">
           <h2>Dein Aktivitätslevel der letzten Wochen</h2>
           <p class="text-start">
-            Unten siehst Du eine Übersicht der von FitBit aufgezeichneten Aktivitäten zwischen
-            {{ activity_date_min }} und {{ activity_date_max }}.
+            Unten siehst Du eine Übersicht der von FitBit aufgezeichneten Aktivitäten zwischen dem
+            {{ activity_date_min|date:'d. F Y' }} und dem {{ activity_date_max|date:'d. F Y' }}.
           </p>
         </div>
         <div class="detailed-use-plot">
