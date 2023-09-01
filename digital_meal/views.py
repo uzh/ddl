@@ -73,47 +73,71 @@ class IndividualReport(TemplateView):
 
         # 2) get and transform all data series
         if watch_history:
-            watched_videos, seen_ads = yt_data.separate_videos_and_ads(watch_history[0])
-            dates = yt_data.get_date_list(watched_videos)
-            date_range = max(dates) - min(dates)
-            n_videos_total = len(watched_videos)
+            if len(watch_history[0]) > 0:
+                watched_videos, seen_ads = yt_data.separate_videos_and_ads(watch_history[0])
+                dates = yt_data.get_date_list(watched_videos)
+                date_range = max(dates) - min(dates)
+                n_videos_total = len(watched_videos)
 
-            fav_video = yt_data.get_most_watched_video(watched_videos)
-            video_titles = yt_data.get_video_title_dict(watched_videos)
-            fav_video['title'] = video_titles.get(fav_video['id'])
+                fav_video = yt_data.get_most_watched_video(watched_videos)
+                video_titles = yt_data.get_video_title_dict(watched_videos)
+                fav_video['title'] = video_titles.get(fav_video['id'])
 
-            channels = yt_data.get_channels_from_history(watched_videos)
+                channels = yt_data.get_channels_from_history(watched_videos)
 
-            n_videos_jun_to_aug = yt_data.filter_jun_to_aug(watched_videos).shape[0]
-            n_ads_jun_to_aug = yt_data.filter_jun_to_aug(seen_ads).shape[0]
+                n_videos_jun_to_aug = yt_data.filter_jun_to_aug(watched_videos).shape[0]
+                n_ads_jun_to_aug = yt_data.filter_jun_to_aug(seen_ads).shape[0]
 
-            context.update({
-                'dates_plot': yt_plots.get_timeseries_plot(dates),
-                'weekday_use_plot': yt_plots.get_weekday_use_plot(dates),
-                'hours_plot': yt_plots.get_day_usetime_plot(dates),
-                'channel_plot': yt_plots.get_channel_plot(channels),
-                'n_distinct_channels': len(set(channels)),
-                'date_first': min(dates),
-                'date_last': max(dates),
-                'n_videos_mean': round((n_videos_total / date_range.days), 2),
-                'n_videos_total': n_videos_total,
-                'fav_video': fav_video
-            })
+                context.update({
+                    'dates_plot': yt_plots.get_timeseries_plot(dates),
+                    'weekday_use_plot': yt_plots.get_weekday_use_plot(dates),
+                    'hours_plot': yt_plots.get_day_usetime_plot(dates),
+                    'channel_plot': yt_plots.get_channel_plot(channels),
+                    'n_distinct_channels': len(set(channels)),
+                    'date_first': min(dates),
+                    'date_last': max(dates),
+                    'n_videos_mean': round((n_videos_total / date_range.days), 2),
+                    'n_videos_total': n_videos_total,
+                    'fav_video': fav_video
+                })
+            else:
+                context.update({
+                    'dates_plot': None,
+                    'weekday_use_plot': None,
+                    'hours_plot': None,
+                    'channel_plot': None,
+                    'n_distinct_channels': None,
+                    'date_first': None,
+                    'date_last': None,
+                    'n_videos_mean': None,
+                    'n_videos_total': None,
+                    'fav_video': None
+                })
         else:
             n_videos_jun_to_aug = None
             n_ads_jun_to_aug = None
 
         if search_history:
             search_history = search_history[0]
-            search_dates = yt_data.get_date_list(search_history)
-            search_terms = yt_data.get_search_term_frequency(search_history, 15)
 
-            context.update({
-                'date_first_search': min(search_dates),
-                'n_searches': len(search_history),
-                'searches': search_terms,
-                'search_plot': yt_plots.get_searches_plot(search_history)
-            })
+            if len(search_history) > 0:
+                search_dates = yt_data.get_date_list(search_history)
+                search_terms = yt_data.get_search_term_frequency(search_history, 15)
+
+                context.update({
+                    'date_first_search': min(search_dates),
+                    'n_searches': len(search_history),
+                    'searches': search_terms,
+                    'search_plot': yt_plots.get_searches_plot(search_history)
+                })
+
+            else:
+                context.update({
+                    'date_first_search': None,
+                    'n_searches': None,
+                    'searches': None,
+                    'search_plot': None
+                })
 
         responses = self.get_response_data(project_id, participant_id)
         if responses:
@@ -133,11 +157,6 @@ class IndividualReport(TemplateView):
             ad_estimate_available = True
         else:
             ad_estimate_available = False
-
-        print(videos_seen_estimate)
-        print(ads_seen_estimate)
-        print(n_videos_jun_to_aug)
-        print(n_ads_jun_to_aug)
 
         context.update({
             'videos_seen_estimate': videos_seen_estimate,
@@ -236,7 +255,10 @@ class IndividualFitbitReport(TemplateView):
         if data_steps:
             data_steps = pd.DataFrame.from_dict(data_steps[0])
 
-        steps_plot = fitbit_plots.get_steps_plot(data_steps)
+        try:
+            steps_plot = fitbit_plots.get_steps_plot(data_steps)
+        except:
+            steps_plot = None
 
         # 3) add to context
         context.update({
