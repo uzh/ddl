@@ -113,6 +113,8 @@ class IndividualReport(TemplateView):
                     'n_videos_total': None,
                     'fav_video': None
                 })
+                n_videos_jun_to_aug = None
+                n_ads_jun_to_aug = None
         else:
             n_videos_jun_to_aug = None
             n_ads_jun_to_aug = None
