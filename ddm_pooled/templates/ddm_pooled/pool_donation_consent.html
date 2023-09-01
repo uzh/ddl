@@ -19,14 +19,18 @@
 
       {% if pool_project.get_donation_consent %}
         <div id="briefing-consent-answer">
-          <input type="radio" id="consent_yes" name="donation_consent" value="1" required>
-          <label for="consent_yes">
-            {% translate "I agree do donating my data to the project described above." %}
-          </label><br>
-          <input type="radio" id="consent_no" name="donation_consent" value="0">
-          <label for="consent_no">
-            {% translate "I do not want to donate my data to the project described above." %}
-          </label>
+          <div class="pt-3 pt-lg-0">
+            <input type="radio" id="consent_yes" name="donation_consent" value="true" required>
+            <label for="consent_yes" class="d-inline">
+              {% translate "I agree to donating my data to the project described above." %}
+            </label>
+          </div>
+          <div class="pt-3 pt-lg-0">
+            <input type="radio" id="consent_no" name="donation_consent" value="false">
+            <label for="consent_no" class="d-inline">
+              {% translate "I do not want to donate my data to the project described above. If you decide not to donate, the data you upload will only be used to generate your personalised evaluation and will be deleted from our servers within the next 7 days." %}
+            </label>
+          </div>
         </div>
       {% endif %}
 
