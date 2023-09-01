@@ -102,7 +102,7 @@ def get_search_term_frequency(search_history, n_terms=None):
 
 def filter_jun_to_aug(data):
     df = pd.DataFrame.from_dict(data)
-    df['time'] = pd.to_datetime(df['time'], format='mixed')
+    df['time'] = pd.to_datetime(df['time'], format='mixed', infer_datetime_format=True)
     filtered_df = df.loc[(df['time'] >= '2023-06-01')
                          & (df['time'] < '2023-09-01')]
     return filtered_df
