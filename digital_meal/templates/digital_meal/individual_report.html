@@ -247,7 +247,7 @@
             Videos angesehen hast.</span>
           </p>
         </div>
-        <div class="d-flex justify-content-center pt-5" style="overflow-x: scroll;">{{ channel_plot.div | safe }}</div>
+        <div class="d-flex justify-content-center pt-5 custom-overflow">{{ channel_plot.div | safe }}</div>
       </div>
     </div>
   </div>
@@ -278,7 +278,7 @@
           Die Daten, die du hochgeladen hast beinhalten deinen Suchverlauf seit dem {{ date_first_search|date:"j. F Y" }}. Deine am häufigsten verwendeten Suchbegriffe sind:
         </p>
 
-        <div class="d-flex justify-content-center pt-3" style="overflow-x: scroll;">
+        <div class="d-flex justify-content-center pt-3 custom-overflow">
           {{ search_plot.div | safe }}
         </div>
       </div>
