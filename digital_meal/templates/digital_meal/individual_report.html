@@ -45,12 +45,12 @@
             <img alt="Symbolbild YouTube" src="{% static 'digital_meal/img/yt_symbol.png' %}" height="180px">
           </div>
           <div class="col col-lg-6 text-end">
-            <p>In dieser persönlichen Auswertung findest Du Informationen, wie Du YouTube in der Vergangenheit genutzt hast.
-              Die von Dir hochgeladenen Daten beinhalten <b>Deinen Wiedergabeverlauf</b> und <b>Deinen Suchverlauf</b>
+            <p>In dieser persönlichen Auswertung findest du Informationen, wie du YouTube in der Vergangenheit genutzt hast.
+              Die von dir hochgeladenen Daten beinhalten <b>deinen Wiedergabeverlauf</b> und <b>deinen Suchverlauf</b>
               zwischen dem {{ date_first|date:"j.\&\\n\b\s\p\;F\&\\n\b\s\p\;Y"|safe }} und dem {{ date_last|date:"j.\&\\n\b\s\p\;F\&\\n\b\s\p\;Y"|safe }}.
             </p>
             <p>
-              Scrolle nach unten, um mehr zu Deiner Nutzung zu erfahren.
+              Scrolle nach unten, um mehr zu deiner Nutzung zu erfahren.
             </p>
           </div>
         </div>
@@ -98,10 +98,10 @@
         <h2>Deine Nutzung im Jahresverlauf</h2>
         <div>
           <p>
-            Seit dem {{ date_first }} hast Du Dir <b class="font-size-highlight" style="color: #465ad9">insgesamt {{ n_videos_total }} Videos angesehen</b>.
+            Seit dem {{ date_first }} hast du dir <b class="font-size-highlight" style="color: #465ad9">insgesamt {{ n_videos_total }} Videos angesehen</b>.
             Das macht <b class="font-size-highlight" style="color: #465ad9">durchschnittlich {{ n_videos_mean }} Videos pro Tag</b>.
           </p>
-          <p>In der Grafik unten wird die Anzahl Videos dargestellt, die Du Dir pro Tag angesehen hast.</p>
+          <p>In der Grafik unten wird die Anzahl Videos dargestellt, die du dir pro Tag angesehen hast.</p>
         </div>
         <div class="d-flex justify-content-center">{{ dates_plot.div | safe }}</div>
       </div>
@@ -130,14 +130,14 @@
 
           {% if video_estimate_available %}
           <h3>Angesehene Videos</h3>
-          Basierend auf deinen hochgeladenen Daten hast du Dir <b class="font-size-highlight" style="color: #001310; background: #d0c3ff; padding-left: 10px; padding-right: 10px;">{{ n_videos_jun_to_aug }}</b> Videos angesehen.<br>
+          Basierend auf deinen hochgeladenen Daten hast du dir <b class="font-size-highlight" style="color: #001310; background: #d0c3ff; padding-left: 10px; padding-right: 10px;">{{ n_videos_jun_to_aug }}</b> Videos angesehen.<br>
           Deine Schätzung waren <b class="font-size-highlight" style="color: #001310; background: #d0c3ff; padding-left: 10px; padding-right: 10px;">{{ videos_seen_estimate }}</b> Videos.
           {% endif %}
         </div>
         {% if ad_estimate_available %}
         <div class="pb-5">
           <h3>Werbung</h3>
-          Basierend auf deinen hochgeladenen Daten wurden Dir <b class="font-size-highlight" style="color: #001310; background: #d0c3ff; padding-left: 10px; padding-right: 10px;">{{ n_ads_jun_to_aug }}</b> Werbungen angezeigt.<br>
+          Basierend auf deinen hochgeladenen Daten wurden dir <b class="font-size-highlight" style="color: #001310; background: #d0c3ff; padding-left: 10px; padding-right: 10px;">{{ n_ads_jun_to_aug }}</b> Werbungen angezeigt.<br>
           Deine Schätzung waren <b class="font-size-highlight" style="color: #001310; background: #d0c3ff; padding-left: 10px; padding-right: 10px;">{{ ads_seen_estimate }}</b> Werbevideos.
         </div>
         {% endif %}
@@ -164,8 +164,8 @@
         <div class="pe-5">
           <h2>Deine Nutzung im Tagesverlauf</h2>
           <p class="text-center text-lg-start">
-            Nutzer von Social-Media-Plattformen zeigen ganz unterschiedliche Nutzungsverhalten.
-            Die folgenden Grafiken zeigen, wie sich deine Youtube-Nutzung über die Zeit verteilt.
+            Nutzer:innen von Social-Media-Plattformen zeigen ganz unterschiedliche Nutzungsverhalten.
+            Die folgenden Grafiken zeigen, wie sich deine YouTube-Nutzung über die Zeit verteilt.
           </p>
           <p class="text-center text-lg-start">
             Oben siehst du, wie sich deine Nutzung prozentual auf die Wochentage verteilt.
@@ -267,7 +267,7 @@
 
     <div class="report-section" style="background: #1F2833; color: white">
       <div class="report-content">
-        <h2>Nach was Du gesucht hast</h2>
+        <h2>Nach was du gesucht hast</h2>
 
         <p>
           <span class="font-size-highlight searchbar-font" style="margin-left: 5px; color: #1f2833; border: 1px solid #d2d2d2;  background: white; border-top-left-radius: 40px; border-bottom-left-radius: 40px; padding: 5px 40px 5px 20px;"><b>Du hast insgesamt <span style="border-bottom: 3px solid #66fcf1;">{{ n_searches }} Suchen</span> durchgeführt</b></span><span class="font-size-highlight searchbar-font" style="margin-right: 5px; background: #f8f8f8; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border: 1px solid #d2d2d2;padding: 5px 22px 5px 20px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" style="color: #393939;margin-bottom: 5px;">
@@ -335,8 +335,8 @@
 
         <p>
           <b>Digital Meal</b> und das <b>Data Donation Lab</b> sind Initiativen von Forschenden der Universität Zürich.
-          Wir legen grossen Wert auf die Sicherheit Deiner Daten. In diesem Report sind grösstenteils aggregierte und vereinzelt
-          explizite Werte integriert, die aber keinen Rückschluss auf Dich als Person zulassen.
+          Wir legen grossen Wert auf die Sicherheit deiner Daten. In diesem Report sind grösstenteils aggregierte und vereinzelt
+          explizite Werte integriert, die aber keinen Rückschluss auf dich als Person zulassen.
         </p>
 
         <p>
