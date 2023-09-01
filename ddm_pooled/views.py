@@ -51,7 +51,7 @@ class PoolDonateView(DetailView):
         participant = get_participant_from_request(request, self.get_object())
         if consent in ('1', 'true'):
             participant.extra_data['pool_donate'] = True
-        elif consent == ('0', 'false'):
+        elif consent in ('0', 'false'):
             participant.extra_data['pool_donate'] = False
 
         participant.save()
