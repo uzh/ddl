@@ -62,7 +62,7 @@
             <h1 class="mt-5 pb-3">Deine personalisierte Auswertung deiner YouTube-Nutzung</h1>
           </div>
           <div class="col col-lg-4 align-items-center" style="padding-top: 100px;">
-            <img alt="Symbolbild FitBit Studie" src="{% static 'digital_meal/img/Steps.png' %}" height="180px">
+            <img alt="Symbolbild YouTube" src="{% static 'digital_meal/img/yt_symbol.png' %}" height="180px">
           </div>
         </div>
 
@@ -111,6 +111,42 @@
   {% endif %}
 
 
+  <!-- Estimates -->
+  {% if video_estimate_available or ad_estimate_available %}
+  <div class="section-container">
+
+    <div class="position-relative">
+      <div class="custom-shape-divider-bottom-1691418846">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M598.97 114.72L0 0 0 120 1200 120 1200 0 598.97 114.72z" class="shape-fill" style="fill: #FFC59A"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="report-section" style="background: #FFC59A">
+      <div class="report-content">
+        <div class="pb-5">
+          <h2>Deine Schätzungen für die letzten 3 Monate</h2>
+
+          {% if video_estimate_available %}
+          <h3>Angesehene Videos</h3>
+          Basierend auf deinen hochgeladenen Daten hast du Dir <b class="font-size-highlight" style="color: #001310; background: #d0c3ff; padding-left: 10px; padding-right: 10px;">{{ n_videos_jun_to_aug }}</b> Videos angesehen.<br>
+          Deine Schätzung waren <b class="font-size-highlight" style="color: #001310; background: #d0c3ff; padding-left: 10px; padding-right: 10px;">{{ videos_seen_estimate }}</b> Videos.
+          {% endif %}
+        </div>
+        {% if ad_estimate_available %}
+        <div class="pb-5">
+          <h3>Werbung</h3>
+          Basierend auf deinen hochgeladenen Daten wurden Dir <b class="font-size-highlight" style="color: #001310; background: #d0c3ff; padding-left: 10px; padding-right: 10px;">{{ n_ads_jun_to_aug }}</b> Werbungen angezeigt.<br>
+          Deine Schätzung waren <b class="font-size-highlight" style="color: #001310; background: #d0c3ff; padding-left: 10px; padding-right: 10px;">{{ ads_seen_estimate }}</b> Werbevideos.
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+
   <!-- DAILY USE -->
   {% if weekday_use_plot %}
   <div class="section-container">
@@ -127,11 +163,11 @@
       <div class="report-content d-flex flex-row">
         <div class="pe-5">
           <h2>Deine Nutzung im Tagesverlauf</h2>
-          <p class="text-start">
+          <p class="text-center text-lg-start">
             Nutzer von Social-Media-Plattformen zeigen ganz unterschiedliche Nutzungsverhalten.
             Die folgenden Grafiken zeigen, wie sich deine Youtube-Nutzung über die Zeit verteilt.
           </p>
-          <p class="text-start">
+          <p class="text-center text-lg-start">
             Oben siehst du, wie sich deine Nutzung prozentual auf die Wochentage verteilt.
             Unten siehst du deine Nutzung pro Tag pro Stunde.
             <b style="border-bottom: 2px solid #ffda3c; background: #ffda3c; padding-left: 5px; padding-right: 5px;">Je dunkler das Feld, desto höher war deine Nutzung in dieser Zeitperiode.</b>
@@ -211,7 +247,7 @@
             Videos angesehen hast.</span>
           </p>
         </div>
-        <div class="d-flex justify-content-center pt-5">{{ channel_plot.div | safe }}</div>
+        <div class="d-flex justify-content-center pt-5" style="overflow-x: scroll;">{{ channel_plot.div | safe }}</div>
       </div>
     </div>
   </div>
@@ -242,7 +278,7 @@
           Die Daten, die du hochgeladen hast beinhalten deinen Suchverlauf seit dem {{ date_first_search|date:"j. F Y" }}. Deine am häufigsten verwendeten Suchbegriffe sind:
         </p>
 
-        <div class="d-flex justify-content-center pt-3" style="overflow-y: scroll">
+        <div class="d-flex justify-content-center pt-3" style="overflow-x: scroll;">
           {{ search_plot.div | safe }}
         </div>
       </div>

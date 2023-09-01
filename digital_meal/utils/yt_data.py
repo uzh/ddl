@@ -18,11 +18,12 @@ def get_watched_video_urls(watch_history):
     return video_urls
 
 
-def exclude_google_ads_videos(watch_history):
+def separate_videos_and_ads(watch_history):
     """
     Excludes all videos shown through Google Ads from the watch history.
     """
     watched_videos = []
+    seen_ads = []
     ad_identifiers = [
         'Von Google Anzeigen',
         'From Google Ads',
@@ -32,12 +33,12 @@ def exclude_google_ads_videos(watch_history):
     for video in watch_history:
         if 'details' in video and len(video['details']) > 0:
             if any(ad_id in video['details'][0]['name'] for ad_id in ad_identifiers):
-                continue
+                seen_ads.append(video)
             else:
                 watched_videos.append(video)
         else:
             watched_videos.append(video)
-    return watched_videos
+    return watched_videos, seen_ads
 
 
 def get_video_title_dict(watch_history):
@@ -97,3 +98,11 @@ def get_search_term_frequency(search_history, n_terms=None):
         searches.append({'term': x_labels[term], 'count': y_values[term]})
 
     return searches
+
+
+def filter_jun_to_aug(data):
+    df = pd.DataFrame.from_dict(data)
+    df['time'] = pd.to_datetime(df['time'], format='mixed')
+    filtered_df = df.loc[(df['time'] >= '2023-06-01')
+                         & (df['time'] < '2023-09-01')]
+    return filtered_df

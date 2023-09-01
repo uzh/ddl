@@ -35,6 +35,30 @@ class IndividualReport(TemplateView):
         else:
             return None
 
+    @staticmethod
+    def get_response_data(project_id, participant_id):
+        """
+        Gets a participant's questionnaire answers by querying from the DDM API.
+
+        Passes the 'project id' and the 'external participant id'
+        as query parameters.
+        """
+        api_endpoint = f'{settings.DDM_BASE_URL}api/project/{project_id}/responses'
+        api_token = settings.DDM_API_TOKEN
+
+        headers = {
+            'Authorization': f'Token {api_token}'
+        }
+        payload = {
+            'participants': participant_id
+        }
+        r = requests.get(api_endpoint, headers=headers, params=payload)
+
+        if r.ok:
+            return r.json()
+        else:
+            return None
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
@@ -49,7 +73,7 @@ class IndividualReport(TemplateView):
 
         # 2) get and transform all data series
         if watch_history:
-            watched_videos = yt_data.exclude_google_ads_videos(watch_history[0])
+            watched_videos, seen_ads = yt_data.separate_videos_and_ads(watch_history[0])
             dates = yt_data.get_date_list(watched_videos)
             date_range = max(dates) - min(dates)
             n_videos_total = len(watched_videos)
@@ -59,6 +83,9 @@ class IndividualReport(TemplateView):
             fav_video['title'] = video_titles.get(fav_video['id'])
 
             channels = yt_data.get_channels_from_history(watched_videos)
+
+            n_videos_jun_to_aug = yt_data.filter_jun_to_aug(watched_videos).shape[0]
+            n_ads_jun_to_aug = yt_data.filter_jun_to_aug(seen_ads).shape[0]
 
             context.update({
                 'dates_plot': yt_plots.get_timeseries_plot(dates),
@@ -72,6 +99,9 @@ class IndividualReport(TemplateView):
                 'n_videos_total': n_videos_total,
                 'fav_video': fav_video
             })
+        else:
+            n_videos_jun_to_aug = None
+            n_ads_jun_to_aug = None
 
         if search_history:
             search_history = search_history[0]
@@ -82,15 +112,40 @@ class IndividualReport(TemplateView):
                 'date_first_search': min(search_dates),
                 'n_searches': len(search_history),
                 'searches': search_terms,
-                'search_plot': yt_plots.get_searches_plot(search_history),
-                'n_videos_liked': 0,
-                'share_videos_liked': 0
+                'search_plot': yt_plots.get_searches_plot(search_history)
             })
 
-        # 3) add to context
+        responses = self.get_response_data(project_id, participant_id)
+        if responses:
+            responses = responses[0]
+        else:
+            responses = {}
+
+        videos_seen_estimate = responses.get('videos_seen_est', None)
+        ads_seen_estimate = responses.get('ads_seen_est', None)
+
+        if None not in (videos_seen_estimate, n_videos_jun_to_aug):
+            video_estimate_available = True
+        else:
+            video_estimate_available = False
+
+        if None not in (ads_seen_estimate, n_ads_jun_to_aug):
+            ad_estimate_available = True
+        else:
+            ad_estimate_available = False
+
+        print(videos_seen_estimate)
+        print(ads_seen_estimate)
+        print(n_videos_jun_to_aug)
+        print(n_ads_jun_to_aug)
+
         context.update({
-            'n_videos_liked': 0,
-            'share_videos_liked': 0
+            'videos_seen_estimate': videos_seen_estimate,
+            'ads_seen_estimate': ads_seen_estimate,
+            'video_estimate_available': video_estimate_available,
+            'ad_estimate_available': ad_estimate_available,
+            'n_videos_jun_to_aug': n_videos_jun_to_aug,
+            'n_ads_jun_to_aug': n_ads_jun_to_aug
         })
         return context
 
