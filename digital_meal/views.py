@@ -68,8 +68,12 @@ class IndividualReport(TemplateView):
 
         donated_data = self.get_data(project_id, participant_id)
 
-        watch_history = donated_data.get(settings.DDM_WATCH_BP_ID, None)
-        search_history = donated_data.get(settings.DDM_SEARCH_BP_ID, None)
+        if donated_data:
+            watch_history = donated_data.get(settings.DDM_WATCH_BP_ID, None)
+            search_history = donated_data.get(settings.DDM_SEARCH_BP_ID, None)
+        else:
+            watch_history = None
+            search_history = None
 
         # 2) get and transform all data series
         if watch_history:
@@ -209,70 +213,72 @@ class IndividualFitbitReport(TemplateView):
         donated_data = self.get_donation_data(
             project_id, participant_id, blueprint_id=32)
 
-        data_lightly_active = donated_data['Minuten leichte Aktivität'][0]
-        if data_lightly_active:
-            data_lightly_active = pd.DataFrame.from_dict(data_lightly_active)
-        else:
-            data_lightly_active = None
+        if donated_data:
 
-        data_moderately_active = donated_data['Minuten moderate Aktivität'][0]
-        if data_moderately_active:
-            data_moderately_active = pd.DataFrame.from_dict(data_moderately_active)
-        else:
-            data_moderately_active = None
+            data_lightly_active = donated_data['Minuten leichte Aktivität'][0]
+            if data_lightly_active:
+                data_lightly_active = pd.DataFrame.from_dict(data_lightly_active)
+            else:
+                data_lightly_active = None
 
-        data_very_active = donated_data['Minuten hohe Aktivität'][0]
-        if data_very_active:
-            data_very_active = pd.DataFrame.from_dict(data_very_active)
-        else:
-            data_very_active = None
+            data_moderately_active = donated_data['Minuten moderate Aktivität'][0]
+            if data_moderately_active:
+                data_moderately_active = pd.DataFrame.from_dict(data_moderately_active)
+            else:
+                data_moderately_active = None
 
-        try:
-            activity_plot, act_date_min, act_date_max = fitbit_plots.get_active_minutes_plot(
-                data_lightly_active,
-                data_moderately_active,
-                data_very_active
-            )
-        except:
-            activity_plot = None
-            act_date_min = None
-            act_date_max = None
+            data_very_active = donated_data['Minuten hohe Aktivität'][0]
+            if data_very_active:
+                data_very_active = pd.DataFrame.from_dict(data_very_active)
+            else:
+                data_very_active = None
 
-        # Schlafdaten
-        data_sleep = donated_data.get('Schlafdaten', None)
-        if data_sleep:
-            data_sleep = pd.DataFrame.from_dict(data_sleep[0])
-        try:
-            sleep_plot = fitbit_plots.get_sleep_plot(data_sleep)
-        except:
-            sleep_plot = None
+            try:
+                activity_plot, act_date_min, act_date_max = fitbit_plots.get_active_minutes_plot(
+                    data_lightly_active,
+                    data_moderately_active,
+                    data_very_active
+                )
+            except:
+                activity_plot = None
+                act_date_min = None
+                act_date_max = None
 
-        try:
-            sleep_pulse_plot = fitbit_plots.get_heart_rate_sleep_plot(data_sleep)
-        except:
-            sleep_pulse_plot = None
+            # Schlafdaten
+            data_sleep = donated_data.get('Schlafdaten', None)
+            if data_sleep:
+                data_sleep = pd.DataFrame.from_dict(data_sleep[0])
+            try:
+                sleep_plot = fitbit_plots.get_sleep_plot(data_sleep)
+            except:
+                sleep_plot = None
 
-        # Schrittdaten
-        data_steps = donated_data.get('Schritte', None)
-        if data_steps:
-            data_steps = pd.DataFrame.from_dict(data_steps[0])
+            try:
+                sleep_pulse_plot = fitbit_plots.get_heart_rate_sleep_plot(data_sleep)
+            except:
+                sleep_pulse_plot = None
 
-        try:
-            steps_plot = fitbit_plots.get_steps_plot(data_steps)
-        except:
-            steps_plot = None
+            # Schrittdaten
+            data_steps = donated_data.get('Schritte', None)
+            if data_steps:
+                data_steps = pd.DataFrame.from_dict(data_steps[0])
 
-        # 3) add to context
-        context.update({
-            'data': donated_data,
-            'activity_plot': activity_plot,
-            'activity_date_min': act_date_min,
-            'activity_date_max': act_date_max,
-            'sleep_plot': sleep_plot,
-            'sleep_data': data_sleep,
-            'sleep_pulse_plot': sleep_pulse_plot,
-            'steps_plot': steps_plot
-        })
+            try:
+                steps_plot = fitbit_plots.get_steps_plot(data_steps)
+            except:
+                steps_plot = None
+
+            # 3) add to context
+            context.update({
+                'data': donated_data,
+                'activity_plot': activity_plot,
+                'activity_date_min': act_date_min,
+                'activity_date_max': act_date_max,
+                'sleep_plot': sleep_plot,
+                'sleep_data': data_sleep,
+                'sleep_pulse_plot': sleep_pulse_plot,
+                'steps_plot': steps_plot
+            })
         return context
 
 
