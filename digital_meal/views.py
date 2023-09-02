@@ -88,9 +88,15 @@ class IndividualReport(TemplateView):
                 fav_video['title'] = video_titles.get(fav_video['id'])
 
                 channels = yt_data.get_channels_from_history(watched_videos)
+                try:
+                    n_videos_jun_to_aug = yt_data.filter_jun_to_aug(watched_videos).shape[0]
+                except:
+                    n_videos_jun_to_aug = None
 
-                n_videos_jun_to_aug = yt_data.filter_jun_to_aug(watched_videos).shape[0]
-                n_ads_jun_to_aug = yt_data.filter_jun_to_aug(seen_ads).shape[0]
+                try:
+                    n_ads_jun_to_aug = yt_data.filter_jun_to_aug(seen_ads).shape[0]
+                except:
+                    n_ads_jun_to_aug = None
 
                 context.update({
                     'dates_plot': yt_plots.get_timeseries_plot(dates),
