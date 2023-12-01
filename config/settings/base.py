@@ -195,12 +195,12 @@ CKEDITOR_CONFIGS = {
 
 # DDM API SETTINGS
 # ------------------------------------------------------------------------------
-DDM_API_TOKEN = os.environ['DDM_API_TOKEN']
-DDM_BASE_URL = os.environ['DDM_BASE_URL']
+DDM_API_TOKEN = os.getenv('DDM_API_TOKEN', None)
+DDM_BASE_URL = os.getenv('DDM_BASE_URL', None)
 
-DDM_PROJECT_ID = os.environ['DDM_PROJECT_ID']
-DDM_WATCH_BP_ID = os.environ['DDM_WATCH_BP_ID']
-DDM_SEARCH_BP_ID = os.environ['DDM_SEARCH_BP_ID']
+DDM_PROJECT_ID = os.getenv('DDM_PROJECT_ID', None)
+DDM_WATCH_BP_ID = os.getenv('DDM_WATCH_BP_ID', None)
+DDM_SEARCH_BP_ID = os.getenv('DDM_SEARCH_BP_ID', None)
 
-DDM_FITBIT_PROJECT_ID = os.environ['DDM_FITBIT_PROJECT_ID']
-DDM_FITBIT_API_TOKEN = os.environ['DDM_FITBIT_API_TOKEN']
+DDM_FITBIT_PROJECT_ID = os.getenv('DDM_FITBIT_PROJECT_ID', None)
+DDM_FITBIT_API_TOKEN = os.getenv('DDM_FITBIT_API_TOKEN', None)
