@@ -22,7 +22,7 @@ urlpatterns = [
     path('ddm/logout/', auth_views.LogoutView.as_view(), name='ddm-logout'),
     path('ddm/contact/', TemplateView.as_view(template_name='ddl/custom-ddm/contact.html'), name='ddm-contact'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('scientifica/', include('digital_meal.urls'))
+    path('vp-studie/', include('digital_meal.urls'))
 ]
 
 urlpatterns += i18n_patterns(
