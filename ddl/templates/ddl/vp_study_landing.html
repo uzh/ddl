@@ -11,6 +11,9 @@
     <div class="column is-1-tablet is-hidden-desktop-only is-2-fullhd"></div>
     <div class="column content has-text-black">
       <h1 style="font-size: 2rem !important;">Willkommen zur Studie «Video&shy;plattformen: Nutzungs&shy;muster & Gesund&shy;heits&shy;verhalten»</h1>
+
+      {{ request.META.HTTP_USER_AGENT }}
+
       <div id="insta-block" style="display: none;">
         <p>
           Vielen Dank für Ihr Interesse an dieser Studie, die von Forschenden der Universität Zürich durchgeführt wird.
@@ -66,8 +69,10 @@
 
       <div id="basic-block" style="display: none;">
         <p>
-          Wenn Sie an der Studie teilnehmen möchten, klicken Sie unten auf den Button. Anschliessend werden Sie auf eine Umfrage
-          weitergeleitet, wo Sie detailliertere Informationen zum Studienablauf erhalten.
+          Super! Der Wechsel in den Browser scheint funktioniert zu haben.
+
+          Klicken Sie bitte unten auf den Button, um an der Studie teilzunehmen.
+          Sie erhalten dann nochmals alle wichtigen Informationen zur Studie (Studienablauf, Vergütung etc.) und können anschliessend entscheiden, ob Sie uns mit Ihrer Teilnahme unterstützen möchten.
         </p>
 
         <div style="padding-top:20px; margin-bottom: 50px;">
