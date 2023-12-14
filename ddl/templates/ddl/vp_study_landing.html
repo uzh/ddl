@@ -61,10 +61,12 @@
           Bei Fragen wenden Sie sich per E-Mail an <a href="mailto:datadonation@ikmz.uzh.ch">datadonation@ikmz.uzh.ch</a>.
         </p>
 
-        <p style="font-weight: bold">
-          Wenn Sie an der Studie teilnehmen möchten, wechseln Sie bitte in Ihren normalen Browser.<br/>
-          Klicken Sie dazu oben rechts auf die drei Punkte und wählen Sie "in externem Browser öffnen"/"in Chrome öffnen" aus.
-        </p>
+        <div style="background: #d1fff0; padding: 20px 0 20px 0;">
+          <p style="font-weight: bold">
+            Wenn Sie an der Studie teilnehmen möchten, wechseln Sie bitte in Ihren normalen Browser.<br/>
+            Klicken Sie dazu oben rechts auf die drei Punkte und wählen Sie <i>in externem Browser öffnen</i>/<i>in Chrome öffnen</i> aus.
+          </p>
+        </div>
       </div>
 
       <div id="basic-block" style="display: none;">
@@ -93,8 +95,10 @@
 <script>$( document ).ready(function() {
   let ua = navigator.userAgent.toLowerCase();
   let isInstagram = (ua.indexOf('instagram') > -1) ? true : false;
+  let isApple = (ua.indexOf('mac os') > -1) ? true : false;
+  let isSafari = (ua.indexOf('safari') > -1) ? true : false;
 
-  if (isInstagram) {
+  if (isInstagram || (isApple && !isSafari )) {
     $('#insta-block').css('display', 'block');
   } else {
     $('#basic-block').css('display', 'block');
