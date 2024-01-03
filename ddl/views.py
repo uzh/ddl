@@ -112,7 +112,7 @@ class ProjectDataAPIAlt(APIView, DDMAPIMixin):
 
             donations = {}
             for blueprint in blueprints:
-                blueprint_donations = blueprint.datadonation_set.all()
+                blueprint_donations = blueprint.datadonation_set.all().defer('data')
                 donations[blueprint.name] = [DonationSerializerAlt(d, decryptor=decryptor).data for d in blueprint_donations]
 
             results = {
