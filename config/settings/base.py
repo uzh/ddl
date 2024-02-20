@@ -24,7 +24,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'ddm',
     'ddm_pooled',
-    'digital_meal',
     'ckeditor',
     'ckeditor_uploader',
     'webpack_loader',
