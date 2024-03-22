@@ -6,6 +6,8 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from django.views.generic import TemplateView
 
+from ddl import apis as dm_apis
+
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
@@ -22,7 +24,10 @@ urlpatterns = [
     path('ddm/logout/', auth_views.LogoutView.as_view(), name='ddm-logout'),
     path('ddm/contact/', TemplateView.as_view(template_name='ddl/custom-ddm/contact.html'), name='ddm-contact'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('vp-studie/', include('digital_meal.urls'))
+    path('vp-studie/', include('digital_meal.urls')),
+    path('dm-api/<int:pk>/class-data', dm_apis.ClassReportAPI.as_view(), name='class_data_api'), # int:pk relates to ID of DDM project (must be named 'pk' due to ddm authentication scheme).
+    path('dm-api/<int:pk>/class-overview', dm_apis.ClassOverviewAPI.as_view(), name='class_overview_api'), # int:pk relates to ID of DDM project.
+    path('dm-api/<int:pk>/individual-data', dm_apis.IndividualReportAPI.as_view(), name='individual_data_api') # int:pk relates to ID of DDM project.
 ]
 
 urlpatterns += i18n_patterns(
