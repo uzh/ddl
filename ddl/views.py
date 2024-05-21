@@ -6,8 +6,8 @@ class MainView(TemplateView):
 
 
 class VPStudyLandingPage(TemplateView):
-    template_name = 'ddl/vp_study_landing.html'
+    template_name = 'ddl/vp-study/vp_study_landing.html'
 
 
 class VPStudyLandingPageInvited(TemplateView):
-    template_name = 'ddl/vp_study_landing_invited.html'
+    template_name = 'ddl/vp-study/vp_study_landing_invited.html'
