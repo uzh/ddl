@@ -23,7 +23,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'ddm',
-    'ddm_pooled',
     'ckeditor',
     'ckeditor_uploader',
     'webpack_loader',
@@ -56,8 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-    'mozilla_django_oidc.middleware.SessionRefresh',
-    'ddm_pooled.middleware.PooledProjectMiddleware'
+    'mozilla_django_oidc.middleware.SessionRefresh'
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -196,10 +194,3 @@ CKEDITOR_CONFIGS = {
 # ------------------------------------------------------------------------------
 DDM_API_TOKEN = os.getenv('DDM_API_TOKEN', None)
 DDM_BASE_URL = os.getenv('DDM_BASE_URL', None)
-
-DDM_PROJECT_ID = os.getenv('DDM_PROJECT_ID', None)
-DDM_WATCH_BP_ID = os.getenv('DDM_WATCH_BP_ID', None)
-DDM_SEARCH_BP_ID = os.getenv('DDM_SEARCH_BP_ID', None)
-
-# DDM_FITBIT_PROJECT_ID = os.getenv('DDM_FITBIT_PROJECT_ID', None)
-# DDM_FITBIT_API_TOKEN = os.getenv('DDM_FITBIT_API_TOKEN', None)
