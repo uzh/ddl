@@ -188,9 +188,3 @@ CKEDITOR_CONFIGS = {
         'width': 300,
     },
 }
-
-
-# DDM API SETTINGS
-# ------------------------------------------------------------------------------
-DDM_API_TOKEN = os.getenv('DDM_API_TOKEN', None)
-DDM_BASE_URL = os.getenv('DDM_BASE_URL', None)
