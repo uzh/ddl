@@ -2,83 +2,82 @@
 
 {% load static %}
 
+{% block title %}Studie Videoplattformen{% endblock %}
+
 {% block main_content %}
 
 <div class="container">
   <div class="columns">
     <div class="column is-1-tablet is-hidden-desktop-only is-2-fullhd"></div>
     <div class="column content has-text-black">
-      <h1>Willkommen zur Studie «Videoplattformen: Nutzungsmuster & Gesundheitsverhalten»</h1>
-      <p>
-        Vielen Dank für Ihr Interesse an dieser Studie, die von Forschenden der Universität Zürich durchgeführt wird.
-      </p>
-      <h3>Ziel der Studie</h3>
-      <p>
-        Das Ziel dieser Studie ist es, mehr darüber zu erfahren, wie Tabak- und Alkoholkonsum mit gesehenen Inhalten auf Videoplattformen zusammenhängt und wie Freundschaftsbeziehungen die Nutzung von Videoplattformen beeinflussen.
-        Dafür suchen wir Zweiergruppen bestehend aus zwei Freunden, die beide bereit sind, einen Fragebogen auszufüllen und ihre YouTube- und TikTok-Nutzungsdaten mit uns zu teilen.
-      </p>
+      <h1 style="font-size: 2rem !important;">Willkommen zur Studie «Video&shy;plattformen: Nutzungs&shy;muster & Gesund&shy;heits&shy;verhalten»</h1>
 
-      <h3>Ablauf</h3>
-      <p>
-        Zu Beginn der Studie werden Sie einige allgemeine Fragen beantworten, um festzustellen, ob Sie die Voraussetzungen zur Studienteilnahme erfüllen. Wenn ja, besteht die Studie anschliessend aus drei Teilen:
-      </p>
+      <div id="insta-block" style="display: none;">
+        <p>
+          Vielen Dank für Ihr Interesse an dieser Studie, die von Forschenden der Universität Zürich durchgeführt wird.
+        </p>
+        <h3>Ziel der Studie</h3>
+        <p>
+          Das Ziel dieser Studie ist es, mehr darüber zu erfahren, wie Freundschaftsbeziehungen die Nutzung von Videoplattformen beeinflussen
+          und wie Tabak- und Alkoholkonsum mit gesehenen Inhalten auf Videoplattformen zusammenhängen.
+        </p>
 
-      <p>
-        <b>Teil 1:</b> Sie fordern Ihre YouTube-Daten an und spenden die anonymisierten Daten an uns. Anschliessend beantworten Sie einige Fragen zu Ihrer YouTube-Nutzung (15 Minuten).
-      </p>
+        <h3>Wer kann mitmachen</h3>
+        <p>
+          Für diese Studie suchen wir <b>Gruppen von jeweils zwei Personen</b>, die beide bereit sind, einen Fragebogen auszufüllen und
+          ihre <b>YouTube- und TikTok-Nutzungsdaten mit uns zu teilen</b>. Zudem sollten Sie die folgenden Voraussetzungen erfüllen:
+        </p>
+        <ul>
+          <li>Sie sind zwischen 16 und 25 Jahre alt und in der Schweiz wohnhaft.</li>
+          <li>Sie nutzen YouTube und/oder TikTok regelmässig mit einem persönlichen User-Account.</li>
+          <li>Sie sind bereit, Ihre YouTube- und/oder TikTok-Nutzungsdaten mit uns anonymisiert zu teilen.</li>
+          <li>Sie sind bereit, eine befreundete Person zu der Studie einzuladen.</li>
+        </ul>
 
-      <p>
-        <b>Teil 2:</b> Sie laden eine Freundin oder einen Freund zu der Studie ein, der oder die dann ebenfalls mitmacht (2 Minuten).
-      </p>
+        <h3>Ablauf der Studie</h3>
+        <p>
+          Zu Beginn der Studie werden Sie einige allgemeine Fragen beantworten, um festzustellen, ob Sie die Voraussetzungen
+          zur Studienteilnahme erfüllen. Wenn ja, besteht die Studie anschliessend aus drei Teilen:
+        </p>
+        <img src="{% static 'ddl/img/VP_ablauf.png' %}" height="250px">
+        <p>
+          Das anfordern der Nutzungsdaten ist dabei einfach über ein Webformular möglich und wird Ihnen Schritt für
+          Schritt erklärt. Der zeitliche Aufwand zur Teilnahme an der Studie beträgt insgesamt ca. 20 bis 30 Minuten.
+        </p>
 
-      <p>
-        <b>Teil 3:</b> Sie fordern Ihre TikTok-Daten an, warten einige Stunden und spenden die anonymisierten Daten danach an uns. Anschliessend beantworten Sie einige Frage zur Ihrer TikTok-Nutzung und Ihrem Gesundheitsverhalten (aktiv: 15 Minuten).
-      </p>
-
-      <p>
-        Das Anfordern und Spenden Ihrer Daten geht dabei ganz einfach und wir werden Sie Schritt für Schritt durch den Prozess führen. Vor der Übermittlung Ihrer Daten haben Sie die Möglichkeit, Ihre Daten nochmals genau zu inspizieren.
-        Basierend darauf können Sie dann eine finale Entscheidung treffen, ob Sie Ihre Daten spenden möchten oder lieber nicht .
-      </p>
-
-      <img src="{% static 'ddl/img/VP_ablauf.png' %}" height="250px">
-
-      <h3>Vergütung für Ihre Teilnahme</h3>
-      <p>
-        Als Vergütung für Ihre Teilnahme an unserer Studie erhalten Sie <b>für jeden erfolgreich abgeschlossenen Teil einen Digitec/Galaxus Gutschein im Wert von 10 CHF</b>.
-        Die Gutscheine werden jeweils montags per E-Mail versendet.
-      </p>
+        <h3>Was erhalte ich für meine Teilnahme?</h3>
+        <p>
+          Für die Teilnahme an der Studie erhalten beide Personen bis zu <b>30 CHF in Digitec/Galaxus Gutscheinen</b>.
+          Zudem erhalten Sie Einblicke, welche Daten Google und TikTok über Sie gespeichert haben und bekommen eine
+          <b>personalisierte Auswertung ihrer YouTube-Nutzungsdaten</b>.
+        </p>
 
 
-      <h3>Teilnahmevoraussetzungen</h3>
-      <p>
-        Für die Teilnahme an der Studie müssen Sie die folgenden Voraussetzungen erfüllen:
-      </p>
-      <ul>
-        <li>Sie sind volljährig und in der Schweiz wohnhaft.</li>
-        <li>Sie nutzen YouTube und/oder TikTok regelmässig mit einem persönlichen User-Account.</li>
-        <li>Sie sind bereit Ihre YouTube- und TikTok-Nutzungsdaten mit uns anonymisiert zu teilen.</li>
-        <li>Sie sind bereit eine befreundete Person zu der Studie einzuladen.</li>
-      </ul>
+        <h3>Kontakt</h3>
+        <p>
+          Die Studie wird von Forschenden der Universität Zürich unter der Leitung von Prof. Dr. Thomas Friemel durchgeführt.
+          Bei Fragen wenden Sie sich per E-Mail an <a href="mailto:datadonation@ikmz.uzh.ch">datadonation@ikmz.uzh.ch</a>.
+        </p>
 
-      <h3>Kontakt</h3>
-      <p>
-        Die Studie wird von Forschenden der Universität Zürich unter der Leitung von Prof. Dr. Thomas Friemel durchgeführt.
-        Falls Sie Fragen oder Anmerkungen zu der Studie haben, wenden Sie sich per E-Mail an <a href="mailto:datadonation@ikmz.uzh.ch">datadonation@ikmz.uzh.ch</a>.
-      </p>
+        <div style="background: #d1fff0; padding: 20px 0 20px 0;">
+          <p style="font-weight: 400;">
+            Wenn Sie an der Studie teilnehmen möchten, wechseln Sie bitte in Ihren normalen Browser.<br/>
+            Klicken Sie dazu in diesem Fenster oben rechts auf die drei Punkte und wählen Sie <b>in externem Browser öffnen</b>/<b>in Chrome öffnen</b> aus.
+          </p>
+        </div>
+      </div>
 
-      <h3>Einverständniserklärung</h3>
-      <p>
-        Ihre Teilnahme an dieser Studie ist freiwillig und Sie können die Teilnahme jederzeit abbrechen. Alle Ihre Angaben werden streng vertraulich behandelt und anonym ausgewertet. Ihre Daten werden ausschliesslich zu wissenschaftlichen Zwecken verwendet und werden auf Servern der Universität Zürich gespeichert.
-        Die Teilnahme an dieser Studie birgt keine über die normale Internetnutzung hinausgehenden Risiken für Sie.
-      </p>
-      <p>
-        Mit einem Klick auf <b>Weiter</b> erklären Sie, dass Sie die Studieninformationen gelesen haben und dass Sie freiwillig an dieser Studie teilnehmen.
-        Falls Sie nicht weiter an der Studie teilnehmen möchten, können Sie das unten entsprechend angeben.
-      </p>
+      <div id="basic-block" style="display: none;">
+        <p>
+          Super! Der Wechsel in den Browser scheint funktioniert zu haben.
 
-      <div style="padding-top:20px;">
-        <p><a style="border-radius: 5px; background: green; padding: 10px; color: white;" href="https://somethingrandoooooo000m.net?{% for key, value in request.GET.items %}{{ key }}={{ value|urlencode }}&{% endfor %}lp=1"><b>Weiter</b> - Ich habe die Informationen gelesen und möchte an der Studie teilnehmen</a></p> <!-- Codes: Ad-Type / Agree: 0/1 -->
-        <p><a style="border-radius: 5px; background: grey; padding: 10px; color: white;" href="https://somethingrandoooooo000m.net?{% for key, value in request.GET.items %}{{ key }}={{ value|urlencode }}&{% endfor %}lp=1">Ich möchte <b>nicht</b> teilnehmen</a></p> <!-- Codes: Ad-Type / Agree: 0/1 -->
+          Klicken Sie bitte unten auf den Button, um an der Studie teilzunehmen.
+          Sie erhalten dann nochmals alle wichtigen Informationen zur Studie (Studienablauf, Vergütung etc.) und können anschliessend entscheiden, ob Sie uns mit Ihrer Teilnahme unterstützen möchten.
+        </p>
+
+        <div style="padding-top:20px; margin-bottom: 50px;">
+          <p><a style="border-radius: 5px; background: #009c94; padding: 10px 40px 10px 40px; color: white;" href="https://rq3281.customervoice360.com/uc/vp-1/?{% for key, value in request.GET.items %}{{ key }}={{ value|urlencode }}&{% endfor %}b=0" target="_blank"><b>zur Studie >></b></a></p>
+        </div>
       </div>
 
     </div>
@@ -87,3 +86,23 @@
 </div>
 
 {% endblock %}
+
+{% block site_js %}
+{{ block.super }}
+
+<script>$( document ).ready(function() {
+  let ua = navigator.userAgent.toLowerCase();
+  let isInstagram = (ua.indexOf('instagram') > -1) ? true : false;
+  let isApple = (ua.indexOf('mac os') > -1) ? true : false;
+  let isSafari = (ua.indexOf('safari') > -1) ? true : false;
+
+  if (isInstagram || (isApple && !isSafari )) {
+    $('#insta-block').css('display', 'block');
+  } else {
+    $('#basic-block').css('display', 'block');
+  }
+
+});
+</script>
+
+{% endblock site_js %}

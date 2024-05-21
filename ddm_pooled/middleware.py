@@ -1,6 +1,9 @@
-from ddm.models.core import DonationProject
+import zipfile
+
+from ddm.models.core import DonationProject, DataDonation
 from ddm.views.participation_flow import (
-    BriefingView, DebriefingView, DataDonationView, create_participation_session
+    BriefingView, DebriefingView, DataDonationView, create_participation_session,
+    QuestionnaireView
 )
 from ddm_pooled.models import PooledProject
 from ddm_pooled.settings import POOL_KW
@@ -43,6 +46,22 @@ class PooledProjectMiddleware(MiddlewareMixin):
 
             if view_class is DataDonationView:
                 request.project_is_pooled = True
+                return
+
+            if view_class is QuestionnaireView:
+                participant = get_participant_from_request(request, project)
+                donations = DataDonation.objects.filter(participant=participant)
+
+                consents = [don.consent for don in donations]
+                if not any(consents):
+                    participant.extra_data['report_consent'] = False
+                    participant.extra_data['pool_donate'] = False
+                    participant.current_step += 1
+                    participant.save()
+                    return redirect(reverse('debriefing', args=[project.slug]))
+                else:
+                    participant.extra_data['report_consent'] = True
+                    participant.save()
                 return
 
             if view_class is DebriefingView:

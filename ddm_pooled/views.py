@@ -41,7 +41,7 @@ class PoolDonateView(DetailView):
         """
         # Check that answer has been provided and is valid.
         consent = request.POST.get('donation_consent', None)
-        if consent not in ['0', '1']:
+        if consent not in ['0', '1', 'true', 'false']:
             # Render briefing view again with error message.
             self.object = self.get_object()
             context = self.get_context_data(object=self.get_object())
@@ -49,9 +49,9 @@ class PoolDonateView(DetailView):
             return self.render_to_response(context)
 
         participant = get_participant_from_request(request, self.get_object())
-        if consent == '1':
+        if consent in ('1', 'true'):
             participant.extra_data['pool_donate'] = True
-        elif consent == '0':
+        elif consent in ('0', 'false'):
             participant.extra_data['pool_donate'] = False
 
         participant.save()
