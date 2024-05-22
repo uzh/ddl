@@ -7,7 +7,8 @@ ALLOWED_HOSTS = [
     'data-donation.uzh.ch',
     'www.data-donation.uzh.ch',
     'idikmzdatad01.uzh.ch',
-    'ziikmzdatad02.uzh.ch'
+    'ziikmzdatad02.uzh.ch',
+    'localhost'
 ]
 
 SITE_ID = 1
