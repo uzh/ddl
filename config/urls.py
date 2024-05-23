@@ -16,6 +16,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('cms/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
+    path('robots.txt', TemplateView.as_view(template_name="ddl/robots.txt", content_type='text/plain')),
     path(r'ddm/', include('ddm.urls')),
     path('oidc/', include('mozilla_django_oidc.urls')),
     path('login/', auth_views.LoginView.as_view(template_name='ddl/registration/login.html'), name='login'),
