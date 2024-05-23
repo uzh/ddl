@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.simple_translation',
     'wagtail',
     'modelcluster',
-    'taggit',
-    'ddm_pooled'
+    'taggit'
 ]
 
 MIDDLEWARE = [
