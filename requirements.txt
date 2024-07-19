@@ -1,5 +1,5 @@
 Django>=3.2,<4.0
-django-ddm==1.0.15
+django-ddm==1.0.16
 mozilla-django-oidc==3.0.0
 mysqlclient==2.1.0
 python-dotenv==0.20.0
