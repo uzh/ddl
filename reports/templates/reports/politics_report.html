@@ -1,0 +1,50 @@
+{% extends "reports/base.html" %}
+{% load static %}
+
+{% block page_title %}YouTube Report{% endblock %}
+
+
+{% block report_body %}
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>Gefolgte Kanäle</h3>
+    <p>Anzahl gefolgte Kanäle: {{ n_insta_follows }}</p>
+    <p><b>Gefolgte Accounts: Typen</b></p>
+    <div class="d-flex justify-content-center pt-5">{{ insta_follows_plot.div | safe }}</div>
+  </div>
+</div>
+
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>Interaktionen mit Inhalten von unterschiedlichen Account-Typen</h3>
+    <div class="d-flex justify-content-center pt-5">{{ insta_interaction_plot.div | safe }}</div>
+  </div>
+</div>
+
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>Gesehene Inhalte von unterschiedlichen Account-Typen</h3>
+    <div class="d-flex justify-content-center pt-5">{{ insta_content_plot.div | safe }}</div>
+  </div>
+</div>
+
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h1>Stimmentscheidung und Nutzung soziale Medien</h1>
+  </div>
+</div>
+
+<div class="row bg-warning bg-gradient">
+  <div class="col">
+    ROW 2: {{ test_data }}
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+
+{{ insta_follows_plot.script | safe }}
+{{ insta_interaction_plot.script | safe }}
+{{ insta_content_plot.script | safe }}
+{% endblock %}

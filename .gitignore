@@ -25,3 +25,5 @@ staticfiles/
 
 # Ignore digital_meal folder
 digital_meal/
+
+*/temp

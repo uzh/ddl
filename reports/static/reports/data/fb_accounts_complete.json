@@ -1,0 +1,5367 @@
+{
+    "https://www.facebook.com/20min/?locale=de_DE": {
+        "name": "20 Minuten",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/24heures.ch/?locale=de_DE": {
+        "name": "24 heures",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/azAargauerZeitung/?locale=de_DE": {
+        "name": "Aargauer Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/ajour.ch": {
+        "name": "Ajour.ch - deutsch",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/appenzellerzeitung/?locale=de_DE": {
+        "name": "Appenzeller Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/appenzellervolksfreund/?locale=de_DE": {
+        "name": "Appenzeller Volksfreund",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/arcinfofanpage/?locale=de_DE": {
+        "name": "ArcInfo",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/BadenerTagblatt": {
+        "name": "Badener Tagblatt",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/BaslerZeitung/?locale=de_DE": {
+        "name": "Basler Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/bernerzeitung.ch/?locale=de_DE": {
+        "name": "Berner Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/BielerTagblatt/?locale=de_DE": {
+        "name": "Bieler Tagblatt",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/blick/?locale=de_DE": {
+        "name": "Blick",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/bluenews.ch": {
+        "name": "Blue News",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/botederurschweiz/?locale=de_DE": {
+        "name": "Bote der Urschweiz",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/suedostschweiz/?locale=de_DE": {
+        "name": "Südostschweiz",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/bzZeitungRegionBasel": {
+        "name": "bz Zeitung für die Region Basel",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/corrieredelticino/?locale=it_IT": {
+        "name": "Corriere del Ticino",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/derbundch/?locale=de_DE": {
+        "name": "Der Bund",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/landbote/?locale=de_DE": {
+        "name": "Landbote",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/rheintaler.ch/?locale=de_DE": {
+        "name": "rheintaler.ch",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/weltwoche/?locale=de_DE": {
+        "name": "DIE WELTWOCHE",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/RepublikMagazin/?locale=de_DE": {
+        "name": "Republik",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/FreiburgerNachrichten/?locale=de_DE": {
+        "name": "Freiburger Nachrichten",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/fuw.news/?locale=de_DE": {
+        "name": "Finanz und Wirtschaft",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/GrenchnerTagblatt/?locale=de_DE": {
+        "name": "Grenchner Tagblatt",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/Heidi.news": {
+        "name": "Heidi.news",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/Journal21/?locale=de_DE": {
+        "name": "Journal21",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/Mattinonline/": {
+        "name": "Mattinonline",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/infosperber/?locale=de_DE": {
+        "name": "Infosperber",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/journallajoie/?locale=de_DE": {
+        "name": "L'Ajoie",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/agefi": {
+        "name": "L'Agefi",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/LaCoteJournal/?locale=de_DE": {
+        "name": "La Côte",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/laliberte.ch/?locale=de_DE": {
+        "name": "QUOTIDIEN LA LIBERTÉ",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/UnserOberaargau": {
+        "name": "Langenthaler Tagblatt",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/laregione": {
+        "name": "laRegione",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/quotidienlecourrier/?locale=de_DE": {
+        "name": "Le Courrier",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/lematin.ch/?locale=de_DE": {
+        "name": "LeMatin.ch",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/lematindimanche/?locale=de_DE": {
+        "name": "Le Matin Dimanche",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/nouvelliste/?locale=de_DE": {
+        "name": "Le Nouvelliste",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/QuotidienJurassien/?locale=de_DE": {
+        "name": "Le Quotidien Jurassien",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/letemps.ch/?locale=de_DE": {
+        "name": "Le Temps",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/LimmattalerZeitung": {
+        "name": "Limmattaler Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/linthzeitung": {
+        "name": "Linth-Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/LuzernerZeitung/?locale=de_DE": {
+        "name": "Luzerner Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/marchhoefe24/?locale=de_DE": {
+        "name": "March24 & Höfe24",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/naumedia/?locale=de_DE": {
+        "name": "Nau.ch",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/nzz/?locale=de_DE": {
+        "name": "NZZ Neue Zürcher Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/NidwaldnerZeitung/?locale=de_DE": {
+        "name": "Nidwaldner Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/NZZamSonntag/?locale=de_DE": {
+        "name": "NZZ am Sonntag",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/ObwaldnerZeitung/?locale=de_DE": {
+        "name": "Obwaldner Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/otOltnerTagblatt": {
+        "name": "Oltner Tagblatt",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/rts.ch/?locale=de_DE": {
+        "name": "RADIO TELEVISION SUISSE (RTS)",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/rtr.ch/?locale=de_DE": {
+        "name": "RTR Radiotelevisiun Svizra Rumantscha",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/radiotelevisionesvizzera/?locale=de_DE": {
+        "name": "Radiotelevisione svizzera (RSI)",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/shn.ch/?locale=de_DE": {
+        "name": "Schaffhauser Nachrichten",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/SolothurnerZeitung/?locale=de_DE": {
+        "name": "Solothurner Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/sonntagszeitung/?locale=de_DE": {
+        "name": "SonntagsZeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/srf.ch/?locale=de_DE": {
+        "name": "SRF Schweizer Radio und Fernsehen",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/tagblatt/?locale=de_DE": {
+        "name": "Tagblatt",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/suedostschweiz.glarus": {
+        "name": "Südostschweiz Glarus",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/swissinfo/?locale=de_DE": {
+        "name": "swissinfo",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/Tagesanzeiger/?locale=de_DE": {
+        "name": "Tages-Anzeiger",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/thurgauerzeitung/?locale=de_DE": {
+        "name": "Thurgauer Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/ticinonews/?locale=it_IT": {
+        "name": "Ticinonews.ch",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/ticinonline.ch/?locale=it_IT": {
+        "name": "Ticinonline Account verificato",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/toggenburgertagblatt/?locale=de_DE": {
+        "name": "Toggenburger Tagblatt",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/tdg.ch/?locale=fr_FR": {
+        "name": "Tribune de Genève",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/UrnerZeitung/?locale=de_DE": {
+        "name": "Urner Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/walliserbote.ch/?locale=de_DE": {
+        "name": "walliserbote.ch",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/watson.news/?locale=de_DE": {
+        "name": "watson",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/wundo.ch/?locale=de_DE": {
+        "name": "Werdenberger & Obertoggenburger",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/wilerzeitung.ch/?locale=de_DE": {
+        "name": "Wiler Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/Boettu/?locale=de_DE": {
+        "name": "Willisauer Bote",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/DieWochenzeitung/?locale=de_DE": {
+        "name": "Die Wochenzeitung - WOZ",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/zentralplus/?locale=de_DE": {
+        "name": "zentralplus",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/zofingertagblatt/?locale=de_DE": {
+        "name": "Zofinger Tagblatt / zt",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/ZugerZeitung/?locale=de_DE": {
+        "name": "Zuger Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/zueriost/?locale=de_DE": {
+        "name": "Züriost",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/zuonline.ch/?locale=de_DE": {
+        "name": "Zürcher Unterländer",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/zsz.ch/?locale=de_DE": {
+        "name": "Zürichsee-Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/p/Andelfinger-Zeitung-100063759422096/?locale=de_DE": {
+        "name": "Andelfinger Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/bajourbasel/?locale=de_DE": {
+        "name": "Bajour",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/bauernzeitung/?locale=de_DE": {
+        "name": "BauernZeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/Coopzeitung/?locale=de_DE": {
+        "name": "Coopzeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/deutschewellenews/?locale=de_DE": {
+        "name": "DW News",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/diezeit/?locale=de_DE": {
+        "name": "DIE ZEIT",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/ilgrigioneitaliano": {
+        "name": "Il Grigione Italiano",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/kreuzlingernachrichten/?locale=de_DE": {
+        "name": "Kreuzlinger-, Frauenfelder-, Weinfelder und Untersee Nachrichten",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/lagruyere.ch": {
+        "name": "La Gruyère",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/lemonde.fr/?locale=de_DE": {
+        "name": "Le Monde",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/ihre.sz": {
+        "name": "Süddeutsche Zeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/TagblattZuerich/?locale=de_DE": {
+        "name": "Tagblatt der Stadt Zürich",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/beobachtermagazin/?locale=de_DE": {
+        "name": "Beobachter",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/handelszeitung/?locale=de_DE": {
+        "name": "Handelszeitung",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/ktipp.redaktion/?locale=de_DE": {
+        "name": "K-Tipp",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/bilanz/?locale=de_DE": {
+        "name": "BILANZ",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/schweizer.bauern": {
+        "name": "Schweizer Bauern",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/LaRegionNordVaudois": {
+        "name": "La Région",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/fergeneve/?locale=fr_FR": {
+        "name": "FER Genève",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/nebelspalter/?locale=de_DE": {
+        "name": "Nebelspalter",
+        "medium": "newspaper",
+        "type": "media"
+    },
+    "https://www.facebook.com/srfkultur/?locale=de_DE": {
+        "name": "SRF Kultur",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/srfnews/?locale=de_DE": {
+        "name": "SRF News",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/srfvirus": {
+        "name": "SRF Virus",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/LaPremiereRTBF": {
+        "name": "La Première - RTBF",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/couleur3/?locale=de_DE": {
+        "name": "Couleur3",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/rsireteuno/?locale=de_DE": {
+        "name": "Rete Uno",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/retedue": {
+        "name": "Rete Due",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/retetre/?locale=de_DE": {
+        "name": "Rete Tre",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/rtr.ch": {
+        "name": "RTR Radiotelevisiun Svizra Rumantscha",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/dabswiss": {
+        "name": "DAB-Swiss",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radioswissclassic/?locale=de_DE": {
+        "name": "Radio Swiss Classic",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radioswissjazz/?locale=de_DE": {
+        "name": "Radio Swiss Jazz",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radioswisspop/?locale=de_DE": {
+        "name": "Radio Swiss Pop",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/3fach.ch/?locale=de_DE": {
+        "name": "Radio 3FACH",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/blindpoweraudioplattform/?locale=de_DE": {
+        "name": "Blind Power - Plattform für Audiodeskription, Sport und Kultur",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radiocitegeneve": {
+        "name": "Radio Cité Genève",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/JamOnRadioOfficial/?locale=de_DE": {
+        "name": "Jam On Radio",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radiokanalk/?locale=de_DE": {
+        "name": "Kanal K",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/RadioLifeChannel": {
+        "name": "Radio Life Channel",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/LoRa97.5/?locale=de_DE": {
+        "name": "Radio LoRa 97,5 MHz",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radiomariach/?locale=de_DE": {
+        "name": "Radio Maria Schweiz",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/UltimEscapeMeyrin": {
+        "name": "UltimEscape Genève-Meyrin",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radio4tng/?locale=de_DE": {
+        "name": "Radio 4 TNG",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/RadioRaBe/?locale=de_DE": {
+        "name": "Radio RaBe",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/RadioRasaRasa/?locale=de_DE": {
+        "name": "Radio RaSA",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radiostadtfilter/?locale=de_DE": {
+        "name": "Stadtfilter",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radioxbasel/?locale=de_DE": {
+        "name": "Radio X",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/sunradio.ch/?locale=de_DE": {
+        "name": "Sunradio",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/toxicfm/?locale=de_DE": {
+        "name": "toxic.fm",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radioenergy/?locale=de_DE": {
+        "name": "Radio ENERGY",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/GoATRadioENT": {
+        "name": "Goat Radio",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/my105.ch": {
+        "name": "my105.ch",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radioeviva.ch/?locale=de_DE": {
+        "name": "Radio Eviva",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radiotell/?locale=de_DE": {
+        "name": "radiotell.ch",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/rockitradio.ch/?locale=de_DE": {
+        "name": "Rockit Radio",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/vintageradio.ch": {
+        "name": "Vintage Radio",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/worldradioswitzerland/?locale=de_DE": {
+        "name": "World Radio Switzerland",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/aktivradio.ch": {
+        "name": "AKTIV RADIO",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/energybasel/?locale=de_DE": {
+        "name": "Energy Basel",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/energybern/?locale=de_DE": {
+        "name": "Energy Bern",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/EnergyZuerich": {
+        "name": "Energy Zürich",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/radioneo1/?locale=de_DE": {
+        "name": "Radio neo1",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/onefm.ch/?locale=de_DE": {
+        "name": "One FM",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/Radio1Zurich/?locale=de_DE": {
+        "name": "Radio 1",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/Radio2Go.fm": {
+        "name": "Radio2Go",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/Radio32ch": {
+        "name": "Radio 32",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radioargovia/?locale=mt_MT": {
+        "name": "Radio Argovia",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radiobasilisk/?locale=de_DE": {
+        "name": "Radio Basilisk",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radiobeo/?locale=de_DE": {
+        "name": "Radio BeO",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/RadioBern1": {
+        "name": "RADIO BERN1",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/canal3biel/?locale=de_DE": {
+        "name": "Radio Canal 3",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radiocentral.ch/?locale=de_DE": {
+        "name": "Radio Central",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radiochablais/?locale=de_DE": {
+        "name": "Radio Chablais",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/RadioTicino/?locale=it_IT": {
+        "name": "Radio Ticino",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/RadioFreiburg/?locale=de_DE": {
+        "name": "RadioFr. Freiburg",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/RFJ.CH/?locale=de_DE": {
+        "name": "RFJ.CH",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/RadioLacOfficiel": {
+        "name": "Radio Lac",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radiomelody.ch/?locale=mt_MT": {
+        "name": "Radio Melody",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/grrif": {
+        "name": "GRRIF",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/RJB.ch/?locale=de_DE": {
+        "name": "RJB.ch",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radiomunot/?locale=de_DE": {
+        "name": "Radio Munot",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/RTN.CH": {
+        "name": "RTN.CH",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radiorottu/?locale=de_DE": {
+        "name": "rro - radio rottu oberwallis",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/sunshineradio.ch/?locale=gn_PY": {
+        "name": "Sunshine Radio",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/diistop": {
+        "name": "TOP",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/radiozuerisee/?locale=de_DE": {
+        "name": "Radio Zürisee",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/rhonefm": {
+        "name": "Rhône FM",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/rougefm/?locale=de_DE": {
+        "name": "Rouge FM",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/laradioplus": {
+        "name": "La Radio Plus",
+        "medium": "radio",
+        "type": "media"
+    },
+    "https://www.facebook.com/3plus/?locale=de_DE": {
+        "name": "3+",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/3sat.de/?locale=de_DE": {
+        "name": "3sat",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/plus4.news": {
+        "name": "Plus4",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/5PlusChannel": {
+        "name": "5 PLUS",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/auftanken.tv/?locale=de_DE": {
+        "name": "auftanken.TV",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/bluesport.ch": {
+        "name": "blue Sport",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/comedycentralch": {
+        "name": "Comedy Central CH",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/joiztv/?locale=de_DE": {
+        "name": "joiz",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/MTVSwitzerland": {
+        "name": "MTV Switzerland",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/mysports.ch/?locale=de_DE": {
+        "name": "MySports",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/nickelodeondeutschland/?locale=de_DE": {
+        "name": "Nickelodeon",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/ProSieben": {
+        "name": "ProSieben",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/puls030/?locale=de_DE": {
+        "name": "Puls",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/qs24official/?locale=de_DE": {
+        "name": "QS24",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/rtlzwei": {
+        "name": "RTLZWEI",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/RTLcom/?locale=de_DE": {
+        "name": "RTL",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/RTSinfo": {
+        "name": "RTSinfo",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/S1TVofficial/?locale=de_DE": {
+        "name": "S1tv",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/sat1tv/?locale=de_DE": {
+        "name": "SAT.1",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/schaffhauserfernsehen/?locale=de_DE": {
+        "name": "Schaffhauser Fernsehen",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/p/Schweiz-5-TV-100063545108570": {
+        "name": "Schweiz 5 TV",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/srfsport/?locale=de_DE": {
+        "name": "SRF Sport",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/SkySportCH/?locale=de_DE": {
+        "name": "Sky Sport CH",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/SRGSSR/?locale=de_DE": {
+        "name": "SRG SSR",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/startv/?locale=de_DE": {
+        "name": "STARTV",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/RTLSUPER": {
+        "name": "RTL SUPER",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/tele1.ge/?locale=pt_BR": {
+        "name": "TELE1",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/telediessenhofen/?locale=de_DE": {
+        "name": "Tele D",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/tele.tell/?locale=de_DE": {
+        "name": "Tele Tell",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/diistop/?locale=de_DE": {
+        "name": "TOP",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/telezentralschweiz": {
+        "name": "Tele Zentralschweiz Telenapf",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/Telebasel/?locale=de_DE": {
+        "name": "Telebasel",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/TeleBielingue/?locale=de_DE": {
+        "name": "TeleBielingue",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/rts.ch/?locale=fr_FR": {
+        "name": "RADIO TELEVISION SUISSE (RTS)",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/tv5mondeofficiel": {
+        "name": "TV5MONDE",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/tvo.online": {
+        "name": "TVO - Das Ostschweizer Fernsehen",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/VivaLuzernAG/?locale=de_DE": {
+        "name": "Viva Luzern AG",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/VOX.Fernsehen/?locale=de_DE": {
+        "name": "VOX",
+        "medium": "tv",
+        "type": "media"
+    },
+    "https://www.facebook.com/gewerkschaftsbund": {
+        "name": "Schweizerischer Gewerkschaftsbund SGB",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/travailsuisse": {
+        "name": "TravailSuisse",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/igarbeit.ch": {
+        "name": "IG Arbeit",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/kleinbauern.petitspaysans": {
+        "name": "Kleinbauern-Vereinigung / Petits paysans",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/BirdLife.Schweiz/": {
+        "name": "BirdLife Schweiz",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/centrepatronal/": {
+        "name": "Centre Patronal",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/AquaVivaGewaesserschutz": {
+        "name": "Aqua Viva - Gewässerschutzorganisation",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Swiss-School-of-Public-Health-100519625919822": {
+        "name": "Swiss School of Public Health",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Drogenabstinenz": {
+        "name": "Dachverband Drogenabstinenz",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/allianceFCH": {
+        "name": "alliance F",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/siu.schweiz": {
+        "name": "SIU",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/ssowissen": {
+        "name": "SSO Wissen",
+        "orga_type": "MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/agvs.upsa": {
+        "name": "AGVS / UPSA",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/KantonBL": {
+        "name": "Kanton Basel-Landschaft",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/fdp.dieliberalen": {
+        "name": "FDP",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/sgvusam": {
+        "name": "Schweizerischer Gewerbeverband sgv",
+        "orga_type": "MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Aspasie-115934561812511": {
+        "name": "Aspasie; Aspasie",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/pronatura": {
+        "name": "Pro Natura",
+        "orga_type": "DachOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/profamiliaschweiz": {
+        "name": "Pro Familia Schweiz Suisse Svizzera",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/combattredrogue": {
+        "name": "Combattre la drogue, pour la vie - ARCD",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/federationpatronale": {
+        "name": "Fédération Patronale et Economique",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/upcf.ch": {
+        "name": "Union Patronale du Canton de Fribourg",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/FVG-Fachverband-VREG-Entsorgung-254342504721778": {
+        "name": "Fachverband VREG-Entsorgung",
+        "orga_type": "EinzelOrganisation,DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/odaumwelt": {
+        "name": "Umweltprofis.ch",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/business": {
+        "name": "Möchtest du, dass dein Unternehmen von mehr Menschen gefunden wird oder mehr Umsätze erzielt? Finde das passende kostenlose Marketing-Tool von Facebook.",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/SexuelleGesundheitSchweiz": {
+        "name": "Sexuelle Gesundheit Schweiz",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/NaturfreundeCH": {
+        "name": "Naturfreunde Schweiz / Amis de la Nature",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/karussellbadenimg": {
+        "name": "Familienzentrum Karussell Region Baden",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/swisswinepromotion": {
+        "name": "Swiss Wine",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/ccapneuchatel": {
+        "name": "CCAP",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/procap": {
+        "name": "Procap Schweiz - Suisse - Svizzera",
+        "orga_type": "MitgliedsOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/FLS.FSPspan": {
+        "name": "Union Schweiz von Soroptimist International; Union Suisse du Soroptimist International",
+        "orga_type": "DachOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/ipsuisse": {
+        "name": "IP-SUISSE",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/ActaresEngagement": {
+        "name": "Actares",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/AslocaSuissei": {
+        "name": "Association Suisse des locataires - Section romande",
+        "orga_type": "DachOrganisation,MitgliedsOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/mountainwilderness.ch": {
+        "name": "Mountain Wilderness Schweiz",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/gruyerepaysdenhaut": {
+        "name": "Parc naturel régional Gruyère Pays-d'Enhaut",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/alpeninitiative": {
+        "name": "Alpen-Initiative",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/SchweizerischerFischereiVerband": {
+        "name": "Schweizerischer Fischerei-Verband",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/2008": {
+        "name": "Andrea Roe",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/InfoEntraideSuisseAntenneNeuchatel": {
+        "name": "Info-Entraide Suisse Antenne Neuchâtel",
+        "orga_type": "MitgliedsOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/kmufrauenschweiz": {
+        "name": "KMU Frauen Schweiz",
+        "orga_type": "DachOrganisation,MitgliedsOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/IFELV": {
+        "name": "Fruits et Légumes du Valais",
+        "orga_type": "DachOrganisation,MitgliedsOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/swisscleantech": {
+        "name": "swisscleantech",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/vpodaargau": {
+        "name": "VPOD Aargau/Solothurn",
+        "orga_type": "MitgliedsOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/zugergewerbe": {
+        "name": "Gewerbeverband Kanton Zug",
+        "orga_type": "DachOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/WordPresscom": {
+        "name": "WordPress.com",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/KantonSG": {
+        "name": "Kanton St.Gallen",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/gentechfrei": {
+        "name": "SAG Schweizer Allianz Gentechfrei",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/sahoseosos": {
+        "name": "SAH OSEO SOS",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/kanton.uri": {
+        "name": "Kanton Uri",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Landwirtschaft.Schweiz": {
+        "name": "LID",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/suissedigital": {
+        "name": "Suissedigital",
+        "orga_type": "DachOrganisation,MitgliedsOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/caritasjura": {
+        "name": "Caritas Jura",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Comm9caritasjura": {
+        "name": "COMM9",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/sonart.musikschaffende": {
+        "name": "Sonart - Musikschaffende Schweiz",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/ktbern": {
+        "name": "Kanton Bern",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/furrerhugi": {
+        "name": "Furrerhugi.",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/KantonLuzern": {
+        "name": "Kanton Luzern",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/WASWirtschaftArbeitSoziales": {
+        "name": "WAS Wirtschaft Arbeit Soziales",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/schweizerbiere": {
+        "name": "Schweizer Bier",
+        "orga_type": "DachOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Mieterverband": {
+        "name": "Mieterinnen- und Mieterverband MV",
+        "orga_type": "DachOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/CcTicino": {
+        "name": "Camera di commercio e dell'industria Cantone Ticino",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/xeniabern": {
+        "name": "XENIA Fachstelle Sexarbeit",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/silvereconomie": {
+        "name": "Silver Economie Suisse",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/1599376030281324_864559142366297": {
+        "name": "Verein für soziale Gerechtigkeit; Association pour la justice sociale",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/1599376030281324_839423864879825": {
+        "name": "Verein für soziale Gerechtigkeit; Association pour la justice sociale",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/1599376030281324_839423651546513": {
+        "name": "Verein für soziale Gerechtigkeit; Association pour la justice sociale",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/plugins": {
+        "name": "Quartierverein Enge",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/schweizertierschutz": {
+        "name": "Schweizer Tierschutz STS",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Etat.Fribourg": {
+        "name": "Etat de Fribourg - Staat Freiburg",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/SchweizerischerZivildienstverband": {
+        "name": "Civiva",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/pinkcross": {
+        "name": "PINK CROSS / Swiss Gay Federation",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/KantonNidwalden": {
+        "name": "Kanton Nidwalden",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/epflcampus": {
+        "name": "EPFL",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/RegenbogenfamilienLGBTIQ": {
+        "name": "Regenbogenfamilien Familles arc-en-ciel Famiglie arcobaleno",
+        "orga_type": "EinzelOrganisation,DachOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/AssociationPourLaSauvegardeDuLeman": {
+        "name": "Association pour la Sauvegarde du Léman",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/lebendiges.rottal": {
+        "name": "Verein Lebendiges Rottal",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Rathaus.Basel": {
+        "name": "Rathaus Basel",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/femmestischemaennertische": {
+        "name": "Femmes-Tische / Männer-Tische Schweiz",
+        "orga_type": "DachOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/HOCHSTAMMSUISSE": {
+        "name": "HOCHSTAMM SUISSE",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/AvenirSocial": {
+        "name": "AvenirSocial",
+        "orga_type": "EinzelOrganisation,DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/prosenectute": {
+        "name": "Pro Senectute",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/NetworkWIDEsvg": {
+        "name": "Verein WIDE Switzerland",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/BienenSchweiz": {
+        "name": "BienenSchweiz",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/sbk.asi": {
+        "name": "SBK - ASI",
+        "orga_type": "EinzelOrganisation,DachOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/fachverbandsucht.ch": {
+        "name": "Fachverband Sucht",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/forumtabakpraventionftgs": {
+        "name": "Forum Tabakprävention FTGS",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/centreneuchateloisdintegrationprofessionnelle": {
+        "name": "CNIP - Centre Neuchâtelois d'Intégration Professionnelle",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/gstsvs": {
+        "name": "Gesellschaft Schweizer Tierärztinnen und Tierärzte",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/visionlandwirtschaft": {
+        "name": "Vision Landwirtschaft",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/ForstunternehmerSchweiz": {
+        "name": "Forstunternehmer Schweiz",
+        "orga_type": "EinzelOrganisation,DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/goforjobsharing": {
+        "name": "Go For Jobsharing",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/kindsverlust.ch": {
+        "name": "kindsverlust.ch",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/RegioARSGBodensee": {
+        "name": "Regio Appenzell AR - St.Gallen - Bodensee",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/schweizerbauernverband": {
+        "name": "Schweizer Bauernverband",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/unescosardona": {
+        "name": "UNESCO-Weltnaturerbe TektonikArena Sardona",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/HolSwi": {
+        "name": "Holstein Switzerland",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/gallosuisse": {
+        "name": "Das Schweizer Ei",
+        "orga_type": "DachOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Champignons-Suisses-1123100704494746": {
+        "name": "Champignons-Suisses",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/landfrauen.ch": {
+        "name": "Schweizerischer Bäuerinnen- und Landfrauenverband - SBLV",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/schweizerischer.pachterverbandpicturesource": {
+        "name": "Schweizerischer Pächterverband; Association Suisse des Fermiers",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Droleg-201502259908543": {
+        "name": "Droleg",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/everave.ch": {
+        "name": "Eve & Rave Schweiz",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/CHblw/": {
+        "name": "Bundesamt Für Landwirtschaft; Office fédéral de l'agriculture; Ufficio federale dell'agricoltura",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/TerroirFribourg": {
+        "name": "Terroir Fribourg",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/pvbapc": {
+        "name": "PVB APC",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/209355915806067": {
+        "name": "OdASanté",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/spschweiz": {
+        "name": "SP Schweiz",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/vpodbern": {
+        "name": "VPOD Bern Kanton und Bund",
+        "orga_type": "MitgliedsOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/vpodBernStaedteEnergie": {
+        "name": "VPOD Bern Städte Energie",
+        "orga_type": "MitgliedsOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/kantonobwalden": {
+        "name": "Kanton Obwalden",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/usamsgv": {
+        "name": "Union suisse des arts et métiers usam",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/eco.ch.forum": {
+        "name": "eco.ch",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/festivaldernatur.chimg": {
+        "name": "Verein Festival der Natur - Biodiversität erleben; Association Fête de la Nature - au coeur de la biodiversité; Festival della Natura - vivere la biodiversità",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/festivaldernatur.ch": {
+        "name": "Festival der Natur",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/schweizergesundheitstage": {
+        "name": "Schweizer Gesundheitstage",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Stillfoerderung": {
+        "name": "Stillförderung Schweiz - Promotion allaitement maternel Suisse",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/goldenerfisch": {
+        "name": "Tafelgesellschaft zum Goldenen Fisch",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/vasos.fares": {
+        "name": "VASOS / FARES",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Hoststar.WebhostingFacebook": {
+        "name": "Fisch vom Hof",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/klimaallianzCH": {
+        "name": "Klima-Allianz Schweiz",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Fructus.official": {
+        "name": "Fructus - die Vereinigung zur Förderung alter Obstsorten",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/zurichpride": {
+        "name": "Zurich Pride",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Stiftung-Landschaftsschutz-Schweiz-162005207158186": {
+        "name": "Stiftung Landschaftsschutz Schweiz",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/LeaderinnenOstschweiz": {
+        "name": "Leaderinnen Ostschweiz",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/neuefrauenbewegung": {
+        "name": "Neue Frauenbewegung 2.0.",
+        "orga_type": "MitgliedsOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/swissfamilybusiness": {
+        "name": "Swiss Family Business",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Swiss-Venture-Club-335833897351645": {
+        "name": "Swiss Venture Club",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/aefu.chnoscriptimg": {
+        "name": "Nichtionisierende Strahlung, Umwelt und Gesundheit; Rayonnements non ionisants, l'environnement et la santé; Radiazioni non ionizzanti, l'ambiente e la salute",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/coscienzasvizzera": {
+        "name": "Coscienza Svizzera",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/mvluzernFacebook": {
+        "name": "Mieterinnen- und Mieterverband Luzern, Nidwalden, Obwalden, Uri",
+        "orga_type": "MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/zentralschweizvpod": {
+        "name": "VPOD Zentralschweiz",
+        "orga_type": "DachOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/kmutag": {
+        "name": "Schweizer KMU-Tag - nirgendwo sind sich die Schweizer KMU näher",
+        "orga_type": "MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/paneco.ch": {
+        "name": "Stiftung PanEco",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/WHO": {
+        "name": "World Health Organization (WHO)",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/stopogm": {
+        "name": "Alliance agriculture sans génie génétique",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/groups": {
+        "name": "Gruppen",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/651287690357874": {
+        "name": "Schweizerischer Verband alleinerziehender Mütter und Väter; Fédération suisse des familles monoparentales; Federazione svizzera delle famiglie monoparentali",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/813750254217821": {
+        "name": "Schweizerischer Verband alleinerziehender Mütter und Väter; Fédération suisse des familles monoparentales; Federazione svizzera delle famiglie monoparentali",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/1897644883654281": {
+        "name": "Einelternfamilien",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/841007424719232": {
+        "name": "Schweizerischer Verband alleinerziehender Mütter und Väter; Fédération suisse des familles monoparentales; Federazione svizzera delle famiglie monoparentali",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/839204348232873": {
+        "name": "Schweizerischer Verband alleinerziehender Mütter und Väter; Fédération suisse des familles monoparentales; Federazione svizzera delle famiglie monoparentali",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/834907998662508": {
+        "name": "Schweizerischer Verband alleinerziehender Mütter und Väter; Fédération suisse des familles monoparentales; Federazione svizzera delle famiglie monoparentali",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/826522736167701": {
+        "name": "Schweizerischer Verband alleinerziehender Mütter und Väter; Fédération suisse des familles monoparentales; Federazione svizzera delle famiglie monoparentali",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/einelternfamilien": {
+        "name": "Einelternfamilien",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/FachstelleSozialhilfeFacebook": {
+        "name": "Unabhängige Fachstelle für Sozialhilferecht; Bureau indépendant du droit de l'assistance sociale",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/kt.thurgau": {
+        "name": "Kanton Thurgau",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/kt.thurgaui": {
+        "name": "Kanton Thurgau; Canton de Thurgovie; Cantone di Turgovia",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Selbsthilfethurgau": {
+        "name": "Selbsthilfe Thurgau",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Innosuisse": {
+        "name": "Innosuisse",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/amsteuernie": {
+        "name": "Fachstelle ASN - Am Steuer nie; Service AVJ - Au volant jamais; Servizio AVM - Al volante mai",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/kantonglarus": {
+        "name": "Kanton Glarus; Canton Glaris",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/milchjugend": {
+        "name": "Milchjugend",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/CIPAIGAB": {
+        "name": "Interessensgemeinschaft Angehörigenbetreuung; Communauté d' intérêts Proches aidants; Communità di interesse Familiari curanti",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/elternbildung.ch": {
+        "name": "Elternbildung CH",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/stophatespeech.ch": {
+        "name": "Stop Hate Speech",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/vereinklimaschutzschweiz": {
+        "name": "Verein Klimaschutz Schweiz",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/tgns.switzerland": {
+        "name": "TGNS - Transgender Network Switzerland",
+        "orga_type": "EinzelOrganisation,DachOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/queeramnesty.ch": {
+        "name": "QUEERAMNESTY.CH",
+        "orga_type": "MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/netzcourage": {
+        "name": "NetzCourage",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/dergewerbeverein19": {
+        "name": "Der Gewerbeverein",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/vapkoDe": {
+        "name": "VAPKO  Vereinigung amtlicher Pilzkontrollorgane der Schweiz DE-CH",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/vapkogr": {
+        "name": "VAPKO Groupement romand",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/suberg.ch": {
+        "name": "Biohof Inselmatt",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/maenner.ch": {
+        "name": "männer.ch",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/USOE-101969634631154": {
+        "name": "Union Suisse des Oenologues",
+        "orga_type": "EinzelOrganisation,DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/LesAutomnalesmeta": {
+        "name": "Arvinis",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/LesAutomnales": {
+        "name": "Les Automnales",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/arvinis.ch": {
+        "name": "Arvinis Palexpo Genève",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/salonagrovina": {
+        "name": "Agrovina",
+        "orga_type": "MitgliedsOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/BiogartenundNaturgarten": {
+        "name": "Bioterra",
+        "orga_type": "EinzelOrganisation,DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/kantonschwyz": {
+        "name": "Kanton Schwyz",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/LOS.Schweiz": {
+        "name": "Lesbenorganisation Schweiz \"LOS\"",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Verein.Lernwerk": {
+        "name": "Verein Lernwerk Turgi",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/kantonaargau": {
+        "name": "Kanton Aargau",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/marchagainstmonsantobasel": {
+        "name": "March against Monsanto + Syngenta Basel",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/landwirtschaftmitzukunft": {
+        "name": "Landwirtschaft mit Zukunft",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/login": {
+        "name": "Startseite",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/LOS.Suisse": {
+        "name": "Organisation suisse des lesbiennes \"LOS\"",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/policies": {
+        "name": "Fédération romande des associations LGBTIQ",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/faireswiss": {
+        "name": "Faireswiss",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/venturekick": {
+        "name": "Venture Kick",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/kinderohnetabak": {
+        "name": "Kinder ohne Tabak JA",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/hirnliga": {
+        "name": "Schweizerische Hirnliga; Ligue suisse pour le cerveau; Lega svizzera per il cervello",
+        "orga_type": "EinzelOrganisation,DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Stiftung-Freiheit-und-Verantwortung-106711058181423": {
+        "name": "Stiftung Freiheit und Verantwortung",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/promotionlaufental": {
+        "name": "Promotion Laufental",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/2000sqm": {
+        "name": "2000m2",
+        "orga_type": "MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/CH2021.ch": {
+        "name": "Verein CH2021; Association CH2021",
+        "orga_type": "EinzelOrganisation,DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/politiciennes.ch": {
+        "name": "politiciennes.ch",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/AVIVOGE": {
+        "name": "AVIVO; Association des Vieillards, Invalides, Veuves et Orphelins",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/garanto.ch": {
+        "name": "Garanto Schweiz Suisse Svizzera",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/energiewendeja.ch": {
+        "name": "energie-wende-ja.ch",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/NetworkMMS": {
+        "name": "Medicus Mundi Switzerland - Health for all",
+        "orga_type": "DachOrganisation,MitgliedsOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/lesyndicatdesenseignantsromands": {
+        "name": "Syndicat des enseignantes et enseignants de Suisse romande",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/benevolbern": {
+        "name": "Benevol Kanton Bern",
+        "orga_type": "MitgliedsOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/zukunft.pflanzenschutz": {
+        "name": "Zukunft Pflanzenschutz / avenir de la protection des plantes",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/www.schaetzle.ch": {
+        "name": "Schätzle AG",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/BioPartnerSchweiz": {
+        "name": "Bio Partner Schweiz AG",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/vpodschweiz": {
+        "name": "VPOD Schweiz",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/VitalAireSchweiz": {
+        "name": "VitalAire Schweiz",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/SwissTPH": {
+        "name": "Swiss Tropical and Public Health Institute (Swiss TPH)",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/OGGBern": {
+        "name": "OGG Bern",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/christophmerianstiftung": {
+        "name": "Christoph Merian Stiftung",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/jaimemaplanete": {
+        "name": "J'aime ma Planète",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/fclc.ch": {
+        "name": "Forum Climatique de la Côte",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/carmelpaquier": {
+        "name": "Carmel du Pâquier",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Gewerbeverband-Appenzell-Ausserrhoden-2225353947791028": {
+        "name": "Gewerbeverband Appenzell Ausserrhoden",
+        "orga_type": "EinzelOrganisation,DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/juckerfarm": {
+        "name": "Jucker Farm",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/citeradieuse.ch": {
+        "name": "Cité Radieuse Echichens",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/ProSenectuteGE": {
+        "name": "Pro Senectute Genève",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/bfsugzh": {
+        "name": "Beratung für Schwerhörige und Gehörlose ZH SH",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/radixsvizzeraitaliana": {
+        "name": "Radix Svizzera italiana",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/PRfact/": {
+        "name": "PRfact AG",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/sitlocarno": {
+        "name": "Sindacati Indipendenti Ticinesi",
+        "orga_type": "MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/jobtimal": {
+        "name": "jobtimal.ch",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/nantdedrancesa": {
+        "name": "Nant de Drance SA",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/AssociationRegionGrosDeVaud": {
+        "name": "Région Gros-de-Vaud",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/entrepriseforestieredanielruch": {
+        "name": "Entreprise forestière Daniel Ruch SA",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/foretbroyejorat": {
+        "name": "Groupement forestier Broye-Jorat",
+        "orga_type": "MitgliedsOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/secourshivervaud": {
+        "name": "Secours d'hiver du Canton de Vaud",
+        "orga_type": "MitgliedsOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/coreb.ch": {
+        "name": "Coreb - Communauté régionale de la Broye",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/stiftung.chance": {
+        "name": "Stiftung Chance",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/themealmies": {
+        "name": "Association Mille Amis",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/milleamis1295": {
+        "name": "Association Mille Amis",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/tierparkch": {
+        "name": "Natur- und Tierpark Goldau",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/uniterre.uneagriculturedurable": {
+        "name": "Uniterre Une Agriculture Durable",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/uniterre.nachhaltige.landwirtschaft": {
+        "name": "Uniterre Für eine nachhaltige Landwirtschaft",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/INTERACTION-Schweiz-112239108857637": {
+        "name": "INTERACTION (Schweiz)",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/digitalrealtyimg": {
+        "name": "Digital Realty Switzerland GmbH",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/digitalrealty": {
+        "name": "Digital Realty",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/druecktop": {
+        "name": "Drück-Top Garage",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/act212verein": {
+        "name": "ACT212",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Soroptimist-Fribourg-1903211746624578/": {
+        "name": "Soroptimist Fribourg",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/sbs.schweiz": {
+        "name": "SBS Schweizerische Bibliothek für Blinde, Seh- und Lesebehinderte",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Uetendorfberg": {
+        "name": "Stiftung Uetendorfberg",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/vertschischweiz": {
+        "name": "Vertschi AG",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/weinstern": {
+        "name": "WeinStern Wettingen",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/besserstein": {
+        "name": "Besserstein Wein",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/impactgstaad": {
+        "name": "Impact Gstaad",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/gregorkuonen.weine": {
+        "name": "Gregor Kuonen Caveau de Salquenen",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/vpodZH": {
+        "name": "VPOD Zürich",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/soroptimist.switzerland": {
+        "name": "Soroptimist International Switzerland",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/profile.php?id=100082026233099": {
+        "name": "Naturpark Baselbiet",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/umweltverantwortungsinitiative": {
+        "name": "Initiative für Umweltverantwortung",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/agrideach": {
+        "name": "AGRIDEA-CH",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Economiefeministe": {
+        "name": "Die Plattform feministische Ökonomie. Wenn Frauen zählen",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/opendiversesports": {
+        "name": "Sportler:innen für Offenheit und Vielfalt - VSOV",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/tatkraft.org": {
+        "name": "Tatkraft",
+        "orga_type": "EinzelOrganisation,DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/tierparkbern/": {
+        "name": "Tierpark Bern, Dählhölzli + BärenPark",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/OceanCare.org": {
+        "name": "OceanCare",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/mooh.swiss/": {
+        "name": "mooh Genossenschaft",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/mooh.swiss": {
+        "name": "mooh Genossenschaft",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/IG-Anbindestall-1053211341360956": {
+        "name": "IG Anbindestall",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/individualbesteuerung_ch/": {
+        "name": "Volksinitiative zur Einführung der Individualbesteuerung; Initiative populaire pour  l'imposition individuelle; Iniziativa popolare per l'introduzione della   imposizione individuale",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/IndividualbesteuerungJAZH/?notif_id=1609933623556222&notif_t=page_invite_accept&ref=notif": {
+        "name": "Zürcher Komitee JA zur Individualbesteuerung",
+        "orga_type": "MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/IGM-Schweiz-1533239707004712": {
+        "name": "IGM Schweiz",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/mannschafft.ch": {
+        "name": "Verein mannschafft - bei trennung & scheidung",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/compagniedigestif": {
+        "name": "Compagnie Digestif",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/stiftungideesport": {
+        "name": "Stiftung idée sport",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/bern.krebsliga.ch": {
+        "name": "Krebsliga Bern",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/benevolbern/": {
+        "name": "Benevol Kanton Bern",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/bernerbauern": {
+        "name": "Berner Bauern Verband",
+        "orga_type": "DachOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Kneippanlage-Schwandalpweiher-189427037808111": {
+        "name": "Kneippanlage Schwandalpweiher",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/biosphaerei": {
+        "name": "Freunde der Biosphäre Entlebuch",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/sauvonslemormont": {
+        "name": "Sauvons le Mormont",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/selbsthilfebern": {
+        "name": "Verein Selbsthilfe BE",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/schilligerholzag/": {
+        "name": "Schilliger Holz AG",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/lignumvaud": {
+        "name": "Lignum Waadt; Lignum Vaud, communauté d'action régionale vaudoise en faveur du bois",
+        "orga_type": "DachOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/institutlespeupliers/": {
+        "name": "Fondation de la Sainte Famille",
+        "orga_type": "EinzelOrganisation",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Versicherte-Schweiz-109651044994409": {
+        "name": "Versicherte Schweiz",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/fondazione.agiresvg": {
+        "name": "Fondazione Agire",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/profile.php?id=100054586158580": {
+        "name": "Soroptimist la Gruyère",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/profile.php?id=100057433599760": {
+        "name": "VPOD Ostschweiz",
+        "orga_type": "DachOrganisation,MitgliedsOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/thinktankthurgau": {
+        "name": "Think Tank Thurgau",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/cevirueti": {
+        "name": "Cevi Rüti ZH",
+        "orga_type": "EinzelOrganisation,MitgliedsOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/waldschweiz": {
+        "name": "WaldSchweiz",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/restessbargrenchen/": {
+        "name": "Restessbar Grenchen",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/profile.php?id=100088917521657": {
+        "name": "Suchtfachstelle Zürich",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/lebensraumls.ch/": {
+        "name": "Lebensraum-Lenzburg-Seetal",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/gruppocarrozzella.insuperabili": {
+        "name": "Insuperabili Gruppo Sportivo",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/caricaie/": {
+        "name": "Association de la Grande Cariçaie",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Pro.Grigioni.Italiano": {
+        "name": "Pro Grigioni Italiano (Pgi)",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/InklusionCH": {
+        "name": "Inklusionsinitiative",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/jugendarbeitsfs": {
+        "name": "Philipp Muff  (Jugendarbeit Schüpfheim Flühli Sörenberg)",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/Sanofi": {
+        "name": "Sanofi-Aventis (Suisse) SA",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/HGMmeilen/": {
+        "name": "HGM Handwerks- und Gewerbeverein Meilen",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/oliverhunzikerofficial": {
+        "name": "Oliver Hunziker",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/profile.php?id=100095217373857": {
+        "name": "Gleichstellung Aargau",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/F4S-SA-101989464876617": {
+        "name": "F4S SA",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/BauernUnternehmen/": {
+        "name": "BauernUnternehmen",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/treff.ziegler/?ref=embed_page": {
+        "name": "treff.Ziegler",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/junglandwirte.jeunesagriculteurs/": {
+        "name": "Schweizer Junglandwirte - Jeunes agriculteurs suisses",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/bypassplus": {
+        "name": "Bypassplus",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/svmed.ch": {
+        "name": "Société Vaudoise de Médecine",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/federation.LGBT.geneve/": {
+        "name": "Fédération genevoise des associations LGBT",
+        "orga_type": "DachOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/profile.php?id=100064494020130": {
+        "name": "Assuas",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/klimaglarus": {
+        "name": "KlimaGlarus.ch",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/profile.php?id=100063485626659": {
+        "name": "KMU- und Gewerbeverband Kanton Solothurn",
+        "orga_type": "DachOrganisation,MitgliedsOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/ZuerichEnge": {
+        "name": "Quartierverein Enge",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/withyou.ch": {
+        "name": "Withyou",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/teilhabeinitiative": {
+        "name": "Teilhabe-Initiative",
+        "orga_type": "EinzelOrganisation,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/frauen.zentrale.ar/": {
+        "name": "Frauenzentrale Appenzellerland",
+        "orga_type": "DachOrganisation,LeistungsErbringer,dezidierteLobby",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/zuegerfrischkaeseag": {
+        "name": "Züger Frischkäse AG",
+        "orga_type": "EinzelOrganisation,LeistungsErbringer",
+        "type": "organisation"
+    },
+    "https://www.facebook.com/alschaffhausen": {
+        "name": "Progressive Zusammenarbeit",
+        "party": "AL",
+        "type": "party"
+    },
+    "https://www.facebook.com/ALZuerich": {
+        "name": "Alternative Liste ZH",
+        "party": "AL",
+        "type": "party"
+    },
+    "https://www.facebook.com/eduschweiz": {
+        "name": "EDU - UDF (Eidgenössisch-Demokratische Union)",
+        "party": "EDU",
+        "type": "party"
+    },
+    "https://www.facebook.com/profile.php?id=61560263754307": {
+        "name": "EDU Aargau",
+        "party": "EDU",
+        "type": "party"
+    },
+    "https://www.facebook.com/udf.fribourg": {
+        "name": "UDF Fribourg - Élection & Votations",
+        "party": "EDU",
+        "type": "party"
+    },
+    "https://www.facebook.com/groups/119891391682350/": {
+        "name": "EDU_GE",
+        "party": "EDU",
+        "type": "party"
+    },
+    "https://www.facebook.com/eduthurgau": {
+        "name": "EDU Thurgau",
+        "party": "EDU",
+        "type": "party"
+    },
+    "https://www.facebook.com/UDFTicino": {
+        "name": "UDF Ticino",
+        "party": "EDU",
+        "type": "party"
+    },
+    "https://www.facebook.com/evppev": {
+        "name": "EVP / PEV",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/evpag": {
+        "name": "EVP Aargau",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/evpkantonbern": {
+        "name": "EVP Kanton Bern",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/evpbaselland": {
+        "name": "EVP Baselland",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/EvpBaselStadt": {
+        "name": "EVP Basel-Stadt",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/pevevpfribourg": {
+        "name": "PEV Fribourg - EVP Freiburg",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/pevgeneve": {
+        "name": "PEV-Genève",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/pevjura": {
+        "name": "Les Socio Chrétiens PEV Jura",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/evplu.ch": {
+        "name": "EVP Evangelische Volkspartei Luzern",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/PEVNE": {
+        "name": "PEV Neuchâtel",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/evpsg.ch": {
+        "name": "EVP Kanton St.Gallen",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/EVPSH.ch": {
+        "name": "EVP_SH",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/EvpKantonSolothurn": {
+        "name": "EVP Kanton Solothurn",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/EVPTG": {
+        "name": "EVP Thurgau",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/pevvaud": {
+        "name": "PEV Vaud",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/evpzg": {
+        "name": "EVP Kanton Zug",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/evpzh": {
+        "name": "EVP Kanton Zürich",
+        "party": "EVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/plr.lesliberauxradicaux": {
+        "name": "PLR",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/PLRTicino/": {
+        "name": "PLRT",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/fdp.aargau": {
+        "name": "FDP.Die Liberalen Aargau",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/fdpar": {
+        "name": "FDP.Die Liberalen Appenzell Ausserrhoden",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/fdp.bern": {
+        "name": "FDP.Die Liberalen Kanton Bern",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/fdpbaselland": {
+        "name": "FDP.Die Liberalen Baselland",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/baslerfdp": {
+        "name": "FDP_BS",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/plr.lesliberauxradicauxfribourg/": {
+        "name": "PLR Canton de Fribourg",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/FDPFrauen": {
+        "name": "FDP.Die Liberalen Frauen",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/plrgeneve": {
+        "name": "PLR Genève",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/fdp.glarus": {
+        "name": "FDP.Die Liberalen Kanton Glarus",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/FDPGR/": {
+        "name": "FDP.Die Liberalen Graubünden",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/plr.jura": {
+        "name": "PLR.Les Libéraux-Radicaux Jura",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/FDP.DieLiberalenLuzern": {
+        "name": "FDP_LU",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/PLRN.ch": {
+        "name": "PLRN",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/fdpNidwalden": {
+        "name": "FDP.Die Liberalen Nidwalden",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/FDPOW/": {
+        "name": "FDP.Die Liberalen Obwalden",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/FDPDie-Liberalen-StGallen-141145522613918/": {
+        "name": "FDP.Die Liberalen St.Gallen",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/Schaffhausenverbessern": {
+        "name": "FDP Stadt Schaffhausen",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/fdpso": {
+        "name": "FDP.Die Liberalen Kanton Solothurn",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/fdpsz": {
+        "name": "FDP.Die Liberalen Kanton Schwyz",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/FDPThurgau": {
+        "name": "FDP.Die Liberalen Kanton Thurgau",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/PLRTicino": {
+        "name": "PLRT",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/PLR.LiberauxRadicauxVaudois": {
+        "name": "PLR.Les Libéraux-Radicaux Vaud",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/plr.valais": {
+        "name": "PLR FDP VS",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/FDPZug": {
+        "name": "FDP_ZG",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/fdpzuerich": {
+        "name": "FDP Kanton Zürich",
+        "party": "FDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/grunliberale": {
+        "name": "Grünliberale",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/VerdiLiberali": {
+        "name": "Verdi Liberali",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/vertliberaux": {
+        "name": "Vert'libéraux",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/glp.ag": {
+        "name": "GLP_AG",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/glparai": {
+        "name": "Grünliberale Appenzellerland",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/glpBE": {
+        "name": "Grünliberale Kanton Bern",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/glpBL": {
+        "name": "Grünliberale Partei Basel-Landschaft",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/grunliberalebs": {
+        "name": "Grünliberale Basel-Stadt",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/pvlfr": {
+        "name": "Vert'Libéraux Fribourg / Grünliberale Freiburg",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/vertliberaux.geneve": {
+        "name": "Vert'libéraux - Genève",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/glpKantonGlarus/": {
+        "name": "Grünliberale Partei Kanton Glarus",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/gr.grunliberale": {
+        "name": "Grünliberale Partei Graubünden",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/pvlJU/": {
+        "name": "Vert’libéraux jurassiens",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/glpluzern": {
+        "name": "Grünliberale Partei Kanton Luzern",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/pvlNE": {
+        "name": "Vert'libéraux neuchâtelois",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/Gr%C3%BCnliberale-Partei-Nidwalden-101539905405095": {
+        "name": "Grünliberale Partei Nidwalden",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/GLPOW": {
+        "name": "Grünliberale Partei Kanton Obwalden",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/SG.GLP": {
+        "name": "Grünliberale Kanton St.Gallen",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/grunliberalesh": {
+        "name": "Grünliberale Schaffhausen",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/glpsolothurn": {
+        "name": "Grünliberale Kanton Solothurn",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/GrunliberaleKantonSchwyz": {
+        "name": "Grünliberale Kanton Schwyz",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/tg.grunliberale.ch": {
+        "name": "Grünliberale Thurgau - glp Thurgau",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/verdiliberaliticino": {
+        "name": "Verdi Liberali Ticino",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/glp.ur": {
+        "name": "Grünliberale Partei Uri",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/pvl.vd": {
+        "name": "Vert'libéraux vaudois",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/pvl.glp.VS": {
+        "name": "Vert'libéraux Valais / Grünliberale Wallis",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/grunliberalezug": {
+        "name": "Grünliberale Partei Kanton Zug",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/GrunliberaleZurich": {
+        "name": "Grünliberale Kanton Zürich",
+        "party": "GLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/lesvertssuisses": {
+        "name": "Les Vert·e·s suisses",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/gruenech": {
+        "name": "Grüne Schweiz",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/verditicino/": {
+        "name": "VERDI del Ticino",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/grueneaargau": {
+        "name": "GRÜNE Aargau",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/gruenebern": {
+        "name": "GRÜNE Kanton Bern",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/gruene.bl": {
+        "name": "Grüne Baselland",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/gruene.bs": {
+        "name": "GRÜNE Basel-Stadt",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/vertsfribourg": {
+        "name": "Les VERT·E·S Fribourg - GRÜNE Freiburg",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/vertsgenevois": {
+        "name": "Les Vert·e·s Genevois·es",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/grueneglarus": {
+        "name": "Grüne Glarus",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/GRUENEGR": {
+        "name": "GRÜNE Graubünden",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/lesvertsjurassiens": {
+        "name": "Les Vert-e-s Jura",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/GrueneLU": {
+        "name": "Grüne Luzern",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/VertsNE": {
+        "name": "Les Verts Neuchâtel",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/gruenenidwalden/": {
+        "name": "Grüne Nidwalden",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/gruene.ch.sg": {
+        "name": "GPS_SG",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/GrueneParteiSH": {
+        "name": "GPS_SH",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/gruene.solothurn/": {
+        "name": "GRÜNE Kanton Solothurn",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/gruenethurgau/": {
+        "name": "Grüne Thurgau",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/grueneuri/": {
+        "name": "Grüne Uri",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/lesVertsvaudois": {
+        "name": "GPS_VD",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/Vertsvalais": {
+        "name": "Les Vert•e•s Valais - Grüne Wallis",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/AlternativeZug": {
+        "name": "GPS_ZG",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/gruenezuerich": {
+        "name": "GRÜNE Zürich",
+        "party": "GPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/JEDU.JUDF.GUDF": {
+        "name": "Junge_edu",
+        "party": "jEDU",
+        "type": "party"
+    },
+    "https://www.facebook.com/jevp.ch": {
+        "name": "jEVP",
+        "party": "jEVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JungfreisinnigeSchweiz": {
+        "name": "Jungfreisinnige Schweiz",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JungfreisinnigeAargau": {
+        "name": "Jungfreisinnige Aargau",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jungfreisinnigeAR": {
+        "name": "jFDP_AR",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JungfreisinnBern/": {
+        "name": "jFDP_BE",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/search/top?q=jungfreisinnige%20baselland": {
+        "name": "Suchergebnisse",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jungfreisinnigebs": {
+        "name": "Jungfreisinnige Basel-Stadt",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jlrfribourg": {
+        "name": "Jeunes Libéraux-Radicaux Fribourg / Jungfreisinnige Freiburg",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jlrgeneve": {
+        "name": "Jeunes Libéraux-Radicaux Genève",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JungfreisinnigeKantonGlarus": {
+        "name": "Jungfreisinnige Kanton Glarus",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JungfreisinnigeLU": {
+        "name": "Jungfreisinnige Kanton Luzern",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JeunesLiberauxRadicauxNeuchatelois": {
+        "name": "Jeunes Libéraux-Radicaux Neuchâtelois",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jfnidwalden/": {
+        "name": "Jungfreisinnige Nidwalden",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jungfreisinnige.sh/": {
+        "name": "Jungfreisinnige Kanton Schaffhausen",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jfsolothurn": {
+        "name": "Jungfreisinnige Kanton Solothurn",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jfschwyz": {
+        "name": "Jungfreisinnige Kanton Schwyz",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JungfreisinnigeThurgau/": {
+        "name": "Jungfreisinnige Thurgau",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/glrticino/": {
+        "name": "Giovani Liberali Radicali Ticinesi",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jungfreisinnige.uri": {
+        "name": "Jungfreisinnige Uri",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JLRVaud/": {
+        "name": "Jeunes Libéraux-Radicaux Vaudois",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jlrvalais": {
+        "name": "Jeunes Libéraux-Radicaux Valais - Jungfreisinnige Wallis",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/Jungfreisinnige-Kanton-Zug-315121011892583/": {
+        "name": "Jungfreisinnige Kanton Zug",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jungfreisinnzh/": {
+        "name": "Jungfreisinnige Kanton Zürich",
+        "party": "jFDP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JungeGrunliberale": {
+        "name": "Junge Grünliberale",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jglp.ag/": {
+        "name": "Junge Grünliberale Aargau",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jungeGLPBern/": {
+        "name": "Junge Grünliberale Bern",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jglpBLBS/": {
+        "name": "Junge Grünliberale beider Basel",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/pvlfr/": {
+        "name": "Vert'Libéraux Fribourg / Grünliberale Freiburg",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jvlgeneve": {
+        "name": "Jeunes Vert'libéraux genevois",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jglpgr": {
+        "name": "Junge Grünliberale Graubünden",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jvlJURA": {
+        "name": "Jeunes vert'libéraux jurassiens",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jungegrunliberaleluzern": {
+        "name": "Junge Grünliberale Luzern",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jglpSt.Gallen/": {
+        "name": "Junge Grünliberale St.Gallen",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JungeGrunliberaleSolothurn": {
+        "name": "Junge Grünliberale Solothurn - jglp SO",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jglpSZ": {
+        "name": "Junge Grünliberale Schwyz",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jglpTG/": {
+        "name": "Junge Grünliberale Thurgau",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/gvlticino/": {
+        "name": "Giovani Verdi Liberali Ticino",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jglpuri/": {
+        "name": "Junge Grünliberale Uri",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jglpZG/": {
+        "name": "Junge Grünliberale Zug",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jglpZH": {
+        "name": "Junge Grünliberale Zürich - jglp ZH",
+        "party": "jGLP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JeunesVertexsSuisse": {
+        "name": "Jeunes Vert•e•x•s Suisse",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/JungeGrueneCH": {
+        "name": "Junge Grüne Schweiz",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/JungeGrueneAG": {
+        "name": "Junge Grüne Aargau",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/jungegruenebern": {
+        "name": "Junge Grüne Bern",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/jvjg.fribourg": {
+        "name": "Jeunes Vert·e·x·s Fribourg / Junge Grüne Freiburg",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/jvge.ch": {
+        "name": "Jeunes Vert·e·x·s Genève",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/jungegrueneglarus": {
+        "name": "Junge Grüne Glarus",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/jungegruenegr": {
+        "name": "Junge Grüne Graubünden",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/jvjura": {
+        "name": "Jeunes Vert-e-s Jura",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/JungeGrueneKtLU": {
+        "name": "Junge Grüne Luzern",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/JungeGrueneSG": {
+        "name": "Junge Grüne St.Gallen",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/jungegrueneso": {
+        "name": "Junge Grüne Solothurn",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/JungeGrueneTG": {
+        "name": "Junge Grüne Thurgau",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/giovaniverditicino": {
+        "name": "Giovani Verdi Ticino",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/JVVaud": {
+        "name": "Jeunes Vert·exs Vaud",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/JeunesVertesValais": {
+        "name": "Jeunes Vert·e·x·s Valais",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/jungegrune.zurich/?locale=de_DE": {
+        "name": "Junge Grüne Zürich",
+        "party": "jGPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/DieJungeMitteSchweiz": {
+        "name": "Die Junge Mitte Schweiz | Jeunes du Centre Suisse",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/diejungemitteaargau/?locale=de_DE": {
+        "name": "Die junge Mitte Aargau",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/Die-Junge-Mitte-Appenzell-Ausserrhoden-101028912128245/": {
+        "name": "Die Junge Mitte Appenzell Ausserrhoden",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/DieJungeMitteBE": {
+        "name": "Junge Mitte Kanton Bern",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/JdCFribourg/": {
+        "name": "JDC Fribourg / JCVP Freiburg",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/jeunesducentregeneve": {
+        "name": "Jeunes du Centre Genève",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/jungemittegl": {
+        "name": "Junge Mitte Glarus",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/diejungemitte.gr": {
+        "name": "Die Junge Mitte Graubünden",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/DieJungeMitteLU": {
+        "name": "Die Junge Mitte Kanton Luzern",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/JungeMitteNW": {
+        "name": "Junge Mitte Nidwalden",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/Die-Junge-Mitte-Obwalden-205267792858351": {
+        "name": "Die Junge Mitte Obwalden",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/DieJungeMitteSG": {
+        "name": "Die Junge Mitte Kanton St.Gallen",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/DieJungeMitteSO": {
+        "name": "Die Junge Mitte Kanton Solothurn",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/jcvpsz/": {
+        "name": "Die Junge Mitte Kanton Schwyz",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/DieJungeMitteThurgau": {
+        "name": "Die Junge Mitte Thurgau",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/giovanidelcentroticino": {
+        "name": "Giovani del Centro",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/jcvp.uri": {
+        "name": "Die Junge Mitte Uri",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/jdcvaud": {
+        "name": "Les Jeunes du Centre Vaud",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/jdcvalaisromand": {
+        "name": "Jeunes du Centre Valais romand",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/diejungemitteZg": {
+        "name": "Die Junge Mitte Kanton Zug",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/DieJungeMitteZH": {
+        "name": "Die Junge Mitte Zürich",
+        "party": "jMitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/KommunistischeJugendSchweiz": {
+        "name": "Kommunistische Jugend Schweiz",
+        "party": "jPDA",
+        "type": "party"
+    },
+    "https://www.facebook.com/JeunesPOPch": {
+        "name": "Jeunes POP Suisse",
+        "party": "jPDA",
+        "type": "party"
+    },
+    "https://www.facebook.com/Kommunistische-Jugend-Bern-169668073086653/": {
+        "name": "Kommunistische Jugend Bern",
+        "party": "jPDA",
+        "type": "party"
+    },
+    "https://www.facebook.com/jeunes.pop.neuchatelois": {
+        "name": "Jeunes POP Neuchâtel",
+        "party": "jPDA",
+        "type": "party"
+    },
+    "https://www.facebook.com/JeunesPOPVD": {
+        "name": "Jeunes POP Vaud",
+        "party": "jPDA",
+        "type": "party"
+    },
+    "https://www.facebook.com/jsvpch": {
+        "name": "Junge SVP Schweiz",
+        "party": "JSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/judcsuisse": {
+        "name": "JSVP",
+        "party": "JSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jsvpaargau": {
+        "name": "Junge SVP Aargau",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/profile.php?id=100090137437411": {
+        "name": "JSVP Säntis",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JungeSVPKantonBern": {
+        "name": "Junge SVP Kanton Bern",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JSVPBL/": {
+        "name": "jSVP_BL",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jsvpbs": {
+        "name": "Junge SVP Basel-Stadt",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JUDC.JSVP.FR/": {
+        "name": "jSVP_FR",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/judcge": {
+        "name": "Jeunes UDC Genève",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JSVPglarus": {
+        "name": "Junge SVP Kanton Glarus",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jsvpgr": {
+        "name": "Junge SVP Graubünden",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jsvplu": {
+        "name": "Junge SVP Luzern",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JSVPNidwalden/": {
+        "name": "jSVP_NW",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JSVPSG/": {
+        "name": "Junge SVP Kanton St. Gallen",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jsvpch/": {
+        "name": "Junge SVP Schweiz",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jsvp.so/": {
+        "name": "Junge SVP Solothurn",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jsvpsz/": {
+        "name": "Junge SVP Kanton Schwyz",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jsvptg/": {
+        "name": "JSVP Thurgau",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/GUDCTI": {
+        "name": "Giovani UDC Ticino",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jeunesudcvaud": {
+        "name": "Jeunes UDC Vaud",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jeunes.udcvalaisromand": {
+        "name": "Jeunes UDC Valais Romand",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JungeSVP": {
+        "name": "Junge SVP Kanton Zug",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/jsvpzh": {
+        "name": "Junge SVP Kanton Zürich",
+        "party": "jSVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/JUSO.Schweiz": {
+        "name": "JUSO Schweiz",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/JSSuisse": {
+        "name": "JUSO",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/JUSOAargau": {
+        "name": "JUSO Aargau",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/juso.kabe": {
+        "name": "JUSO Kanton Bern - JS du canton de Berne",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/JUSOBS": {
+        "name": "JUSO Basel-Stadt",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/jeunessesocialistefribourg": {
+        "name": "JS fribourgeoise / JUSO Kanton Freiburg",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/jusogl": {
+        "name": "Juso Glarnerland",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/JUSOGR": {
+        "name": "JUSO Graubünden",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/jusoluzern": {
+        "name": "JUSO Luzern",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/JUSO.NW": {
+        "name": "JUSO Nidwalden",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/JUSOObwalden": {
+        "name": "JUSO Obwalden",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/jusosg": {
+        "name": "JUSO Kanton St.Gallen",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/JUSO.Schaffhausen": {
+        "name": "JUSO Schaffhausen",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/jusosolothurn": {
+        "name": "JUSO Kanton Solothurn",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/JUSO.Thurgau": {
+        "name": "JUSO Thurgau",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/gisoticino": {
+        "name": "Gioventù Socialista Ticino",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/JUSOuri": {
+        "name": "JUSO Uri",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/jeunesocialiste": {
+        "name": "Jeunesse socialiste vaudoise - JSV",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/jusoo": {
+        "name": "JUSO Oberwallis",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/JusoZug": {
+        "name": "JUSO Zug",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/jusozuerich": {
+        "name": "JUSO_ZH",
+        "party": "JUSO",
+        "type": "party"
+    },
+    "https://www.facebook.com/LegadeiTicinesi": {
+        "name": "Lega dei Ticinesi",
+        "party": "LEGA",
+        "type": "party"
+    },
+    "https://www.facebook.com/MCGOfficiel": {
+        "name": "MCG",
+        "party": "MCG",
+        "type": "party"
+    },
+    "https://www.facebook.com/mitte.centre": {
+        "name": "Die Mitte - Le Centre",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/DieMitteAargau": {
+        "name": "Die Mitte Aargau",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/dieMitteKantonBern": {
+        "name": "Die Mitte Kanton Bern",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/diemittebs": {
+        "name": "Die Mitte Basel-Stadt",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/lecentrefribourg.diemittefreiburg": {
+        "name": "Le Centre Fribourg I Die Mitte Freiburg",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/MitteFrauenCH": {
+        "name": "Die Mitte Frauen Schweiz",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/Lecentregeneve": {
+        "name": "Le Centre Genève",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/diemitteluzern": {
+        "name": "Die Mitte Kanton Luzern",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/LeCentreNeuchatel": {
+        "name": "Le Centre - Canton de Neuchâtel",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/diemittenidwalden": {
+        "name": "Die Mitte Nidwalden",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/mitteso": {
+        "name": "Die Mitte Kanton Solothurn",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/diemittesz": {
+        "name": "Die Mitte Schwyz",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/DieMitteThurgau": {
+        "name": "Die Mitte Thurgau",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/diemitteuri": {
+        "name": "Mitte_UR",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/lecentrevaud": {
+        "name": "Le Centre Vaud",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/diemitteoberwallis": {
+        "name": "Mitte_VS",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/diemittezug": {
+        "name": "Die Mitte Kanton Zug",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/DieMitteZH": {
+        "name": "Die Mitte Kanton Zürich",
+        "party": "Mitte",
+        "type": "party"
+    },
+    "https://www.facebook.com/PdASchweiz": {
+        "name": "Partei der Arbeit der Schweiz PDAS",
+        "party": "PDA",
+        "type": "party"
+    },
+    "https://www.facebook.com/PartiSuisseduTravail/": {
+        "name": "Parti Suisse du Travail - POP",
+        "party": "PDA",
+        "type": "party"
+    },
+    "https://www.facebook.com/PdABern": {
+        "name": "PdA Bern",
+        "party": "PDA",
+        "type": "party"
+    },
+    "https://www.facebook.com/pdtgeneve": {
+        "name": "Parti Du Travail Genève",
+        "party": "PDA",
+        "type": "party"
+    },
+    "https://www.facebook.com/popneuchatel": {
+        "name": "Pop neuchâtelois",
+        "party": "PDA",
+        "type": "party"
+    },
+    "https://www.facebook.com/popticino": {
+        "name": "Partito Operaio e Popolare - Ticino",
+        "party": "PDA",
+        "type": "party"
+    },
+    "https://www.facebook.com/pop.vaud": {
+        "name": "POP Vaud",
+        "party": "PDA",
+        "type": "party"
+    },
+    "https://www.facebook.com/PoPValaisWallis": {
+        "name": "POP Valais-Wallis",
+        "party": "PDA",
+        "type": "party"
+    },
+    "https://www.facebook.com/pdazuerich": {
+        "name": "PdA Zürich",
+        "party": "PDA",
+        "type": "party"
+    },
+    "https://www.facebook.com/PartiPirateRomandie": {
+        "name": "Parti Pirate Romandie",
+        "party": "Piraten",
+        "type": "party"
+    },
+    "https://www.facebook.com/partitopirataticino": {
+        "name": "Partito Pirata della Svizzera Italiana",
+        "party": "Piraten",
+        "type": "party"
+    },
+    "https://www.facebook.com/PiratePartySwitzerland": {
+        "name": "Piratenpartei Schweiz",
+        "party": "Piraten",
+        "type": "party"
+    },
+    "https://www.facebook.com/pssuisse": {
+        "name": "PS Suisse",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/spaargau": {
+        "name": "SP Kanton Aargau",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/profile.php?id=100064392623667": {
+        "name": "SP Appenzell Ausserrhoden",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/spbern/": {
+        "name": "SP Kanton Bern - PS du canton de Berne",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/spbaselland": {
+        "name": "SP Baselland",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/spbaselstadt1890": {
+        "name": "SP Basel-Stadt",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/psf.spf": {
+        "name": "SPS_FR",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/SPFrauen/": {
+        "name": "SPS_Frauen",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/psgenevois": {
+        "name": "Parti socialiste genevois",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/spkantonglarus": {
+        "name": "SP Kanton Glarus",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/sppsgr": {
+        "name": "SPS_GR",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/PSJura": {
+        "name": "SPS_JU",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/sp.luzern": {
+        "name": "SP Kanton Luzern",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/partisocialisteneuchatelois": {
+        "name": "Parti Socialiste Neuchâtelois",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/spobwalden": {
+        "name": "SP Obwalden",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/SPSt.Gallen": {
+        "name": "SP Kanton St.Gallen",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/SPSchaffhausen": {
+        "name": "SPS_SH",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/spsolothurn": {
+        "name": "SPS_SO",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/spschwyz/": {
+        "name": "SP Kanton Schwyz",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/SPthurgau": {
+        "name": "SPS_TG",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/PSTicino": {
+        "name": "Partito Socialista Ticino",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/urnersp/": {
+        "name": "SPS_UR",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/psvaud": {
+        "name": "Parti Socialiste Vaudois",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/SPOberwallis": {
+        "name": "SP Oberwallis - SPO",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/PSValaisRomandFacebook<": {
+        "name": "SPS_VS",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/SPZuerich": {
+        "name": "SPS_ZH",
+        "party": "SPS",
+        "type": "party"
+    },
+    "https://www.facebook.com/SVPch": {
+        "name": "SVP Schweiz",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/UDCch": {
+        "name": "UDC Suisse",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/udcticino": {
+        "name": "UDC Ticino",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/svpaargau": {
+        "name": "SVP Aargau",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/svpkantonar/": {
+        "name": "SVP Appenzell Ausserrhoden",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/SVPUDCBE": {
+        "name": "SVP Kanton Bern",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/svpbl": {
+        "name": "SVP Baselland",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/SVPBS": {
+        "name": "SVP Basel-Stadt",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/listeudcfr/": {
+        "name": "UDC Fribourg - SVP Freiburg",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/udc.geneve": {
+        "name": "UDC Genève",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/SVP.GL": {
+        "name": "SVP des Kantons Glarus",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/svpgr/": {
+        "name": "SVP Graubünden",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/udc.jura": {
+        "name": "UDC Jura",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/svpkantonluzern": {
+        "name": "SVP des Kantons Luzern",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/udcne": {
+        "name": "UDC Neuchâtel",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/svp.nw": {
+        "name": "SVP Nidwalden",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/svpobwalden": {
+        "name": "SVP Obwalden",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/svpkantonstgallen/": {
+        "name": "SVP Kanton St. Gallen",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/svpschaffhausen": {
+        "name": "SVP Schaffhausen",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/svpso": {
+        "name": "SVP Kanton Solothurn",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/SVPsz": {
+        "name": "SVP Kanton Schwyz",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/svptg": {
+        "name": "SVP Thurgau",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/udc.ticino": {
+        "name": "UDC Ticino",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/UDCVaud": {
+        "name": "SVP_VD",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/teamSVPO": {
+        "name": "SVP Oberwallis",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/UDCVR/": {
+        "name": "UDC du Valais romand",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/SVPStadtZug/": {
+        "name": "SVP Zug",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/svpzuerich/": {
+        "name": "SVP des Kantons Zürich",
+        "party": "SVP",
+        "type": "party"
+    },
+    "https://www.facebook.com/ensemble.agauche": {
+        "name": "Ensemble à Gauche Lausanne",
+        "party": "EAG",
+        "type": "party"
+    },
+    "https://www.facebook.com/fabio.abate.79": {
+        "name": "Fabio Abate FDP TI",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/addorCN": {
+        "name": "Jean-Luc Addor SVP VS",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/matthiasaebischer/?locale=de_DE": {
+        "name": "Matthias Aebischer SP BE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/aeschi/?locale=de_DE": {
+        "name": "Thomas Aeschi SVP ZG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/allemannevi/?locale=de_DE": {
+        "name": "Evi Allemann SP BE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/kathrin.amacker.7": {
+        "name": "Kathrin Amacker-Amann CVP BL",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/CeslaAmarelle.VD": {
+        "name": "Cesla Amarelle SP VD",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/Amoos.CN": {
+        "name": "Emmanuel Amoos SP VS",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/AmstutzAdrian/?locale=de_DE": {
+        "name": "Adrian Amstutz SVP BE",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/ANDREY.Gerhard": {
+        "name": "Gerhard Andrey GPS FR",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/mustafa.atici.ch/?locale=de_DE": {
+        "name": "Mustafa Atici SP BS",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/ChristineBadertscherBE/?locale=de_DE": {
+        "name": "Christine Badertscher GPS BE",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/p/Jacqueline-Badran-Nationalrat-100063937650609/?locale=de_DE": {
+        "name": "Jacqueline Badran SP ZH",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/luc.barthassat": {
+        "name": "Luc Barthassat CVP GE",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/claudebegleCN/?locale=fr_FR": {
+        "name": "Claude Béglé CVP VD",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/urs.bernhardsgrutter.5/?locale=de_DE": {
+        "name": "Urs Bernhardsgrütter GPS SG",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/BersetAlain/?locale=de_DE": {
+        "name": "Alain Berset SP FR",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/KathrinBertschyBE/?locale=de_DE": {
+        "name": "Kathrin Bertschy glp BE",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/BinderKellerMarianne/?locale=de_DE": {
+        "name": "Marianne Binder-Keller CVP AG",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/PirminBischof/?locale=de_DE": {
+        "name": "Pirmin Bischof CVP SO",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/andreas.guhl.68": {
+        "name": "Thomas Böhni glp TG",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/pmbregy/?locale=de_DE": {
+        "name": "Philipp Matthias Bregy CVPO VS",
+        "party": "Christlichdemokratische Volkspartei Oberwallis",
+        "type": "politician"
+    },
+    "https://www.facebook.com/daniel.brelaz.94": {
+        "name": "Daniel Brélaz GPS VD",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/flobrenzikofer/?locale=de_DE": {
+        "name": "Florence Brenzikofer GPS BL",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/pascale.bruderer.wyss/?locale=de_DE": {
+        "name": "Pascale Bruderer Wyss SP AG",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/SVPBrunner/?locale=de_DE": {
+        "name": "Toni Brunner SVP SG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/ChristineBulliardMarbach/?locale=de_DE": {
+        "name": "Christine Bulliard-Marbach CVP FR",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/thomasburgherrofficial": {
+        "name": "Thomas Burgherr SVP AG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/martincandinas": {
+        "name": "Martin Candinas CVP GR",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/mcarobbio/?locale=it_IT": {
+        "name": "Marina Carobbio Guscetti SP TI",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/ignaziocassis/?locale=de_DE": {
+        "name": "Ignazio Cassis FDP TI",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/franco.cavalli.dott/?locale=it_IT": {
+        "name": "Franco Cavalli SP TI",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/TarzisiusCaviezel": {
+        "name": "Tarzisius Caviezel FDP GR",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/isabellechassotfr": {
+        "name": "Isabelle Chassot M-E FR",
+        "party": "Die Mitte",
+        "type": "politician"
+    },
+    "https://www.facebook.com/pvl.isabellechevalley": {
+        "name": "Isabelle Chevalley glp VD",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/marco.chiesa.5/?locale=de_DE": {
+        "name": "Marco Chiesa SVP TI",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/katja.christrudin": {
+        "name": "Katja Christ glp BS",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/yves.christen.3": {
+        "name": "Yves Christen FDP VD",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/ChristopheClivazVertsVS": {
+        "name": "Christophe Clivaz GPS VS",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/clottu2014": {
+        "name": "Raymond Clottu SVP NE",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/jeanclaude.cornu.56/?locale=de_DE": {
+        "name": "Jean-Claude Cornu FDP FR",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/christophe.darbellay/?locale=de_DE": {
+        "name": "Christophe Darbellay CVP VS",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/thomas.decourten.nationalrat/?locale=de_DE": {
+        "name": "Thomas de Courten SVP BL",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/robinschmid.ch": {
+        "name": "Toni Eberhard CVP SZ",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/sabinafreiermuth": {
+        "name": "Christine Egerszegi-Obrist FDP AG",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/nationalrat.mike.egger/?locale=de_DE": {
+        "name": "Mike Egger SVP SG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/EggerStaenderat": {
+        "name": "Kurt Egger GPS TG",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/esther.egger/?locale=de_DE": {
+        "name": "Esther Egger-Wyss CVP AG",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/natalierickliofficial/": {
+        "name": "Hans Egloff SVP ZH",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/eichenberger.corina": {
+        "name": "Corina Eichenberger-Walther FDP AG",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/FehlmannRielle": {
+        "name": "Laurence Fehlmann Rielle SP GE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/mario.fehr.10/?locale=de_DE": {
+        "name": "Mario Fehr SP ZH",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/fehr.jacqueline/?locale=de_DE": {
+        "name": "Jacqueline Fehr SP ZH",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/yvonne.feri/?locale=de_DE": {
+        "name": "Yvonne Feri SP AG",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/DorisFialaFDP": {
+        "name": "Doris Fiala FDP ZH",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/RolandFischerGLP/?locale=de_DE": {
+        "name": "Roland Fischer glp LU",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/benjamin.fischer.svp/?locale=de_DE": {
+        "name": "Benjamin Fischer SVP ZH",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/fabien.fivaz.9": {
+        "name": "Fabien Fivaz GPS NE",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/p/Beat-Flach-100057827569157/?locale=mk_MK": {
+        "name": "Beat Flach glp AG",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/kurtFluri.fdp": {
+        "name": "Kurt Fluri FDP SO",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/p/Peter-F%C3%B6hn-100063746563675/?locale=th_TH": {
+        "name": "Peter Föhn SVP SZ",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/plr.Olivier.Francais": {
+        "name": "Olivier Français FDP VD",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/daniel.frei.921": {
+        "name": "Daniel Frei SP ZH",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/jonas.fricker": {
+        "name": "Jonas Fricker GPS AG",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/nationalraetinclaudiafriedl/?locale=de_DE": {
+        "name": "Claudia Friedl SP SG",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/estherfriedli.ch/?locale=de_DE": {
+        "name": "Esther Friedli SVP SG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/svpthomasfuchs": {
+        "name": "Thomas Fuchs SVP BE",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/Tamarafuniciell/?locale=de_DE": {
+        "name": "Tamara Funiciello SP BE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/chantal.gallade.official/?locale=de_DE": {
+        "name": "Chantal Galladé SP ZH",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/jpgnewspage/?locale=de_DE": {
+        "name": "Jean-Pierre Gallati SVP AG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/urs.p.gasche/?locale=de_DE": {
+        "name": "Urs Gasche BDP BE",
+        "party": "Bürgerlich-Demokratische Partei Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/geissbuehler/?locale=de_DE": {
+        "name": "Andrea Martina Geissbühler SVP BE",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/ruth.genner/?locale=de_DE": {
+        "name": "Ruth Genner GPS ZH",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/benjamingiezendannerofficial/?locale=de_DE": {
+        "name": "Benjamin Giezendanner SVP AG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/ulrichgiezendanner": {
+        "name": "Ulrich Giezendanner NA AG",
+        "party": "keine Angabe",
+        "type": "politician"
+    },
+    "https://www.facebook.com/YvonneGilli/?locale=de_DE": {
+        "name": "Yvonne Gilli GPS SG",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/bastien.girod/?locale=de_DE": {
+        "name": "Bastien Girod GPS ZH",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/andreas.glarner.3/?locale=de_DE": {
+        "name": "Andreas Glarner SVP AG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/jeanpaul.kfkdkdkdkdksk": {
+        "name": "Jean-Paul Glasson FDP FR",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/glaettli.ch": {
+        "name": "Balthasar Glättli GPS ZH",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/AloisGmuer/?locale=de_DE": {
+        "name": "Alois Gmür CVP SZ",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/andrea.gmurschonenberger/?locale=de_DE": {
+        "name": "Andrea Gmür-Schönenberger CVP LU",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/normangobbi": {
+        "name": "Norman Gobbi Lega TI",
+        "party": "Lega dei Ticinesi",
+        "type": "politician"
+    },
+    "https://www.facebook.com/roger.golay": {
+        "name": "Roger Golay MCR GE",
+        "party": "Mouvement Citoyens Romand",
+        "type": "politician"
+    },
+    "https://www.facebook.com/MichiGoette/?locale=de_DE": {
+        "name": "Michael Götte SVP SG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/jeanpierre.graber.5": {
+        "name": "Jean-Pierre Graber SVP BE",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/NRMichaelGraber/?locale=de_DE": {
+        "name": "Michael Graber SVP VS",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/p/Maya-Graf-100063917281421": {
+        "name": "Maya Graf GPS BL",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/corinagredigzh/?locale=de_DE": {
+        "name": "Corina Gredig glp ZH",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/JuergGrossenglp/?locale=de_DE": {
+        "name": "Jürg Grossen glp BE",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/GrueterFranz/?locale=de_DE": {
+        "name": "Franz Grüter SVP LU",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/JetztNikGugger/?locale=de_DE": {
+        "name": "Niklaus-Samuel Gugger EVP ZH",
+        "party": "Evangelische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/guggisberglars": {
+        "name": "Lars Guggisberg SVP BE",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/BernhardGuhlNationalrat/?locale=de_DE": {
+        "name": "Bernhard Guhl BDP AG",
+        "party": "Bürgerlich-Demokratische Partei Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/DianaGutjahrTG/?locale=de_DE": {
+        "name": "Diana Gutjahr SVP TG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/BaGysi/?locale=de_DE": {
+        "name": "Barbara Gysi SP SG",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/ggysin/?locale=de_DE": {
+        "name": "Greta Gysin GPS TI",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/dieterhallerpolitiker": {
+        "name": "Ursula Haller SVP BE",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/markus.hausammann": {
+        "name": "Markus Hausammann SVP TG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/KlareSacheEva/?locale=de_DE": {
+        "name": "Eva Herzog SP BS",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/verenaherzog.ch/?locale=de_DE": {
+        "name": "Verena Herzog SVP TG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/benno.hess.5/?locale=de_DE": {
+        "name": "Bernhard Hess SD BE",
+        "party": "Schweizer Demokraten",
+        "type": "politician"
+    },
+    "https://www.facebook.com/hhiltpold": {
+        "name": "Hugues Hiltpold FDP GE",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/antonio.hodgers/?locale=de_DE": {
+        "name": "Antonio Hodgers GPS GE",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/RegierungsratUrsHofmann": {
+        "name": "Urs Hofmann SP AG",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/hurnibaptiste": {
+        "name": "Baptiste Hurni SP NE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/nationalrat.imark/?locale=de_DE": {
+        "name": "Christian Imark SVP SO",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/NatalieImbodenNR": {
+        "name": "Natalie Imboden GRÜNE BE",
+        "party": "GRÜNE Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/beat.jans/?locale=de_DE": {
+        "name": "Beat Jans SP BS",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/danieljositsch/?locale=de_DE": {
+        "name": "Daniel Jositsch SP ZH",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/MarcJostEVP": {
+        "name": "Marc Jost EVP BE",
+        "party": "Evangelische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/charles.juillard": {
+        "name": "Charles Juillard CVP JU",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/irene.kalin.5/?locale=de_DE": {
+        "name": "Irène Kälin GPS AG",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/sidneykamerzin.ch": {
+        "name": "Sidney Kamerzin CVP VS",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/margrit.kessler.7/?locale=de_DE": {
+        "name": "Margrit Kessler glp SG",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/delphineklopfenstein.ch/?locale=de_DE": {
+        "name": "Delphine Klopfenstein Broggini GPS GE",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/hansjoergknecht": {
+        "name": "Hansjörg Knecht SVP AG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/philippkutter.ch/?locale=de_DE": {
+        "name": "Philipp Kutter CVP ZH",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/p/Moritz-Leuenberger-100069071432120": {
+        "name": "Moritz Leuenberger SP ZH",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/hjboesch.ch": {
+        "name": "Hansjakob Leutenegger FDP ZG",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/people/Susanne-Leutenegger-Oberholzer/100057610376835": {
+        "name": "Susanne Leutenegger Oberholzer SP BL",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/nationalratchristianlohr/?locale=de_DE": {
+        "name": "Christian Lohr CVP TG",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/filippo.lombardi.319/?locale=de_DE": {
+        "name": "Filippo Lombardi CVP TI",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/werner.luginbuehl.5": {
+        "name": "Werner Luginbühl SVP BE",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/r.lumengo/?locale=pt_BR": {
+        "name": "Ricardo Lumengo SP BE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/christian.luscher.5/?locale=de_DE": {
+        "name": "Christian Lüscher LPS GE",
+        "party": "Liberale Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/Joerg.Maeder.glp/?locale=de_DE": {
+        "name": "Jörg Mäder glp ZH",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/raphael.mahaim.94/?locale=de_DE": {
+        "name": "Raphaël Mahaim GRÜNE VD",
+        "party": "GRÜNE Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/profile.php?id=61558842989318": {
+        "name": "Pierre-Yves Maillard SP VD",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/jacquesandre.maire": {
+        "name": "Jacques-André Maire SP NE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/vincent.maitre.5": {
+        "name": "Vincent Maitre CVP GE",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/geraldinemb2015": {
+        "name": "Géraldine Marchand-Balet CVP VS",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/PieroMarchesiUDC/?locale=de_DE": {
+        "name": "Piero Marchesi SVP TI",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/MarkwalderChrista/?locale=de_DE": {
+        "name": "Christa Markwalder Bär FDP BE",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/nmasshardt/": {
+        "name": "Ada Marra SP VD",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/samiramarti/?locale=de_DE": {
+        "name": "Samira Marti SP BL",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/nmasshardt/?locale=de_DE": {
+        "name": "Nadine Masshardt SP BE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/th.matter/?locale=de_DE": {
+        "name": "Thomas Matter SVP ZH",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/michelmattergeneve": {
+        "name": "Michel Matter glp GE",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/liliane.maurypasquier": {
+        "name": "Liliane Maury Pasquier SP GE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/C.BachmannRoth/?locale=de_DE": {
+        "name": "Lucrezia Meier-Schatz CVP SG",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/annecatherine.menetreysavary.9": {
+        "name": "Anne-Catherine Menétrey-Savary GPS VD",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/MelanieMettlerBern": {
+        "name": "Melanie Mettler glp BE",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/Metzlerarnold": {
+        "name": "Ruth Metzler-Arnold CVP AI",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/matteameyer.ch/?locale=de_DE": {
+        "name": "Mattea Meyer SP ZH",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/p/Sophie-Michaud-Gigon-100005766888568": {
+        "name": "Sophie Michaud Gigon GPS VD",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/FabianMolinaNR": {
+        "name": "Fabian Molina SP ZH",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/MoretIsabelle/?locale=de_DE": {
+        "name": "Isabelle Moret FDP VD",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/tiana.moser.glp": {
+        "name": "Tiana Angelina Moser glp ZH",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/stefan.mulleraltermatt": {
+        "name": "Stefan Müller-Altermatt CVP SO",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/rolandstaubgeiss": {
+        "name": "Felix Müri SVP LU",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/martinnaefwiederindennationalrat/?locale=de_DE": {
+        "name": "Martin Naef SP ZH",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/yves.nidegger/?locale=de_DE": {
+        "name": "Yves Nidegger SVP GE",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/RogerNordmannPS": {
+        "name": "Roger Nordmann SP VD",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/gisele.ory/?locale=de_DE": {
+        "name": "Gisèle Ory SP NE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/nicolopaganini.nationalrat/?locale=de_DE": {
+        "name": "Nicolò Paganini CVP SG",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/pierreandre.page.cn": {
+        "name": "Pierre-André Page SVP FR",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/p/Corrado-Pardini-100057994454368": {
+        "name": "Corrado Pardini SP BE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/ParmelinG/?locale=de_DE": {
+        "name": "Guy Parmelin SVP VD",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/isabelle.pasquier.eichenberger": {
+        "name": "Isabelle Pasquier-Eichenberger GPS GE",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/FulvioPelliPagina": {
+        "name": "Fulvio Pelli FDP TI",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/975zsc0.dscovo": {
+        "name": "Yvan Perrin SVP NE",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/pillercarrard/?locale=fr_FR": {
+        "name": "Valérie Piller Carrard SP FR",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/mauro.poggia.9": {
+        "name": "Mauro Poggia MCR GE",
+        "party": "Mouvement Citoyens Romand",
+        "type": "politician"
+    },
+    "https://www.facebook.com/Francois.Pointet.PVL": {
+        "name": "François Pointet glp VD",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/leonore.porchet/?locale=de_DE": {
+        "name": "Léonore Porchet GPS VD",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/p/Katharina-Prelicz-Huber-100063793153638": {
+        "name": "Katharina Prelicz-Huber GPS ZH",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/jonpultpolitik/?locale=de_DE": {
+        "name": "Jon Pult SP GR",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/quadrilorenzo/?locale=it_IT": {
+        "name": "Lorenzo Quadri Lega TI",
+        "party": "Lega dei Ticinesi",
+        "type": "politician"
+    },
+    "https://www.facebook.com/rechsteiner.paul": {
+        "name": "Paul Rechsteiner SP SG",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/cnfabioregazzi/?locale=it_IT": {
+        "name": "Fabio Regazzi CVP TI",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/reichmuthothmar/?locale=de_DE": {
+        "name": "Othmar Reichmuth CVP SZ",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/lukasreimannnationalrat/?locale=de_DE": {
+        "name": "Lukas Reimann SVP SG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/MathiasReynardCE": {
+        "name": "Mathias Reynard SP VS",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/natalierickliofficial/?locale=de_DE": {
+        "name": "Natalie Rickli SVP ZH",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/riellejeancharles": {
+        "name": "Jean-Charles Rielle SP GE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/kathy.riklin/?locale=de_DE": {
+        "name": "Kathy Riklin CVP ZH",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/jeanfrancoisrime1": {
+        "name": "Jean-François Rime SVP FR",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/albert.roesti/?locale=de_DE": {
+        "name": "Albert Rösti SVP BE",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/nationalraetinroth/?locale=de_DE": {
+        "name": "Franziska Roth SP SO",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/mariefrance.rothpasquier": {
+        "name": "Marie-France Roth Pasquier CVP FR",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/paulandre.roux": {
+        "name": "Paul-André Roux CVP VS",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/monikarueegger": {
+        "name": "Monika Rüegger SVP OW",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/claude.ruey": {
+        "name": "Claude Ruey LPS VD",
+        "party": "Liberale Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/rebeccaruiz.ch/?locale=de_DE": {
+        "name": "Rebecca Ana Ruiz SP VD",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/NRMichaelGraber/": {
+        "name": "Franz Ruppen SVP VS",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/gregor.rutz/?locale=de_DE": {
+        "name": "Gregor Rutz SVP ZH",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/FranziskaRyserSG": {
+        "name": "Franziska Ryser GPS SG",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/rytzregula": {
+        "name": "Regula Rytz GPS BE",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/p/Werner-Salzmann-100058156237822": {
+        "name": "Werner Salzmann SVP BE",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/Barbara.Schaffner.Politik": {
+        "name": "Barbara Schaffner glp ZH",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/silvia.schenker/?locale=de_DE": {
+        "name": "Silvia Schenker SP BS",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/thereseschlaepfer/?locale=de_DE": {
+        "name": "Therese Schläpfer SVP ZH",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/marionnaschlatter/?locale=de_DE": {
+        "name": "Marionna Schlatter GPS ZH",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/robertoschmidtstaatsrat": {
+        "name": "Roberto Schmidt CVP VS",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/SchneiderMeret": {
+        "name": "Meret Schneider GPS ZH",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/ursulamurten/?locale=de_DE": {
+        "name": "Ursula Schneider Schüttel SP FR",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/elisabeth.schneiderschneiter/?locale=de_DE": {
+        "name": "Elisabeth Schneider-Schneiter CVP BL",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/jcschwaab": {
+        "name": "Jean Jacques Schwaab SP VD",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/pirmin.schwander.sz/?locale=de_DE": {
+        "name": "Pirmin Schwander SVP SZ",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/priskaseilergrafindennationalrat/?locale=de_DE": {
+        "name": "Priska Seiler Graf SP ZH",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/silva.semadeni/?locale=de_DE": {
+        "name": "Silva Semadeni SP GR",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/nrsandrasollberger/?locale=de_DE": {
+        "name": "Sandra Sollberger SVP BL",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/carlo.sommaruga/?locale=de_DE": {
+        "name": "Carlo Sommaruga SP GE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/peter.spuhler.ch": {
+        "name": "Peter Spuhler SVP TG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/robertstadlersg": {
+        "name": "Markus Stadler glp UR",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/juergstahl/?locale=de_DE": {
+        "name": "Jürg Stahl SVP ZH",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/luzi.stamm": {
+        "name": "Luzi Stamm FDP AG",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/luzi.stamm/?locale=de_DE": {
+        "name": "Luzi Stamm SVP AG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/jakobstark.ch": {
+        "name": "Jakob Stark SVP TG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/jfsteiert": {
+        "name": "Jean-François Steiert SP FR",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/BabaSteinemannNR/?locale=de_DE": {
+        "name": "Barbara Steinemann SVP ZH",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/hans.insstockli": {
+        "name": "Hans Stöckli SP BE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/manuelstrupler/?locale=de_DE": {
+        "name": "Manuel Strupler SVP TG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/studerlilian/?locale=de_DE": {
+        "name": "Lilian Studer EVP AG",
+        "party": "Evangelische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/gabrielasuteraarau/?locale=de_DE": {
+        "name": "Gabriela Suter SP AG",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/franziska.teuscher": {
+        "name": "Franziska Teuscher GB BE",
+        "party": "Grünes Bündnis",
+        "type": "politician"
+    },
+    "https://www.facebook.com/michaeltoengi": {
+        "name": "Michael Töngi GPS LU",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/aline.trede.9": {
+        "name": "Aline Trede GPS BE",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/mauro.tuena": {
+        "name": "Mauro Tuena SVP ZH",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/christian.vansinger": {
+        "name": "Christian van Singer GPS VD",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/ruthgaby.vermotmangold": {
+        "name": "Ruth-Gaby Vermot-Mangold SP BE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/hansuelivogt.ch/?locale=de_DE": {
+        "name": "Hans-Ueli Vogt SVP ZH",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/vonfalkenstein.patricia/?locale=de_DE": {
+        "name": "Patricia von Falkenstein LDP BS",
+        "party": "Liberal-Demokratische Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/alec.vongraffenried": {
+        "name": "Alec von Graffenried GPS BE",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/beat.vonlanthen.ch": {
+        "name": "Beat Vonlanthen CVP FR",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/nicolas.walder.31/?locale=de_DE": {
+        "name": "Nicolas Walder GPS GE",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/nationalratbrunowalliser/?locale=de_DE": {
+        "name": "Bruno Walliser SVP ZH",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/hansjoerg.walter/?locale=de_DE": {
+        "name": "Hansjörg Walter SVP TG",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/flaviawasserfallen/?locale=de_DE": {
+        "name": "Flavia Wasserfallen SP BE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/wasserfallen.news/?locale=de_DE": {
+        "name": "Christian Wasserfallen FDP BE",
+        "party": "Freisinnig-Demokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/celine.isabelle.weber": {
+        "name": "Céline Weber glp VD",
+        "party": "Grünliberale Partei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/ManuelaWeicheltPicardZG/?locale=de_DE": {
+        "name": "Manuela Weichelt Al ZG",
+        "party": "Alternative-die Grünen Kanton Zug",
+        "type": "politician"
+    },
+    "https://www.facebook.com/cedricwermuth/?locale=de_DE": {
+        "name": "Cédric Wermuth SP AG",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/felixwettstein.olten/?locale=de_DE": {
+        "name": "Felix Wettstein GPS SO",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/gregor.rutz/": {
+        "name": "Hermann Weyeneth SVP BE",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/HansWickiHess/": {
+        "name": "Franz Wicki CVP LU",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/priskawismer": {
+        "name": "Priska Wismer-Felder CVP LU",
+        "party": "Christlichdemokratische Volkspartei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/wobmann.nationalrat": {
+        "name": "Walter Wobmann SVP SO",
+        "party": "Schweizerische Volkspartei",
+        "type": "politician"
+    },
+    "https://www.facebook.com/adrianwuethrich.ch": {
+        "name": "Adrian Wüthrich SP BE",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/SarahWyssBS": {
+        "name": "Sarah Wyss SP BS",
+        "party": "Sozialdemokratische Partei der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/josef.zisyadis": {
+        "name": "Josef Zisyadis PdA VD",
+        "party": "Partei der Arbeit der Schweiz",
+        "type": "politician"
+    },
+    "https://www.facebook.com/zopfi.mathias": {
+        "name": "Mathias Zopfi GPS GL",
+        "party": "Grüne Partei der Schweiz",
+        "type": "politician"
+    }
+}

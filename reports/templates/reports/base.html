@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{% block page_title %}Report Page Title{% endblock %}</title>
+
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'ddl/img/favicons/ddl_favicon_black.svg' %}">
+
+  {% block site_css %}
+  <link rel="stylesheet" href="{% static 'reports/css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'reports/css/bootstrap/bootstrap.min.css' %}">
+  {% endblock site_css %}
+
+  {% block extra_head %}
+  {% endblock extra_head %}
+</head>
+
+<body>
+<div id="report">
+  {% block report_header %}
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          [Platzhalter DDDay Logo] <!-- TODO -->
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+
+  <div class="container">
+    {% block report_body %}
+    {% endblock %}
+  </div>
+
+
+  <!-- FOOTER -->
+  {% block footer %}
+  <div class="container">
+
+    <div class="row">
+      <div class="col">
+        <h3>Über diesen Report</h3>
+
+        <p>
+          [Platzhalter DDDay Footer] <!-- TODO -->
+        </p>
+
+        <div class="text-center">
+          [Platzhalter DDDay Logo] <!-- TODO -->
+          <img alt="Data Donation Lab Logo" src="{% static 'ddl/img/logos/ddl/ddl_logo_black.svg' %}" height="70px">
+          <img alt="UZH Logo" src="{% static 'ddl/img/logos/external/uzh_logo_d_pos.svg' %}" height="70px">
+          <img alt="DIZH Logo" src="{% static 'ddl/img/logos/external/dizh_logo.png' %}" height="70px">
+        </div>
+      </div>
+    </div>
+
+  </div>
+  {% endblock %}
+
+</div>
+
+
+{% block scripts %}
+<script src="{% static 'ddl/js/jquery/jquery-3.6.1.min.js' %}"></script>
+<script src="{% static 'reports/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'reports/js/bokeh/bokeh-3.1.1.min.js' %}"></script>
+<script src="{% static 'reports/js/bokeh/bokeh-api-3.1.1.min.js' %}"></script>
+<script src="{% static 'reports/js/bokeh/bokeh-gl-3.1.1.min.js' %}"></script>
+<script src="{% static 'reports/js/bokeh/bokeh-mathjax-3.1.1.min.js' %}"></script>
+<script src="{% static 'reports/js/bokeh/bokeh-tables-3.1.1.min.js' %}"></script>
+<script src="{% static 'reports/js/bokeh/bokeh-widgets-3.1.1.min.js' %}"></script>
+{% endblock %}
+
+</body>
+
+</html>

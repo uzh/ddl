@@ -20,7 +20,8 @@ urlpatterns = [
     path('ddm/login/', auth_views.LoginView.as_view(template_name='ddl/auth/oidc_login.html'), name='ddm-login'),
     path('ddm/logout/', auth_views.LogoutView.as_view(), name='ddm-logout'),
     path('ddm/contact/', TemplateView.as_view(template_name='ddl/custom-ddm/contact.html'), name='ddm-contact'),
-    path('ckeditor/', include('ckeditor_uploader.urls'))
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('reports/', include('reports.urls'))
 ]
 
 urlpatterns += i18n_patterns(

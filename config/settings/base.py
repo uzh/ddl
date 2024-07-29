@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'wagtail',
     'modelcluster',
     'taggit',
-    'ddm_pooled'
+    'reports'
 ]
 
 MIDDLEWARE = [
@@ -189,3 +189,7 @@ CKEDITOR_CONFIGS = {
         'width': 300,
     },
 }
+
+# Reports
+# ------------------------------------------------------------------------------
+POLITICS_KEY = os.getenv('POLITICS_KEY', None)
