@@ -158,6 +158,8 @@ OIDC_OP_USER_ENDPOINT = os.getenv('OIDC_OP_USER_ENDPOINT', 'https://login.eduid.
 LOGIN_REDIRECT_URL = '/ddm/projects/'
 LOGOUT_REDIRECT_URL = '/ddm/login/'
 
+OIDC_RENEW_ID_TOKEN_EXPIRY_SECONDS = 60 * 60 * 4
+
 
 # DJANGO-DDM
 # ------------------------------------------------------------------------------

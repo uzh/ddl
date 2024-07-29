@@ -7,6 +7,8 @@ ALLOWED_HOSTS = [
     'data-donation.uzh.ch',
     'www.data-donation.uzh.ch',
     'idikmzdatad01.uzh.ch',
+    'ziikmzdatad02.uzh.ch',
+    'localhost'
 ]
 
 SITE_ID = 1
@@ -22,9 +24,18 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 X_FRAME_OPTIONS = 'DENY'
 
+# HSTS
 SECURE_HSTS_SECONDS = 3600
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+# TODO: CSP (https://realpython.com/django-nginx-gunicorn/#adding-a-content-security-policy-csp-header)
+# MIDDLEWARE += ['csp.middleware.CSPMiddleware']
+# CSP_STYLE_SRC = ["'self'"]
+
 SECURE_SSL_REDIRECT = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 
 
 # LOGGING
