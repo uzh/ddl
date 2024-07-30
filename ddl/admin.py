@@ -5,7 +5,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.http import HttpResponse
 
 from .models import User
-from ddm.models.core import DataDonation
+from ddm.models.core import DataDonation, FileUploader, DonationBlueprint
 
 
 class ExportCsvMixin:

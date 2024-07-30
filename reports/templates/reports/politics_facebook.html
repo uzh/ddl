@@ -1,0 +1,72 @@
+{% extends "reports/base.html" %}
+{% load static %}
+
+{% block page_title %}YouTube Report{% endblock %}
+
+
+{% block report_body %}
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>Gefolgte Kanäle</h3>
+    <p>Insgesamt folgen Sie <b>{{ n_insta_follows }} Kanälen</b> auf Instagram.</p>
+    <p>Unten sehen Sie, wie sich diese Kanäle unterschiedlichen Kanaltypen zuordnen lassen:</p>
+    <div class="d-flex justify-content-center pt-5">{{ insta_follows_plot.div | safe }}</div>
+
+    <p class="pt-5">
+      <b>Im Vergleich mit anderen: </b>Die Grafik unten zeigt pro Account-Typ, wie vielen Accounts Sie im Vergleich mit dem Durchschnitt der anderen Personen,
+      die andere Studie teilgenommen haben, folgen.
+    </p>
+    <div class="d-flex justify-content-center pt-5">{{ insta_line_plot.div | safe }}</div>
+  </div>
+</div>
+
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>Interaktionen</h3>
+    <p>Unten sehen Sie, wie oft Sie auf Instagram mit Inhalten von unterschiedlichen Account-Typen interagiert haben.</p>
+    <div class="d-flex justify-content-center pt-5">{{ insta_interaction_plot.div | safe }}</div>
+  </div>
+</div>
+
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>Gesehene Inhalte</h3>
+    <p>Die folgende Grafik zeigt, wie oft Sie auf Instagram Inhalte von unterschiedlichen Account-Typen gesehen haben.</p>
+    <div class="d-flex justify-content-center pt-5">{{ insta_content_plot.div | safe }}</div>
+  </div>
+</div>
+
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>Suchbegriffe</h3>
+    <p class="text-danger">Sollen wir das integrieren?</p>
+  </div>
+</div>
+
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>Stimmentscheidung und Nutzung soziale Medien</h3>
+    <p class="text-danger">Hier nur aggregierte Daten einfliessen lassen?</p>
+  </div>
+</div>
+
+<div class="pt-5">
+  <h1>Responses API</h1>
+  {{ responses_api }}
+</div>
+
+<div class="pt-5">
+  <h1>Responses File</h1>
+  {{ responses_file }}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+
+{{ insta_follows_plot.script | safe }}
+{{ insta_interaction_plot.script | safe }}
+{{ insta_content_plot.script | safe }}
+{{ insta_line_plot.script | safe }}
+{% endblock %}

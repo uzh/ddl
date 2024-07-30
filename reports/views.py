@@ -4,12 +4,15 @@ import os
 
 import requests
 from bokeh.embed import components
-from bokeh.models import ColumnDataSource, FactorRange, Legend
+from bokeh.models import ColumnDataSource, FactorRange, Legend, Span
 from bokeh.plotting import figure
 from bokeh.transform import factor_cmap
 
 from django.conf import settings
 from django.views.generic import TemplateView
+
+from .models import InstagramStatistics
+from . import graphs
 
 from requests import JSONDecodeError
 
@@ -17,11 +20,16 @@ from requests import JSONDecodeError
 class BaseReport:
     project_pk = None
     donation_endpoint = 'https://datadonation.uzh.ch/ddm/api/project/<project_p>/donations'
+    response_endpoint = 'https://datadonation.uzh.ch/ddm/api/project/<project_p>/responses'
     token = None
 
     def get_donation_endpoint(self):
         """ Overwrite this method to return the API endpoint. """
         return self.donation_endpoint.replace('<project_p>', f'{self.project_pk}')
+
+    def get_response_endpoint(self):
+        """ Overwrite this method to return the API endpoint. """
+        return self.response_endpoint.replace('<project_p>', f'{self.project_pk}')
 
     def get_token(self):
         """ Overwrite this method to return the API token. """
@@ -46,12 +54,25 @@ class BaseReport:
         else:
             return '{}'
 
+    def get_responses(self, payload=None):
+        """ Retrieve data from DDM. """
+        payload = self.get_payload() if payload is None else payload
+        r = requests.get(self.get_response_endpoint(), headers=self.get_headers(), params=payload)
 
-class PoliticsReport(BaseReport, TemplateView):
-    template_name = 'reports/politics_report.html'
+        if r.ok:
+            try:
+                return r.json()
+            except JSONDecodeError:
+                return '{"errors": ["JSONDecodeError"]}'
+        else:
+            return '{}'
+
+
+class PoliticsReportInstagram(BaseReport, TemplateView):
+    template_name = 'reports/politics_instagram.html'
     project_pk = 21
     donation_endpoint = 'https://datadonation.uzh.ch/ddm/api/project/21/donations?participants=<participant_id>'
-    token = settings.POLITICS_KEY
+    token = settings.POLITICS_KEY_INSTAGRAM
 
     @staticmethod
     def load_insta_account_list():
@@ -68,7 +89,7 @@ class PoliticsReport(BaseReport, TemplateView):
         if data[bp_name] is None:
             return None, None
 
-        n_follows_insta = len(data[bp_name])
+        n_follows_insta = len(data[bp_name][0])
 
         followed_accounts = {
             'parties': [],
@@ -205,174 +226,50 @@ class PoliticsReport(BaseReport, TemplateView):
                     content[key]['other'].append(profile)
         return content
 
-    def get_custom_legend(self, p):
-        label_colors = {
-            'Parteien': '#de0c1c',
-            'Politiker:innen': '#fe2d2d',
-            'Medien': '#fb7830',
-            'Organisationen': '#fecf02',
-            'andere': '#ffeea3'
-        }
-        categories = ['Parteien', 'Politiker:innen', 'Medien', 'Organisationen', 'andere']
-        legend_items = [(label, [p.square(-10, -10, legend_label=label, color=label_colors[label])]) for label in categories]
-        legend = Legend(items=legend_items, location='center',
-                        background_fill_color=None, border_line_color=None,
-                        orientation='horizontal')
-        return legend
+    def add_response_context(self, context):
+        # TODO: Enable in production
+        # responses_api = self.get_responses()
+        # context['responses_api'] = responses_api[0]
 
-    def get_insta_follows_plot(self, followed_accounts):
-        n_total = sum([len(followed_accounts[key]) for key in followed_accounts.keys()])
-        fractions = {key: (len(followed_accounts[key]) / n_total) for key in followed_accounts.keys()}
+        # TODO: Disable in production
+        file_path = os.path.join(settings.BASE_DIR, 'reports/static/temp/politics_responses.json')
+        with open(file_path, encoding='latin1') as f:
+            responses = json.load(f)
 
-        print(fractions)
+        context['responses_file'] = responses
 
-        dimension = ['Gefolgte Accounts']
-        categories = ['Parteien', 'Politiker:innen', 'Medien', 'Organisationen', 'andere']
-        palette = ['#de0c1c', '#fe2d2d', '#fb7830', '#fecf02', '#ffeea3']
+        stats = InstagramStatistics()
+        stats.project_pk = 4
+        stats.update_vote_counts()
+        context['responses'] = stats.get_responses()
+        context['counts_bio'] = stats.biodiversity_counts
+        context['counts_pension'] = stats.pension_counts
 
-        data = {
-            'Gefolgte Accounts': dimension,
-            'Parteien': [len(followed_accounts['parties'])],
-            'Politiker:innen': [len(followed_accounts['politicians'])],
-            'Medien': [len(followed_accounts['media'])],
-            'Organisationen': [len(followed_accounts['organisations'])],
-            'andere': [len(followed_accounts['other'])],
-        }
-        print(data)
-        p = figure(y_range=dimension, x_range=(0, n_total), height=200, width=800, toolbar_location=None,
-                   tools='hover', tooltips='$name: @$name',
-                   background_fill_color=None)
+        # TODO
+        # Graph biodiversity (overall count - yes vs. no)
+        context['biodiversity_graph'] = graphs.get_vote_graph(stats.biodiversity_counts)
 
-        p.hbar_stack(categories, y='Gefolgte Accounts', height=0.9, color=palette, source=ColumnDataSource(data),
-                     legend_label=categories)
+        # Graph pension reform (overall count - yes vs. no)
+        context['pension_graph'] = graphs.get_vote_graph(stats.pension_counts, color='2')
 
-        p.border_fill_color = None
-        p.y_range.range_padding = 0.1
-        p.yaxis.visible = False
-        p.ygrid.visible = False
-        p.xgrid.visible = False
-        p.axis.minor_tick_line_color = None
-        p.outline_line_color = None
+        # Graph partie following (count follows per point on left-right scale)
+        context['donations'] = stats.get_blueprint_donations(12)
 
-        p.legend.visible = False
-        legend = self.get_custom_legend(p)
-        p.add_layout(legend, 'below')
+        ## Party Graphs
+        context['sp_graph'] = graphs.get_party_graph(None, 'SP')
+        context['svp_graph'] = graphs.get_party_graph(None, 'SVP')
+        context['mitte_graph'] = graphs.get_party_graph(None, 'Mitte')
+        context['fdp_graph'] = graphs.get_party_graph(None, 'FDP')
 
-        script, div = components(p)
-        return {'script': script, 'div': div}
+        # Social Media for information (left vs. right
 
-    def get_interaction_plot(self, interactions):
-        def get_list_for_plot(category, interactions):
-            l = []
-            for interaction in ['likes_posts', 'likes_stories', 'comments_general', 'comments_reels']:
-                l.append(len(interactions[interaction][category]))
-            return l
-
-        interaction_types = [
-            'Likes Posts',              # 'likes_posts',
-            'Likes Stories',            # 'likes_stories',
-            'Kommentare allgemein',     # 'comments_general',
-            'Kommentare Reels'          # 'comments_reels'
-        ]
-        categories = ['Parteien', 'Politiker:innen', 'Medien', 'Organisationen', 'andere']
-        data = {
-            'interactions': interaction_types,
-            'Parteien': get_list_for_plot('parties', interactions),
-            'Politiker:innen': get_list_for_plot('politicians', interactions),
-            'Medien': get_list_for_plot('media', interactions),
-            'Organisationen': get_list_for_plot('organisations', interactions),
-            'andere': get_list_for_plot('other', interactions),
-        }
-
-        palette = ['#de0c1c', '#fe2d2d', '#fb7830', '#fecf02', '#ffeea3']
-        x = [(interaction, category) for interaction in interaction_types for category in categories]
-        counts = sum(zip(data['Parteien'], data['Politiker:innen'], data['Medien'], data['Organisationen'], data['andere']), ())  # like an hstack
-        source = ColumnDataSource(data=dict(x=x, counts=counts))
-
-        p = figure(x_range=FactorRange(*x), height=350, width=800,
-                   toolbar_location=None, tools="", background_fill_color=None)
-
-        p.vbar(x='x', top='counts', width=0.9, source=source, line_color='white',
-               fill_color=factor_cmap('x', palette=palette, factors=categories, start=1, end=2))
-
-        p.border_fill_color = None
-        p.y_range.start = 0
-        p.x_range.range_padding = 0.1
-        p.xaxis.major_label_orientation = 1
-        p.axis.minor_tick_line_color = None
-        p.xgrid.grid_line_color = None
-
-        p.xaxis.group_text_color = '#000'
-        p.xaxis.group_text_font_size = '10pt'
-
-        legend = self.get_custom_legend(p)
-        p.legend.visible = False
-        p.add_layout(legend, 'below')
-
-        script, div = components(p)
-        return {'script': script, 'div': div}
-
-    def get_content_plot(self, content):
-        def get_list_for_plot(category, interactions):
-            l = []
-            for interaction in ['seen_ads', 'recommended_profiles', 'seen_posts', 'seen_videos']:
-                l.append(len(interactions[interaction][category]))
-            return l
-
-        interaction_types = [
-            'Geschaute Werbung',
-            'Vorgeschlagene Profile',
-            'Geschaute Posts',
-            'Geschaute Videos'
-        ]
-        categories = ['Parteien', 'Politiker:innen', 'Medien', 'Organisationen', 'andere']
-        data = {
-            'interactions': interaction_types,
-            'Parteien': get_list_for_plot('parties', content),
-            'Politiker:innen': get_list_for_plot('politicians', content),
-            'Medien': get_list_for_plot('media', content),
-            'Organisationen': get_list_for_plot('organisations', content),
-            'andere': get_list_for_plot('other', content),
-        }
-
-        palette = ['#de0c1c', '#fe2d2d', '#fb7830', '#fecf02', '#ffeea3']
-
-        # this creates [ ("Apples", "2015"), ("Apples", "2016"), ("Apples", "2017"), ("Pears", "2015), ... ]
-        x = [(interaction, category) for interaction in interaction_types for category in categories]
-        counts = sum(zip(data['Parteien'], data['Politiker:innen'], data['Medien'], data['Organisationen'], data['andere']), ())  # like an hstack
-
-        source = ColumnDataSource(data=dict(x=x, counts=counts))
-
-        p = figure(x_range=FactorRange(*x), height=350, width=800,
-                   toolbar_location=None, tools="", background_fill_color=None)
-
-        p.vbar(x='x', top='counts', width=1, source=source, line_color='white',
-               fill_color=factor_cmap('x', palette=palette, factors=categories, start=1, end=2))
-
-        p.border_fill_color = None
-        p.y_range.start = 0
-        p.x_range.range_padding = 0.1
-        p.xaxis.major_label_orientation = 1
-        p.xgrid.grid_line_color = None
-        p.axis.minor_tick_line_color = None
-
-        p.xaxis.group_text_color = '#000'
-        p.xaxis.group_text_font_size = '10pt'
-
-        legend = self.get_custom_legend(p)
-        p.legend.visible = False
-        p.add_layout(legend, 'below')
-
-        script, div = components(p)
-        return {'script': script, 'div': div}
+        return
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['test'] = self.kwargs['participant_id']
         # data = self.get_data()  TODO: Enable when in production
 
-        base_dir = settings.BASE_DIR
-        file_path = os.path.join(base_dir, 'reports/static/temp/politics_data.json')
+        file_path = os.path.join(settings.BASE_DIR, 'reports/static/temp/politics_data.json')
         with open(file_path, encoding='latin1') as f:
             data = json.load(f)
         context['test_data'] = json.dumps(data).encode('latin1').decode('unicode-escape').encode('latin1').decode('utf-8')
@@ -382,25 +279,71 @@ class PoliticsReport(BaseReport, TemplateView):
         donation_facebook = None  # Boolean TODO
 
         insta_account_list = self.load_insta_account_list()
-        followed_insta_accounts, n_insta_accounts = self.get_follows_insta(data, insta_account_list)
+        followed_accounts, n_insta_accounts = self.get_follows_insta(data, insta_account_list)
         insta_interactions = self.get_interactions_insta(data, insta_account_list)
         insta_proposed_content = self.get_proposed_content_insta(data, insta_account_list)
 
-        context['n_insta_follows'] = n_insta_accounts
+        context['n_follows'] = n_insta_accounts
+        context['n_follows_relevant'] = n_insta_accounts - len(followed_accounts['other'])
 
         # Graph 1: n per account category
-        context['insta_follows_plot'] = self.get_insta_follows_plot(followed_insta_accounts)
+        context['insta_follows_plot'] = graphs.get_insta_follows_plot(followed_accounts)
 
         # Graph 2: account category axis + comparison
+        context['insta_line_plot'] = graphs.get_insta_line_plot(followed_accounts, n_insta_accounts)
 
         # Graph 3: interaction bar plot per category
-        context['insta_interaction_plot'] = self.get_interaction_plot(insta_interactions)
+        context['insta_interaction_plot'] = graphs.get_interaction_plot(insta_interactions)
 
         # Graph 4: proposed content bar plot per category
-        context['insta_content_plot'] = self.get_content_plot(insta_proposed_content)
+        context['insta_content_plot'] = graphs.get_content_plot(insta_proposed_content)
+
+        self.add_response_context(context)
 
         return context
 
+
+class PoliticsReportFacebook(BaseReport, TemplateView):
+    template_name = 'reports/politics_facebook.html'
+    project_pk = 27
+    token = settings.POLITICS_KEY_FACEBOOK
+
+
+class SearchReport(BaseReport, TemplateView):
+    template_name = 'reports/search_report.html'
+    project_pk = 26
+    token = settings.SEARCH_KEY
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        self.get_donation_context(context)
+        return context
+
+    def get_donation_context(self, context):
+        # TODO: Enable when in production
+        # data = self.get_data()
+
+        # TODO: Disable in production:
+        file_path = os.path.join(settings.BASE_DIR, 'reports/static/temp/search_data.json')
+        with open(file_path, encoding='latin1') as f:
+            data = json.load(f)
+        context['test_data'] = data
+        return
+
+
+class DigitalMealReport(BaseReport, TemplateView):
+    template_name = 'reports/digital_meal.html'
+    project_pk = None
+    token = settings.DIGITAL_MEAL_KEY
+
+
+class ChatGPTReport(BaseReport, TemplateView):
+    template_name = 'reports/chatgpt.html'
+    project_pk = None
+    token = settings.CHATGPT_KEY
+
+
+# TODO: Delete
 """
 For console to load xlsx files:
 import json
@@ -412,22 +355,3 @@ file_path = './ddl/reports/static/temp/media.xlsx'
 f = pd.read_excel(os.path.join(cur_dir, path))
 f_json = json.loads(f.to_json(orient='records')
 """
-
-
-# class BaseIndividualReport(DDMReport, DetailView):
-#     """ Base class to generate an individual report. """
-#     model = Classroom
-#     template_name = 'reports/youtube/individual_report.html'
-#
-#     def setup(self, request, *args, **kwargs):
-#         return super().setup(request, *args, **kwargs)
-#
-#     def get_endpoint(self):
-#         return self.object.track.ddm_api_endpoint
-#
-#     def get_token(self):
-#         return self.object.track.ddm_api_token
-#
-#     def get_payload(self):
-#         payload = {'participant_id': self.kwargs.get('participant_id')}
-#         return payload

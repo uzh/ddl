@@ -194,4 +194,8 @@ CKEDITOR_CONFIGS = {
 
 # Reports
 # ------------------------------------------------------------------------------
-POLITICS_KEY = os.getenv('POLITICS_KEY', None)
+POLITICS_KEY_INSTAGRAM = os.getenv('POLITICS_KEY_INSTAGRAM', None)
+POLITICS_KEY_FACEBOOK = os.getenv('POLITICS_KEY_FACEBOOK', None)
+SEARCH_KEY = os.getenv('SEARCH_KEY', None)
+DIGITAL_MEAL_KEY = os.getenv('DIGITAL_MEAL_KEY', None)
+CHATGPT_KEY = os.getenv('CHATGPT_KEY', None)
