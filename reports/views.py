@@ -260,19 +260,21 @@ class PoliticsReportFacebook(BaseReport, TemplateView):
         context['counts_pension'] = stats.pension_counts
 
         # Graph biodiversity (overall count - yes vs. no)
-        context['biodiversity_graph'] = politics_plots.get_vote_graph(stats.biodiversity_counts)
+        if stats.biodiversity_counts:
+            context['biodiversity_graph'] = politics_plots.get_vote_graph(stats.biodiversity_counts)
 
         # Graph pension reform (overall count - yes vs. no)
-        context['pension_graph'] = politics_plots.get_vote_graph(stats.pension_counts, color='2')
+        if stats.pension_counts:
+            context['pension_graph'] = politics_plots.get_vote_graph(stats.pension_counts, color='2')
 
         # Graph partie following (count follows per point on left-right scale)
         context['donations'] = stats.get_blueprint_donations(12)
 
         # Party Graphs
-        context['sp_graph'] = politics_plots.get_party_graph(None, 'SP')
-        context['svp_graph'] = politics_plots.get_party_graph(None, 'SVP')
-        context['mitte_graph'] = politics_plots.get_party_graph(None, 'Mitte')
-        context['fdp_graph'] = politics_plots.get_party_graph(None, 'FDP')
+        context['sp_graph'] = politics_plots.get_party_graph(stats.party_counts, 'SP')
+        context['svp_graph'] = politics_plots.get_party_graph(stats.party_counts, 'SVP')
+        context['mitte_graph'] = politics_plots.get_party_graph(stats.party_counts, 'Mitte')
+        context['fdp_graph'] = politics_plots.get_party_graph(stats.party_counts, 'FDP')
         return
 
 

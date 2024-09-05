@@ -308,8 +308,8 @@ def get_party_graph(data, key):
         'FDP': '#074ea1'
     }
 
-    reference_stats = load_instagram_statistics()
-    data = reference_stats.party_counts
+    if not data:
+        return None
 
     categories = [str(i) for i in range(1, 11)]
     counts = [data[key][cat] for cat in categories]
