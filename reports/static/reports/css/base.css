@@ -1,0 +1,16 @@
+.report-header {
+    border-bottom: 1px solid #b7b7b7;
+    padding-bottom: 25px;
+}
+
+.report-title {
+    margin: 0;
+    font-size: 2.5rem !important;
+    font-family: "GT Cinetype", sans-serif !important;
+    line-height: 1.5 !important;
+}
+
+.report-body h3 {
+    font-family: "GT Cinetype", sans-serif;
+    padding-bottom: 20px;
+}

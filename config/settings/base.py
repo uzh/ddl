@@ -194,8 +194,23 @@ CKEDITOR_CONFIGS = {
 
 # Reports
 # ------------------------------------------------------------------------------
-POLITICS_KEY_INSTAGRAM = os.getenv('POLITICS_KEY_INSTAGRAM', None)
-POLITICS_KEY_FACEBOOK = os.getenv('POLITICS_KEY_FACEBOOK', None)
-SEARCH_KEY = os.getenv('SEARCH_KEY', None)
-DIGITAL_MEAL_KEY = os.getenv('DIGITAL_MEAL_KEY', None)
-CHATGPT_KEY = os.getenv('CHATGPT_KEY', None)
+# Instagram Report
+INSTAGRAM_PROJECT_PK = os.getenv('INSTAGRAM_PROJECT_PK', None)
+INSTAGRAM_API_KEY = os.getenv('INSTAGRAM_API_KEY', None)
+BP_ID_FOLLOWED_ACCOUNTS = os.getenv('BP_ID_FOLLOWED_ACCOUNTS', None)
+
+# Facebook Report
+FACEBOOK_PROJECT_PK = os.getenv('FACEBOOK_PROJECT_PK', None)
+FACEBOOK_API_KEY = os.getenv('FACEBOOK_API_KEY', None)
+
+# Search Report
+SEARCH_PROJECT_PK = os.getenv('SEARCH_PROJECT_PK', None)
+SEARCH_API_KEY = os.getenv('SEARCH_API_KEY', None)
+
+# Digital Meal Report
+DIGITALMEAL_PROJECT_PK = os.getenv('DIGITALMEAL_PROJECT_PK', None)
+DIGITALMEAL_API_KEY = os.getenv('DIGITALMEAL_API_KEY', None)
+
+# ChatGPT Report
+CHATGPT_PROJECT_PK = os.getenv('CHATGPT_PROJECT_PK', None)
+CHATGPT_API_KEY = os.getenv('CHATGPT_API_KEY', None)

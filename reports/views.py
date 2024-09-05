@@ -1,20 +1,22 @@
-import copy
-import json
-import os
-
+import pandas as pd
+import pytz
 import requests
-from bokeh.embed import components
-from bokeh.models import ColumnDataSource, FactorRange, Legend, Span
-from bokeh.plotting import figure
-from bokeh.transform import factor_cmap
 
+from datetime import timedelta, datetime
+
+from ddm.models.core import Participant
 from django.conf import settings
 from django.views.generic import TemplateView
-
-from .models import InstagramStatistics
-from . import graphs
-
 from requests import JSONDecodeError
+
+from .plots import youtube as yt_plots
+from .plots import socialmedia as politics_plots
+from .plots import search as search_plots
+from .utils.get_scores import get_scores_for_report
+from .utils import yt_data, search_data, insta_data, fb_data
+
+
+utc = pytz.UTC
 
 
 class BaseReport:
@@ -70,288 +72,470 @@ class BaseReport:
 
 class PoliticsReportInstagram(BaseReport, TemplateView):
     template_name = 'reports/politics_instagram.html'
-    project_pk = 21
-    donation_endpoint = 'https://datadonation.uzh.ch/ddm/api/project/21/donations?participants=<participant_id>'
-    token = settings.POLITICS_KEY_INSTAGRAM
+    project_pk = settings.INSTAGRAM_PROJECT_PK
+    donation_endpoint = 'https://datadonation.uzh.ch/ddm/api/project/<project_p>/donations?participants=<participant_id>'
+    token = settings.INSTAGRAM_API_KEY
 
-    @staticmethod
-    def load_insta_account_list():
-        path_insta_accounts = os.path.join(settings.BASE_DIR, 'reports/static/reports/data/insta_accounts_complete.json')
-        with open(path_insta_accounts) as f:
-            insta_accounts = json.load(f)
-            insta_accounts = json.loads(json.dumps(insta_accounts).encode('latin1').decode('utf-8'))
-        return insta_accounts
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        self.add_donation_context(context)
+        if not any([
+            context['insta_follows_available'],
+            context['insta_interactions_available'],
+            context['insta_content_available']
+        ]):
+            context['donation_status'] = 'not available'
+            return context
 
-    def get_follows_insta(self, data, insta_accounts):
-        bp_name = 'Gefolgte KanÃ¤le Instagram'  # 'Gefolgte Kanäle Instagram'
-        if bp_name not in data:
-            return None, None
-        if data[bp_name] is None:
-            return None, None
+        self.add_response_context(context)
+        return context
 
-        n_follows_insta = len(data[bp_name][0])
+    def add_donation_context(self, context):
+        """Get context variables from donated data."""
+        data = self.get_data()
+        # data = insta_data.load_local_example_donation()
 
-        followed_accounts = {
-            'parties': [],
-            'media': [],
-            'politicians': [],
-            'organisations': [],
-            'other': []
-        }
+        political_accounts = insta_data.load_political_account_list()
 
-        for account in data[bp_name][0]:
-            profile = account['string_list_data'][0]['href']
+        # Statistics related to followed accounts.
+        followed_channels_bp = ['Gefolgte Kanäle Instagram']
+        follows_available = insta_data.check_if_bps_available(data, followed_channels_bp)
+        if follows_available:
+            followed_accounts = insta_data.get_follows_insta(data, political_accounts)
+            n_follows_total = insta_data.get_n_follows(data)
+            context['n_follows'] = n_follows_total
+            context['n_follows_relevant'] = n_follows_total - len(followed_accounts['other'])
+            # Plot 1: n per account category
+            context['insta_follows_plot'] = politics_plots.get_follows_plot(followed_accounts)
+            # Plot 2: account category axis + comparison
+            context['insta_line_plot'] = politics_plots.get_line_plot(followed_accounts)
+            context['insta_follows_available'] = True
+        else:
+            context['insta_follows_available'] = False
 
-            if profile in insta_accounts.keys():
-                insta_profile = insta_accounts[profile]
-
-                if insta_profile['type'] == 'media':
-                    followed_accounts['media'].append(profile)
-                elif insta_profile['type'] == 'organisation':
-                    followed_accounts['organisations'].append(profile)
-                elif insta_profile['type'] == 'party':
-                    followed_accounts['parties'].append(profile)
-                elif insta_profile['type'] == 'politician':
-                    followed_accounts['politicians'].append(profile)
-            else:
-                followed_accounts['other'].append(profile)
-
-        return followed_accounts, n_follows_insta
-
-    def get_interactions_insta(self, data, insta_accounts):
-        # TODO: Delete if not used
-        # insta_names = {}
-        # for profile, vars in insta_accounts.items:
-        #     insta_names[vars['name']] = {'url': profile}
-        #     for var in vars.keys():
-        #         if var != 'name':
-        #             insta_names[vars['name']][var] = vars[var]
-
-        bp_names = [
-            'Gelikte Posts Instagram',
-            'Story Likes Instagram',
-            'Kommentare Instagram',
-            'Reels Kommentare Instagram'
+        # Statistics related to interactions.
+        interaction_bps = [
+            'Gelikte Posts Instagram', 'Story Likes Instagram',
+            'Kommentare Instagram', 'Reels Kommentare Instagram'
         ]
-        interaction_keys = [
-            'likes_posts',
-            'likes_stories',
-            'comments_general',
-            'comments_reels'
+        interactions_available = insta_data.check_if_bps_available(data, interaction_bps)
+        if interactions_available:
+            insta_interactions = insta_data.get_interactions_insta(data, political_accounts)
+            # Plot 3: interaction bar plot per category
+            context['insta_interaction_plot'] = politics_plots.get_interaction_plot(insta_interactions)
+            context['insta_interactions_available'] = True
+        else:
+            context['insta_interactions_available'] = False
+
+        # Statistics related to proposed content.
+        content_bps = [
+            'Geschaute Werbung Instagram', 'Vorgeschlagene Profile',
+            'Geschaute Posts Instagram', 'Geschaute Videos Instagram'
         ]
-        value_placeholder = {
-            'media': [],
-            'organisations': [],
-            'parties': [],
-            'politicians': [],
-            'other': []
-        }
-        interactions = {key: copy.deepcopy(value_placeholder) for key in interaction_keys}
-
-        for index, bp_name in enumerate(bp_names):
-            if bp_name not in data:
-                continue
-            if data[bp_name] is None:
-                continue
-
-            key = interaction_keys[index]
-
-            for account in data[bp_name][0]:
-                profile = 'https://www.instagram.com/' + account['title'].strip()
-
-                if profile in insta_accounts.keys():
-                    insta_profile = insta_accounts[profile]
-
-                    if insta_profile['type'] == 'media':
-                        interactions[key]['media'].append(profile)
-                    elif insta_profile['type'] == 'organisation':
-                        interactions[key]['organisations'].append(profile)
-                    elif insta_profile['type'] == 'party':
-                        interactions[key]['parties'].append(profile)
-                    elif insta_profile['type'] == 'politician':
-                        interactions[key]['politicians'].append(profile)
-                else:
-                    interactions[key]['other'].append(profile)
-
-        return interactions
-
-    def get_proposed_content_insta(self, data, insta_accounts):
-        bp_names = [
-            'Geschaute Werbung Instagram',
-            'Vorgeschlagene Profile',
-            'Geschaute Posts Instagram',
-            'Geschaute Videos Instagram'
-        ]
-        content_keys = [
-            'seen_ads',
-            'recommended_profiles',
-            'seen_posts',
-            'seen_videos'
-        ]
-        value_placeholder = {
-            'media': [],
-            'organisations': [],
-            'parties': [],
-            'politicians': [],
-            'other': []
-        }
-        content = {key: copy.deepcopy(value_placeholder) for key in content_keys}
-
-        for index, bp_name in enumerate(bp_names):
-
-            if bp_name not in data:
-                continue
-            if data[bp_name] in [None, []]:
-                continue
-
-            key = content_keys[index]
-            for account in data[bp_name][0]:
-                try:
-                    profile = 'https://www.instagram.com/' + account['string_map_data']['Author']['value'].strip()
-                except:
-                    continue
-
-                if profile in insta_accounts.keys():
-                    insta_profile = insta_accounts[profile]
-
-                    if insta_profile['type'] == 'media':
-                        content[key]['media'].append(profile)
-                    elif insta_profile['type'] == 'organisation':
-                        content[key]['organisations'].append(profile)
-                    elif insta_profile['type'] == 'party':
-                        content[key]['parties'].append(profile)
-                    elif insta_profile['type'] == 'politician':
-                        content[key]['politicians'].append(profile)
-                else:
-                    content[key]['other'].append(profile)
-        return content
+        proposed_content_available = insta_data.check_if_bps_available(data, content_bps)
+        if proposed_content_available:
+            insta_proposed_content = insta_data.get_proposed_content_insta(data, political_accounts)
+            # Plot 4: proposed content bar plot per category
+            context['insta_content_plot'] = politics_plots.get_content_plot(insta_proposed_content)
+            context['insta_content_available'] = True
+        else:
+            context['insta_content_available'] = False
+        return
 
     def add_response_context(self, context):
-        # TODO: Enable in production
-        # responses_api = self.get_responses()
-        # context['responses_api'] = responses_api[0]
+        """Get context variables from questionnaire responses."""
+        responses_api = self.get_responses()
+        # responses = responses_api[0]
+        # context['responses_api'] = responses
 
-        # TODO: Disable in production
-        file_path = os.path.join(settings.BASE_DIR, 'reports/static/temp/politics_responses.json')
-        with open(file_path, encoding='latin1') as f:
-            responses = json.load(f)
+        # responses = insta_data.load_local_example_responses()  # Disable in production
 
-        context['responses_file'] = responses
-
-        stats = InstagramStatistics()
-        stats.project_pk = 4
-        stats.update_vote_counts()
-        context['responses'] = stats.get_responses()
+        stats = politics_plots.load_instagram_statistics()
         context['counts_bio'] = stats.biodiversity_counts
         context['counts_pension'] = stats.pension_counts
 
-        # TODO
         # Graph biodiversity (overall count - yes vs. no)
-        context['biodiversity_graph'] = graphs.get_vote_graph(stats.biodiversity_counts)
+        context['biodiversity_graph'] = politics_plots.get_vote_graph(stats.biodiversity_counts)
 
         # Graph pension reform (overall count - yes vs. no)
-        context['pension_graph'] = graphs.get_vote_graph(stats.pension_counts, color='2')
+        context['pension_graph'] = politics_plots.get_vote_graph(stats.pension_counts, color='2')
 
         # Graph partie following (count follows per point on left-right scale)
         context['donations'] = stats.get_blueprint_donations(12)
 
-        ## Party Graphs
-        context['sp_graph'] = graphs.get_party_graph(None, 'SP')
-        context['svp_graph'] = graphs.get_party_graph(None, 'SVP')
-        context['mitte_graph'] = graphs.get_party_graph(None, 'Mitte')
-        context['fdp_graph'] = graphs.get_party_graph(None, 'FDP')
-
-        # Social Media for information (left vs. right
-
+        # Party Graphs
+        context['sp_graph'] = politics_plots.get_party_graph(None, 'SP')
+        context['svp_graph'] = politics_plots.get_party_graph(None, 'SVP')
+        context['mitte_graph'] = politics_plots.get_party_graph(None, 'Mitte')
+        context['fdp_graph'] = politics_plots.get_party_graph(None, 'FDP')
         return
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # data = self.get_data()  TODO: Enable when in production
-
-        file_path = os.path.join(settings.BASE_DIR, 'reports/static/temp/politics_data.json')
-        with open(file_path, encoding='latin1') as f:
-            data = json.load(f)
-        context['test_data'] = json.dumps(data).encode('latin1').decode('unicode-escape').encode('latin1').decode('utf-8')
-
-        # Variables
-        donation_instagram = None  # Boolean TODO
-        donation_facebook = None  # Boolean TODO
-
-        insta_account_list = self.load_insta_account_list()
-        followed_accounts, n_insta_accounts = self.get_follows_insta(data, insta_account_list)
-        insta_interactions = self.get_interactions_insta(data, insta_account_list)
-        insta_proposed_content = self.get_proposed_content_insta(data, insta_account_list)
-
-        context['n_follows'] = n_insta_accounts
-        context['n_follows_relevant'] = n_insta_accounts - len(followed_accounts['other'])
-
-        # Graph 1: n per account category
-        context['insta_follows_plot'] = graphs.get_insta_follows_plot(followed_accounts)
-
-        # Graph 2: account category axis + comparison
-        context['insta_line_plot'] = graphs.get_insta_line_plot(followed_accounts, n_insta_accounts)
-
-        # Graph 3: interaction bar plot per category
-        context['insta_interaction_plot'] = graphs.get_interaction_plot(insta_interactions)
-
-        # Graph 4: proposed content bar plot per category
-        context['insta_content_plot'] = graphs.get_content_plot(insta_proposed_content)
-
-        self.add_response_context(context)
-
-        return context
 
 
 class PoliticsReportFacebook(BaseReport, TemplateView):
     template_name = 'reports/politics_facebook.html'
-    project_pk = 27
-    token = settings.POLITICS_KEY_FACEBOOK
-
-
-class SearchReport(BaseReport, TemplateView):
-    template_name = 'reports/search_report.html'
-    project_pk = 26
-    token = settings.SEARCH_KEY
+    project_pk = settings.FACEBOOK_PROJECT_PK
+    token = settings.FACEBOOK_API_KEY
+    donation_endpoint = 'https://datadonation.uzh.ch/ddm/api/project/<project_p>/donations?participants=<participant_id>'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        self.get_donation_context(context)
+        self.add_donation_context(context)
+        if not any([
+            context['fb_follows_available'],
+            context['fb_interactions_available'],
+            context['fb_content_available']
+        ]):
+            context['donation_status'] = 'not available'
+            return context
+
+        self.add_response_context(context)
         return context
 
-    def get_donation_context(self, context):
-        # TODO: Enable when in production
-        # data = self.get_data()
+    def add_donation_context(self, context):
+        """Get context variables from donated data."""
+        data = self.get_data()
+        # data = fb_data.load_local_example_donation()
 
-        # TODO: Disable in production:
-        file_path = os.path.join(settings.BASE_DIR, 'reports/static/temp/search_data.json')
-        with open(file_path, encoding='latin1') as f:
-            data = json.load(f)
-        context['test_data'] = data
+        political_accounts = fb_data.load_political_account_list()
+
+        # Statistics related to followed accounts.
+        followed_channels_bp = ['Gefolgte Seiten Facebook']  # Gefolgte Personen Facebook ?
+        follows_available = insta_data.check_if_bps_available(data, followed_channels_bp)
+        if follows_available:
+            followed_accounts = fb_data.get_follows(data, political_accounts)  # TODO in function
+            n_follows_total = fb_data.get_n_follows(data)  # TODO in function
+            context['n_follows'] = n_follows_total
+            context['n_follows_relevant'] = n_follows_total - len(followed_accounts['other'])
+
+            # Plot 1: n per account category
+            context['fb_follows_plot'] = politics_plots.get_follows_plot(followed_accounts)
+
+            # Plot 2: account category axis + comparison
+            context['fb_line_plot'] = politics_plots.get_line_plot(followed_accounts)
+
+            context['fb_follows_available'] = True
+        else:
+            context['fb_follows_available'] = False
+
+        # Statistics related to interactions.
+        interaction_bps = [
+            'Gelikete Seiten Facebook', 'Likes Facebook',
+            'Kommentare Facebook', 'Story Interaction Facebook'
+        ]
+        interactions_available = insta_data.check_if_bps_available(data, interaction_bps)
+        if interactions_available:
+            fb_interactions = fb_data.get_interactions(data, political_accounts)  # TODO in function
+            # Plot 3: interaction bar plot per category
+            context['fb_interaction_plot'] = politics_plots.get_interaction_plot(fb_interactions)  # TODO: May not work, because keys have been changed in get_proposed_content()
+            context['fb_interactions_available'] = True
+        else:
+            context['fb_interactions_available'] = False
+
+        # Statistics related to proposed content.
+        # TODO: Check if that makes sense for Facebook.
+        content_bps = [
+            'Kürzlich geschaut Facebook', 'Kürzlich besucht Facebook'
+        ]
+        proposed_content_available = insta_data.check_if_bps_available(data, content_bps)
+        if proposed_content_available:
+            fb_content = fb_data.get_proposed_content(data, political_accounts)  # TODO in function
+            # Plot 4: proposed content bar plot per category
+            context['fb_content_plot'] = politics_plots.get_content_plot(fb_content)  # TODO: May not work, because keys have been changed in get_proposed_content()
+            context['fb_content_available'] = True
+        else:
+            context['fb_content_available'] = False
+        return
+
+    def add_response_context(self, context):
+        """Get context variables from questionnaire responses."""
+        responses_api = self.get_responses()
+        # -----------------------------------------------------------------
+        # responses = responses_api[0]
+        # context['responses_api'] = responses
+
+        # responses = insta_data.load_local_example_responses()  # Disable in production
+
+        stats = politics_plots.load_instagram_statistics()
+        context['counts_bio'] = stats.biodiversity_counts
+        context['counts_pension'] = stats.pension_counts
+
+        # Graph biodiversity (overall count - yes vs. no)
+        context['biodiversity_graph'] = politics_plots.get_vote_graph(stats.biodiversity_counts)
+
+        # Graph pension reform (overall count - yes vs. no)
+        context['pension_graph'] = politics_plots.get_vote_graph(stats.pension_counts, color='2')
+
+        # Graph partie following (count follows per point on left-right scale)
+        context['donations'] = stats.get_blueprint_donations(12)
+
+        # Party Graphs
+        context['sp_graph'] = politics_plots.get_party_graph(None, 'SP')
+        context['svp_graph'] = politics_plots.get_party_graph(None, 'SVP')
+        context['mitte_graph'] = politics_plots.get_party_graph(None, 'Mitte')
+        context['fdp_graph'] = politics_plots.get_party_graph(None, 'FDP')
         return
 
 
-class DigitalMealReport(BaseReport, TemplateView):
+class SearchReport(BaseReport, TemplateView):
+    template_name = 'reports/search.html'
+    project_pk = settings.SEARCH_PROJECT_PK
+    token = settings.SEARCH_API_KEY
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['status'] = 'okay'
+        donation = self.get_donation_context(context)
+
+        if 'Google Suchverlauf' not in donation.keys():
+            context['status'] = 'Etwas ist schiefgelaufen und der Report konnte nicht generiert werden.'
+            return context
+
+        if not donation['Google Suchverlauf']:
+            context['status'] = 'Etwas ist schiefgelaufen und der Report konnte nicht generiert werden.'
+            return context
+
+        events = donation['Google Suchverlauf'][0]
+
+        searches = search_data.get_clean_search_events(events)
+        search_dates = [e['time'] for e in searches]
+        search_date_max = max(search_dates)
+        search_date_min = search_date_max - timedelta(days=30)
+        context['search_date_max'] = search_date_max
+        context['search_date_min'] = search_date_min
+
+        searches_last_30_days = [e['title'] for e in searches if e['time'] >= search_date_min]
+        context['n_searches'] = len(searches_last_30_days)
+
+        scores, n_per_lang = get_scores_for_report(searches_last_30_days)
+        context['scores'] = scores
+        context['n_queries_de'] = n_per_lang['de']
+        context['n_queries_en'] = n_per_lang['en']
+        context['n_queries_uk'] = n_per_lang['uk']
+        context['n_queries_unidentified'] = n_per_lang['unidentified']
+        context['n_queries_total'] = sum(n_per_lang.values())
+
+        clicks = search_data.get_clean_click_events(events)
+        clicks_last_30_days = [e for e in clicks if e['time'] >= search_date_min]
+        clicks_titles = [e['title'] for e in clicks]
+        context['n_clicks'] = len(clicks_last_30_days)
+        context['clicks'] = clicks_titles
+
+        n_langs_with_score = 0
+        if scores['German']:
+            context['plot_de'] = search_plots.get_language_plot(scores['German'], bar_color='#FF0000')
+            n_langs_with_score += 1
+
+        if scores['English']:
+            context['plot_en'] = search_plots.get_language_plot(scores['English'], bar_color='#00247D')
+            n_langs_with_score += 1
+
+        if scores['Ukrainian']:
+            context['plot_ukr'] = search_plots.get_language_plot(scores['Ukrainian'], bar_color='#0057b8')
+            n_langs_with_score += 1
+
+        context['n_langs_with_score'] = n_langs_with_score
+        context['test_data'] = donation['Google Suchverlauf'][0]
+        return context
+
+    def get_donation_context(self, context):
+        data = self.get_data()
+
+        # For local testing:
+        # file_path = os.path.join(settings.BASE_DIR, 'reports/static/temp/search_donation.json')
+        # with open(file_path, encoding='latin1') as f:
+        #     data = json.loads(f.read())
+        return data
+
+
+class DigitalMealReport(BaseReport, TemplateView):  # BaseIndividualReport,
     template_name = 'reports/digital_meal.html'
-    project_pk = None
-    token = settings.DIGITAL_MEAL_KEY
+    project_pk = settings.DIGITALMEAL_PROJECT_PK
+    token = settings.DIGITALMEAL_API_KEY
+
+    def get_endpoint(self):
+        url = self.object.track.data_endpoint
+        url = url.replace('class-data', 'individual-data')
+        return url
+
+    def get_participation_date(self):
+        participant_id = self.kwargs.get('participant_id')
+        participant = Participant.objects.filter(external_id=participant_id)
+        if not participant:
+            participation_date = None
+        else:
+            participation_date = participant[0].end_time.replace(tzinfo=utc)
+        return participation_date
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        data = self.get_data()  # json.load(self.get_data())
+        context['status'] = 'okay'
+
+        # Watch history
+        watch_history_available = True
+        watch_history_id = 'Angesehene Videos'
+        if watch_history_id in data.keys():
+            if data[watch_history_id]:
+                context.update(self.get_watch_context(data[watch_history_id][0]))
+            else:
+                watch_history_available = False
+        else:
+            watch_history_available = False
+
+        # Search history (sh)
+        search_history_available = True
+        search_history_id = 'Suchverlauf'
+        if search_history_id in data.keys():
+            if data[search_history_id]:
+                context.update(self.get_search_context(data[search_history_id][0]))
+            else:
+                search_history_available = False
+        else:
+            search_history_available = False
+
+        if not watch_history_available and not search_history_available:
+            context['status'] = 'error'
+        return context
+
+    def get_watch_context(self, data):
+        c = {}  # c = context
+        if data is None:
+            c['wh_available'] = False
+            return c
+        c['wh_available'] = True
+
+        wh = yt_data.exclude_google_ads_videos(data)
+        wh_ids = yt_data.get_video_ids(wh)
+
+        wh_dates = yt_data.get_date_list(wh)
+        self.add_date_infos_to_context(c, wh_dates, 'wh')
+        self.add_wh_statistics_to_context(c, wh, wh_ids)
+        self.add_favorite_videos_to_context(c, wh, wh_ids)
+        self.add_wh_timeseries_plots_to_context(c, [wh_dates], c['wh_dates_min'], c['wh_dates_max'])
+        self.add_wh_plots_to_context(c, wh_dates)
+
+        # Watched channels
+        channels = yt_data.get_channels_from_history(wh)
+        self.add_wh_channel_info_to_context(c, channels)
+        return c
+
+    def get_search_context(self, data):
+        c = {}  # c = context
+        if data is None:
+            c['search_available'] = False
+            return c
+        c['search_available'] = True
+
+        sh = yt_data.exclude_ads_from_search_history(data)
+        sh = yt_data.clean_search_titles(sh)
+        sh_dates = yt_data.get_date_list(sh)
+        self.add_date_infos_to_context(c, sh_dates, 'sh')
+        self.add_sh_statistics_to_context(c, sh)
+        search_terms = [t['title'] for t in sh]
+
+        self.add_sh_plot_to_context(c, search_terms)
+        return c
+
+    @staticmethod
+    def add_wh_timeseries_plots_to_context(context, date_list, min_date, max_date):
+        dates_days = yt_data.get_summary_counts_per_date(date_list, 'd', 'mean')
+        context['dates_plot_days'] = yt_plots.get_timeseries_plot(
+            pd.Series(dates_days), date_min=min_date, date_max=max_date)
+
+        dates_weeks = yt_data.get_summary_counts_per_date(date_list, 'w', 'mean')
+        context['dates_plot_weeks'] = yt_plots.get_timeseries_plot(
+            pd.Series(dates_weeks), bin_width=7, date_min=min_date, date_max=max_date)
+
+        dates_months = yt_data.get_summary_counts_per_date(date_list, 'w', 'mean')
+        context['dates_plot_months'] = yt_plots.get_timeseries_plot(
+            pd.Series(dates_months), bin_width=30, date_min=min_date, date_max=max_date)
+
+        dates_years = yt_data.get_summary_counts_per_date(date_list, 'y', 'mean')
+        context['dates_plot_years'] = yt_plots.get_timeseries_plot(
+            pd.Series(dates_years), bin_width=365, date_min=min_date, date_max=max_date)
+        return context
+
+    @staticmethod
+    def add_date_infos_to_context(context, date_list, prefix):
+        context[f'{prefix}_dates_min'] = min(date_list)
+        context[f'{prefix}_dates_max'] = max(date_list)
+        context[f'{prefix}_date_range'] = max(date_list) - min(date_list)
+        return context
+
+    @staticmethod
+    def add_favorite_videos_to_context(context, watch_history, video_ids):
+        video_titles = yt_data.get_video_title_dict(watch_history)
+        most_popular_videos = pd.Series(video_ids).value_counts()[:10].to_dict()
+        videos_top_ten = []
+        for key, value in most_popular_videos.items():
+            videos_top_ten.append({
+                'id': key,
+                'count': value,
+                'title': yt_data.clean_video_title(video_titles.get(key))
+            })
+        context['fav_vids_top_ten'] = videos_top_ten
+        return context
+
+    def add_wh_statistics_to_context(self, context, watch_history, video_ids, n_donations=1, ):
+        # Statistics overall
+        context['n_vids_overall'] = len(watch_history)
+        context['n_vids_unique_overall'] = len(set(video_ids))
+        context['n_vids_mean_overall'] = len(watch_history) / n_donations
+        context['n_vids_per_day'] = round((len(watch_history) / context['wh_date_range'].days), 2)
+
+        # Statistics interval
+        #interval_min, interval_max = context['wh_dates_min'], context['wh_dates_max']
+        interval_max = self.get_participation_date()
+        if not interval_max:
+            interval_max = datetime.today().replace(tzinfo=utc)
+        interval_min = interval_max - timedelta(days=30)
+        interval_min = interval_min.replace(tzinfo=utc)
+
+        context['wh_int_min_date'] = interval_min
+        context['wh_int_max_date'] = interval_max
+        wh_interval = yt_data.get_entries_in_date_range(
+            watch_history, interval_min, interval_max)
+        wh_interval_ids = yt_data.get_video_ids(wh_interval)
+        context['n_vids_interval'] = len(wh_interval)
+        context['n_vids_unique_interval'] = len(set(wh_interval_ids))
+        context['n_vids_mean_interval'] = len(wh_interval) / n_donations
+        return context
+
+    @staticmethod
+    def add_wh_plots_to_context(context, date_list):
+        context['weekday_use_plot'] = yt_plots.get_weekday_use_plot(date_list)
+        context['hours_plot'] = yt_plots.get_day_usetime_plot(date_list)
+        return context
+
+    @staticmethod
+    def add_wh_channel_info_to_context(context, channels, channels_for_plot=None):
+        if channels_for_plot is None:
+            channels_for_plot = channels
+        context['channel_plot'] = yt_plots.get_channel_plot(channels_for_plot)
+        context['n_distinct_channels'] = len(set(channels))
+        return context
+
+    def add_sh_statistics_to_context(self, context, search_history, n_donations=1):
+        # Statistics overall
+        context['n_searches_overall'] = len(search_history)
+        context['n_searches_mean_overall'] = len(search_history) / n_donations
+
+        # Statistics interval
+        interval_min, interval_max = context['sh_dates_min'], context['sh_dates_max']
+        context['sh_int_min_date'] = interval_min
+        context['sh_int_max_date'] = interval_max
+        sh_interval = yt_data.get_entries_in_date_range(search_history, interval_min, interval_max)
+        context['n_search_interval'] = len(sh_interval)
+        context['n_search_mean_interval'] = len(sh_interval) / n_donations
+        return context
+
+    @staticmethod
+    def add_sh_plot_to_context(context, search_terms):
+        context['search_plot'] = yt_plots.get_searches_plot(search_terms)
+        return context
 
 
 class ChatGPTReport(BaseReport, TemplateView):
     template_name = 'reports/chatgpt.html'
-    project_pk = None
-    token = settings.CHATGPT_KEY
-
-
-# TODO: Delete
-"""
-For console to load xlsx files:
-import json
-import os
-
-cur_dir = os.path.dirname(os.path.realpath(__file__))
-file_path = './ddl/reports/static/temp/media.xlsx'
-
-f = pd.read_excel(os.path.join(cur_dir, path))
-f_json = json.loads(f.to_json(orient='records')
-"""
+    project_pk = settings.CHATGPT_PROJECT_PK
+    token = settings.CHATGPT_API_KEY

@@ -1,26 +1,99 @@
 {% extends "reports/base.html" %}
 {% load static %}
 
-{% block page_title %}Search Report{% endblock %}
+{% block page_title %}Google Search Report{% endblock %}
+
+{% block report_title %}Ihr persönlicher Google Search Report{% endblock %}
 
 
 {% block report_body %}
+
+<div class="container">
+
+{% if status != 'okay' %}
 <div class="row pt-5 pb-5 border-bottom">
   <div class="col text-center">
-    <h3>Search Report</h3>
-    <p>[PLACEHOLDER]</p>
-    <div class="d-flex justify-content-center pt-5">[PLACEHOLDER]</div>
+    <h3>Da ist etwas schiefgegangen</h3>
+    <p>{{ status }}</p>
+  </div>
+</div>
+{% endif %}
 
-    <p class="pt-5">[PLACEHOLDER]</p>
-    <div class="d-flex justify-content-center pt-5">[PLACEHOLDER]</div>
+{% if status == 'okay' %}
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>Weisst du, wie oft du Google Search in letzter Zeit verwendet hast?</h3>
+    <p>
+      Zwischen dem {{ search_date_min|date:"d. F Y" }} und {{ search_date_max|date:"d. F Y" }}
+      hat Google mit deinem Konto <b>{{ n_searches }} Suchanfragen</b> registriert.
+    </p>
+    <p>Dabei hast du auf <b>{{ n_clicks }} vorgeschlagene Suchresultate geklickt</b>.</p>
   </div>
 </div>
 
-<div>{{ test_data }}</div>
+<!-- TODO: Consider n_langs_with_score and hide stuff if no languages have been detected -->
+
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>In welchen Sprachen hast du deine Suchanfragen formuliert?</h3>
+    <p>
+      In diesem Zeitraum hast du deine Suchanfragen <b>{{ n_queries_de }} Mal auf Deutsch</b> formuliert und <b>{{ n_queries_en }} Mal auf Englisch</b>.
+    </p>
+    <p>
+      Von deinen Suchanfragen konnten {{ n_queries_unidentified }} nicht eindeutig einer Sprache zugeordnet werden
+      (dies kann vorkommen, wenn Wörter aus verschiedenen Sprachen verwendet werden – bspw. deutsche und englische).
+    </p>
+  </div>
+</div>
+
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <div class="pb-3">
+      <h3>Wie hast du deine Suchanfragen formuliert?</h3>
+      <p>
+        Wenn wir auf Google nach etwas suchen, können wir das in einem ganz neutralen Ton tun (bspw. "Hotel Krone") oder
+        wir können unsere Suchanfrage spezifizieren und beispielsweise positiv ("Hotel Krone gute Bewertungen") oder negativ
+        ("Hotel Krone schlechte Bewertungen") formulieren. Zudem können wir auch unseren Emotionen Ausdruck verleihen
+        (bspw. "Angst vor Bettwanzen").
+      </p>
+      <p>Unten siehst du eine Übersicht, wie die von dir verwendeten Wörter in deinen Suchanfragen in den verschiedenen Sprachen kategorisiert werden:</p>
+    </div>
+
+    {% if plot_de.div %}
+    <div class="d-flex flex-column justify-content-center align-items-center pb-5">
+      <div><b>Deutsch</b></div>
+      <div>{{ plot_de.div | safe }}</div>
+    </div>
+    {% endif %}
+
+    {% if plot_en.div %}
+    <div class="d-flex flex-column justify-content-center align-items-center pb-5">
+      <div><b>Englisch</b></div>
+      <div>{{ plot_en.div | safe }}</div>
+    </div>
+    {% endif %}
+
+    {% if plot_ukr.div %}
+    <div class="d-flex flex-column justify-content-center align-items-center pb-5">
+      <div><b>Ukrainisch</b></div>
+      <div>{{ plot_ukr.div | safe }}</div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endif %}
+
+</div>
 
 {% endblock %}
 
 {% block scripts %}
 {{ block.super }}
+
+{{ plot_de.script | safe }}
+{{ plot_en.script | safe }}
+{{ plot_ukr.script | safe }}
 
 {% endblock %}

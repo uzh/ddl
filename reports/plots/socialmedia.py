@@ -1,13 +1,28 @@
-import random
-
 from bokeh.embed import components
 from bokeh.models import Legend, Span, FactorRange, ColumnDataSource
 from bokeh.plotting import figure
 from bokeh.transform import factor_cmap
-
+from django.conf import settings
+from statistics import mean
+from ..models import InstagramStatistics
 
 INSTA_CATEGORIES = ['Parteien', 'Politiker:innen', 'Medien', 'Organisationen']
-FIRE_PALETTE = ['#de0c1c', '#fe2d2d', '#fb7830', '#fecf02']  #, '#ffeea3']
+FIRE_PALETTE = ['#b0020f', '#fe2d2d', '#fb7830', '#fecf02']  #, '#ffeea3']
+
+
+def load_instagram_statistics():
+    try:
+        stats = InstagramStatistics.objects.get(pk=1)
+    except InstagramStatistics.DoesNotExist:
+        stats = InstagramStatistics(name='Instastats', project_pk=settings.INSTAGRAM_PROJECT_PK)
+        stats.save()
+
+    if not stats.last_updated:
+        try:
+            stats.update_statistics()
+        except:
+            pass
+    return stats
 
 
 def get_custom_legend(p):
@@ -25,7 +40,7 @@ def get_custom_legend(p):
     return legend
 
 
-def get_insta_follows_plot(followed_accounts):
+def get_follows_plot(followed_accounts):
     n_total = sum([len(followed_accounts[key]) for key in followed_accounts.keys()])
     n_relevant = n_total - len(followed_accounts['other'])
 
@@ -35,10 +50,10 @@ def get_insta_follows_plot(followed_accounts):
 
     data = {
         'Gefolgte Accounts': dimension,
-        'Parteien': [len(followed_accounts['parties'])],
-        'Politiker:innen': [len(followed_accounts['politicians'])],
+        'Parteien': [len(followed_accounts['party'])],
+        'Politiker:innen': [len(followed_accounts['politician'])],
         'Medien': [len(followed_accounts['media'])],
-        'Organisationen': [len(followed_accounts['organisations'])],
+        'Organisationen': [len(followed_accounts['organisation'])],
         # 'andere (nicht politisch)': [len(followed_accounts['other'])],
     }
 
@@ -65,13 +80,29 @@ def get_insta_follows_plot(followed_accounts):
     return {'script': script, 'div': div}
 
 
-def get_insta_line_plot(followed_accounts, n_followed):
+def get_line_plot(followed_accounts):
     def draw_line(plot, y, x_a, x_b, color):
         plot.add_layout(Span(location=y, dimension='width', line_width=2, line_color='lightgray', level='underlay'))
         plot.square(x=x_a, y=y, size=15, color=color)
         plot.triangle(x=x_b, y=y, size=15, color=color)
 
-    x_max = n_followed
+    def get_max(followed_accounts, ref_accounts):
+        max_n = [40]
+        categories = ['party', 'politician', 'media', 'organisation']
+        if ref_accounts:
+            for c in categories:
+                max_n.append(max(ref_accounts[c]))
+
+        if followed_accounts:
+            for c in categories:
+                max_n.append(len(followed_accounts[c]))
+
+        return max(max_n) + 10
+
+    reference_stats = load_instagram_statistics()
+    ref_accounts = reference_stats.follow_counts
+
+    x_max = get_max(followed_accounts, ref_accounts)
     p = figure(
         tools="",
         toolbar_location=None,
@@ -81,11 +112,17 @@ def get_insta_line_plot(followed_accounts, n_followed):
     )
     p.grid.grid_line_color = None
 
-    # x_a = person, x_b = reference group
-    draw_line(p, 4, 10, 20, '#de0c1c')
-    draw_line(p, 3, 12, 90, '#fe2d2d')
-    draw_line(p, 2, 20, 42, '#fb7830')
-    draw_line(p, 1, 5, 50, '#fecf02')
+    if ref_accounts:
+        # x_a = person, x_b = reference group
+        draw_line(p, 4, len(followed_accounts['party']), mean(ref_accounts['party']), '#de0c1c')
+        draw_line(p, 3, len(followed_accounts['politician']),  mean(ref_accounts['politician']), '#fe2d2d')
+        draw_line(p, 2, len(followed_accounts['media']),  mean(ref_accounts['media']), '#fb7830')
+        draw_line(p, 1, len(followed_accounts['organisation']),  mean(ref_accounts['organisation']), '#fecf02')
+    else:
+        draw_line(p, 4, len(followed_accounts['party']), -10, '#de0c1c')
+        draw_line(p, 3, len(followed_accounts['politician']),  -10, '#fe2d2d')
+        draw_line(p, 2, len(followed_accounts['media']),  -10, '#fb7830')
+        draw_line(p, 1, len(followed_accounts['organisation']), -10, '#fecf02')
 
     # Customize plot appearance
     p.yaxis.major_label_overrides = {4: 'Parteien', 3.5: '', 3: 'Politiker', 2.5: '', 2: 'Medien', 1.5: '',
@@ -103,7 +140,7 @@ def get_insta_line_plot(followed_accounts, n_followed):
     # Add custom legend
     legend_items = [
         ('Sie', [p.square(x=-5, y=2, size=15, color='#000', legend_label='Sie')]),
-        ('Andere', [p.triangle(x=-5, y=2, size=15, color='#000', legend_label='Andere')])
+        ('Durchschnitt', [p.triangle(x=-5, y=2, size=15, color='#000', legend_label='Durchschnitt')])
     ]
     p.legend.visible = False
     legend = Legend(items=legend_items, location='right',
@@ -123,18 +160,18 @@ def get_interaction_plot(interactions):
         return l
 
     interaction_types = [
-        'Likes Posts',  # 'likes_posts',
-        'Likes Stories',  # 'likes_stories',
-        'Kommentare allgemein',  # 'comments_general',
-        'Kommentare Reels'  # 'comments_reels'
+        'Likes\nPosts',  # 'likes_posts',
+        'Likes\nStories',  # 'likes_stories',
+        'Kommentare\nallgemein',  # 'comments_general',
+        'Kommentare\nReels'  # 'comments_reels'
     ]
     categories = INSTA_CATEGORIES
     data = {
         'interactions': interaction_types,
-        'Parteien': get_list_for_plot('parties', interactions),
-        'Politiker:innen': get_list_for_plot('politicians', interactions),
+        'Parteien': get_list_for_plot('party', interactions),
+        'Politiker:innen': get_list_for_plot('politician', interactions),
         'Medien': get_list_for_plot('media', interactions),
-        'Organisationen': get_list_for_plot('organisations', interactions),
+        'Organisationen': get_list_for_plot('organisation', interactions),
         # 'andere (nicht politisch)': get_list_for_plot('other', interactions),
     }
 
@@ -152,12 +189,15 @@ def get_interaction_plot(interactions):
     p.border_fill_color = None
     p.y_range.start = 0
     p.x_range.range_padding = 0.1
-    p.xaxis.major_label_orientation = 1
     p.axis.minor_tick_line_color = None
-    p.xgrid.grid_line_color = None
 
+    p.xaxis.major_label_orientation = 1
+    p.xaxis.major_label_text_font_size = '1pt'
+    p.xaxis.major_label_text_alpha = 0
     p.xaxis.group_text_color = '#000'
     p.xaxis.group_text_font_size = '10pt'
+
+    p.xgrid.grid_line_color = None
 
     legend = get_custom_legend(p)
     p.legend.visible = False
@@ -175,18 +215,18 @@ def get_content_plot(content):
         return l
 
     interaction_types = [
-        'Geschaute Werbung',
-        'Vorgeschlagene Profile',
-        'Geschaute Posts',
-        'Geschaute Videos'
+        'Geschaute\nWerbung',
+        'Vorgeschlagene\nProfile',
+        'Geschaute\nPosts',
+        'Geschaute\nVideos'
     ]
     categories = INSTA_CATEGORIES
     data = {
         'interactions': interaction_types,
-        'Parteien': get_list_for_plot('parties', content),
-        'Politiker:innen': get_list_for_plot('politicians', content),
+        'Parteien': get_list_for_plot('party', content),
+        'Politiker:innen': get_list_for_plot('politician', content),
         'Medien': get_list_for_plot('media', content),
-        'Organisationen': get_list_for_plot('organisations', content),
+        'Organisationen': get_list_for_plot('organisation', content),
         # 'andere (nicht politisch)': get_list_for_plot('other', content),
     }
 
@@ -206,12 +246,16 @@ def get_content_plot(content):
     p.border_fill_color = None
     p.y_range.start = 0
     p.x_range.range_padding = 0.1
-    p.xaxis.major_label_orientation = 1
-    p.xgrid.grid_line_color = None
+
     p.axis.minor_tick_line_color = None
 
+    p.xaxis.major_label_orientation = 1
+    p.xaxis.major_label_text_font_size = '1pt'
+    p.xaxis.major_label_text_alpha = 0
     p.xaxis.group_text_color = '#000'
     p.xaxis.group_text_font_size = '10pt'
+
+    p.xgrid.grid_line_color = None
 
     legend = get_custom_legend(p)
     p.legend.visible = False
@@ -227,10 +271,11 @@ def get_vote_graph(data, color='1'):
         '2': '#002b79'
     }
     categories = ['ja', 'nein', 'leer', 'nicht teilgenommen']
+    labels = ['ja', 'nein', 'leer', 'nicht\nteilgenommen']
     counts = [data[cat] for cat in categories]
-    p = figure(x_range=categories, height=250, width=500,
+    p = figure(x_range=labels, height=250, width=500,
                toolbar_location=None, tools="")
-    p.vbar(x=categories, top=counts, width=0.9,
+    p.vbar(x=labels, top=counts, width=0.9,
            fill_color=colors[color], line_color='white')
 
     p.border_fill_color = None
@@ -262,12 +307,9 @@ def get_party_graph(data, key):
         'Mitte': '#ff9b00',
         'FDP': '#074ea1'
     }
-    data = {
-        'SP': {str(i): random.randint(1, 100) for i in range(1, 11)},
-        'SVP': {str(i): random.randint(1, 100) for i in range(1, 11)},
-        'Mitte': {str(i): random.randint(1, 100) for i in range(1, 11)},
-        'FDP': {str(i): random.randint(1, 100) for i in range(1, 11)}
-    }
+
+    reference_stats = load_instagram_statistics()
+    data = reference_stats.party_counts
 
     categories = [str(i) for i in range(1, 11)]
     counts = [data[key][cat] for cat in categories]
@@ -288,7 +330,7 @@ def get_party_graph(data, key):
     p.xaxis.group_text_color = '#000'
     p.xaxis.group_text_font_size = '10pt'
 
-    p.xaxis.axis_label = 'Politische Ausrichtung (von 1=links bis 10=rechts)'
+    p.xaxis.axis_label = 'Politische Ausrichtung\n(von 1=links bis 10=rechts)'
     p.yaxis.axis_label = f'Anzahl Personen, die einem {key}-Account folgen'
     p.xaxis.axis_label_text_font_size = '11pt'
     p.yaxis.axis_label_text_font_size = '9pt'
