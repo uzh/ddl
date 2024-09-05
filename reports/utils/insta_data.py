@@ -32,7 +32,7 @@ def load_local_example_responses():
 def load_political_account_list():
     """Load list of instagram accounts from static files."""
     path_insta_accounts = os.path.join(settings.BASE_DIR, 'reports/static/reports/data/insta_accounts_complete.json')
-    with open(path_insta_accounts) as f:
+    with open(path_insta_accounts, encoding='latin1') as f:
         insta_accounts = json.load(f)
         insta_accounts = json.loads(json.dumps(insta_accounts).encode('latin1').decode('utf-8'))
     return insta_accounts
