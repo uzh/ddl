@@ -35,7 +35,7 @@ class InstagramStatistics (models.Model):
         self.update_followed_accounts(new_donations)
         self.update_vote_counts(new_responses)  # bio & pension
         self.update_party_graphs(new_responses, new_donations)
-        self.last_updated = datetime.now()
+        self.last_updated = datetime.datetime.now()
         self.save()
 
     def update_followed_accounts(self, donations=None, bp_pk=None):
