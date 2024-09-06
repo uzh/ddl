@@ -144,11 +144,9 @@ class PoliticsReportInstagram(BaseReport, TemplateView):
 
     def add_response_context(self, context):
         """Get context variables from questionnaire responses."""
-        responses_api = self.get_responses()
+        # TODO: Delete if not needed
+        # responses_api = self.get_responses()
         # responses = responses_api[0]
-        # context['responses_api'] = responses
-
-        # responses = insta_data.load_local_example_responses()  # Disable in production
 
         stats = politics_plots.load_instagram_statistics()
         context['counts_bio'] = stats.biodiversity_counts
@@ -164,10 +162,10 @@ class PoliticsReportInstagram(BaseReport, TemplateView):
         context['donations'] = stats.get_blueprint_donations(12)
 
         # Party Graphs
-        context['sp_graph'] = politics_plots.get_party_graph(None, 'SP')
-        context['svp_graph'] = politics_plots.get_party_graph(None, 'SVP')
-        context['mitte_graph'] = politics_plots.get_party_graph(None, 'Mitte')
-        context['fdp_graph'] = politics_plots.get_party_graph(None, 'FDP')
+        context['sp_graph'] = politics_plots.get_party_graph(stats.party_counts, 'SP')
+        context['svp_graph'] = politics_plots.get_party_graph(stats.party_counts, 'SVP')
+        context['mitte_graph'] = politics_plots.get_party_graph(stats.party_counts, 'Mitte')
+        context['fdp_graph'] = politics_plots.get_party_graph(stats.party_counts, 'FDP')
         return
 
 
@@ -255,7 +253,7 @@ class PoliticsReportFacebook(BaseReport, TemplateView):
 
         # responses = insta_data.load_local_example_responses()  # Disable in production
 
-        stats = politics_plots.load_instagram_statistics()
+        stats = politics_plots.load_facebook_statistics()  # TODO: To implement
         context['counts_bio'] = stats.biodiversity_counts
         context['counts_pension'] = stats.pension_counts
 
@@ -271,10 +269,10 @@ class PoliticsReportFacebook(BaseReport, TemplateView):
         context['donations'] = stats.get_blueprint_donations(12)
 
         # Party Graphs
-        context['sp_graph'] = politics_plots.get_party_graph(stats.party_counts, 'SP')
-        context['svp_graph'] = politics_plots.get_party_graph(stats.party_counts, 'SVP')
-        context['mitte_graph'] = politics_plots.get_party_graph(stats.party_counts, 'Mitte')
-        context['fdp_graph'] = politics_plots.get_party_graph(stats.party_counts, 'FDP')
+        context['sp_graph'] = politics_plots.get_party_graph(None, 'SP')
+        context['svp_graph'] = politics_plots.get_party_graph(None, 'SVP')
+        context['mitte_graph'] = politics_plots.get_party_graph(None, 'Mitte')
+        context['fdp_graph'] = politics_plots.get_party_graph(None, 'FDP')
         return
 
 
