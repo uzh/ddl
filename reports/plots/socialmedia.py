@@ -100,7 +100,7 @@ def get_line_plot(followed_accounts):
         return max(max_n) + 10
 
     reference_stats = load_instagram_statistics()
-    ref_accounts = reference_stats.follow_counts
+    ref_accounts = reference_stats.get_follow_counts()
 
     if not ref_accounts:
         return None
