@@ -58,6 +58,12 @@ class InstagramStatistics (models.Model):
                 self.follow_counts[k].append(len(r[k]))
         return
 
+    def get_follow_counts(self):
+        for c, counts in self.follow_counts.items():
+            if not counts:
+                return None
+        return self.follow_counts
+
     def update_vote_counts(self, responses=None):
         if responses is None:
             responses = self.get_responses()
