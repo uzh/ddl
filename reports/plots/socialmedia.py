@@ -102,6 +102,9 @@ def get_line_plot(followed_accounts):
     reference_stats = load_instagram_statistics()
     ref_accounts = reference_stats.follow_counts
 
+    if not ref_accounts:
+        return None
+
     x_max = get_max(followed_accounts, ref_accounts)
     p = figure(
         tools="",
