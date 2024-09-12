@@ -26,7 +26,7 @@
     <h3>Welchen politischen Accounts folgst du auf Instagram?</h3>
     <p>Insgesamt folgst du <b>{{ n_follows }} Accounts</b> auf Instagram.</p>
     {% if n_follows_relevant and n_follows_relevant > 0 %}
-      <p>Davon haben {{ n_follows_relevant }} Accounts einen klaren Bezug zu politischen Themen. Unten siehst du, wie sich diese Accounts unterschiedlichen Typen zuordnen lassen:</p>
+      <p>Davon haben {{ n_follows_relevant }} Accounts einen Bezug zu politischen Themen. Unten siehst du, wie sich diese Accounts unterschiedlichen Typen zuordnen lassen:</p>
       <div class="d-flex justify-content-center pt-3">{{ insta_follows_plot.div | safe }}</div>
     {% else %}
       <p>Keiner dieser Accounts kommt in unserer Liste von politischen Akteuren vor.</p>

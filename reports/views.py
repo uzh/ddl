@@ -186,7 +186,7 @@ class PoliticsReportFacebook(BaseReport, TemplateView):
             context['donation_status'] = 'not available'
             return context
 
-        self.add_response_context(context)
+        # self.add_response_context(context)
         return context
 
     def add_donation_context(self, context):
@@ -194,14 +194,19 @@ class PoliticsReportFacebook(BaseReport, TemplateView):
         data = self.get_data()
         # data = fb_data.load_local_example_donation()
 
+        context['donation_data'] = data
+        context['fb_follows_available'] = False
+        context['fb_interactions_available'] = False
+        context['fb_content_available'] = False
+
         political_accounts = fb_data.load_political_account_list()
 
         # Statistics related to followed accounts.
-        followed_channels_bp = ['Gefolgte Seiten Facebook']  # Gefolgte Personen Facebook ?
+        followed_channels_bp = ['Gelikete Seiten Facebook']  # Gefolgte Personen Facebook ?
         follows_available = insta_data.check_if_bps_available(data, followed_channels_bp)
         if follows_available:
-            followed_accounts = fb_data.get_follows(data, political_accounts)  # TODO in function
-            n_follows_total = fb_data.get_n_follows(data)  # TODO in function
+            followed_accounts = fb_data.get_follows(data, political_accounts)
+            n_follows_total = fb_data.get_n_follows(data)
             context['n_follows'] = n_follows_total
             context['n_follows_relevant'] = n_follows_total - len(followed_accounts['other'])
 
@@ -209,11 +214,12 @@ class PoliticsReportFacebook(BaseReport, TemplateView):
             context['fb_follows_plot'] = politics_plots.get_follows_plot(followed_accounts)
 
             # Plot 2: account category axis + comparison
-            context['fb_line_plot'] = politics_plots.get_line_plot(followed_accounts)
+            # context['fb_line_plot'] = politics_plots.get_line_plot(followed_accounts)
 
             context['fb_follows_available'] = True
-        else:
-            context['fb_follows_available'] = False
+
+        if True:
+            return
 
         # Statistics related to interactions.
         interaction_bps = [
@@ -226,8 +232,6 @@ class PoliticsReportFacebook(BaseReport, TemplateView):
             # Plot 3: interaction bar plot per category
             context['fb_interaction_plot'] = politics_plots.get_interaction_plot(fb_interactions)  # TODO: May not work, because keys have been changed in get_proposed_content()
             context['fb_interactions_available'] = True
-        else:
-            context['fb_interactions_available'] = False
 
         # Statistics related to proposed content.
         # TODO: Check if that makes sense for Facebook.
@@ -240,8 +244,7 @@ class PoliticsReportFacebook(BaseReport, TemplateView):
             # Plot 4: proposed content bar plot per category
             context['fb_content_plot'] = politics_plots.get_content_plot(fb_content)  # TODO: May not work, because keys have been changed in get_proposed_content()
             context['fb_content_available'] = True
-        else:
-            context['fb_content_available'] = False
+
         return
 
     def add_response_context(self, context):

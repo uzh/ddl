@@ -23,7 +23,7 @@ def load_political_account_list():
     return accounts
 
 
-def get_follows(data, political_accounts, bp_name='Gefolgte Seiten Facebook'):
+def get_follows(data, political_accounts, bp_name='Gelikete Seiten Facebook'):
     if bp_name not in data:
         return None
     if data[bp_name] is None:
@@ -31,7 +31,7 @@ def get_follows(data, political_accounts, bp_name='Gefolgte Seiten Facebook'):
 
     followed_accounts = copy.deepcopy(TYPES_DICT_PLACEHOLDER)
     for account in data[bp_name][0]:
-        profile = account['string_list_data'][0]['href']  # TODO: Adapt data structure
+        profile = account['name'].encode('latin-1').decode('utf-8')
         if profile in political_accounts.keys():
             fb_profile = political_accounts[profile]
             profile_type = fb_profile['type']
@@ -43,14 +43,13 @@ def get_follows(data, political_accounts, bp_name='Gefolgte Seiten Facebook'):
     return followed_accounts
 
 
-def get_n_follows(data, bp_name='Gefolgte Seiten Facebook'):
-    return len(data[bp_name][0])  # TODO: Check data structure
+def get_n_follows(data, bp_name='Gelikete Seiten Facebook'):
+    return len(data[bp_name][0])
 
 
 def get_interactions(data, political_accounts):
     bp_names = [
-        'Gelikete Seiten Facebook', 'Likes Facebook',
-        'Kommentare Facebook', 'Story Interaction Facebook'
+        'Likes Facebook', 'Kommentare Facebook', 'Story Interaction Facebook'
     ]
     interaction_keys = [  # TODO - Info: Changed keys (compared to insta) - may affect interaction plot
         'likes_pages',

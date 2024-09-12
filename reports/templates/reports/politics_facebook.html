@@ -3,46 +3,125 @@
 
 {% block page_title %}Facebook Report{% endblock %}
 
+{% block report_title %}Ihr persönlicher Facebook Report{% endblock %}
+
 
 {% block report_body %}
+
+{{ donation_data }}
+
+<div class="container">
+
+{% if donation_status == "not available" %}
 <div class="row pt-5 pb-5 border-bottom">
   <div class="col text-center">
-    <h3>Gefolgte Kanäle</h3>
-    <p>Insgesamt folgen Sie <b>{{ n_insta_follows }} Kanälen</b> auf Instagram.</p>
-    <p>Unten sehen Sie, wie sich diese Kanäle unterschiedlichen Kanaltypen zuordnen lassen:</p>
-    <div class="d-flex justify-content-center pt-5">{{ insta_follows_plot.div | safe }}</div>
+    <h3>Da ist etwas schiefgegangen</h3>
+    <p>Bitte stellen Sie sicher, dass die eingegebene URL korrekt ist.</p>
+  </div>
+</div>
+{% else %}
+
+
+{% if fb_follows_available %}
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>Welchen politischen Accounts folgst du auf Facebook?</h3>
+    <p>Insgesamt folgst du <b>{{ n_follows_persons }} Personen</b> und <b>{{ n_follows_pages }} Seiten</b> auf Facebook.</p>
+    {% if n_follows_relevant and n_follows_relevant > 0 %}
+      <p>Davon haben {{ n_follows_relevant }} Accounts und Seiten einen Bezug zu politischen Themen. Unten siehst du, wie sich diese Accounts unterschiedlichen Typen zuordnen lassen:</p> <!-- TODO: Add explanation? -->
+      <div class="d-flex justify-content-center pt-3">{{ fb_follows_plot.div | safe }}</div>
+    {% else %}
+      <p>Keiner dieser Accounts kommt in unserer Liste von politischen Akteuren vor.</p>
+    {% endif %}
 
     <p class="pt-5">
-      <b>Im Vergleich mit anderen: </b>Die Grafik unten zeigt pro Account-Typ, wie vielen Accounts Sie im Vergleich mit dem Durchschnitt der anderen Personen,
-      die andere Studie teilgenommen haben, folgen.
+      <b>Im Vergleich mit anderen: </b>Die Grafik unten zeigt pro Account-Typ, wie vielen Accounts du im Vergleich mit dem Durchschnitt der anderen Personen,
+      die andere Studie teilgenommen haben, folgst.
     </p>
-    <div class="d-flex justify-content-center pt-5">{{ insta_line_plot.div | safe }}</div>
+    <div class="d-flex justify-content-center pt-3">{{ fb_line_plot.div | safe }}</div>
+  </div>
+</div>
+{% endif %}
+
+
+{% if fb_interactions_available %}
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>Mit welchen politischen Inhalten interagierst du auf Facebook?</h3>
+    <p>Unten siehst du, wie oft du auf Facebook mit Inhalten von unterschiedlichen Account-Typen interagiert hast.</p>
+    <div class="d-flex justify-content-center pt-3">{{ fb_interaction_plot.div | safe }}</div>
+  </div>
+</div>
+{% endif %}
+
+
+{% if fb_content_available %}
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>Welchen politischen Inhalten begegnest du auf Facebook?</h3>
+    <p>Die folgende Grafik zeigt, wie oft du auf Facebook Inhalte von unterschiedlichen Account-Typen gesehen hast.</p>
+    <div class="d-flex justify-content-center pt-3">{{ fb_content_plot.div | safe }}</div>
+  </div>
+</div>
+{% endif %}
+
+
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>Wie haben die Studienteilnehmer:innen abgestimmt?</h3>
+    <p>Unten siehst du, wie andere Personen, die an der Studie teilgenommen haben, bei der letzten Abstimmung abgestimmt haben.</p>
+    <div class="row pt-3">
+      <div class="col text-center">
+        <p><b>Biodiversitätsinitiative</b></p>
+        <div class="ps-5 pe-5 d-flex justify-content-center">{{ biodiversity_graph.div | safe }}</div>
+      </div>
+      <div class="col text-center pt-5 pt-xxl-0">
+        <p><b>Pensionsreform</b></p>
+        <div class="ps-5 pe-5 d-flex justify-content-center">{{ pension_graph.div | safe }}</div>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="row pt-5 pb-5 border-bottom">
   <div class="col text-center">
-    <h3>Interaktionen</h3>
-    <p>Unten sehen Sie, wie oft Sie auf Instagram mit Inhalten von unterschiedlichen Account-Typen interagiert haben.</p>
-    <div class="d-flex justify-content-center pt-5">{{ insta_interaction_plot.div | safe }}</div>
+    <h3>Wer folgt welchen Parteien auf Facebook?</h3>
+    <p>
+      Unten siehst du den Zusammenhang, zwischen der politischen Selbsteinschätzung
+      der Studienteilnehmer:innen (also wo sie sich selbst auf der
+      politischen Skala von <i>links</i> bis <i>rechts</i> verorten) und welchen Parteien
+      sie auf Facebook folgen.
+    </p>
+
+    <div class="row pt-5">
+      <div class="col text-center">
+        <p><b>SP</b></p>
+        <div class="ps-5 pe-5 d-flex justify-content-center">{{ sp_graph.div | safe }}</div>
+      </div>
+      <div class="col text-center pt-5 pt-xxl-0">
+        <p><b>SVP</b></p>
+        <div class="ps-5 pe-5 d-flex justify-content-center">{{ svp_graph.div | safe }}</div>
+      </div>
+    </div>
+
+    <div class="row pt-5">
+      <div class="col text-center">
+        <p><b>Mitte</b></p>
+        <div class="ps-5 pe-5 d-flex justify-content-center">{{ mitte_graph.div | safe }}</div>
+      </div>
+      <div class="col text-center pt-5 pt-xxl-0">
+        <p><b>FDP</b></p>
+        <div class="ps-5 pe-5 d-flex justify-content-center">{{ fdp_graph.div | safe }}</div>
+      </div>
+    </div>
+
   </div>
 </div>
+{% endif %}
 
-<div class="row pt-5 pb-5 border-bottom">
-  <div class="col text-center">
-    <h3>Gesehene Inhalte</h3>
-    <p>Die folgende Grafik zeigt, wie oft Sie auf Instagram Inhalte von unterschiedlichen Account-Typen gesehen haben.</p>
-    <div class="d-flex justify-content-center pt-5">{{ insta_content_plot.div | safe }}</div>
-  </div>
 </div>
 
-<div class="row pt-5 pb-5 border-bottom">
-  <div class="col text-center">
-    <h3>Suchbegriffe</h3>
-    <p class="text-danger">Sollen wir das integrieren?</p>
-  </div>
-</div>
-
+<!-- TODO: Check if needed
 <div class="row pt-5 pb-5 border-bottom">
   <div class="col text-center">
     <h3>Stimmentscheidung und Nutzung soziale Medien</h3>
@@ -51,22 +130,29 @@
 </div>
 
 <div class="pt-5">
-  <h1>Responses API</h1>
-  {{ responses_api }}
+  <h1>Responses Function</h1>
+  {{ responses }}
+  <hr>
+  {{ donations }}
 </div>
-
-<div class="pt-5">
-  <h1>Responses File</h1>
-  {{ responses_file }}
-</div>
+-->
 
 {% endblock %}
 
 {% block scripts %}
 {{ block.super }}
 
-{{ insta_follows_plot.script | safe }}
-{{ insta_interaction_plot.script | safe }}
-{{ insta_content_plot.script | safe }}
-{{ insta_line_plot.script | safe }}
+{{ fb_follows_plot.script | safe }}
+{{ fb_interaction_plot.script | safe }}
+{{ fb_content_plot.script | safe }}
+{{ fb_line_plot.script | safe }}
+
+{{ biodiversity_graph.script | safe }}
+{{ pension_graph.script | safe }}
+
+{{ sp_graph.script | safe }}
+{{ svp_graph.script | safe }}
+{{ mitte_graph.script | safe }}
+{{ fdp_graph.script | safe }}
+
 {% endblock %}

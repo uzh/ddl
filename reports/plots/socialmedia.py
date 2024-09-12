@@ -4,17 +4,17 @@ from bokeh.plotting import figure
 from bokeh.transform import factor_cmap
 from django.conf import settings
 from statistics import mean
-from ..models import InstagramStatistics
+from ..models import FacebookStatistics
 
 INSTA_CATEGORIES = ['Parteien', 'Politiker:innen', 'Medien', 'Organisationen']
 FIRE_PALETTE = ['#b0020f', '#fe2d2d', '#fb7830', '#fecf02']  #, '#ffeea3']
 
 
-def load_instagram_statistics():
+def load_facebook_statistics():
     try:
-        stats = InstagramStatistics.objects.get(pk=1)
-    except InstagramStatistics.DoesNotExist:
-        stats = InstagramStatistics(name='Instastats', project_pk=settings.INSTAGRAM_PROJECT_PK)
+        stats = FacebookStatistics.objects.get(pk=1)
+    except FacebookStatistics.DoesNotExist:
+        stats = FacebookStatistics(name='Facebookstats', project_pk=settings.FACEBOOK_PROJECT_PK)
         stats.save()
 
     if not stats.last_updated:
@@ -99,7 +99,7 @@ def get_line_plot(followed_accounts):
 
         return max(max_n) + 10
 
-    reference_stats = load_instagram_statistics()
+    reference_stats = load_facebook_statistics()
     ref_accounts = reference_stats.get_follow_counts()
 
     if not ref_accounts:
