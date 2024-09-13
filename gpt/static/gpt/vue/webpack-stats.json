@@ -1,6 +1,11 @@
 {
   "status": "done",
   "assets": {
+    "css/vue_gpt_uploader.css": {
+      "name": "css/vue_gpt_uploader.css",
+      "path": "css\\vue_gpt_uploader.css",
+      "publicPath": "/static/gpt/vue/css/vue_gpt_uploader.css"
+    },
     "favicon.ico": {
       "name": "favicon.ico",
       "path": "favicon.ico",
@@ -16,19 +21,28 @@
       "path": "js\\chunk-vendors.js",
       "publicPath": "/static/gpt/vue/js/chunk-vendors.js"
     },
+    "js/chunk-vendors.js.map": {
+      "name": "js/chunk-vendors.js.map",
+      "path": "js\\chunk-vendors.js.map",
+      "publicPath": "/static/gpt/vue/js/chunk-vendors.js.map"
+    },
     "js/vue_gpt_uploader.js": {
       "name": "js/vue_gpt_uploader.js",
       "path": "js\\vue_gpt_uploader.js",
       "publicPath": "/static/gpt/vue/js/vue_gpt_uploader.js"
+    },
+    "js/vue_gpt_uploader.js.map": {
+      "name": "js/vue_gpt_uploader.js.map",
+      "path": "js\\vue_gpt_uploader.js.map",
+      "publicPath": "/static/gpt/vue/js/vue_gpt_uploader.js.map"
     }
   },
   "chunks": {
     "vue_gpt_uploader": [
       "js/chunk-vendors.js",
+      "css/vue_gpt_uploader.css",
       "js/vue_gpt_uploader.js"
     ]
   },
-  "publicPath": "/static/gpt/vue/",
-  "error": "ESLintError",
-  "message": "[eslint] \nC:\\Files\\Arbeit\\Projekte\\Data Donation Lab\\DDL Website\\ddl\\frontend_gpt_project\\GPTUploaderApp\\src\\components\\FileUploader.vue\n  918:22  error  'bp_key' is not defined  no-undef\n  918:61  error  'key' is not defined     no-undef\n\n✖ 2 problems (2 errors, 0 warnings)\n"
+  "publicPath": "/static/gpt/vue/"
 }
