@@ -18,6 +18,7 @@ urlpatterns = [
     path('documents/', include(wagtaildocs_urls)),
     path('robots.txt', TemplateView.as_view(template_name="ddl/robots.txt", content_type='text/plain')),
     path(r'ddm/', include('ddm.urls')),
+    path(r'ddm/', include('gpt.urls')),
     path('oidc/', include('mozilla_django_oidc.urls')),
     path('login/', auth_views.LoginView.as_view(template_name='ddl/registration/login.html'), name='login'),
     path('ddm/login/', auth_views.LoginView.as_view(template_name='ddl/auth/oidc_login.html'), name='ddm-login'),

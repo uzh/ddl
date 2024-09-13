@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'wagtail',
     'modelcluster',
     'taggit',
-    'reports'
+    'reports',
+    'gpt'
 ]
 
 MIDDLEWARE = [
@@ -168,6 +169,13 @@ WEBPACK_LOADER = {
         'CACHE': True,
         'BUNDLE_DIR_NAME': 'ddm/vue/',
         'STATS_FILE': os.path.join(STATIC_ROOT, 'ddm/vue/webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
+    },
+    'GPT': {
+        'CACHE': True,
+        'BUNDLE_DIR_NAME': 'gpt/vue/',
+        'STATS_FILE': os.path.join(STATIC_ROOT, 'gpt/vue/webpack-stats.json'),
         'POLL_INTERVAL': 0.1,
         'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
     }

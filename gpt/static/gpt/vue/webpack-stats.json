@@ -1,0 +1,34 @@
+{
+  "status": "done",
+  "assets": {
+    "favicon.ico": {
+      "name": "favicon.ico",
+      "path": "favicon.ico",
+      "publicPath": "/static/gpt/vue/favicon.ico"
+    },
+    "index.html": {
+      "name": "index.html",
+      "path": "index.html",
+      "publicPath": "/static/gpt/vue/index.html"
+    },
+    "js/chunk-vendors.js": {
+      "name": "js/chunk-vendors.js",
+      "path": "js\\chunk-vendors.js",
+      "publicPath": "/static/gpt/vue/js/chunk-vendors.js"
+    },
+    "js/vue_gpt_uploader.js": {
+      "name": "js/vue_gpt_uploader.js",
+      "path": "js\\vue_gpt_uploader.js",
+      "publicPath": "/static/gpt/vue/js/vue_gpt_uploader.js"
+    }
+  },
+  "chunks": {
+    "vue_gpt_uploader": [
+      "js/chunk-vendors.js",
+      "js/vue_gpt_uploader.js"
+    ]
+  },
+  "publicPath": "/static/gpt/vue/",
+  "error": "ESLintError",
+  "message": "[eslint] \nC:\\Files\\Arbeit\\Projekte\\Data Donation Lab\\DDL Website\\ddl\\frontend_gpt_project\\GPTUploaderApp\\src\\components\\FileUploader.vue\n  918:22  error  'bp_key' is not defined  no-undef\n  918:61  error  'key' is not defined     no-undef\n\n✖ 2 problems (2 errors, 0 warnings)\n"
+}
