@@ -6,7 +6,7 @@ from django.db import models
 from ddm.models.core import DonationProject, QuestionnaireResponse, DataDonation, DonationBlueprint
 from ddm.models.serializers import ResponseSerializer, DonationSerializer
 
-from .utils import insta_data
+from .utils import insta_data, fb_data
 
 
 class InstagramStatistics (models.Model):
@@ -30,7 +30,7 @@ class InstagramStatistics (models.Model):
 
     def update_statistics(self):
         new_responses = self.get_responses()
-        new_donations = self.get_blueprint_donations(settings.BP_ID_FOLLOWED_ACCOUNTS)
+        new_donations = self.get_blueprint_donations(settings.INSTAGRAM_BP_FOLLOWED_ACCOUNTS)
 
         self.update_followed_accounts(new_donations)
         self.update_vote_counts(new_responses)  # bio & pension
@@ -40,7 +40,7 @@ class InstagramStatistics (models.Model):
 
     def update_followed_accounts(self, donations=None, bp_pk=None):
         if donations is None:
-            donations = self.get_blueprint_donations(settings.BP_ID_FOLLOWED_ACCOUNTS)
+            donations = self.get_blueprint_donations(settings.INSTAGRAM_BP_FOLLOWED_ACCOUNTS)
 
         insta_accounts = insta_data.load_political_account_list()
         results = []
@@ -59,6 +59,8 @@ class InstagramStatistics (models.Model):
         return
 
     def get_follow_counts(self):
+        if not self.follow_counts:
+            return None
         for c, counts in self.follow_counts.items():
             if not counts:
                 return None
@@ -224,7 +226,7 @@ class FacebookStatistics(InstagramStatistics):
 
     def update_statistics(self):
         new_responses = self.get_responses()
-        new_donations = self.get_blueprint_donations(settings.BP_ID_FOLLOWED_ACCOUNTS)    # TODO: Adjust
+        new_donations = self.get_blueprint_donations(settings.FACEBOOK_BP_FOLLOWED_ACCOUNTS)
 
         self.update_followed_accounts(new_donations)
         self.update_vote_counts(new_responses)  # bio & pension
@@ -234,18 +236,18 @@ class FacebookStatistics(InstagramStatistics):
 
     def update_followed_accounts(self, donations=None, bp_pk=None):  # TODO: Adjust
         if donations is None:
-            donations = self.get_blueprint_donations(settings.BP_ID_FOLLOWED_ACCOUNTS)
+            donations = self.get_blueprint_donations(settings.FACEBOOK_BP_FOLLOWED_ACCOUNTS)
 
-        insta_accounts = insta_data.load_political_account_list()
+        fb_accounts = fb_data.load_political_account_list()
         results = []
         for p, d in donations.items():
             data = {'Gefolgte Seiten Facebook': [d]}
-            followed_accounts = insta_data.get_follows_insta(data, insta_accounts)
+            followed_accounts = fb_data.get_follows(data, fb_accounts)
             if followed_accounts:
                 results.append(followed_accounts.copy())
 
         if self.follow_counts is None:
-            self.follow_counts = insta_data.TYPES_DICT_PLACEHOLDER.copy()
+            self.follow_counts = fb_data.TYPES_DICT_PLACEHOLDER.copy()
 
         for r in results:
             for k in r.keys():
@@ -344,11 +346,11 @@ class FacebookStatistics(InstagramStatistics):
                 continue
 
             donation = donations[participant]
-            political_accounts = insta_data.load_political_account_list()
+            political_accounts = fb_data.load_political_account_list()
             parties = ['SP', 'SVP', 'Mitte', 'FDP']
             p_follows_party = {p: False for p in parties}
             for account in donation:
-                profile = account['title']  # TODO: Account for both
+                profile = account['name'].encode('latin-1').decode('utf-8')
                 if profile in political_accounts.keys():
                     insta_profile = political_accounts[profile]
                     profile_type = insta_profile['type']
@@ -363,18 +365,6 @@ class FacebookStatistics(InstagramStatistics):
                 if follows:
                     self.party_counts[party][pol_stance] += 1
         return
-
-    # def get_project(self):
-    #     return DonationProject.objects.get(pk=self.project_pk)
-
-    # def get_reference_date(self):
-    #     if self.last_updated is None:
-    #         return datetime.date(2024, 1, 1)
-    #     else:
-    #         return self.last_updated
-
-    # def get_decryptor(self, project):
-    #     return Decryption(settings.SECRET_KEY, project.get_salt())
 
     # def get_responses(self):
     #     """

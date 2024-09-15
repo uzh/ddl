@@ -23,7 +23,17 @@ def load_political_account_list():
     return accounts
 
 
-def get_follows(data, political_accounts, bp_name='Gelikete Seiten Facebook'):
+def check_if_bps_available(data, bp_list):
+    if not any(bp in data.keys() for bp in bp_list):
+        return False
+    else:
+        if not any(data[bp] for bp in bp_list):
+            return False
+        else:
+            return True
+
+
+def get_follows(data, political_accounts, bp_name='Gefolgte Personen Facebook'):
     if bp_name not in data:
         return None
     if data[bp_name] is None:
@@ -43,7 +53,7 @@ def get_follows(data, political_accounts, bp_name='Gelikete Seiten Facebook'):
     return followed_accounts
 
 
-def get_n_follows(data, bp_name='Gelikete Seiten Facebook'):
+def get_n_follows(data, bp_name='Gefolgte Personen Facebook'):
     return len(data[bp_name][0])
 
 
@@ -51,11 +61,15 @@ def get_interactions(data, political_accounts):
     bp_names = [
         'Likes Facebook', 'Kommentare Facebook', 'Story Interaction Facebook'
     ]
+    """
+    'Likes Facebook': [[{'title': "Nico Pfiffner liked SP Schweiz's post.", 'timestamp': 1725527135}]],
+    'Kommentare Facebook': [[]],
+    'Story Interaction Facebook': [[]]
+    """
     interaction_keys = [  # TODO - Info: Changed keys (compared to insta) - may affect interaction plot
-        'likes_pages',
-        'likes_general',
-        'comments_general',
-        'comments_stories'
+        'likes',
+        'comments',
+        'story_interactions'
     ]
     interactions = {key: copy.deepcopy(TYPES_DICT_PLACEHOLDER) for key in interaction_keys}
 
@@ -80,33 +94,32 @@ def get_interactions(data, political_accounts):
 
 
 def get_proposed_content(data, political_accounts):
-    bp_names = [
-        'Kürzlich geschaut Facebook', 'Kürzlich besucht Facebook'
-    ]
-    content_keys = [  # TODO - Info: Changed keys (compared to insta) - may affect interaction plot
-        'seen_posts',
-        'seen_videos'
-    ]
-    content = {key: copy.deepcopy(TYPES_DICT_PLACEHOLDER) for key in content_keys}
+    bp_name = 'Kürzlich besucht Facebook'  # 'Kürzlich geschaut Facebook',
+    content = copy.deepcopy(TYPES_DICT_PLACEHOLDER)
 
-    for index, bp_name in enumerate(bp_names):
-        if bp_name not in data:
-            continue
-        if data[bp_name] in [None, []]:
-            continue
+    if bp_name not in data:
+        return content
+    if data[bp_name] in [None, []]:
+        return content
 
-        key = content_keys[index]
-        for account in data[bp_name][0]:
+    for d in data[bp_name][0]:
+        if 'name' not in d.keys() or 'entries' not in d.keys():
+            continue
+        if d['name'] != 'Profile visits':
+            continue
+        if not d['entries']:
+            return content
+
+        for e in d['entries']:
             try:
-                profile = 'https://www.instagram.com/' + account['string_map_data']['Author']['value'].strip()  # TODO: Check data structure
+                profile = e['data']['name'].encode('latin-1').decode('utf-8')
             except:
                 continue
-
             if profile in political_accounts.keys():
                 fb_profile = political_accounts[profile]
                 profile_type = fb_profile['type']
                 if profile_type in ['media', 'organisation', 'party', 'politician']:
-                    content[key][profile_type].append(profile)
+                    content[profile_type].append(profile)
             else:
-                content[key]['other'].append(profile)
+                content['other'].append(profile)
     return content

@@ -10,7 +10,8 @@ from django.views.generic import TemplateView
 from requests import JSONDecodeError
 
 from .plots import youtube as yt_plots
-from .plots import socialmedia as politics_plots
+from .plots import instagram as insta_plots
+from .plots import facebook as fb_plots
 from .plots import search as search_plots
 from .utils.get_scores import get_scores_for_report
 from .utils import yt_data, search_data, insta_data, fb_data
@@ -106,9 +107,9 @@ class PoliticsReportInstagram(BaseReport, TemplateView):
             context['n_follows'] = n_follows_total
             context['n_follows_relevant'] = n_follows_total - len(followed_accounts['other'])
             # Plot 1: n per account category
-            context['insta_follows_plot'] = politics_plots.get_follows_plot(followed_accounts)
+            context['insta_follows_plot'] = insta_plots.get_follows_plot(followed_accounts)
             # Plot 2: account category axis + comparison
-            context['insta_line_plot'] = politics_plots.get_line_plot(followed_accounts)
+            context['insta_line_plot'] = insta_plots.get_line_plot(followed_accounts)
             context['insta_follows_available'] = True
         else:
             context['insta_follows_available'] = False
@@ -122,7 +123,7 @@ class PoliticsReportInstagram(BaseReport, TemplateView):
         if interactions_available:
             insta_interactions = insta_data.get_interactions_insta(data, political_accounts)
             # Plot 3: interaction bar plot per category
-            context['insta_interaction_plot'] = politics_plots.get_interaction_plot(insta_interactions)
+            context['insta_interaction_plot'] = insta_plots.get_interaction_plot(insta_interactions)
             context['insta_interactions_available'] = True
         else:
             context['insta_interactions_available'] = False
@@ -136,7 +137,7 @@ class PoliticsReportInstagram(BaseReport, TemplateView):
         if proposed_content_available:
             insta_proposed_content = insta_data.get_proposed_content_insta(data, political_accounts)
             # Plot 4: proposed content bar plot per category
-            context['insta_content_plot'] = politics_plots.get_content_plot(insta_proposed_content)
+            context['insta_content_plot'] = insta_plots.get_content_plot(insta_proposed_content)
             context['insta_content_available'] = True
         else:
             context['insta_content_available'] = False
@@ -148,24 +149,24 @@ class PoliticsReportInstagram(BaseReport, TemplateView):
         # responses_api = self.get_responses()
         # responses = responses_api[0]
 
-        stats = politics_plots.load_instagram_statistics()
+        stats = insta_plots.load_instagram_statistics()
         context['counts_bio'] = stats.biodiversity_counts
         context['counts_pension'] = stats.pension_counts
 
         # Graph biodiversity (overall count - yes vs. no)
-        context['biodiversity_graph'] = politics_plots.get_vote_graph(stats.biodiversity_counts)
+        context['biodiversity_graph'] = insta_plots.get_vote_graph(stats.biodiversity_counts)
 
         # Graph pension reform (overall count - yes vs. no)
-        context['pension_graph'] = politics_plots.get_vote_graph(stats.pension_counts, color='2')
+        context['pension_graph'] = insta_plots.get_vote_graph(stats.pension_counts, color='2')
 
         # Graph partie following (count follows per point on left-right scale)
         context['donations'] = stats.get_blueprint_donations(12)
 
         # Party Graphs
-        context['sp_graph'] = politics_plots.get_party_graph(stats.party_counts, 'SP')
-        context['svp_graph'] = politics_plots.get_party_graph(stats.party_counts, 'SVP')
-        context['mitte_graph'] = politics_plots.get_party_graph(stats.party_counts, 'Mitte')
-        context['fdp_graph'] = politics_plots.get_party_graph(stats.party_counts, 'FDP')
+        context['sp_graph'] = insta_plots.get_party_graph(stats.party_counts, 'SP')
+        context['svp_graph'] = insta_plots.get_party_graph(stats.party_counts, 'SVP')
+        context['mitte_graph'] = insta_plots.get_party_graph(stats.party_counts, 'Mitte')
+        context['fdp_graph'] = insta_plots.get_party_graph(stats.party_counts, 'FDP')
         return
 
 
@@ -186,7 +187,7 @@ class PoliticsReportFacebook(BaseReport, TemplateView):
             context['donation_status'] = 'not available'
             return context
 
-        # self.add_response_context(context)
+        self.add_response_context(context)
         return context
 
     def add_donation_context(self, context):
@@ -202,7 +203,7 @@ class PoliticsReportFacebook(BaseReport, TemplateView):
         political_accounts = fb_data.load_political_account_list()
 
         # Statistics related to followed accounts.
-        followed_channels_bp = ['Gelikete Seiten Facebook']  # Gefolgte Personen Facebook ?
+        followed_channels_bp = ['Gefolgte Personen Facebook']  # Gefolgte Personen Facebook ?
         follows_available = insta_data.check_if_bps_available(data, followed_channels_bp)
         if follows_available:
             followed_accounts = fb_data.get_follows(data, political_accounts)
@@ -211,38 +212,31 @@ class PoliticsReportFacebook(BaseReport, TemplateView):
             context['n_follows_relevant'] = n_follows_total - len(followed_accounts['other'])
 
             # Plot 1: n per account category
-            context['fb_follows_plot'] = politics_plots.get_follows_plot(followed_accounts)
+            context['fb_follows_plot'] = fb_plots.get_follows_plot(followed_accounts)
 
             # Plot 2: account category axis + comparison
-            # context['fb_line_plot'] = politics_plots.get_line_plot(followed_accounts)
+            context['fb_line_plot'] = fb_plots.get_line_plot(followed_accounts)
 
             context['fb_follows_available'] = True
 
-        if True:
-            return
-
         # Statistics related to interactions.
-        interaction_bps = [
-            'Gelikete Seiten Facebook', 'Likes Facebook',
-            'Kommentare Facebook', 'Story Interaction Facebook'
-        ]
-        interactions_available = insta_data.check_if_bps_available(data, interaction_bps)
-        if interactions_available:
-            fb_interactions = fb_data.get_interactions(data, political_accounts)  # TODO in function
+        # interaction_bps = [
+        #     'Likes Facebook', 'Kommentare Facebook', 'Story Interaction Facebook'
+        # ]
+        # interactions_available = fb_data.check_if_bps_available(data, interaction_bps)
+        # if interactions_available:
+            # fb_interactions = fb_data.get_interactions(data, political_accounts)  # TODO in function
             # Plot 3: interaction bar plot per category
-            context['fb_interaction_plot'] = politics_plots.get_interaction_plot(fb_interactions)  # TODO: May not work, because keys have been changed in get_proposed_content()
-            context['fb_interactions_available'] = True
+            # context['fb_interaction_plot'] = fb_plots.get_interaction_plot(fb_interactions)  # TODO: May not work, because keys have been changed in get_proposed_content()
+            # context['fb_interactions_available'] = True
 
         # Statistics related to proposed content.
-        # TODO: Check if that makes sense for Facebook.
-        content_bps = [
-            'Kürzlich geschaut Facebook', 'Kürzlich besucht Facebook'
-        ]
-        proposed_content_available = insta_data.check_if_bps_available(data, content_bps)
+        content_bps = ['Kürzlich besucht Facebook']
+        proposed_content_available = fb_data.check_if_bps_available(data, content_bps)
         if proposed_content_available:
-            fb_content = fb_data.get_proposed_content(data, political_accounts)  # TODO in function
+            fb_content = fb_data.get_proposed_content(data, political_accounts)
             # Plot 4: proposed content bar plot per category
-            context['fb_content_plot'] = politics_plots.get_content_plot(fb_content)  # TODO: May not work, because keys have been changed in get_proposed_content()
+            context['fb_content_plot'] = fb_plots.get_content_plot(fb_content)
             context['fb_content_available'] = True
 
         return
@@ -256,26 +250,26 @@ class PoliticsReportFacebook(BaseReport, TemplateView):
 
         # responses = insta_data.load_local_example_responses()  # Disable in production
 
-        stats = politics_plots.load_facebook_statistics()  # TODO: To implement
+        stats = fb_plots.load_facebook_statistics()
         context['counts_bio'] = stats.biodiversity_counts
         context['counts_pension'] = stats.pension_counts
 
         # Graph biodiversity (overall count - yes vs. no)
         if stats.biodiversity_counts:
-            context['biodiversity_graph'] = politics_plots.get_vote_graph(stats.biodiversity_counts)
+            context['biodiversity_graph'] = fb_plots.get_vote_graph(stats.biodiversity_counts)
 
         # Graph pension reform (overall count - yes vs. no)
         if stats.pension_counts:
-            context['pension_graph'] = politics_plots.get_vote_graph(stats.pension_counts, color='2')
+            context['pension_graph'] = fb_plots.get_vote_graph(stats.pension_counts, color='2')
 
         # Graph partie following (count follows per point on left-right scale)
         context['donations'] = stats.get_blueprint_donations(12)
 
         # Party Graphs
-        context['sp_graph'] = politics_plots.get_party_graph(None, 'SP')
-        context['svp_graph'] = politics_plots.get_party_graph(None, 'SVP')
-        context['mitte_graph'] = politics_plots.get_party_graph(None, 'Mitte')
-        context['fdp_graph'] = politics_plots.get_party_graph(None, 'FDP')
+        context['sp_graph'] = fb_plots.get_party_graph(stats.party_counts, 'SP')
+        context['svp_graph'] = fb_plots.get_party_graph(stats.party_counts, 'SVP')
+        context['mitte_graph'] = fb_plots.get_party_graph(stats.party_counts, 'Mitte')
+        context['fdp_graph'] = fb_plots.get_party_graph(stats.party_counts, 'FDP')
         return
 
 

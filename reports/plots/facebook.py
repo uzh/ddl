@@ -11,11 +11,13 @@ FIRE_PALETTE = ['#b0020f', '#fe2d2d', '#fb7830', '#fecf02']  #, '#ffeea3']
 
 
 def load_facebook_statistics():
-    try:
-        stats = FacebookStatistics.objects.get(pk=1)
-    except FacebookStatistics.DoesNotExist:
+    stats = FacebookStatistics.objects.all()
+
+    if not stats:
         stats = FacebookStatistics(name='Facebookstats', project_pk=settings.FACEBOOK_PROJECT_PK)
         stats.save()
+    else:
+        stats = stats[0]
 
     if not stats.last_updated:
         try:
@@ -101,9 +103,6 @@ def get_line_plot(followed_accounts):
 
     reference_stats = load_facebook_statistics()
     ref_accounts = reference_stats.get_follow_counts()
-
-    if not ref_accounts:
-        return None
 
     x_max = get_max(followed_accounts, ref_accounts)
     p = figure(
@@ -218,19 +217,15 @@ def get_content_plot(content):
         return l
 
     interaction_types = [
-        'Geschaute\nWerbung',
-        'Vorgeschlagene\nProfile',
-        'Geschaute\nPosts',
-        'Geschaute\nVideos'
+        'Kürzlich angesehene\nProfile',
     ]
     categories = INSTA_CATEGORIES
     data = {
         'interactions': interaction_types,
-        'Parteien': get_list_for_plot('party', content),
-        'Politiker:innen': get_list_for_plot('politician', content),
-        'Medien': get_list_for_plot('media', content),
-        'Organisationen': get_list_for_plot('organisation', content),
-        # 'andere (nicht politisch)': get_list_for_plot('other', content),
+        'Parteien': [len(content['party'])],
+        'Politiker:innen': [len(content['politician'])],
+        'Medien': [len(content['media'])],
+        'Organisationen': [len(content['organisation'])],
     }
 
     palette = FIRE_PALETTE
