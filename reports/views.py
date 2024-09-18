@@ -397,7 +397,7 @@ class DigitalMealReport(BaseReport, TemplateView):  # BaseIndividualReport,
 
     def get_watch_context(self, data):
         c = {}  # c = context
-        if data is None:
+        if not data:
             c['wh_available'] = False
             return c
         c['wh_available'] = True
@@ -419,7 +419,7 @@ class DigitalMealReport(BaseReport, TemplateView):  # BaseIndividualReport,
 
     def get_search_context(self, data):
         c = {}  # c = context
-        if data is None:
+        if not data:
             c['search_available'] = False
             return c
         c['search_available'] = True
@@ -474,11 +474,10 @@ class DigitalMealReport(BaseReport, TemplateView):  # BaseIndividualReport,
         context['fav_vids_top_ten'] = videos_top_ten
         return context
 
-    def add_wh_statistics_to_context(self, context, watch_history, video_ids, n_donations=1, ):
+    def add_wh_statistics_to_context(self, context, watch_history, video_ids):
         # Statistics overall
         context['n_vids_overall'] = len(watch_history)
         context['n_vids_unique_overall'] = len(set(video_ids))
-        context['n_vids_mean_overall'] = len(watch_history) / n_donations
         context['n_vids_per_day'] = round((len(watch_history) / context['wh_date_range'].days), 2)
 
         # Statistics interval
@@ -496,7 +495,7 @@ class DigitalMealReport(BaseReport, TemplateView):  # BaseIndividualReport,
         wh_interval_ids = yt_data.get_video_ids(wh_interval)
         context['n_vids_interval'] = len(wh_interval)
         context['n_vids_unique_interval'] = len(set(wh_interval_ids))
-        context['n_vids_mean_interval'] = len(wh_interval) / n_donations
+        context['n_vids_mean_interval'] = len(wh_interval) / 30
         return context
 
     @staticmethod
