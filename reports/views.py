@@ -13,6 +13,7 @@ from .plots import youtube as yt_plots
 from .plots import instagram as insta_plots
 from .plots import facebook as fb_plots
 from .plots import search as search_plots
+from .plots import chatgpt as gpt_plots
 from .utils.get_scores import get_scores_for_report
 from .utils import yt_data, search_data, insta_data, fb_data
 
@@ -536,3 +537,64 @@ class ChatGPTReport(BaseReport, TemplateView):
     template_name = 'reports/chatgpt.html'
     project_pk = settings.CHATGPT_PROJECT_PK
     token = settings.CHATGPT_API_KEY
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = self.add_response_context(context)
+        context['status'] = 'okay'
+        return context
+
+    def add_response_context(self, context):
+        """Get context variables from questionnaire responses."""
+        responses_api = self.get_responses()
+
+        if not responses_api:
+            context['status'] = 'not okay'
+            return context
+
+        responses = responses_api[0]
+        context['responses'] = responses
+        variables = [
+            'trust-chatgpt',
+            'trust-science',
+            'benefit-chatgpt-1',
+            'benefit-chatgpt-2',
+            'benefit-chatgpt-3',
+            'risk-chatgpt-1',
+            'risk-chatgpt-2',
+            'risk-chatgpt-3'
+        ]
+
+        for variable in variables:
+            response = responses[variable]
+            plot_name = variable.replace('-', '_') + '_plot'
+            context[plot_name] = gpt_plots.get_bar_plot(variable, response)
+
+        age = responses['age']
+        try:
+            age = int(age)
+        except ValueError:
+            age = 0
+
+        if 18 <= age < 25:
+            age_group = '18-24'
+        elif 25 <= age < 35:
+            age_group = '25-34'
+        elif 35 <= age < 45:
+            age_group = '35-44'
+        elif 45 <= age < 55:
+            age_group = '45-54'
+        elif age >= 55:
+            age_group = '55+'
+        else:
+            age_group = None
+
+        try:
+            use_response = responses['use-chatgpt']
+            if age_group and use_response in ['1', '2', '3', '4', '5']:
+                cell_highlight = age_group + '-' + use_response
+                context['highlight'] = cell_highlight
+        except ValueError:
+            pass
+
+        return context

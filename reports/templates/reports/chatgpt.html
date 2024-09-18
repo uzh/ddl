@@ -1,4 +1,165 @@
 {% extends "reports/base.html" %}
 {% load static %}
 
-{% block page_title %}YouTube Report{% endblock %}
+{% block page_title %}ChatGPT Report{% endblock %}
+
+{% block report_title %}Ihr persönlicher Report{% endblock %}
+
+
+{% block report_body %}
+<div class="container">
+
+{% if status != "okay" %}
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>Da ist etwas schiefgegangen</h3>
+    <p>Bitte stellen Sie sicher, dass die eingegebene URL korrekt ist.</p>
+  </div>
+</div>
+{% else %}
+
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>Wie verhalten sich Ihre Antworten im Fragebogen zur breiteren Bevölkerung?</h3>
+
+    <div>
+      <p>
+        In diesem Report zeigen wir Ihnen, wie sich Ihre Antworten, die Sie in unserem Fragebogen gegeben haben, im Vergleich
+        zu den Antworten der breiten Bevölkerung verhalten. Die Antworten der Bevölkerung sind in blau dargestellt, Ihre eigene
+        Antwort ist mit einem orangenen Strich gekennzeichnet.
+      </p>
+    </div>
+
+    <div class="pt-5">
+      <h5>Nutzung ChatGPT</h5>
+      <p>Wie oft, wenn überhaupt, nutzen Sie ChatGPT?</p>
+
+      <div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Altersgruppe</th>
+              <th scope="col">18-24</th>
+              <th scope="col">25-34</th>
+              <th scope="col">35-44</th>
+              <th scope="col">45-54</th>
+              <th scope="col">55+</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Täglich</td>
+              <td {% if highlight == "18-24-1" %}class="highlight-cell"{% endif %}>8.9 %</td>
+              <td {% if highlight == "25-34-1" %}class="highlight-cell"{% endif %}>6.4 %</td>
+              <td {% if highlight == "35-44-1" %}class="highlight-cell"{% endif %}>4.1 %</td>
+              <td {% if highlight == "45-54-1" %}class="highlight-cell"{% endif %}>3 %</td>
+              <td {% if highlight == "55+-1" %}class="highlight-cell"{% endif %}>0.9 %</td>
+            </tr>
+            <tr>
+              <td>Wöchentlich</td>
+              <td {% if highlight == "18-24-2" %}class="highlight-cell"{% endif %}>17.8 %</td>
+              <td {% if highlight == "25-34-2" %}class="highlight-cell"{% endif %}>13.4 %</td>
+              <td {% if highlight == "35-44-2" %}class="highlight-cell"{% endif %}>7.9 %</td>
+              <td {% if highlight == "45-54-2" %}class="highlight-cell"{% endif %}>5.8 %</td>
+              <td {% if highlight == "55+-2" %}class="highlight-cell"{% endif %}>2.7 %</td>
+            </tr>
+            <tr>
+              <td>Monatlich</td>
+              <td {% if highlight == "18-24-3" %}class="highlight-cell"{% endif %}>11.7 %</td>
+              <td {% if highlight == "25-34-3" %}class="highlight-cell"{% endif %}>7.9 %</td>
+              <td {% if highlight == "35-44-3" %}class="highlight-cell"{% endif %}>6.9 %</td>
+              <td {% if highlight == "45-54-3" %}class="highlight-cell"{% endif %}>5.3 %</td>
+              <td {% if highlight == "55+-3" %}class="highlight-cell"{% endif %}>2.5 %</td>
+            </tr>
+            <tr>
+              <td>1- oder 2-mal</td>
+              <td {% if highlight == "18-24-4" %}class="highlight-cell"{% endif %}>17.2 %</td>
+              <td {% if highlight == "25-34-4" %}class="highlight-cell"{% endif %}>15 %</td>
+              <td {% if highlight == "35-44-4" %}class="highlight-cell"{% endif %}>13.6 %</td>
+              <td {% if highlight == "45-54-4" %}class="highlight-cell"{% endif %}>13.5 %</td>
+              <td {% if highlight == "55+-4" %}class="highlight-cell"{% endif %}>9.5 %</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><small>Vergleichswerte basieren auf der Studie von Fletcher & Nielsen (2024)</small></p> <!-- TODO: Link Studie -->
+    </div>
+
+    <div class="pt-5">
+      <h5>Vertrauen in ChatGPT</h5>
+      <p>Wie sehr vertrauen Sie persönlich Programmen wie ChatGPT bei der Wiedergabe wissenschaftlicher Inhalte?</p>
+      <div class="d-flex justify-content-center pt-3">{{ trust_chatgpt_plot.div | safe }}</div>
+      <p><small>Vergleichswerte basieren auf dem Wissenschaftsbarometer 2023</small></p> <!-- TODO: Link Studie -->
+    </div>
+
+    <div class="pt-5">
+      <h5>Vertrauen in die Wissenschaft</h5>
+      <p>Ganz allgemein: Wie sehr vertrauen Sie in die Wissenschaft?</p>
+      <div class="d-flex justify-content-center pt-3">{{ trust_science_plot.div | safe }}</div>
+      <p><small>Vergleichswerte basieren auf dem Wissenschaftsbarometer Schweiz von 2022</small></p> <!-- TODO: Link Studie -->
+    </div>
+
+    <div class="pt-5">
+      <h5>Wahrgenommener Nutzen von KI</h5>
+      <p>Es ist positiv, dass man sich mit Programmen wie ChatGPT komplexe Sachverhalte aus Wissenschaft und Forschung stark vereinfacht erklären lassen kann.</p>
+      <div class="d-flex justify-content-center pt-3">{{ benefit_chatgpt_1_plot.div | safe }}</div>
+
+      <p class="pt-5">Es ist positiv, dass man sich mit Programmen wie ChatGPT wie mit einem echten Menschen über Wissenschaft und Forschung unterhalten kann.</p>
+      <div class="d-flex justify-content-center pt-3">{{ benefit_chatgpt_2_plot.div | safe }}</div>
+
+      <p class="pt-5">Es ist positiv, dass man sich mit Programmen wie ChatGPT bei Unklarheiten bezüglich wissenschaftlicher Themen Beispiele geben lassen und Nachfragen stellen kann.</p>
+      <div class="d-flex justify-content-center pt-3">{{ benefit_chatgpt_3_plot.div | safe }}</div>
+      <p><small>Vergleichswerte basieren auf dem Wissenschaftsbarometer 2023</small></p> <!-- TODO: Link Studie -->
+    </div>
+
+    <div class="pt-5">
+      <h5>Wahrgenommene Risiken von KI</h5>
+      <p>Es ist bedenklich, dass Programme wie ChatGPT es schwieriger machen festzustellen, ob wissenschaftliche Inhalte von einem Menschen oder einem Programm verfasst wurden.</p>
+      <div class="d-flex justify-content-center pt-3">{{ risk_chatgpt_1_plot.div | safe }}</div>
+
+      <p class="pt-5">Es ist bedenklich, dass Programme wie ChatGPT die Quellen der Informationen zu wissenschaftlichen Themen nicht so gründlich überprüfen können wie ein Mensch.</p>
+      <div class="d-flex justify-content-center pt-3">{{ risk_chatgpt_2_plot.div | safe }}</div>
+
+      <p class="pt-5">Es ist bedenklich, dass Programme wie ChatGPT manchmal auch Falschinformationen zu wissenschaftlichen Themen wiedergeben.</p>
+      <div class="d-flex justify-content-center pt-3">{{ risk_chatgpt_3_plot.div | safe }}</div>
+      <p><small>Vergleichswerte basieren auf dem Wissenschaftsbarometer 2023</small></p> <!-- TODO: Link Studie -->
+    </div>
+
+  </div>
+</div>
+
+<div class="row pt-5 pb-5 border-bottom">
+  <div class="col text-center">
+    <h3>Weitere Informationen und Tipps zur Nutzung von ChatGPT und anderen KI-Applikationen</h3>
+    <p>Hier finden Sie eine umfangreiche Linksammlung zu effektiven Prompting-Techniken und KI-Tools, die Ihnen helfen kann, das Potenzial von künstlicher Intelligenz optimal auszuschöpfen:</p>
+    <p><b>Tipps zur Formulierung von Anweisungen für ChatGPT:</b> <a href="https://teachingtools.uzh.ch/asset/651d3d597918a3f3cf0012c2/download" target="_blank">https://teachingtools.uzh.ch/asset/651d3d597918a3f3cf0012c2/download</a></p>
+    <p><b>Leitfaden zur Erstellung von Effektiven Anweisungen an ChatGPT:</b> <a href="https://ethz.ch/de/die-eth-zuerich/lehre/ai-in-education/ressourcen.html" target="_blank">https://ethz.ch/de/die-eth-zuerich/lehre/ai-in-education/ressourcen.html</a></p>
+    <p><b>Eine Übersicht von KI-Tools für verschiedene Anwendungen:</b> <a href="https://padlet.com/teachingtools/ki-tools-aydo325iervm77gb" target="_blank">https://padlet.com/teachingtools/ki-tools-aydo325iervm77gb</a></p>
+
+  </div>
+</div>
+
+{% endif %}
+
+</div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+
+{{ trust_chatgpt_plot.script | safe }}
+{{ trust_science_plot.script | safe }}
+
+{{ benefit_chatgpt_1_plot.script | safe }}
+{{ benefit_chatgpt_2_plot.script | safe }}
+{{ benefit_chatgpt_3_plot.script | safe }}
+
+{{ risk_chatgpt_1_plot.script | safe }}
+{{ risk_chatgpt_2_plot.script | safe }}
+{{ risk_chatgpt_3_plot.script | safe }}
+
+{% endblock %}
