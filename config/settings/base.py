@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
     'reports',
-    'gpt'
+    'gpt',
+    'django_crontab'
 ]
 
 MIDDLEWARE = [
@@ -223,3 +224,11 @@ DIGITALMEAL_API_KEY = os.getenv('DIGITALMEAL_API_KEY', None)
 # ChatGPT Report
 CHATGPT_PROJECT_PK = os.getenv('CHATGPT_PROJECT_PK', None)
 CHATGPT_API_KEY = os.getenv('CHATGPT_API_KEY', None)
+
+
+# Cronjob Settings
+# ------------------------------------------------------------------------------
+CRONJOBS = [
+    ('*/15 * * * *', 'reports.cron.update_instagram_statistics'),
+    ('*/15 * * * *', 'reports.cron.update_facebook_statistics')
+]
