@@ -17,3 +17,14 @@
 .highlight-cell {
     background: #ffcc6d !important;
 }
+.collapsible-header {
+    text-align: left;
+    background: #eaeaea;
+    margin-bottom: 0;
+    padding: 10px;
+}
+.collapsible-link {
+    text-decoration: none;
+    font-weight: bold;
+    color: #4f4f4f;
+}
