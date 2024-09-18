@@ -569,28 +569,10 @@ class ChatGPTReport(BaseReport, TemplateView):
             plot_name = variable.replace('-', '_') + '_plot'
             context[plot_name] = gpt_plots.get_bar_plot(variable, response)
 
-        age = responses['age']
-        try:
-            age = int(age)
-        except ValueError:
-            age = 0
-
-        if 18 <= age < 25:
-            age_group = '18-24'
-        elif 25 <= age < 35:
-            age_group = '25-34'
-        elif 35 <= age < 45:
-            age_group = '35-44'
-        elif 45 <= age < 55:
-            age_group = '45-54'
-        elif age >= 55:
-            age_group = '55+'
-        else:
-            age_group = None
-
         try:
             use_response = responses['use-chatgpt']
-            if age_group and use_response in ['1', '2', '3', '4', '5']:
+            age_group = responses['age']
+            if age_group in ['1', '2', '3', '4', '5'] and use_response in ['1', '2', '3', '4', '5']:
                 cell_highlight = age_group + '-' + use_response
                 context['highlight'] = cell_highlight
         except ValueError:
