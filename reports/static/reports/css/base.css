@@ -28,3 +28,18 @@
     font-weight: bold;
     color: #4f4f4f;
 }
+.span-population {
+    background: #1f77b4;
+    color: white;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 6px;
+}
+.span-self {
+    background: #ffa500;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 6px;
+}
