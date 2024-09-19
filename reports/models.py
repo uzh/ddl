@@ -28,6 +28,14 @@ class InstagramStatistics (models.Model):
     last_updated = models.DateTimeField(null=True, blank=True)
     project_pk = models.IntegerField(default=0)
 
+    def reset_statistics(self):
+        self.follow_counts = None
+        self.biodiversity_counts = None
+        self.pension_counts = None
+        self.party_counts = None
+        self.last_updated = None
+        self.save()
+
     def update_statistics(self):
         new_responses = self.get_responses()
         new_donations = self.get_blueprint_donations(settings.INSTAGRAM_BP_FOLLOWED_ACCOUNTS)
