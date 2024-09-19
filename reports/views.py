@@ -164,7 +164,7 @@ class PoliticsReportInstagram(BaseReport, TemplateView):
         context['donations'] = stats.get_blueprint_donations(12)
 
         # Party Graphs
-        context['sp_graph'] = insta_plots.get_party_graph(stats.party_counts, 'SP')
+        context['sp_graph'] = insta_plots.get_party_graph(stats.party_counts, 'SPS')
         context['svp_graph'] = insta_plots.get_party_graph(stats.party_counts, 'SVP')
         context['mitte_graph'] = insta_plots.get_party_graph(stats.party_counts, 'Mitte')
         context['fdp_graph'] = insta_plots.get_party_graph(stats.party_counts, 'FDP')
@@ -220,17 +220,6 @@ class PoliticsReportFacebook(BaseReport, TemplateView):
 
             context['fb_follows_available'] = True
 
-        # Statistics related to interactions.
-        # interaction_bps = [
-        #     'Likes Facebook', 'Kommentare Facebook', 'Story Interaction Facebook'
-        # ]
-        # interactions_available = fb_data.check_if_bps_available(data, interaction_bps)
-        # if interactions_available:
-            # fb_interactions = fb_data.get_interactions(data, political_accounts)  # TODO in function
-            # Plot 3: interaction bar plot per category
-            # context['fb_interaction_plot'] = fb_plots.get_interaction_plot(fb_interactions)  # TODO: May not work, because keys have been changed in get_proposed_content()
-            # context['fb_interactions_available'] = True
-
         # Statistics related to proposed content.
         content_bps = ['Kürzlich besucht Facebook']
         proposed_content_available = fb_data.check_if_bps_available(data, content_bps)
@@ -245,11 +234,6 @@ class PoliticsReportFacebook(BaseReport, TemplateView):
     def add_response_context(self, context):
         """Get context variables from questionnaire responses."""
         responses_api = self.get_responses()
-        # -----------------------------------------------------------------
-        # responses = responses_api[0]
-        # context['responses_api'] = responses
-
-        # responses = insta_data.load_local_example_responses()  # Disable in production
 
         stats = fb_plots.load_facebook_statistics()
         context['counts_bio'] = stats.biodiversity_counts
@@ -267,7 +251,7 @@ class PoliticsReportFacebook(BaseReport, TemplateView):
         context['donations'] = stats.get_blueprint_donations(12)
 
         # Party Graphs
-        context['sp_graph'] = fb_plots.get_party_graph(stats.party_counts, 'SP')
+        context['sp_graph'] = fb_plots.get_party_graph(stats.party_counts, 'SPS')
         context['svp_graph'] = fb_plots.get_party_graph(stats.party_counts, 'SVP')
         context['mitte_graph'] = fb_plots.get_party_graph(stats.party_counts, 'Mitte')
         context['fdp_graph'] = fb_plots.get_party_graph(stats.party_counts, 'FDP')

@@ -300,7 +300,7 @@ def get_vote_graph(data, color='1'):
 
 def get_party_graph(data, key):
     colors = {
-        'SP': '#e4002b',
+        'SPS': '#e4002b',
         'SVP': '#009f4e',
         'Mitte': '#ff9b00',
         'FDP': '#074ea1'

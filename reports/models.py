@@ -131,7 +131,7 @@ class InstagramStatistics (models.Model):
         if self.party_counts is None:
             scale_dummy = {str(i): 0 for i in range(0, 11)}
             self.party_counts = {
-                'SP': scale_dummy.copy(),
+                'SPS': scale_dummy.copy(),
                 'SVP': scale_dummy.copy(),
                 'Mitte': scale_dummy.copy(),
                 'FDP': scale_dummy.copy()
@@ -153,7 +153,7 @@ class InstagramStatistics (models.Model):
 
             donation = donations[participant]
             political_accounts = insta_data.load_political_account_list()
-            parties = ['SP', 'SVP', 'Mitte', 'FDP']
+            parties = ['SPS', 'SVP', 'Mitte', 'FDP']
             p_follows_party = {p: False for p in parties}
             for account in donation:
                 profile = account['string_list_data'][0]['href']
@@ -264,7 +264,7 @@ class FacebookStatistics(InstagramStatistics):
         if self.party_counts is None:
             scale_dummy = {str(i): 0 for i in range(0, 11)}
             self.party_counts = {
-                'SP': scale_dummy.copy(),
+                'SPS': scale_dummy.copy(),
                 'SVP': scale_dummy.copy(),
                 'Mitte': scale_dummy.copy(),
                 'FDP': scale_dummy.copy()
@@ -286,7 +286,7 @@ class FacebookStatistics(InstagramStatistics):
 
             donation = donations[participant]
             political_accounts = fb_data.load_political_account_list()
-            parties = ['SP', 'SVP', 'Mitte', 'FDP']
+            parties = ['SPS', 'SVP', 'Mitte', 'FDP']
             p_follows_party = {p: False for p in parties}
             for account in donation:
                 try:
@@ -294,11 +294,11 @@ class FacebookStatistics(InstagramStatistics):
                 except KeyError:
                     continue
                 if profile in political_accounts.keys():
-                    insta_profile = political_accounts[profile]
-                    profile_type = insta_profile['type']
+                    facebook_profile = political_accounts[profile]
+                    profile_type = facebook_profile['type']
                     if profile_type != 'party':
                         continue
-                    profile_party = insta_profile['party']
+                    profile_party = facebook_profile['party']
                     if profile_party in parties:
                         p_follows_party[profile_party] = True
 
