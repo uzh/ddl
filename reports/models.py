@@ -147,7 +147,7 @@ class InstagramStatistics (models.Model):
             else:
                 continue
 
-            valid_responses = [str(i) for i in range(1, 11)]
+            valid_responses = [str(i) for i in range(0, 11)]
             if pol_stance not in valid_responses:
                 continue
 
@@ -280,7 +280,7 @@ class FacebookStatistics(InstagramStatistics):
             else:
                 continue
 
-            valid_responses = [str(i) for i in range(1, 11)]
+            valid_responses = [str(i) for i in range(0, 11)]
             if pol_stance not in valid_responses:
                 continue
 
@@ -289,7 +289,10 @@ class FacebookStatistics(InstagramStatistics):
             parties = ['SP', 'SVP', 'Mitte', 'FDP']
             p_follows_party = {p: False for p in parties}
             for account in donation:
-                profile = account['title'].encode('latin-1').decode('utf-8')
+                try:
+                    profile = account['title'].encode('latin-1').decode('utf-8')
+                except KeyError:
+                    continue
                 if profile in political_accounts.keys():
                     insta_profile = political_accounts[profile]
                     profile_type = insta_profile['type']
