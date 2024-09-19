@@ -254,67 +254,6 @@ class FacebookStatistics(InstagramStatistics):
                 self.follow_counts[k].append(len(r[k]))
         return
 
-    # def get_follow_counts(self):
-    #     for c, counts in self.follow_counts.items():
-    #         if not counts:
-    #             return None
-    #     return self.follow_counts
-
-    # def update_vote_counts(self, responses=None):
-    #     if responses is None:
-    #         responses = self.get_responses()
-    #
-    #     value_map = {
-    #         '1': 'ja',
-    #         '2': 'nein',
-    #         '3': 'leer',
-    #         '4': 'nicht teilgenommen'
-    #     }
-    #     result_dummy = {
-    #         'ja': 0,
-    #         'nein': 0,
-    #         'leer': 0,
-    #         'nicht teilgenommen': 0
-    #     }
-    #
-    #     self.update_bio_count(responses, result_dummy, value_map)
-    #     self.update_pension_count(responses, result_dummy, value_map)
-    #     return
-
-    # def update_bio_count(self, responses, result_dummy, value_map):
-    #     if self.biodiversity_counts is None:
-    #         result = result_dummy.copy()
-    #     else:
-    #         result = self.biodiversity_counts.copy()
-    #
-    #     var = 'vote-1'
-    #     for p, r in responses.items():
-    #         if var in r.keys():
-    #             vote = r[var]
-    #         else:
-    #             continue
-    #         if vote in value_map.keys():
-    #             result[value_map[vote]] += 1
-    #     self.biodiversity_counts = result
-    #     return
-
-    # def update_pension_count(self, responses, result_dummy, value_map):
-    #     if self.pension_counts is None:
-    #         result = result_dummy.copy()
-    #     else:
-    #         result = self.pension_counts.copy()
-    #
-    #     var = 'vote-2'
-    #     for p, r in responses.items():
-    #         if var in r.keys():
-    #             vote = r[var]
-    #         else:
-    #             continue
-    #         if vote in value_map.keys():
-    #             result[value_map[vote]] += 1
-    #     self.pension_counts = result
-    #     return
-
     def update_party_graphs(self, responses=None, donations=None, bp_pk=None):
         if responses is None:
             responses = self.get_responses()
@@ -350,7 +289,7 @@ class FacebookStatistics(InstagramStatistics):
             parties = ['SP', 'SVP', 'Mitte', 'FDP']
             p_follows_party = {p: False for p in parties}
             for account in donation:
-                profile = account['name'].encode('latin-1').decode('utf-8')
+                profile = account['title'].encode('latin-1').decode('utf-8')
                 if profile in political_accounts.keys():
                     insta_profile = political_accounts[profile]
                     profile_type = insta_profile['type']
@@ -365,40 +304,3 @@ class FacebookStatistics(InstagramStatistics):
                 if follows:
                     self.party_counts[party][pol_stance] += 1
         return
-
-    # def get_responses(self):
-    #     """
-    #     Returns dictionary with responses per participant.
-    #     {'participant_id': {'response-var': <response>, ...}}
-    #     """
-    #     project = self.get_project()
-    #     reference_date = self.get_reference_date()
-    #
-    #     responses = QuestionnaireResponse.objects.filter(
-    #         project=project, time_submitted__gte=reference_date)
-    #
-    #     decryptor = self.get_decryptor(project)
-    #     decrypted_responses = {}
-    #     for r in responses:
-    #         serialized_r = ResponseSerializer(r, decryptor=decryptor)
-    #         decrypted_responses[serialized_r.data['participant']] = serialized_r.data['responses']
-    #     return decrypted_responses
-
-    # def get_blueprint_donations(self, bp_pk):
-    #     """
-    #     Returns dictionary with donations per participant.
-    #     {'participant_id': <extracted donation>}
-    #     """
-    #     project = self.get_project()
-    #     reference_date = self.get_reference_date()
-    #     blueprint = DonationBlueprint.objects.get(pk=bp_pk)
-    #
-    #     donations = DataDonation.objects.filter(
-    #         blueprint=blueprint, time_submitted__gte=reference_date)
-    #
-    #     decryptor = self.get_decryptor(project)
-    #     decrypted_donations = {}
-    #     for d in donations:
-    #         serialized_d = DonationSerializer(d, decryptor=decryptor)
-    #         decrypted_donations[serialized_d.data['participant']] = serialized_d.data['data']
-    #     return decrypted_donations
