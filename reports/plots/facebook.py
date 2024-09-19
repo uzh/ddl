@@ -309,7 +309,7 @@ def get_party_graph(data, key):
     if not data:
         return None
 
-    categories = [str(i) for i in range(1, 11)]
+    categories = [str(i) for i in range(0, 11)]
     counts = [data[key][cat] for cat in categories]
 
     p = figure(x_range=categories, height=400, width=400,
