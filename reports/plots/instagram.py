@@ -333,7 +333,7 @@ def get_party_graph(data, key):
     p.xaxis.group_text_color = '#000'
     p.xaxis.group_text_font_size = '10pt'
 
-    p.xaxis.axis_label = 'Politische Ausrichtung\n(von 1=links bis 10=rechts)'
+    p.xaxis.axis_label = 'Politische Ausrichtung\n(von 0=links bis 10=rechts)'
     p.yaxis.axis_label = f'Anzahl Personen, die einem {key}-Account folgen'
     p.xaxis.axis_label_text_font_size = '11pt'
     p.yaxis.axis_label_text_font_size = '9pt'
