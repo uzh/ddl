@@ -129,7 +129,7 @@ class InstagramStatistics (models.Model):
             donations = self.get_blueprint_donations(bp_pk)
 
         if self.party_counts is None:
-            scale_dummy = {str(i): 0 for i in range(1, 11)}
+            scale_dummy = {str(i): 0 for i in range(0, 11)}
             self.party_counts = {
                 'SP': scale_dummy.copy(),
                 'SVP': scale_dummy.copy(),
@@ -262,7 +262,7 @@ class FacebookStatistics(InstagramStatistics):
             donations = self.get_blueprint_donations(bp_pk)
 
         if self.party_counts is None:
-            scale_dummy = {str(i): 0 for i in range(1, 11)}
+            scale_dummy = {str(i): 0 for i in range(0, 11)}
             self.party_counts = {
                 'SP': scale_dummy.copy(),
                 'SVP': scale_dummy.copy(),
