@@ -23,18 +23,18 @@
 {% if fb_follows_available %}
 <div class="row pt-5 pb-5 border-bottom">
   <div class="col text-center">
-    <h3>Welchen politischen Accounts folgst du auf Facebook?</h3>
-    <p>Insgesamt folgst du <b>{{ n_follows_persons }} Personen</b> und <b>{{ n_follows_pages }} Seiten</b> auf Facebook.</p>
+    <h3>Welchen politischen Accounts folgen Sie auf Facebook?</h3>
+    <p>Insgesamt folgen Sie <b>{{ n_follows_persons }} Personen</b> und <b>{{ n_follows_pages }} Seiten</b> auf Facebook.</p>
     {% if n_follows_relevant and n_follows_relevant > 0 %}
-      <p>Davon haben {{ n_follows_relevant }} Accounts und Seiten einen Bezug zu politischen Themen. Unten siehst du, wie sich diese Accounts unterschiedlichen Typen zuordnen lassen:</p> <!-- TODO: Add explanation? -->
+      <p>Davon haben {{ n_follows_relevant }} Accounts und Seiten einen Bezug zu politischen Themen. Unten sehen Sie, wie sich diese Accounts unterschiedlichen Typen zuordnen lassen:</p> <!-- TODO: Add explanation? -->
       <div class="d-flex justify-content-center pt-3">{{ fb_follows_plot.div | safe }}</div>
     {% else %}
       <p>Keiner dieser Accounts kommt in unserer Liste von politischen Akteuren vor.</p>
     {% endif %}
 
     <p class="pt-5">
-      <b>Im Vergleich mit anderen: </b>Die Grafik unten zeigt pro Account-Typ, wie vielen Accounts du im Vergleich mit dem Durchschnitt der anderen Personen,
-      die an der Studie teilgenommen haben, folgst.
+      <b>Im Vergleich mit anderen: </b>Die Grafik unten zeigt pro Account-Typ, wie vielen Accounts Sie im Vergleich mit dem Durchschnitt der anderen Personen,
+      die an der Studie teilgenommen haben, folgen.
     </p>
     <div class="d-flex justify-content-center pt-3">{{ fb_line_plot.div | safe }}</div>
   </div>
@@ -45,8 +45,8 @@
 {% if fb_interactions_available %}
 <div class="row pt-5 pb-5 border-bottom">
   <div class="col text-center">
-    <h3>Mit welchen politischen Inhalten interagierst du auf Facebook?</h3>
-    <p>Unten siehst du, wie oft du auf Facebook mit Inhalten von unterschiedlichen Account-Typen interagiert hast.</p>
+    <h3>Mit welchen politischen Inhalten interagieren Sie auf Facebook?</h3>
+    <p>Unten sehen Sie, wie oft Sie auf Facebook mit Inhalten von unterschiedlichen Account-Typen interagiert haben.</p>
     <div class="d-flex justify-content-center pt-3">{{ fb_interaction_plot.div | safe }}</div>
   </div>
 </div>
@@ -56,8 +56,8 @@
 {% if fb_content_available %}
 <div class="row pt-5 pb-5 border-bottom">
   <div class="col text-center">
-    <h3>Welchen politischen Inhalten begegnest du auf Facebook?</h3>
-    <p>Die folgende Grafik zeigt, wie oft du auf Facebook Inhalte von unterschiedlichen Account-Typen gesehen hast.</p>
+    <h3>Welchen politischen Inhalten begegnen Sie auf Facebook?</h3>
+    <p>Die folgende Grafik zeigt, wie oft Sie auf Facebook Inhalte von unterschiedlichen Account-Typen gesehen haben.</p>
     <div class="d-flex justify-content-center pt-3">{{ fb_content_plot.div | safe }}</div>
   </div>
 </div>
@@ -67,7 +67,7 @@
 <div class="row pt-5 pb-5 border-bottom">
   <div class="col text-center">
     <h3>Wie haben die Studienteilnehmer:innen abgestimmt?</h3>
-    <p>Unten siehst du, wie andere Personen, die an der Studie teilgenommen haben, bei der letzten Abstimmung abgestimmt haben.</p>
+    <p>Unten sehen Sie, wie andere Personen, die an der Studie teilgenommen haben, bei der letzten Abstimmung abgestimmt haben.</p>
     <div class="row pt-3">
       <div class="col text-center">
         <p><b>Biodiversitätsinitiative</b></p>
@@ -85,7 +85,7 @@
   <div class="col text-center">
     <h3>Wer folgt welchen Parteien auf Facebook?</h3>
     <p>
-      Unten siehst du den Zusammenhang, zwischen der politischen Selbsteinschätzung
+      Unten sehen Sie den Zusammenhang, zwischen der politischen Selbsteinschätzung
       der Studienteilnehmer:innen (also wo sie sich selbst auf der
       politischen Skala von <i>links</i> bis <i>rechts</i> verorten) und welchen Parteien
       sie auf Facebook folgen.
@@ -118,22 +118,6 @@
 {% endif %}
 
 </div>
-
-<!-- TODO: Check if needed
-<div class="row pt-5 pb-5 border-bottom">
-  <div class="col text-center">
-    <h3>Stimmentscheidung und Nutzung soziale Medien</h3>
-    <p class="text-danger">Hier nur aggregierte Daten einfliessen lassen?</p>
-  </div>
-</div>
-
-<div class="pt-5">
-  <h1>Responses Function</h1>
-  {{ responses }}
-  <hr>
-  {{ donations }}
-</div>
--->
 
 {% endblock %}
 

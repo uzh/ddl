@@ -44,22 +44,22 @@
   <div class="report-section position-relative bg-darkyellow">
 
     <div class="report-content">
-      <h2>Wie viele Videos hast du dir auf YouTube angesehen?</h2>
+      <h2>Wie viele Videos haben Sie sich auf YouTube angesehen?</h2>
       <p>
-        Seit dem {{ wh_dates_min|date:"d. F Y" }} hast du dir <b class="font-size-highlight text-color-royalblue">insgesamt {{ n_vids_overall }}&nbsp;Videos angesehen</b>.</br>
+        Seit dem {{ wh_dates_min|date:"d. F Y" }} haben Sie sich <b class="font-size-highlight text-color-royalblue">insgesamt {{ n_vids_overall }}&nbsp;Videos angesehen</b>.</br>
       </p>
       <p>
-        Unten findest du einige Zahlen zu deiner YouTube-Nutzung.
-        Links siehst du die Zahlen für den gesamten Zeitraum der hochgeladenen Daten, rechts jene für den letzten Monat.
+        Unten finden Sie einige Zahlen zu Ihrer YouTube-Nutzung.
+        Links sehen Sie die Zahlen für den gesamten Zeitraum der hochgeladenen Daten, rechts jene für den letzten Monat.
       </p>
       <div class="row justify-content-center pt-5">
         <div class="col-11 col-md-6 pt-4 pb-4 p-2 p-md-5 bg-royalblue text-white">
             <h3>Insgesamt</br>
-            <span class="fs-6">Das erste in deinen Daten enthaltene Video hast du dir am {{ wh_dates_min|date:"d.m.Y" }} angesehen, das letzte am {{ wh_dates_max|date:"d.m.Y" }}</span></h3>
+            <span class="fs-6">Das erste in Ihren Daten enthaltene Video haben Sie sich am {{ wh_dates_min|date:"d.m.Y" }} angesehen, das letzte am {{ wh_dates_max|date:"d.m.Y" }}</span></h3>
           <!-- TODO: Check how to handle shorts. -->
           <p>Angeschaute Videos: {{ n_vids_overall }}</p>
           <p>Unterschiedliche Videos: {{ n_vids_unique_overall }}</p>
-          <p>Durchschnittliche Anzahl Videos: {{ n_vids_per_day|floatformat:1 }}</p>
+          <p>Durchschnittliche Anzahl Videos pro Tag: {{ n_vids_per_day|floatformat:1 }}</p>
         </div>
 
         <div class="col-11 col-md-6 pt-4 pb-4 p-2 p-md-5 bg-darkpurple text-white">
@@ -68,7 +68,7 @@
           </div>
           <p>Angeschaute Videos: {{ n_vids_interval }}</p>
           <p>Unterschiedliche Videos: {{ n_vids_unique_interval }}</p>
-          <p>Durchschnittliche Anzahl Videos: {{ n_vids_mean_interval|floatformat:1 }}</p>
+          <p>Durchschnittliche Anzahl Videos pro Tag: {{ n_vids_mean_interval|floatformat:1 }}</p>
         </div>
       </div>
       <!-- TODO: Add CH-Vergleich, wenn verfügbar. -->
@@ -84,11 +84,11 @@
 
   <div class="report-section bg-yellow position-relative">
     <div class="report-content">
-      <h2>Wie hat sich deine YouTube-Nutzung im Zeitverlauf verändert?</h2>
+      <h2>Wie hat sich Ihre YouTube-Nutzung im Zeitverlauf verändert?</h2>
       <div>
         <p>
-          Unten siehst du, wie sich die Anzahl Videos, die du dir angeschaut hast, über die Zeit verändert.
-          Du kannst dir die Zahlen pro Tag, Woche, Monat oder Jahr anzeigen lassen. Im violetten Balken unten kannst du
+          Unten sehen Sie, wie sich die Anzahl Videos, die Sie sich angeschaut haben, über die Zeit verändert.
+          Sie können sich die Zahlen pro Tag, Woche, Monat oder Jahr anzeigen lassen. Im violetten Balken unten können Sie
           den Zeitraum verändern, der oben angezeigt wird.
         </p>
       </div>
@@ -122,15 +122,15 @@
   <div class="report-section bg-melrose">
     <div class="report-content row">
       <div class="col-12 col-lg-5 pe-lg-5">
-        <h2>Wann nutzt du YouTube in einer durch&shy;schnittlichen Woche am intensivsten?</h2>
+        <h2>Wann nutzen Sie YouTube in einer durch&shy;schnittlichen Woche am intensivsten?</h2>
         <p class="text-start">
-          Die folgende Grafik veranschaulicht die Intensität deiner durchschnittlichen YouTube-Nutzung
+          Die folgende Grafik veranschaulicht die Intensität Ihrer durchschnittlichen YouTube-Nutzung
           über den Verlauf einer typischen Woche.
         </p>
         <p class="text-start">Oben ist ersichtlich, wie sich die Anzahl angesehener Videos prozentual auf die Wochentage verteilt.</p>
         <p class="text-start">
-          Unten siehst du die durchschnittliche Nutzung pro Tag pro Stunde.
-          <span class="fw-bold bg-yellow" style="border-bottom: 2px solid #ffda3c; padding-left: 5px; padding-right: 5px;">Je dunkler das Feld, desto mehr Videos hast du dir in dieser Zeitperiode angeschaut.</span>
+          Unten sehen Sie die durchschnittliche Nutzung pro Tag pro Stunde.
+          <span class="fw-bold bg-yellow" style="border-bottom: 2px solid #ffda3c; padding-left: 5px; padding-right: 5px;">Je dunkler das Feld, desto mehr Videos haben Sie sich in dieser Zeitperiode angeschaut.</span>
         </p>
       </div>
       <div class="col-12 col-lg-7 detailed-use-plot p-0">
@@ -153,9 +153,9 @@
 
     <div class="report-content d-flex flex-row pb-lg-5 align-content-stretch pt-lg-5">
       <div class="ps-5 pe-5 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
-        <h2>Dein Lieblingsvideo</h2>
+        <h2>Ihr Lieblingsvideo</h2>
         <p class="text-center">
-          Dein Lieblingsvideo<br><b class="font-size-highlight" style="color: #001310; background: #d0c3ff; padding-left: 15px; padding-right: 10px;">{{ fav_vids_top_ten.0.title }}</b><br>hast du dir <b class="font-size-highlight" style="color: #001310; border-bottom: 3px solid #d0c3ff;">{{ fav_vids_top_ten.0.count }} mal</b> angesehen.
+          Ihr Lieblingsvideo<br><b class="font-size-highlight" style="color: #001310; background: #d0c3ff; padding-left: 15px; padding-right: 10px;">{{ fav_vids_top_ten.0.title }}</b><br>haben Sie sich <b class="font-size-highlight" style="color: #001310; border-bottom: 3px solid #d0c3ff;">{{ fav_vids_top_ten.0.count }} mal</b> angesehen.
         </p>
       </div>
 
@@ -181,15 +181,15 @@
 
   <div class="report-section bg-cinnabar">
     <div class="report-content text-white">
-      <h2>Deine beliebtesten YouTube-Kanäle</h2>
+      <h2>Ihre beliebtesten YouTube-Kanäle</h2>
 
       <div>
         <p>
-            <span class="bg-ebonyclay ps-2 pe-2 pb-1">Du hast dir Videos von <b class="font-size-highlight bg-white text-color-ebonyclay ps-2 pe-2">{{ n_distinct_channels }}</b> verschiedenen <span class="font-size-highlight bg-white fw-bold ps-2 pe-2 text-color-ebonyclay">YouTube-Kanälen</span> angeschaut.</span>
+            <span class="bg-ebonyclay ps-2 pe-2 pb-1">Sie haben sich Videos von <b class="font-size-highlight bg-white text-color-ebonyclay ps-2 pe-2">{{ n_distinct_channels }}</b> verschiedenen <span class="font-size-highlight bg-white fw-bold ps-2 pe-2 text-color-ebonyclay">YouTube-Kanälen</span> angeschaut.</span>
         </p>
         <p>
-            <span class="bg-ebonyclay ps-2 pe-2 pb-1">In dieser Grafik siehst du die 10 Kanäle, von denen du dir am meisten
-            Videos angesehen hast.</span>
+            <span class="bg-ebonyclay ps-2 pe-2 pb-1">In dieser Grafik sehen Sie die 10 Kanäle, von denen Sie sich am meisten
+            Videos angesehen haben.</span>
         </p>
       </div>
       <div class="d-flex justify-content-center pt-5">{{ channel_plot.div | safe }}</div>
@@ -207,15 +207,15 @@
 
   <div class="report-section text-white bg-ebonyclay">
     <div class="report-content">
-      <h2>Nach was du auf YouTube gesucht hast</h2>
+      <h2>Nach was Sie auf YouTube gesucht haben</h2>
 
       <p>
-        <span class="font-size-highlight searchbar bg-white fw-bold">Du hast insgesamt <span style="border-bottom: 3px solid #3ee0e8;">{{ n_searches_mean_overall|floatformat:"0" }} Suchen</span> durchgeführt</span><span class="font-size-highlight searchbar-icon-container me-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search text-color-mineshaftgray mb-2 searchbar-icon" viewBox="0 0 16 16">
+        <span class="font-size-highlight searchbar bg-white fw-bold">Sie haben insgesamt <span style="border-bottom: 3px solid #3ee0e8;">{{ n_searches_mean_overall|floatformat:"0" }} Suchen</span> durchgeführt</span><span class="font-size-highlight searchbar-icon-container me-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search text-color-mineshaftgray mb-2 searchbar-icon" viewBox="0 0 16 16">
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
 </svg></span>
       </p>
       <p>
-        Deine am häufigsten verwendeten Suchbegriffe sind:
+        Ihre am häufigsten verwendeten Suchbegriffe sind:
       </p>
 
       <div class="d-flex justify-content-center pt-3">
