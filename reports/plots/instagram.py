@@ -158,13 +158,11 @@ def get_line_plot(followed_accounts):
 def get_interaction_plot(interactions):
     def get_list_for_plot(category, interactions):
         l = []
-        for interaction in ['likes_posts', 'likes_stories', 'comments_general', 'comments_reels']:
+        for interaction in ['comments_general', 'comments_reels']:
             l.append(len(interactions[interaction][category]))
         return l
 
     interaction_types = [
-        'Likes\nPosts',  # 'likes_posts',
-        'Likes\nStories',  # 'likes_stories',
         'Kommentare\nallgemein',  # 'comments_general',
         'Kommentare\nReels'  # 'comments_reels'
     ]

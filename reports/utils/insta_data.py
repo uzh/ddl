@@ -74,14 +74,10 @@ def get_follows_insta(data, insta_accounts, bp_name='Gefolgte Kanäle Instagram'
 
 def get_interactions_insta(data, insta_accounts):
     bp_names = [
-        'Gelikte Posts Instagram',
-        'Story Likes Instagram',
         'Kommentare Instagram',
         'Reels Kommentare Instagram'
     ]
     interaction_keys = [
-        'likes_posts',
-        'likes_stories',
         'comments_general',
         'comments_reels'
     ]
@@ -95,7 +91,13 @@ def get_interactions_insta(data, insta_accounts):
 
         key = interaction_keys[index]
         for account in data[bp_name][0]:
-            profile = 'https://www.instagram.com/' + account['title'].strip()
+            if bp_name in ['Kommentare Instagram', 'Reels Kommentare Instagram']:
+                try:
+                    profile = 'https://www.instagram.com/' + account['string_map_data']['Media Owner']['value'].strip()
+                except KeyError:
+                    continue
+            else:
+                profile = 'https://www.instagram.com/' + account['title'].strip()
             if profile in insta_accounts.keys():
                 insta_profile = insta_accounts[profile]
                 profile_type = insta_profile['type']
