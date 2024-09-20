@@ -1,5 +1,6 @@
 from django.urls import path
-from ddl.views import ProjectDataAPIAlt, ResponsesAPIAlt
+from ddl.views import ProjectDataAPIAlt
+from ddl.apis import ResponsesAPIAlt
 
 
 urlpatterns = [
