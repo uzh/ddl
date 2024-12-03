@@ -2,13 +2,15 @@ import io
 import json
 import zipfile
 
-from ddm.models.auth import ProjectTokenAuthenticator
-from ddm.models.core import DonationBlueprint, Participant, DataDonation
-from ddm.models.encryption import Decryption
-from ddm.models.serializers import (
-    ProjectSerializer, ParticipantSerializer, SerializerDecryptionMixin
-)
-from ddm.views.apis import DDMAPIMixin, user_is_allowed
+from ddm.auth.models import ProjectTokenAuthenticator
+from ddm.auth.utils import user_has_project_access
+from ddm.core.apis import DDMAPIMixin
+from ddm.datadonation.models import DataDonation, DonationBlueprint
+from ddm.encryption.models import Decryption
+from ddm.encryption.serializers import SerializerDecryptionMixin
+from ddm.participation.models import Participant
+from ddm.participation.serializers import ParticipantSerializer
+from ddm.projects.serializers import ProjectSerializer
 from django.http import HttpResponse
 from django.views.decorators.debug import sensitive_variables
 from django.views.generic import TemplateView
@@ -80,7 +82,7 @@ class ProjectDataAPIAlt(APIView, DDMAPIMixin):
         data donations and questionnaire responses.
         """
         project = self.get_project()
-        if not user_is_allowed(request.user, project):
+        if not user_has_project_access(request.user, project):
             self.create_event_log(
                 descr='Forbidden Download Request',
                 msg='Request user is not permitted to download the data.'

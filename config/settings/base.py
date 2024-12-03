@@ -23,8 +23,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'ddm',
-    'ckeditor',
-    'ckeditor_uploader',
+    'ddm.auth',
+    'ddm.logging',
+    'ddm.questionnaire',
+    'ddm.datadonation',
+    'ddm.participation',
+    'ddm.projects',
+    'ddm.core',
+    'django_ckeditor_5',
     'webpack_loader',
     'rest_framework',
     'rest_framework.authtoken',
@@ -79,7 +85,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
-                'ddm.context_processors.add_ddm_version',
+                'ddm.core.context_processors.add_ddm_version',
             ],
         },
     },
@@ -189,16 +195,9 @@ DDM_DEFAULT_HEADER_IMG_RIGHT = '/static/ddl/img/logos/external/uzh_logo_d_pos.sv
 
 # CKEditor
 # ------------------------------------------------------------------------------
-CKEDITOR_RESTRICT_BY_USER = True
-CKEDITOR_UPLOAD_PATH = 'uploads/'
-
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'full',
-        'height': 300,
-        'width': 300,
-    },
-}
+CKEDITOR_5_FILE_UPLOAD_PERMISSION = 'authenticated'
+CKEDITOR_5_ALLOW_ALL_FILE_TYPES = True
+CKEDITOR_5_UPLOAD_FILE_TYPES = ['jpeg', 'pdf', 'png', 'mp4']
 
 # Reports
 # ------------------------------------------------------------------------------

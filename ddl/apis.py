@@ -4,20 +4,23 @@ import io
 import json
 import zipfile
 
+from ddm.auth.models import ProjectTokenAuthenticator
+from ddm.auth.utils import user_has_project_access
+from ddm.core.apis import DDMAPIMixin
+from ddm.datadonation.models import DataDonation, DonationBlueprint
+from ddm.datadonation.serializers import DonationSerializer
+from ddm.encryption.models import Decryption
+from ddm.encryption.serializers import SerializerDecryptionMixin
+from ddm.participation.models import Participant
+from ddm.projects.models import DonationProject
+from ddm.projects.serializers import ProjectSerializer
+from ddm.questionnaire.models import QuestionnaireResponse
+from ddm.questionnaire.serializers import ResponseSerializer
+
 from django.core.exceptions import PermissionDenied, BadRequest
 from django.http import HttpResponse
 from django.utils import timezone
 from django.views.decorators.debug import sensitive_variables
-
-from ddm.models.auth import ProjectTokenAuthenticator
-from ddm.models.core import (
-    Participant, DonationBlueprint, DataDonation, DonationProject, QuestionnaireResponse
-)
-from ddm.models.encryption import Decryption
-from ddm.models.serializers import (
-    ProjectSerializer, SerializerDecryptionMixin, DonationSerializer, ResponseSerializer
-)
-from ddm.views.apis import DDMAPIMixin, user_is_allowed
 
 from rest_framework import authentication, permissions, serializers
 from rest_framework.exceptions import NotFound, ParseError
@@ -58,7 +61,7 @@ class DDMBaseProjectApi(APIView, DDMAPIMixin):
         return DonationProject.objects.filter(pk=self.kwargs['pk']).first()
 
     def check_request_allowed(self, request, project):
-        if not user_is_allowed(request.user, project):
+        if not user_has_project_access(request.user, project):
             self.create_event_log(
                 descr='Forbidden Request',
                 msg='Request user is not permitted to download the data.'
