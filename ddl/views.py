@@ -2,15 +2,17 @@ import io
 import json
 import zipfile
 
+from ddm.apis.serializers import ProjectSerializer, ParticipantSerializer
+from ddm.apis.views import DDMAPIMixin
 from ddm.auth.models import ProjectTokenAuthenticator
 from ddm.auth.utils import user_has_project_access
-from ddm.core.apis import DDMAPIMixin
+
 from ddm.datadonation.models import DataDonation, DonationBlueprint
 from ddm.encryption.models import Decryption
 from ddm.encryption.serializers import SerializerDecryptionMixin
 from ddm.participation.models import Participant
-from ddm.participation.serializers import ParticipantSerializer
-from ddm.projects.serializers import ProjectSerializer
+
+
 from django.http import HttpResponse
 from django.views.decorators.debug import sensitive_variables
 from django.views.generic import TemplateView

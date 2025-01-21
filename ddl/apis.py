@@ -4,18 +4,20 @@ import io
 import json
 import zipfile
 
+from ddm.apis.serializers import ProjectSerializer, ResponseSerializer
+from ddm.apis.views import DDMAPIMixin
 from ddm.auth.models import ProjectTokenAuthenticator
 from ddm.auth.utils import user_has_project_access
-from ddm.core.apis import DDMAPIMixin
+
 from ddm.datadonation.models import DataDonation, DonationBlueprint
 from ddm.datadonation.serializers import DonationSerializer
 from ddm.encryption.models import Decryption
 from ddm.encryption.serializers import SerializerDecryptionMixin
 from ddm.participation.models import Participant
 from ddm.projects.models import DonationProject
-from ddm.projects.serializers import ProjectSerializer
+
 from ddm.questionnaire.models import QuestionnaireResponse
-from ddm.questionnaire.serializers import ResponseSerializer
+
 
 from django.core.exceptions import PermissionDenied, BadRequest
 from django.http import HttpResponse

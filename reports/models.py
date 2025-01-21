@@ -1,10 +1,11 @@
 import datetime
 
+from ddm.apis.serializers import ResponseSerializer
 from ddm.encryption.models import Decryption
 from django.conf import settings
 from django.db import models
 from ddm.questionnaire.models import QuestionnaireResponse
-from ddm.questionnaire.serializers import ResponseSerializer
+
 from ddm.projects.models import DonationProject
 from ddm.datadonation.models import DataDonation, DonationBlueprint
 from ddm.datadonation.serializers import DonationSerializer

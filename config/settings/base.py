@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'ddm',
+    'ddm.apis',
     'ddm.auth',
     'ddm.logging',
     'ddm.questionnaire',
@@ -49,7 +50,6 @@ INSTALLED_APPS = [
     'wagtail',
     'modelcluster',
     'taggit',
-    'reports',
     'gpt'
 ]
 
