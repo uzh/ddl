@@ -25,30 +25,30 @@ class MainView(TemplateView):
     template_name = 'ddl/base.html'
 
 
-class VPStudyLandingPage(TemplateView):
-    template_name = 'ddl/vp-study/vp_study_landing.html'
-
-
-class VPStudyLandingPageInvited(TemplateView):
-    template_name = 'ddl/vp-study/vp_study_landing_invited.html'
-
-
-class DonationSerializerAlt(SerializerDecryptionMixin, serializers.HyperlinkedModelSerializer):
+class DonationSerializerAlt(SerializerDecryptionMixin,
+                            serializers.HyperlinkedModelSerializer):
     project = serializers.IntegerField(source='project.id')
     participant = serializers.IntegerField(source='participant.id')
 
     class Meta:
         model = DataDonation
-        fields = ['time_submitted', 'consent', 'status', 'project', 'participant']
+        fields = [
+            'time_submitted',
+            'consent',
+            'status',
+            'project',
+            'participant'
+        ]
 
 
+# TODO: Check if this can be removed and replaced with the DDM view.
 class ProjectDataAPIAlt(APIView, DDMAPIMixin):
     """
     Download all data collected for a given donation project.
 
     Returns:
-    - GET: A Response object with the complete data associated to a project (i.e.,
-    donated data, questionnaire responses, metadata) and status code.
+    - GET: A Response object with the complete data associated to a project
+    (i.e., donated data, questionnaire responses, metadata) and status code.
 
     Example Usage:
     ```
@@ -96,7 +96,10 @@ class ProjectDataAPIAlt(APIView, DDMAPIMixin):
         # Extract secret from request if project is super secret.
         secret = project.secret_key
         if project.super_secret:
-            super_secret = None if 'Super-Secret' not in request.headers else request.headers['Super-Secret']
+            if 'Super-Secret' not in request.headers:
+                super_secret = None
+            else:
+                super_secret = request.headers['Super-Secret']
             if super_secret is None:
                 self.create_event_log(
                     descr='Failed Download Attempt',
@@ -117,12 +120,18 @@ class ProjectDataAPIAlt(APIView, DDMAPIMixin):
             donations = {}
             for blueprint in blueprints:
                 blueprint_donations = blueprint.datadonation_set.all().defer('data')
-                donations[blueprint.name] = [DonationSerializerAlt(d, decryptor=decryptor).data for d in blueprint_donations]
+                donations[blueprint.name] = [
+                    DonationSerializerAlt(d, decryptor=decryptor).data
+                    for d in blueprint_donations
+                ]
 
             results = {
                 'project': ProjectSerializer(project).data,
                 'donations': donations,
-                'participants': [ParticipantSerializer(p).data for p in participants]
+                'participants': [
+                    ParticipantSerializer(p).data
+                    for p in participants
+                ]
             }
         except ValueError:
             self.create_event_log(
@@ -148,7 +157,9 @@ class ProjectDataAPIAlt(APIView, DDMAPIMixin):
         buffer = io.BytesIO()
         with zipfile.ZipFile(buffer, mode='w', compression=zipfile.ZIP_DEFLATED) as zf:
             with zf.open('data.json', 'w') as json_file:
-                json_file.write(json.dumps(content, ensure_ascii=False, separators=(',', ':')).encode('utf-8'))
+                json_file.write(json.dumps(
+                    content, ensure_ascii=False, separators=(',', ':')
+                ).encode('utf-8'))
                 zf.testzip()
         zip_in_memory = buffer.getvalue()
         buffer.flush()

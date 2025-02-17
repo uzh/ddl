@@ -30,13 +30,20 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 
-class DonationSerializerAlt(SerializerDecryptionMixin, serializers.HyperlinkedModelSerializer):
+class DonationSerializerAlt(SerializerDecryptionMixin,
+                            serializers.HyperlinkedModelSerializer):
     project = serializers.IntegerField(source='project.id')
     participant = serializers.IntegerField(source='participant.id')
 
     class Meta:
         model = DataDonation
-        fields = ['time_submitted', 'consent', 'status', 'project', 'participant']
+        fields = [
+            'time_submitted',
+            'consent',
+            'status',
+            'project',
+            'participant'
+        ]
 
 
 class DDMBaseProjectApi(APIView, DDMAPIMixin):
@@ -81,7 +88,11 @@ class DDMBaseProjectApi(APIView, DDMAPIMixin):
     def get_secret(self, request, project):
         secret = project.secret_key
         if project.super_secret:
-            super_secret = None if 'Super-Secret' not in request.headers else request.headers['Super-Secret']
+            if 'Super-Secret' not in request.headers:
+                super_secret = None
+            else:
+                super_secret = request.headers['Super-Secret']
+
             if super_secret is None:
                 self.create_event_log(
                     descr='Failed Attempt',
@@ -106,7 +117,9 @@ class DDMBaseProjectApi(APIView, DDMAPIMixin):
         buffer = io.BytesIO()
         with zipfile.ZipFile(buffer, mode='w', compression=zipfile.ZIP_DEFLATED) as zf:
             with zf.open(filename, 'w') as json_file:
-                json_file.write(json.dumps(content, ensure_ascii=False, separators=(',', ':')).encode('utf-8'))
+                json_file.write(json.dumps(
+                    content, ensure_ascii=False, separators=(',', ':')
+                ).encode('utf-8'))
                 zf.testzip()
         zip_in_memory = buffer.getvalue()
         buffer.flush()
@@ -142,16 +155,21 @@ class ClassOverviewAPI(DDMBaseProjectApi):
         blueprints = DonationBlueprint.objects.filter(project=project)
         for blueprint in blueprints:
             blueprint_donations = blueprint.datadonation_set.filter(
-                participant__pk__in=participant_ids, status='success').defer('data')
+                participant__pk__in=participant_ids, status='success'
+            ).defer('data')
 
             n_donations[blueprint.name] = len(blueprint_donations)
-            donation_dates.extend(blueprint_donations.values_list('time_submitted', flat=True))
+            donation_dates.extend(blueprint_donations.values_list(
+                'time_submitted', flat=True))
 
         data = {
             'n_donations': n_donations,
             'n_not_finished': (n_started - n_finished),
             'n_finished': n_finished,
-            'donation_dates': [d.strftime('%Y-%m-%dT%H:%M:%S.%fZ') for d in list(set(donation_dates))]
+            'donation_dates': [
+                d.strftime('%Y-%m-%dT%H:%M:%S.%fZ')
+                for d in list(set(donation_dates))
+            ]
         }
         return data
 
@@ -165,7 +183,8 @@ class ClassReportAPI(DDMBaseProjectApi):
     - 'class': external classroom id
 
     Notes:
-        - Only returns data if data of at least 5 persons is available for a classroom.
+        - Only returns data if data of at least 5 persons is available for a
+        classroom.
     """
 
     def create_response(self, data, **kwargs):
@@ -192,8 +211,10 @@ class ClassReportAPI(DDMBaseProjectApi):
                 if len(blueprint_donations) < 5:
                     donations[blueprint.name] = None
                 else:
-                    donations[blueprint.name] = [DonationSerializer(
-                        d, decryptor=decryptor).data for d in blueprint_donations]
+                    donations[blueprint.name] = [
+                        DonationSerializer(d, decryptor=decryptor).data
+                        for d in blueprint_donations
+                    ]
         except ValueError:
             self.create_event_log(
                 descr='Failed Download Attempt',
@@ -241,14 +262,17 @@ class IndividualReportAPI(DDMBaseProjectApi):
 
             for blueprint in blueprints:
                 blueprint_donation = blueprint.datadonation_set.filter(
-                    participant__external_id=participant_id, status='success').first()
+                    participant__external_id=participant_id, status='success'
+                ).first()
                 if blueprint_donation:
                     donations[blueprint.name] = DonationSerializer(
                         blueprint_donation, decryptor=decryptor).data
 
             if responses:
-                responses = [ResponseSerializer(r, decryptor=decryptor).data['responses']
-                             for r in responses]
+                responses = [
+                    ResponseSerializer(r, decryptor=decryptor).data['responses']
+                    for r in responses
+                ]
 
         except ValueError:
             self.create_event_log(

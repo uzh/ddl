@@ -25,7 +25,6 @@ urlpatterns = [
     path('ddm/logout/', auth_views.LogoutView.as_view(), name='ddm_logout'),
     path('ddm/contact/', TemplateView.as_view(template_name='ddl/custom-ddm/contact.html'), name='ddm-contact'),
     path('ckeditor5/', include('django_ckeditor_5.urls')),  # This is the endpoint that handles file uploads through the CKEditor.
-    # path('reports/', include('reports.urls')),
     path('dm-api/<int:pk>/class-data', dm_apis.ClassReportAPI.as_view(), name='class_data_api'),  # int:pk relates to ID of DDM project (must be named 'pk' due to ddm authentication scheme).
     path('dm-api/<int:pk>/class-overview', dm_apis.ClassOverviewAPI.as_view(), name='class_overview_api'),  # int:pk relates to ID of DDM project.
     path('dm-api/<int:pk>/individual-data', dm_apis.IndividualReportAPI.as_view(), name='individual_data_api')  # int:pk relates to ID of DDM project.

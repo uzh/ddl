@@ -1,17 +1,11 @@
 from .base import *
 import os
 
-ALLOWED_HOSTS = [
-    'datadonation.uzh.ch',
-    'www.datadonation.uzh.ch',
-    'data-donation.uzh.ch',
-    'www.data-donation.uzh.ch',
-    'idikmzdatad01.uzh.ch',
-    'ziikmzdatad02.uzh.ch',
-    'localhost'
-]
+
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split()
 
 SITE_ID = 1
+
 
 # DEBUG
 # ------------------------------------------------------------------------------
@@ -70,6 +64,7 @@ LOGGING = {
     }
 }
 
+
 # DATABASE
 # ------------------------------------------------------------------------------
 DATABASES = {
@@ -85,6 +80,7 @@ DATABASES = {
         }
     }
 }
+
 
 # CKEDITOR Settings
 # ------------------------------------------------------------------------------
