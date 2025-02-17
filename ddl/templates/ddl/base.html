@@ -11,6 +11,17 @@
     <title>{% block title %}{{ page.title }}{% endblock %}</title>
     <meta name="description" content="This is the official website of the Data Donation Lab.">
 
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'ddl/img/ddlab_preview_landscape.jpg' %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+  
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'ddl/img/ddlab_preview_square.jpg' %}">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="600">
+  
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:type" content="website">
+  
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'ddl/img/favicons/ddl_favicon_black.svg' %}">
 
     {% block site_css %}
