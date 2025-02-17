@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'wagtail',
     'modelcluster',
     'taggit',
+    'cookie_consent',
     'gpt'
 ]
 
