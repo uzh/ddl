@@ -1,10 +1,21 @@
 {% load i18n wagtailcore_tags %}
 
 {% if page %}
-  {% for translation in page.get_translations.live %}
-    {% get_language_info for translation.locale.language_code as lang %}
-    <a class="nav-addition lang-selection" href="{% pageurl translation %}" rel="alternate" hreflang="{{ language_code }}">
-      {{ lang.code.upper }}
-    </a>
-  {% endfor %}
+  {% with translations=page.get_translations.live %}
+    {% if translations.count > 0 %}
+      <div class="nav-divider">
+        <div></div>
+      </div>
+      <div class="navbar-item navbar-item-add">
+      {% for translation in translations %}
+        {% if not translation.is_alias %}
+          {% get_language_info for translation.locale.language_code as lang %}
+          <a class="nav-addition lang-selection" href="{% pageurl translation %}" rel="alternate" hreflang="{{ language_code }}">
+            {{ lang.code.upper }}
+          </a>
+        {% endif %}
+      {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
 {% endif %}
