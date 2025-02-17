@@ -8,6 +8,7 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+
 # APPLICATION DEFINITIONS
 # ------------------------------------------------------------------------------
 SECRET_KEY = os.environ['DJANGO_SECRET']
@@ -63,7 +64,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-    'mozilla_django_oidc.middleware.SessionRefresh'
+    'ddl.middleware.ConditionalSessionRefreshMiddleware',
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -93,6 +94,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+
 # USER AUTHORIZATION AND PASSWORD VALIDATION
 # ------------------------------------------------------------------------------
 AUTH_USER_MODEL = "ddl.User"
@@ -103,6 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator', },
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', },
 ]
+
 
 # INTERNATIONALIZATION
 # ------------------------------------------------------------------------------
@@ -119,6 +122,7 @@ WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
     ('de', "Deutsch")
 ]
 
+
 # STATIC FILES
 # ------------------------------------------------------------------------------
 STATIC_URL = '/static/'
@@ -127,11 +131,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+
 # DEFAULT PRIMARY KEY FIELD TYPE
 # ------------------------------------------------------------------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 
 # DJANGO-FILER
 # ------------------------------------------------------------------------------
@@ -144,10 +150,12 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
+
 # WAGTAIL
 # ------------------------------------------------------------------------------
 WAGTAIL_SITE_NAME = 'Data Donation Lab'
 WAGTAILADMIN_BASE_URL = os.getenv('WAGTAILADMIN_BASE_URL', 'https://datadonation.uzh.ch')
+
 
 # OIDC Authentication (mozilla_django_oidc)
 # ------------------------------------------------------------------------------
@@ -193,11 +201,13 @@ DDM_SETTINGS = {
 DDM_DEFAULT_HEADER_IMG_LEFT = '/static/ddl/img/logos/ddl/ddl_logo_black.svg'
 DDM_DEFAULT_HEADER_IMG_RIGHT = '/static/ddl/img/logos/external/uzh_logo_d_pos.svg'
 
+
 # CKEditor
 # ------------------------------------------------------------------------------
 CKEDITOR_5_FILE_UPLOAD_PERMISSION = 'authenticated'
 CKEDITOR_5_ALLOW_ALL_FILE_TYPES = True
 CKEDITOR_5_UPLOAD_FILE_TYPES = ['jpeg', 'pdf', 'png', 'mp4']
+
 
 # Reports
 # ------------------------------------------------------------------------------
