@@ -48,3 +48,8 @@
     font-family: "Figtree", sans-serif;
     font-weight: 300;
 }
+.error-title {
+    text-shadow: 0 2px #009c9485, 0 -2px #d36a4573;
+    text-align: center;
+    margin-top: 10%;
+}

@@ -1,0 +1,25 @@
+{% extends "ddl/base.html" %}
+
+{% load static %}
+
+{% block title %}Ein Fehler ist aufgetreten | Dein Feed, Deine Wahl{% endblock %}
+
+{% block site_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'reports/css/base.css' %}">
+{% endblock site_css %}
+
+{% block main_content %}
+  <div class="container">
+    <div class="columns">
+      <div class="column is-1-tablet is-hidden-desktop-only is-2-fullhd"></div>
+      <div class="column content has-text-black">
+        <h1 class="error-title">Oops! An error has occurred (500)</h1>
+        <p class="has-text-centered">There was a problem with the server. Please try again later.</p>
+        <p class="has-text-centered">If the problem persists, please contact us.</p>
+        <p class="has-text-centered"><a href="/" class="btn btn-dark btn-sm mt-3" role="button">Return to Homepage</a></p>
+      </div>
+      <div class="column is-1-tablet is-hidden-desktop-only is-2-fullhd"></div>
+    </div>
+  </div>
+{% endblock main_content %}

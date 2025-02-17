@@ -14,6 +14,7 @@ from ddm.participation.models import Participant
 
 
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.views.decorators.debug import sensitive_variables
 from django.views.generic import TemplateView
 from rest_framework import authentication, permissions, status, serializers
@@ -23,6 +24,16 @@ from rest_framework.views import APIView
 
 class MainView(TemplateView):
     template_name = 'ddl/base.html'
+
+
+def custom_404_view(request, exception):
+    """ Returns a custom 404 page. """
+    return render(request, 'ddl/404.html', status=404)
+
+
+def custom_500_view(request):
+    """ Returns a custom 500 page. """
+    return render(request, 'ddl/500.html', status=500)
 
 
 class DonationSerializerAlt(SerializerDecryptionMixin,
