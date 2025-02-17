@@ -49,11 +49,14 @@
     {% block site_js %}
     <script src="{% static 'ddl/js/jquery-3.6.1.min.js' %}"></script>
     <script src="{% static 'ddl/js/base.js' %}"></script>
-
-    <!-- TODO: Include the following script depending on cookie settings. -->
+      
     <script>
       // Matomo
       var _paq = _paq || [];
+      
+      /* Ensure cookieless, privacy-friendly tracking of site visits; not collecting personal data. */
+      _paq.push(['disableCookies']);
+      
       /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
       _paq.push(['setAPIUrl', "https://webstats.uzh.ch/"]); // overlay fix
       _paq.push(['trackPageView']);
