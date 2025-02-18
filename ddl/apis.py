@@ -20,7 +20,7 @@ from ddm.questionnaire.models import QuestionnaireResponse
 
 
 from django.core.exceptions import PermissionDenied, BadRequest
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.utils import timezone
 from django.views.decorators.debug import sensitive_variables
 
@@ -67,7 +67,11 @@ class DDMBaseProjectApi(APIView, DDMAPIMixin):
 
     def get_project(self):
         """ Returns project instance. """
-        return DonationProject.objects.filter(pk=self.kwargs['pk']).first()
+        url_id = self.kwargs.get('project_url_id')
+        project = DonationProject.objects.filter(url_id=url_id).first()
+        if project is None:
+            raise Http404('Project not found.')
+        return project
 
     def check_request_allowed(self, request, project):
         if not user_has_project_access(request.user, project):
@@ -229,6 +233,7 @@ class ClassReportAPI(DDMBaseProjectApi):
         return data
 
 
+# TODO: Deprecate.
 class IndividualReportAPI(DDMBaseProjectApi):
     """
     Gather data for an individual report related to one participant.
@@ -302,6 +307,7 @@ class IndividualReportAPI(DDMBaseProjectApi):
         return True
 
 
+# TODO: Deprecate.
 class ResponsesAPIAlt(APIView, DDMAPIMixin):
     """
     Retrieve a set of Questionnaire Responses collected for a given Donation Project.

@@ -13,22 +13,79 @@ from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('cms/', include(wagtailadmin_urls)),
-    path('documents/', include(wagtaildocs_urls)),
-    path('robots.txt', TemplateView.as_view(template_name='ddl/robots.txt', content_type='text/plain')),
-    path(r'ddm/', include('ddm.core.urls')),
-    # path(r'ddm/', include('gpt.urls')),  # TODO: Remove
-    path('oidc/', include('mozilla_django_oidc.urls')),
-    path('login/', auth_views.LoginView.as_view(template_name='ddl/registration/login.html'), name='login'),
-    path('ddm/login/', auth_views.LoginView.as_view(template_name='ddl/auth/oidc_login.html'), name='ddm_login'),
-    path('ddm/logout/', auth_views.LogoutView.as_view(), name='ddm_logout'),
-    path('ddm/contact/', TemplateView.as_view(template_name='ddl/custom-ddm/contact.html'), name='ddm-contact'),
-    path('ckeditor5/', include('django_ckeditor_5.urls')),  # This is the endpoint that handles file uploads through the CKEditor.
-    # path('dm-api/<int:pk>/class-data', dm_apis.ClassReportAPI.as_view(), name='class_data_api'),  # int:pk relates to ID of DDM project (must be named 'pk' due to ddm authentication scheme).
-    # path('dm-api/<int:pk>/class-overview', dm_apis.ClassOverviewAPI.as_view(), name='class_overview_api'),  # int:pk relates to ID of DDM project.
-    # path('dm-api/<int:pk>/individual-data', dm_apis.IndividualReportAPI.as_view(), name='individual_data_api'),  # int:pk relates to ID of DDM project.
-    path('cookies/', include('cookie_consent.urls')),
+    path(
+        'admin/',
+        admin.site.urls
+    ),
+    path(
+        'cms/',
+        include(wagtailadmin_urls)
+    ),
+    path(
+        'documents/',
+        include(wagtaildocs_urls)
+    ),
+    path(
+        'robots.txt',
+        TemplateView.as_view(
+            template_name='ddl/robots.txt', content_type='text/plain')
+    ),
+    path(
+        'cookies/',
+        include('cookie_consent.urls')
+    ),
+]
+
+# Digital Meal API Endpoints
+urlpatterns += [
+    path(
+        'dm-api/<slug:project_url_id>/class-data',
+        dm_apis.ClassReportAPI.as_view(),
+        name='class_data_api'
+    ),
+    path(
+        'dm-api/<slug:project_url_id>/class-overview',
+        dm_apis.ClassOverviewAPI.as_view(),
+        name='class_overview_api'
+    ),
+]
+
+# DDM Integration
+urlpatterns += [
+    path(
+        r'ddm/',
+        include('ddm.core.urls')
+    ),
+    path(
+        'oidc/',
+        include('mozilla_django_oidc.urls')
+    ),
+    path(
+        'login/',
+        auth_views.LoginView.as_view(
+            template_name='ddl/registration/login.html'),
+        name='login'
+    ),
+    path(
+        'ddm/login/',
+        auth_views.LoginView.as_view(
+            template_name='ddl/auth/oidc_login.html'),
+        name='ddm_login'
+    ),
+    path(
+        'ddm/logout/',
+        auth_views.LogoutView.as_view(),
+        name='ddm_logout'
+    ),
+    path(
+        'ddm/contact/',
+        TemplateView.as_view(template_name='ddl/custom-ddm/contact.html'),
+        name='ddm-contact'
+    ),
+    path(
+        'ckeditor5/',
+        include('django_ckeditor_5.urls')
+    ),
 ]
 
 urlpatterns += i18n_patterns(
