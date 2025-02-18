@@ -1,5 +1,7 @@
-{% load static i18n wagtailuserbar %}
+{% load static i18n wagtailuserbar cookie_consent_tags %}
 {% get_current_language as LANGUAGE_CODE %}
+{% url "cookie_consent_cookie_group_list" as url_cookies %}
+
 
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
@@ -11,10 +13,22 @@
     <title>{% block title %}{{ page.title }}{% endblock %}</title>
     <meta name="description" content="This is the official website of the Data Donation Lab.">
 
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'ddl/img/ddlab_preview_landscape.jpg' %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'ddl/img/ddlab_preview_square.jpg' %}">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="600">
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:type" content="website">
+
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'ddl/img/favicons/ddl_favicon_black.svg' %}">
 
     {% block site_css %}
     <link rel="stylesheet" href="{% static 'ddl/css/base.css' %}">
+      <link rel="stylesheet" href="{% static 'ddl/css/ddl_base.css' %}">
     {% endblock site_css %}
 
     {% block extra_head %}
@@ -37,6 +51,10 @@
         {% endblock main_content %}
       </div>
 
+      <div>
+        {% include "ddl/components/cookie_info.html" %}
+      </div>
+
       <div id="footer">
         {% block footer_content %}
         <div class="container has-text-centered">
@@ -46,14 +64,19 @@
       </div>
     </div>
 
-    {% block site_js %}
-    <script src="{% static 'ddl/js/jquery-3.6.1.min.js' %}"></script>
-    <script src="{% static 'ddl/js/base.js' %}"></script>
 
-    <!-- TODO: Include the following script depending on cookie settings. -->
-    <script>
+    {% block site_js %}
+      <script src="{% static 'ddl/js/jquery-3.6.1.min.js' %}"></script>
+      <script src="{% static 'ddl/js/base.js' %}"></script>
+      <script type="text/javascript" src="{% static 'cookie_consent/cookiebar.js' %}"></script>
+      <script type="text/javascript" src="{% static 'ddl/js/cookie_consent/cookie-info.js' %}"></script>
+      <script>
       // Matomo
       var _paq = _paq || [];
+      
+      /* Ensure cookieless, privacy-friendly tracking of site visits; not collecting personal data. */
+      _paq.push(['disableCookies']);
+      
       /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
       _paq.push(['setAPIUrl', "https://webstats.uzh.ch/"]); // overlay fix
       _paq.push(['trackPageView']);
@@ -69,8 +92,7 @@
         g.src=u+'piwik.js';
         s.parentNode.insertBefore(g,s);
       })();
-    </script>
-
+      </script>
     {% endblock site_js %}
   </body>
 

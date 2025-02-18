@@ -1,4 +1,4 @@
-from ddm.views.participation_flow import BriefingView, DataDonationView
+from ddm.participation.views import BriefingView, DataDonationView
 
 
 class BriefingViewGPT(BriefingView):

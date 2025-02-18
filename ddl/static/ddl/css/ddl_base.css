@@ -1,0 +1,55 @@
+.cookie-bar {
+    position: fixed;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 600px;
+    width: 90%;
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 15px;
+    border-left: 2px solid #d36a45;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    font-size: 14px;
+    border-top: 2px solid #d36a45;
+    border-right: 2px solid #009c94;
+    border-bottom: 2px solid #009c94;
+}
+
+.cookie-btn-accept {
+    background: black;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    margin-right: 20px;
+}
+
+.cookie-btn-accept:hover {
+    background-color: #424242;
+    cursor: pointer;
+}
+
+.cookie-header {
+    font-family: "GT Cinetype", sans-serif;
+    font-size: 1.1rem;
+    padding-bottom: 10px;
+}
+.cookie-group table {
+    margin-left: 30px;
+    margin-right: -30px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    font-family: "Figtree", sans-serif;
+    font-weight: 300;
+}
+.error-title {
+    text-shadow: 0 2px #009c9485, 0 -2px #d36a4573;
+    text-align: center;
+    margin-top: 10%;
+}

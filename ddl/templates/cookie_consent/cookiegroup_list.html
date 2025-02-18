@@ -1,0 +1,23 @@
+{% extends "ddl/base.html" %}
+
+{% block title %}Cookie Policy{% endblock %}
+
+{% block main_content %}
+  <div class="container">
+    <div class="columns">
+      <div class="column is-1-tablet is-hidden-desktop-only is-2-fullhd"></div>
+      <div class="column content has-text-black">
+        <h1>Cookie Policy</h1>
+
+        <p>
+          This is the list of cookies used on this website:
+        </p>
+      
+        {% for cookie_group in object_list  %}
+          {% include "cookie_consent/_cookie_group.html" %}
+        {% endfor %}
+      </div>
+      <div class="column is-1-tablet is-hidden-desktop-only is-2-fullhd"></div>
+    </div>
+  </div>
+{% endblock %}

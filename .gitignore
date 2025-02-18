@@ -1,6 +1,8 @@
 # virtual environments
 venv/
 venv2/
+.venv/
+.venv2/
 media/
 
 # environment variables
@@ -19,6 +21,7 @@ staticfiles/
 
 # Pycharm
 .idea/*
+.idea/
 
 # sqlite database
 *.sqlite

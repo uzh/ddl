@@ -1,0 +1,25 @@
+{% extends "ddl/base.html" %}
+
+{% load static %}
+
+{% block title %}Seite nicht gefunden | Dein Feed, Deine Wahl{% endblock %}
+
+{% block site_css %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'reports/css/base.css' %}">
+{% endblock site_css %}
+
+{% block main_content %}
+  <div class="container">
+    <div class="columns">
+      <div class="column is-1-tablet is-hidden-desktop-only is-2-fullhd"></div>
+      <div class="column content has-text-black">
+        <h1 class="error-title">Oops! Page Not Found (404)</h1>
+        <p class="has-text-centered">The requested page does not exist or has been moved.</p>
+        <p class="has-text-centered">Check the URL or go back to the homepage.</p>
+        <p class="has-text-centered"><a href="/" class="btn btn-dark btn-sm mt-3" role="button">Return to Homepage</a></p>
+      </div>
+      <div class="column is-1-tablet is-hidden-desktop-only is-2-fullhd"></div>
+    </div>
+  </div>
+{% endblock main_content %}

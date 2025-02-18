@@ -1,10 +1,14 @@
 import datetime
 
-from ddm.models.encryption import Decryption
+from ddm.apis.serializers import ResponseSerializer
+from ddm.encryption.models import Decryption
 from django.conf import settings
 from django.db import models
-from ddm.models.core import DonationProject, QuestionnaireResponse, DataDonation, DonationBlueprint
-from ddm.models.serializers import ResponseSerializer, DonationSerializer
+from ddm.questionnaire.models import QuestionnaireResponse
+
+from ddm.projects.models import DonationProject
+from ddm.datadonation.models import DataDonation, DonationBlueprint
+from ddm.datadonation.serializers import DonationSerializer
 
 from .utils import insta_data, fb_data
 

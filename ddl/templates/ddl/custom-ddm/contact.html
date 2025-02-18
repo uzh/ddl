@@ -1,4 +1,4 @@
-{% extends "ddm/admin/base.html" %}
+{% extends "ddm_core/base.html" %}
 
 {% load static i18n %}
 
@@ -35,7 +35,7 @@
   </p>
 
   <p class="mt-5">
-    <a href="{% url 'project-list' %}">&#129040; back to my projects</a>
+    <a href="{% url 'ddm_projects:list' %}">&#129040; back to my projects</a>
   </p>
 </div>
 {% endblock %}

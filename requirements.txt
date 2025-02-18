@@ -1,10 +1,10 @@
 bokeh==3.1.1
-Django>=3.2,<4.0
-django-crontab==0.7.1
-django-ddm==1.0.19
+Django>=4.2,<5.0
+django-cookie-consent==0.6.0
+django-ddm==2.0b9
 langdetect==1.0.9
 mozilla-django-oidc==3.0.0
-mysqlclient==2.1.0
-pandas==2.0.3
-python-dotenv==0.20.0
-wagtail==4.1
+mysqlclient==2.2.6
+pandas==2.2.3
+python-dotenv==1.0.1
+wagtail==6.3.1

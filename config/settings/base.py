@@ -8,6 +8,7 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+
 # APPLICATION DEFINITIONS
 # ------------------------------------------------------------------------------
 SECRET_KEY = os.environ['DJANGO_SECRET']
@@ -23,8 +24,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'ddm',
-    'ckeditor',
-    'ckeditor_uploader',
+    'ddm.apis',
+    'ddm.auth',
+    'ddm.logging',
+    'ddm.questionnaire',
+    'ddm.datadonation',
+    'ddm.participation',
+    'ddm.projects',
+    'ddm.core',
+    'django_ckeditor_5',
     'webpack_loader',
     'rest_framework',
     'rest_framework.authtoken',
@@ -43,9 +51,8 @@ INSTALLED_APPS = [
     'wagtail',
     'modelcluster',
     'taggit',
-    'reports',
-    'gpt',
-    'django_crontab'
+    'cookie_consent',
+    #'gpt'
 ]
 
 MIDDLEWARE = [
@@ -58,7 +65,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-    'mozilla_django_oidc.middleware.SessionRefresh'
+    'ddl.middleware.ConditionalSessionRefreshMiddleware',
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -80,13 +87,14 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
-                'ddm.context_processors.add_ddm_version',
+                'ddm.core.context_processors.add_ddm_version',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
 
 # USER AUTHORIZATION AND PASSWORD VALIDATION
 # ------------------------------------------------------------------------------
@@ -99,6 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', },
 ]
 
+
 # INTERNATIONALIZATION
 # ------------------------------------------------------------------------------
 LANGUAGE_CODE = 'en'
@@ -107,12 +116,11 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 WAGTAIL_I18N_ENABLED = True
-WAGTAILSIMPLETRANSLATION_SYNC_PAGE_TREE = True
-
 WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
     ('en', "English"),
     ('de', "Deutsch")
 ]
+
 
 # STATIC FILES
 # ------------------------------------------------------------------------------
@@ -122,11 +130,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+
 # DEFAULT PRIMARY KEY FIELD TYPE
 # ------------------------------------------------------------------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 
 # DJANGO-FILER
 # ------------------------------------------------------------------------------
@@ -139,10 +149,12 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
+
 # WAGTAIL
 # ------------------------------------------------------------------------------
 WAGTAIL_SITE_NAME = 'Data Donation Lab'
 WAGTAILADMIN_BASE_URL = os.getenv('WAGTAILADMIN_BASE_URL', 'https://datadonation.uzh.ch')
+
 
 # OIDC Authentication (mozilla_django_oidc)
 # ------------------------------------------------------------------------------
@@ -168,8 +180,8 @@ OIDC_RENEW_ID_TOKEN_EXPIRY_SECONDS = 60 * 60 * 4
 WEBPACK_LOADER = {
     'DEFAULT': {
         'CACHE': True,
-        'BUNDLE_DIR_NAME': 'ddm/vue/',
-        'STATS_FILE': os.path.join(STATIC_ROOT, 'ddm/vue/webpack-stats.json'),
+        'BUNDLE_DIR_NAME': 'core/vue/',
+        'STATS_FILE': os.path.join(STATIC_ROOT, 'ddm_core/vue/webpack-stats.json'),
         'POLL_INTERVAL': 0.1,
         'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
     },
@@ -188,18 +200,13 @@ DDM_SETTINGS = {
 DDM_DEFAULT_HEADER_IMG_LEFT = '/static/ddl/img/logos/ddl/ddl_logo_black.svg'
 DDM_DEFAULT_HEADER_IMG_RIGHT = '/static/ddl/img/logos/external/uzh_logo_d_pos.svg'
 
+
 # CKEditor
 # ------------------------------------------------------------------------------
-CKEDITOR_RESTRICT_BY_USER = True
-CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_5_FILE_UPLOAD_PERMISSION = 'authenticated'
+CKEDITOR_5_ALLOW_ALL_FILE_TYPES = True
+CKEDITOR_5_UPLOAD_FILE_TYPES = ['jpeg', 'pdf', 'png', 'mp4']
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'full',
-        'height': 300,
-        'width': 300,
-    },
-}
 
 # Reports
 # ------------------------------------------------------------------------------

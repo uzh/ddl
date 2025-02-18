@@ -1,0 +1,41 @@
+{% load static cookie_consent_tags %}
+
+{% if request|cookie_consent_enabled %}
+  {% not_accepted_or_declined_cookie_groups request as cookie_groups %}
+  {% cookie_consent_accept_url cookie_groups as url_accept %}
+  {% cookie_consent_decline_url cookie_groups as url_decline %}
+  {% all_cookie_groups 'cookie-consent__cookie-groups' %}
+  <template id="cookie-consent__cookie-bar">
+    {% with cookie_groups=cookie_groups|join:", " %}
+      <div class="cookie-bar">
+        <div>
+          <div>
+          {% if cookie_groups == "Essentielle Funktionalität" or cookie_groups == "Essential Functionality" %}
+            <div class="cookie-header">Essential Cookies Only</div>
+            <div>
+              We only use essential cookies to keep this website running smoothly.
+            </div>
+            <div>
+              <button type="button" class="cookie-consent__accept wi-btn wi-btn-bright cookie-btn-accept">OK, got it</button>
+              <a href="{{ url_cookies }}" target="_blank" class="a-white p-2">learn&nbsp;more</a>
+            </div>
+          {% else %}
+            <div>Cookies for Functionality & Experience</div>
+            <div>
+              This website uses cookies to ensure functionality and enhance the user experience.
+            </div>
+            <div><button type="button" class="cookie-consent__accept cookie-btn-accept">Accept all cookies</button></div>
+            <div><button class="cookie-btn-info"><a href="{{ url_cookies }}" target="_blank">Configure cookies</a></button></div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endwith %}
+  </template>
+{% endif %}
+
+<div id="cookie-data"
+     class="d-none"
+     data-status-url="{% url 'cookie_consent_status' %}"
+     data-cookiebar-src="{% static 'cookie_consent/cookiebar.module.js' %}">
+</div>

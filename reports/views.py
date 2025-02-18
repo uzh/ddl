@@ -4,7 +4,7 @@ import requests
 
 from datetime import timedelta, datetime
 
-from ddm.models.core import Participant
+from ddm.participation.models import Participant
 from django.conf import settings
 from django.views.generic import TemplateView
 from requests import JSONDecodeError
