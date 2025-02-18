@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
     'cookie_consent',
-    'gpt'
+    #'gpt'
 ]
 
 MIDDLEWARE = [
