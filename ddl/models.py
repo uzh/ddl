@@ -64,6 +64,7 @@ class LandingPage(Page):
         ('list', blocks.ListBlock(blocks.CharBlock(label="List"), icon='list-ul')),
         ('image', ImageChooserBlock()),
         ('highlight', HighlightBlock()),
+        ('button_link', ButtonLinkBlock()),
     ], use_json_field=True, blank=True)
 
     include_news = models.BooleanField(default=False)
@@ -88,6 +89,7 @@ class BasicPage(Page):
         ('list', blocks.ListBlock(blocks.CharBlock(label="List"), icon='list-ul')),
         ('image', ImageChooserBlock()),
         ('highlight', HighlightBlock()),
+        ('button_link', ButtonLinkBlock()),
     ], use_json_field=True)
 
     content_panels = Page.content_panels + [
@@ -106,6 +108,7 @@ class BlogPage(Page):
     body = StreamField([
         ('text', blocks.RichTextBlock(icon='pilcrow')),
         ('image', ImageChooserBlock()),
+        ('button_link', ButtonLinkBlock()),
     ], use_json_field=True, blank=True)
     date = models.DateField()
 
@@ -153,6 +156,7 @@ class KnowledgePage(Page):
         ('list', blocks.ListBlock(blocks.CharBlock(label="List"), icon='list-ul')),
         ('image', ImageChooserBlock()),
         ('highlight', HighlightBlock()),
+        ('button_link', ButtonLinkBlock()),
     ], use_json_field=True)
 
     content_panels = Page.content_panels + [
