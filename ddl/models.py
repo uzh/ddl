@@ -38,6 +38,14 @@ class HighlightBlock(blocks.StructBlock):
         template = 'ddl/components/highlight_block.html'
 
 
+class ButtonLinkBlock(blocks.StructBlock):
+    link = blocks.TextBlock()
+
+    class Meta:
+        icon = 'pick'
+        template = 'ddl/components/link_button.html'
+
+
 class LandingPage(Page):
     template = 'ddl/landing_page.html'
 
@@ -47,6 +55,7 @@ class LandingPage(Page):
         ('list', blocks.ListBlock(blocks.CharBlock(label="List"), icon='list-ul')),
         ('image', ImageChooserBlock()),
         ('highlight', HighlightBlock()),
+        ('button_link', ButtonLinkBlock()),
     ], use_json_field=True)
 
     body_bottom = StreamField([

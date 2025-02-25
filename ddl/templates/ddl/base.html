@@ -5,95 +5,103 @@
 
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{% block title %}{{ page.title }}{% endblock %}</title>
-    <meta name="description" content="This is the official website of the Data Donation Lab.">
+  <title>{% block title %}{{ page.title }}{% endblock %}</title>
+  <meta name="description"
+        content="This is the official website of the Data Donation Lab.">
 
-    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'ddl/img/ddlab_preview_landscape.jpg' %}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+  <meta property="og:image"
+        content="{{ request.scheme }}://{{ request.get_host }}{% static 'ddl/img/ddlab_preview_landscape.jpg' %}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
-    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'ddl/img/ddlab_preview_square.jpg' %}">
-    <meta property="og:image:width" content="600">
-    <meta property="og:image:height" content="600">
+  <meta property="og:image"
+        content="{{ request.scheme }}://{{ request.get_host }}{% static 'ddl/img/ddlab_preview_square.jpg' %}">
+  <meta property="og:image:width" content="600">
+  <meta property="og:image:height" content="600">
 
-    <meta property="og:url" content="{{ request.build_absolute_uri }}">
-    <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  <meta property="og:type" content="website">
 
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'ddl/img/favicons/ddl_favicon_black.svg' %}">
+  <link rel="shortcut icon" type="image/x-icon"
+        href="{% static 'ddl/img/favicons/ddl_favicon_black.svg' %}">
 
-    {% block site_css %}
-    <link rel="stylesheet" href="{% static 'ddl/css/base.css' %}">
-      <link rel="stylesheet" href="{% static 'ddl/css/ddl_base.css' %}">
-    {% endblock site_css %}
+  {% block site_css %}
+  <link rel="stylesheet" href="{% static 'ddl/css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'ddl/css/ddl_base.css' %}">
+  <link rel="stylesheet"
+        href="{% static 'ddm/css/research-interface-base.css' %}">
+  {% endblock site_css %}
 
-    {% block extra_head %}
-    {% endblock extra_head %}
-  </head>
+  {% block extra_head %}
+  {% endblock extra_head %}
+</head>
 
-  <body>
+<body>
   {% wagtailuserbar %}
-    <div class="body_wrapper">
-      <div id="header">
-        {% block header_content %}
-        <div class="container has-text-centered pl-6 pr-6">
-          {% include "ddl/components/header.html" %}
-        </div>
-        {% endblock header_content %}
+  <div class="body_wrapper">
+    <div id="header">
+      {% block header_content %}
+      <div class="container has-text-centered pl-6 pr-6">
+        {% include "ddl/components/header.html" %}
       </div>
-
-      <div id="main">
-        {% block main_content %}
-        {% endblock main_content %}
-      </div>
-
-      <div>
-        {% include "ddl/components/cookie_info.html" %}
-      </div>
-
-      <div id="footer">
-        {% block footer_content %}
-        <div class="container has-text-centered">
-          {% include "ddl/footer/cms_footer.html" %}
-        </div>
-        {% endblock footer_content %}
-      </div>
+      {% endblock header_content %}
     </div>
 
+    <div id="main">
+      {% block main_content %}
+      {% endblock main_content %}
+    </div>
 
-    {% block site_js %}
-      <script src="{% static 'ddl/js/jquery-3.6.1.min.js' %}"></script>
-      <script src="{% static 'ddl/js/base.js' %}"></script>
-      <script type="text/javascript" src="{% static 'cookie_consent/cookiebar.js' %}"></script>
-      <script type="text/javascript" src="{% static 'ddl/js/cookie_consent/cookie-info.js' %}"></script>
-      <script>
-      // Matomo
-      var _paq = _paq || [];
-      
-      /* Ensure cookieless, privacy-friendly tracking of site visits; not collecting personal data. */
-      _paq.push(['disableCookies']);
-      
-      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-      _paq.push(['setAPIUrl', "https://webstats.uzh.ch/"]); // overlay fix
-      _paq.push(['trackPageView']);
-      _paq.push(['enableLinkTracking']);
-      (function() {
-        var u="//webstats.uzh.ch/";
-        _paq.push(['setTrackerUrl', u+'piwik.php']);
-        _paq.push(['setSiteId', '407']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.type='text/javascript';
-        g.async=true;
-        g.defer=true;
-        g.src=u+'piwik.js';
-        s.parentNode.insertBefore(g,s);
-      })();
-      </script>
-    {% endblock site_js %}
-  </body>
+    <div>
+      {% include "ddl/components/cookie_info.html" %}
+    </div>
+
+    <div id="footer">
+      {% block footer_content %}
+      <div class="container has-text-centered">
+        {% include "ddl/footer/cms_footer.html" %}
+      </div>
+      {% endblock footer_content %}
+    </div>
+  </div>
+
+
+  {% block site_js %}
+  <script src="{% static 'ddl/js/jquery-3.6.1.min.js' %}"></script>
+  <script src="{% static 'ddl/js/base.js' %}"></script>
+  <script type="text/javascript"
+        src="{% static 'cookie_consent/cookiebar.js' %}"></script>
+  <script type="text/javascript"
+        src="{% static 'ddl/js/cookie_consent/cookie-info.js' %}"></script>
+  <script>
+    // Matomo
+    var _paq = _paq || [];
+
+    /* Ensure cookieless, privacy-friendly tracking of site visits; not collecting personal data. */
+    _paq.push(['disableCookies']);
+
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['setAPIUrl', "https://webstats.uzh.ch/"]); // overlay fix
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function () {
+      var u = "//webstats.uzh.ch/";
+      _paq.push(['setTrackerUrl', u + 'piwik.php']);
+      _paq.push(['setSiteId', '407']);
+      var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+      g.type = 'text/javascript';
+      g.async = true;
+      g.defer = true;
+      g.src = u + 'piwik.js';
+      s.parentNode.insertBefore(g, s);
+    })();
+  </script>
+  {% endblock site_js %}
+</body>
 
 </html>

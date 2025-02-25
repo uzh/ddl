@@ -23,6 +23,8 @@
       {% elif block.block_type == "image" %}
       {% elif block.block_type == "highlight" %}
       {% include_block block %}
+      {% elif block.block_type == "button_link" %}
+      {% include_block block %}
       {% endif %}
 
       {% endfor %}

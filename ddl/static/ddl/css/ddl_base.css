@@ -53,3 +53,11 @@
     text-align: center;
     margin-top: 10%;
 }
+
+.link-button {
+    background: linear-gradient(142deg, rgb(0, 156, 148) 0%, rgba(0, 156, 148, 0.8) 100%);
+    border-radius: 20px;
+    padding: 10px;
+    color: white !important;
+    border: 0px;
+}
