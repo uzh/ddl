@@ -6,11 +6,10 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from django.views.generic import TemplateView
 
-from ddl import apis as dm_apis
-
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
+
 
 urlpatterns = [
     path(
@@ -34,20 +33,9 @@ urlpatterns = [
         'cookies/',
         include('cookie_consent.urls')
     ),
-]
-
-# Digital Meal API Endpoints
-urlpatterns += [
     path(
-        'dm-api/<slug:project_url_id>/class-data',
-        dm_apis.ClassReportAPI.as_view(),
-        name='class_data_api'
-    ),
-    path(
-        'dm-api/<slug:project_url_id>/class-overview',
-        dm_apis.ClassOverviewAPI.as_view(),
-        name='class_overview_api'
-    ),
+        '', include('ddl.urls')
+    )
 ]
 
 # DDM Integration
