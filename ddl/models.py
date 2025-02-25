@@ -206,17 +206,3 @@ class FormPage(AbstractEmailForm):
             FieldPanel('subject'),
         ], "Email"),
     ]
-
-
-# SNIPPETS
-# ------------------------------------------------------------------------------
-@register_snippet
-class Footer(models.Model):
-    text = RichTextField()
-
-    panels = [
-        FieldPanel('text'),
-    ]
-
-    def __str__(self):
-        return self.text
