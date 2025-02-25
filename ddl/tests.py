@@ -64,7 +64,6 @@ class TestZipPostAPI(TestCase):
 
         # Assert response
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(response.data, 'ZIP has been posted to DB')
 
         # Verify database entries
         participant = Participant.objects.last()

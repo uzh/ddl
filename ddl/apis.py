@@ -4,6 +4,7 @@ from ddm.apis.views import DDMAPIMixin
 from ddm.auth.models import ProjectTokenAuthenticator
 from ddm.datadonation.models import DataDonation, DonationBlueprint
 from ddm.participation.models import Participant
+from ddm.projects.models import DonationProject
 from django.utils import timezone
 from dotenv import load_dotenv
 from rest_framework import status, permissions
@@ -24,7 +25,7 @@ class ZipPostAPI(APIView, DDMAPIMixin):
 
     def get_project(self):
         project_id = self.kwargs.get('project_url_id')
-        return get_object_or_404(DataDonation, url_id=project_id)
+        return get_object_or_404(DonationProject, url_id=project_id)
 
     def get_blueprint(self):
         blueprint_id = os.getenv('ZIP_BLUEPRINT_ID')
@@ -52,7 +53,8 @@ class ZipPostAPI(APIView, DDMAPIMixin):
             participant=participant,
             time_submitted=timezone.now(),
             consent=True,
-            data=file_data
+            data=file_data,
+            status='success'
         )
 
         return Response(
