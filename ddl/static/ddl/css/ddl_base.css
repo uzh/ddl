@@ -61,3 +61,7 @@
     color: white !important;
     border: 0px;
 }
+.link-button:hover {
+    -webkit-filter: brightness(70%);
+    filter: brightness(70%);
+}

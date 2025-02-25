@@ -40,6 +40,7 @@ class HighlightBlock(blocks.StructBlock):
 
 class ButtonLinkBlock(blocks.StructBlock):
     link = blocks.TextBlock()
+    text = blocks.TextBlock()
 
     class Meta:
         icon = 'pick'

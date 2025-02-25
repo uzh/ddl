@@ -1,6 +1,8 @@
-<div class="paragraph-block content pt-4 pb-4">
+{% load wagtailcore_tags %}
+
+<div class="content pt-4 pb-5">
     <p>
-        <a href="{{ value.link }}" target="_blank" class="link-button"
-              rel="noopener noreferrer">{{ value.link }}</a>
+        <a href="{{ value.link }}" target="_blank"
+              class="link-button">{{ value.text }}</a>
     </p>
 </div>
