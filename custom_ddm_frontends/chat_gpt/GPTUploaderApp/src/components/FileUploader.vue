@@ -991,6 +991,18 @@ export default {
         })
       }
 
+      Object.keys(dataToEmit).forEach(key => {
+        if (dataToEmit[key].consent !== null && dataToEmit[key].consent !== 'false') {
+          for (let i = 0; i < dataToEmit[key].extracted_data.length; i++) {
+            // check checkbox value
+            let checkboxId = '#consent-' + String(i);
+            if (document.querySelector(checkboxId).checked) {
+              dataToEmit[key].extracted_data[i] = 'excluded'
+            }
+          }
+        }
+      });
+
       this.$emit('changedData', dataToEmit);
     },
 
