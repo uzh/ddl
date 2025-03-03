@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'ddm.participation',
     'ddm.projects',
     'ddm.core',
+    'gpt',
     'django_ckeditor_5',
     'webpack_loader',
     'rest_framework',
@@ -52,7 +53,6 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
     'cookie_consent',
-    #'gpt'
 ]
 
 MIDDLEWARE = [
@@ -180,7 +180,7 @@ OIDC_RENEW_ID_TOKEN_EXPIRY_SECONDS = 60 * 60 * 4
 WEBPACK_LOADER = {
     'DEFAULT': {
         'CACHE': True,
-        'BUNDLE_DIR_NAME': 'core/vue/',
+        'BUNDLE_DIR_NAME': 'ddm_core/vue/',
         'STATS_FILE': os.path.join(STATIC_ROOT, 'ddm_core/vue/webpack-stats.json'),
         'POLL_INTERVAL': 0.1,
         'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
@@ -207,19 +207,135 @@ CKEDITOR_5_FILE_UPLOAD_PERMISSION = 'authenticated'
 CKEDITOR_5_ALLOW_ALL_FILE_TYPES = True
 CKEDITOR_5_UPLOAD_FILE_TYPES = ['jpeg', 'pdf', 'png', 'mp4']
 
+ATTRIBUTES_TO_ALLOW = {
+    'href': True,
+    'target': True,
+    'rel': True,
+    'class': True,
+    'aria-label': True,
+    'data-*': True,
+    'id': True,
+    'type': True,
+    'data-bs-toggle': True,
+    'data-bs-target': True,
+    'aria-expanded': True,
+    'aria-controls': True,
+    'aria-labelledby': True,
+}
+
+CKEDITOR_5_CONFIGS = {
+    'ddm_ckeditor':  {
+        'blockToolbar': [
+            'paragraph', 'heading1', 'heading2', 'heading3',
+            '|',
+            'bulletedList', 'numberedList',
+            '|',
+            'blockQuote',
+        ],
+        'toolbar': [
+            'heading', '|',
+            'alignment', 'outdent', 'indent', '|',
+            'bold', 'italic', 'underline', 'link', 'highlight', '|',
+            {
+                'label': 'Fonts',
+                'icon': 'text',
+                'items': ['fontSize', 'fontFamily', 'fontColor']
+            }, '|',
+            'bulletedList', 'numberedList', 'insertTable', 'blockQuote', 'code', 'removeFormat', '|',
+            'insertImage', 'fileUpload', 'mediaEmbed', '|',
+            'sourceEditing'
+        ],
+        'image': {
+            'toolbar': ['imageTextAlternative', '|', 'imageStyle:alignLeft',
+                        'imageStyle:alignRight', 'imageStyle:alignCenter', 'imageStyle:side',  '|'],
+            'styles': [
+                'full',
+                'side',
+                'alignLeft',
+                'alignRight',
+                'alignCenter',
+            ]
+        },
+        'table': {
+            'contentToolbar': ['tableColumn', 'tableRow', 'mergeTableCells',
+                               'tableProperties', 'tableCellProperties'],
+        },
+        'heading': {
+            'options': [
+                { 'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph' },
+                { 'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1' },
+                { 'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2' },
+                { 'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3' }
+            ]
+        },
+        'htmlSupport': {
+            'allow': [
+                {
+                    'name': 'video',
+                    'attributes': {
+                        'height': True,
+                        'width': True,
+                        'controls': True,
+                    },
+                    'styles': True
+                },
+                {
+                    'name': 'p',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'span',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'div',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'a',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'table',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'td',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'th',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'button',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'h1',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'h2',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'style',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+            ],
+            'disallow': []
+        },
+        'wordCount': {
+            'displayCharacters': False,
+            'displayWords': False,
+        }
+    }
+}
+
 
 # Reports
 # ------------------------------------------------------------------------------
-# Instagram Report
-INSTAGRAM_PROJECT_PK = os.getenv('INSTAGRAM_PROJECT_PK', None)
-INSTAGRAM_API_KEY = os.getenv('INSTAGRAM_API_KEY', None)
-INSTAGRAM_BP_FOLLOWED_ACCOUNTS = os.getenv('INSTAGRAM_BP_FOLLOWED_ACCOUNTS', None)
-
-# Facebook Report
-FACEBOOK_PROJECT_PK = os.getenv('FACEBOOK_PROJECT_PK', None)
-FACEBOOK_API_KEY = os.getenv('FACEBOOK_API_KEY', None)
-FACEBOOK_BP_FOLLOWED_ACCOUNTS = os.getenv('FACEBOOK_BP_FOLLOWED_ACCOUNTS', None)
-
 # Search Report
 SEARCH_PROJECT_PK = os.getenv('SEARCH_PROJECT_PK', None)
 SEARCH_API_KEY = os.getenv('SEARCH_API_KEY', None)
@@ -231,11 +347,3 @@ DIGITALMEAL_API_KEY = os.getenv('DIGITALMEAL_API_KEY', None)
 # ChatGPT Report
 CHATGPT_PROJECT_PK = os.getenv('CHATGPT_PROJECT_PK', None)
 CHATGPT_API_KEY = os.getenv('CHATGPT_API_KEY', None)
-
-
-# Cronjob Settings
-# ------------------------------------------------------------------------------
-CRONJOBS = [
-    ('*/15 * * * *', 'reports.cron.update_instagram_statistics'),
-    ('*/15 * * * *', 'reports.cron.update_facebook_statistics')
-]

@@ -9,12 +9,14 @@
     "favicon.ico": {
       "name": "favicon.ico",
       "path": "favicon.ico",
-      "publicPath": "/static/gpt/vue/favicon.ico"
+      "publicPath": "/static/gpt/vue/favicon.ico",
+      "sourceFilename": "public/favicon.ico"
     },
     "index.html": {
       "name": "index.html",
       "path": "index.html",
-      "publicPath": "/static/gpt/vue/index.html"
+      "publicPath": "/static/gpt/vue/index.html",
+      "sourceFilename": "public/index.html"
     },
     "js/chunk-vendors.js": {
       "name": "js/chunk-vendors.js",

@@ -1,4 +1,7 @@
+import os
+import ddm.core
 from .base import *
+
 
 ALLOWED_HOSTS = []
 
@@ -20,8 +23,8 @@ DATABASES = {
 WEBPACK_LOADER = {
     'DEFAULT': {
         'CACHE': True,
-        'BUNDLE_DIR_NAME': 'ddm/vue/',
-        'STATS_FILE': os.path.join(STATIC_ROOT, 'ddm/vue/webpack-stats.json'),
+        'BUNDLE_DIR_NAME': 'core/vue/',
+        'STATS_FILE': os.path.join(os.path.dirname(ddm.core.__file__), 'static/ddm_core/vue/webpack-stats.json'),
         'POLL_INTERVAL': 0.1,
         'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
     },

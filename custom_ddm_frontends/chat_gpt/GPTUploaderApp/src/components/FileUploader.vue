@@ -3,15 +3,16 @@
 <template>
 
   <div class="mb-5">
-    <div class="float-left bg-dark text-white pt-2 ps-2 pb-1 rounded-top">
+    <div class="float-left pt-2 ps-2 rounded-top">
       <div class="col-sm">
-        <h4>{{ name }}</h4>
+        <h4 class="fw-bold">{{ name }}</h4>
       </div>
     </div>
 
+    <div class="uploader-container">
     <!-- INSTRUCTIONS -->
     <div v-if="instructions.length" class="accordion" :id="'ul-acc-'+componentId">
-      <div class="accordion-body border">
+      <div class="accordion-body border-bottom">
         <div class="row align-items-center">
           <div class="col-auto ul-status-icon"><i class="bi bi-signpost"></i></div>
           <div class="col-auto"><h5>{{ $t('instructions') }}</h5></div>
@@ -31,8 +32,8 @@
     </div>
 
     <!-- DATA UPLOAD -->
-    <div class="accordion-body border">
-      <div class="row align-items-center">
+    <div class="accordion-body border-bottom">
+      <div class="row align-items-center" style="height: 100px;">
 
         <!-- Upload pending -->
         <template v-if="uploadStatus === 'pending'">
@@ -45,7 +46,26 @@
 
           <div class="col ul-status-message">
             <label class="select-file-btn">
-              <input :name="'ul-' + componentId" type="file" @change="processFile" class="d-none">
+
+              <input v-if="expectsZip"
+                     :name="'ul-' + componentId"
+                     accept=".zip,application/zip,application/x-zip-compressed,multipart/x-zip"
+                     type="file"
+                     @change="processFile"
+                     class="d-none">
+              <input v-else-if="blueprints[0].format === 'json'"
+                     :name="'ul-' + componentId"
+                     accept=".json,application/json"
+                     type="file"
+                     @change="processFile"
+                     class="d-none">
+              <input v-else-if="blueprints[0].format === 'csv'"
+                     :name="'ul-' + componentId"
+                     accept=".csv,text/csv"
+                     type="file"
+                     @change="processFile"
+                     class="d-none">
+
               {{ $t('choose-file') }}
             </label>
           </div>
@@ -71,11 +91,8 @@
           <div class="col-auto ul-status-icon"><i class="bi bi-file-check"></i></div>
 
           <div class="col ul-status-description">
-            <p class="text-success fw-bold">{{ $t('upload-success') }}</p>
-            <p><a @click="uploadStatus = 'pending'" class="upload-other">{{ $t('choose-different-file') }}</a></p>
+            <h5 class="text-success fw-bold">{{ $t('upload-success') }}</h5>
           </div>
-
-          <div class="col ul-status-message"></div>
         </template>
 
         <!-- Upload partial -->
@@ -112,29 +129,28 @@
       </div>
       <!-- UPLOAD FEEDBACK -->
 
-      <div class="accordion-body border border-bottom-0">
+      <div class="accordion-body">
         <div class="row align-items-center">
-          <div class="col-auto ul-status-icon"><i class="bi bi-clipboard-data"></i></div>
           <div class="col extraction-information-container">
-            <div class="col"><h5>{{ $t('data-extraction') }}</h5></div>
             <div class="col">
               <template v-if="uploadStatus === 'pending'">
-                {{ $t('data-extraction-intro') }}:
+                <h6>{{ $t('data-extraction-intro') }}</h6>
               </template>
               <template v-else>
-                {{ $t('extracted-data-intro') }}:
+                <h6 class="fw-bold">{{ $t('extracted-data-intro') }}</h6>
               </template>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="accordion-body border border-top-0">
-      <div class="container ul-feedback-container">
+      <div class="accordion-body">
+      <div class="container ul-feedback-container ps-2 pe-2">
         <div class="row">
           <div class="col extraction-information-container">
             <template v-for="bp in blueprints" :key="bp">
-            <div class="ul-status row align-items-start pt-2 pb-2" :class="{ 'ul-success': blueprintData[bp.id.toString()].status === 'success', 'ul-failed': blueprintData[bp.id.toString()].status === 'failed'}">
+            <div class="ul-status row align-items-start pt-2 pb-2"
+                 :class="{ 'ul-success': blueprintData[bp.id.toString()].status === 'success', 'ul-failed': blueprintData[bp.id.toString()].status === 'failed'}">
 
               <!-- Pending -->
               <template v-if="blueprintData[bp.id.toString()].status === 'pending'">
@@ -147,8 +163,7 @@
 
               <!-- Success -->
               <template v-if="blueprintData[bp.id.toString()].status === 'success'">
-
-                <div class="row pb-2">
+                <div class="row">
                   <div class="col w-small bp-ul-icon"><i class="bi bi-file-earmark-check-fill text-success"></i></div>
                   <div class="col">
                     <div class="col bp-description pb-2">{{ bp.name }}</div>
@@ -156,53 +171,52 @@
                   </div>
                 </div>
 
-                <template v-if="bp.name === 'Konversationen'">
-                  <div class="row pt-2">
-                    <div class="col feedback-col">
+                <template v-if="bp.name === 'Conversations'">
+                  <div class="row pe-0">
+                    <div class="col feedback-col pe-0">
                       <div>
-                        Unten sehen Sie die letzten 10 Konversationen, die aus Ihren Daten ausgelesen wurden.
-                        Bitte schauen Sie sich diese Konversationen rasch an. Wenn Sie eine Konversation aus der
-                        Spende ausschliessen möchten, machen Sie ein Häkchen bei "Konversation von Spende ausschliessen"
-                        – diese Konversation(en) wird dann nicht an die Forschenden übermittelt.
+                        {{ $t('gpt-intro') }}
                       </div>
-                      <div class="data-donation-container pb-3 pt-3">
+                      <div class="data-donation-container pb-3 pt-3 fs-09">
                         <div :id="'donation-container-'+bp.id.toString()" class="ul-data-container bg-white">
 
                           <div class="data-table-navigation">
                             <div class="">
                               <p class="">
-                                <b>Konversation {{ activeDDTable + 1 }} von {{ blueprintData[bp.id.toString()].extracted_data.length }}:</b>
+                                <b>{{ $t('conversation') }} {{ activeDDTable + 1 }} {{ $t('of') }} {{ blueprintData[bp.id.toString()].extracted_data.length }}:</b>
                               </p>
                             </div>
                           </div>
 
                           <div v-for="(r, key) in blueprintData[bp.id.toString()].extracted_data" :key="key" :id="'data-donation-table-' + key" class="data-donation-table fs-09" :class="{'hide-table': key !== activeDDTable}">
-                            <table :id="'ul-result-' + bp.id.toString()" class="table table-sm">
-                              <thead>
-                              <tr>
-                                <th>Sender</th>
-                                <th>Message</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              <tr v-for="row in r" :key="row">
-                                <td>{{ row.sender }}</td>
-                                <td>{{ row.message }}</td>
-                              </tr>
+                            <div class="table-container">
+                              <table :id="'ul-result-' + bp.id.toString()" class="table table-sm">
+                                <thead>
+                                <tr>
+                                  <th>Sender</th>
+                                  <th>Message</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="row in r" :key="row">
+                                  <td>{{ row.sender }}</td>
+                                  <td>{{ row.message }}</td>
+                                </tr>
 
-                              </tbody>
-                            </table>
-                            <div>
+                                </tbody>
+                              </table>
+                            </div>
+                            <div class="pt-3">
                               <p>
-                                <input type="checkbox" :id="'consent-' + key" :name="'consent-' + key" @change="emitToParent" />
-                                <label :for="'consent-' + key" class="ps-2">Konversation von Spende ausschliessen</label>
+                                <input type="checkbox" :id="'consent-' + key" :name="'consent-' + key" @change="emitToParent" class="exclude-conv-btn" />
+                                <label :for="'consent-' + key" class="ps-2 exclude-conv-label">{{ $t('exclude-conversation') }}</label>
                               </p>
                             </div>
                           </div>
                           <div>
                             <div class="pb-2 pt-2">
-                              <a class="btn btn-secondary btn-sm me-2" v-if="activeDDTable > 0" v-on:click="updateTablePosition('down')" >Vorherige Konversation</a>
-                              <a class="btn btn-secondary btn-sm" v-if="activeDDTable < (blueprintData[bp.id.toString()].extracted_data.length - 1)" v-on:click="updateTablePosition('up')" >Nächste Konversation</a>
+                              <a class="btn btn-pagination btn-sm me-2" v-if="activeDDTable > 0" v-on:click="updateTablePosition('down')" >{{ $t('prev-conversation') }}</a>
+                              <a class="btn btn-pagination btn-sm me-2" v-if="activeDDTable < (blueprintData[bp.id.toString()].extracted_data.length - 1)" v-on:click="updateTablePosition('up')" >{{ $t('next-conversation') }}</a>
                             </div>
                           </div>
                         </div>
@@ -265,27 +279,45 @@
                 </template>
 
                 <template v-if="this.combinedConsent === false">
-                  <div class="row">
-                    <div class="col feedback-col pb-5 pt-1">
-                      <p class="fw-bold">Sind Sie damit einverstanden, die Daten zu spenden, die Sie nicht explizit ausgeschlossen haben?</p>
+                <div class="row pe-0">
+                  <div class="col feedback-col pb-5 pt-1 pe-0">
+                    <p class="fw-bold">{{ $t('donation-question') }}</p>
                       <div class="consent-question-container">
-                        <div class="question-choice-item pt-3 pt-lg-0">
-                          <label class="form-check-label rb-cb-label" :for="'donate-agree-'+bp.id.toString()">
-                            <input type="radio" :id="'donate-agree-'+bp.id.toString()" :name="'agreement-'+bp.id.toString()" value="true" v-model="blueprintData[bp.id.toString()].consent" @change="emitToParent" required>
+
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                          <input type="radio"
+                                 class="btn-check"
+                                 :id="'donate-agree-'+bp.id.toString()"
+                                 :name="'agreement-'+bp.id.toString()"
+                                 value="true"
+                                 autocomplete="off"
+                                 v-model="blueprintData[bp.id.toString()].consent"
+                                 @change="emitToParent"
+                                 required>
+                          <label :class="{ 'selected-donate-agree': blueprintData[bp.id.toString()].consent === 'true' }"
+                                 :for="'donate-agree-'+bp.id.toString()"
+                                 class="form-check-label rb-cb-label btn btn-light donation-btn shadow-none">
                             {{ $t('donation-agree') }}
                           </label>
-                        </div>
-                        <div class="question-choice-item pt-3 pt-lg-0">
-                          <label class="form-check-label rb-cb-label" :for="'donate-disagree-'+bp.id.toString()">
-                            <input type="radio" :id="'donate-disagree-'+bp.id.toString()" :name="'agreement-'+bp.id.toString()" value="false" v-model="blueprintData[bp.id.toString()].consent" @change="emitToParent">
+
+                          <input type="radio"
+                                 class="btn-check"
+                                 :id="'donate-disagree-'+bp.id.toString()"
+                                 :name="'agreement-'+bp.id.toString()"
+                                 value="false"
+                                 autocomplete="off"
+                                 v-model="blueprintData[bp.id.toString()].consent"
+                                 @change="emitToParent">
+                          <label :class="{ 'selected-donate-disagree': blueprintData[bp.id.toString()].consent === 'false' }"
+                                 :for="'donate-disagree-'+bp.id.toString()"
+                                 class="form-check-label rb-cb-label btn btn-light donation-btn shadow-none">
                             {{ $t('donation-disagree') }}
                           </label>
                         </div>
                       </div>
-                    </div>
                   </div>
+                </div>
                 </template>
-
               </template>
 
               <!-- Nothing Extracted -->
@@ -324,27 +356,46 @@
       </div>
 
         <template v-if="this.combinedConsent === true && (uploadStatus === 'success' || uploadStatus === 'partial')">
-          <div class="row mt-5">
-            <div class="col feedback-col pb-5 pt-1">
+          <div class="row mt-5 pe-0">
+            <div class="col feedback-col pb-5 pt-1 pe-0">
               <p class="fw-bold">{{ $t('donation-question') }}</p>
               <div class="consent-question-container">
-                <div class="question-choice-item pt-3 pt-lg-0">
-                  <label class="form-check-label rb-cb-label" for="combined-donate-agree">
-                    <input type="radio" id="combined-donate-agree" value="true" v-model="combinedDonation" @change="emitToParent" required>
+
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                  <input type="radio"
+                         class="btn-check"
+                         id="combined-donate-agree"
+                         value="true"
+                         autocomplete="off"
+                         v-model="combinedDonation"
+                         @change="emitToParent"
+                         required>
+                  <label :class="{ 'selected-donate-agree': combinedDonation === 'true' }"
+                         class="form-check-label rb-cb-label btn btn-light donation-btn shadow-none"
+                         for="combined-donate-agree">
                     {{ $t('donation-agree') }}
                   </label>
-                </div>
-                <div class="question-choice-item pt-3 pt-lg-0">
-                  <label class="form-check-label rb-cb-label" for="combined-donate-disagree">
-                    <input type="radio" id="combined-donate-disagree" value="false" v-model="combinedDonation" @change="emitToParent">
+
+                  <input type="radio"
+                         class="btn-check"
+                         id="combined-donate-disagree"
+                         value="false"
+                         autocomplete="off"
+                         v-model="combinedDonation"
+                         @change="emitToParent">
+                  <label :class="{ 'selected-donate-disagree': combinedDonation === 'false' }"
+                         class="form-check-label rb-cb-label btn btn-light donation-btn shadow-none"
+                         for="combined-donate-disagree">
                     {{ $t('donation-disagree') }}
                   </label>
                 </div>
+
               </div>
             </div>
           </div>
         </template>
     </div>
+  </div>
   </div>
 
   <div class="default-modal" id="ulInfoModal" ref="ulInfoModal" style="display: none">
@@ -374,7 +425,7 @@
 
 <script>
 import JSZip from "jszip";
-import DonationInstructions from "./DonationInstructions";
+import DonationInstructions from "./DonationInstructions.vue";
 import axios from "axios";
 import Papa from 'papaparse';
 import {
@@ -427,7 +478,7 @@ export default {
         status: 'pending',
         errors: [],
         fb_pos_lower: 0,
-        fb_pos_upper: 15,
+        fb_pos_upper: 10,
         error_log: {},
       }
       this.blueprintData[id.toString()] = blueprintInfo
@@ -589,7 +640,7 @@ export default {
       }
 
       // HTML
-      if (blueprint.format === 'json' && blueprint.name === 'Konversationen') {
+      if (blueprint.format === 'json' && blueprint.name === 'Conversations') {
         specialParsing = true;
       }
 
@@ -797,7 +848,7 @@ export default {
         }
       }
 
-      // FILTERING (HTML)
+      // FILTERING
       if (fileContent && specialParsing) {
         let nEntriesWithMissingFields = 0;
         let nEntriesFilteredOut = 0;
@@ -805,11 +856,34 @@ export default {
         for (let i = 0; i < fileContent.length; i++) {
           const conversation = fileContent[i];
           let result = [];
-          let dateCreated = new Date(conversation['create_time'] * 1000);
-          let dateUpdated = new Date(conversation['update_time'] * 1000);
+
+          let dateCreated = 'information missing';
+          if (typeof conversation['create_time'] !== 'undefined') {
+            dateCreated = new Date(conversation['create_time'] * 1000);
+            dateCreated = dateCreated.toISOString();
+          }
+
+          let dateUpdated = 'information missing';
+          if (typeof conversation['update_time'] !== 'undefined') {
+            dateUpdated = new Date(conversation['update_time'] * 1000);
+            dateUpdated = dateUpdated.toISOString();
+          }
+
+          let gptModel = 'information missing';
+          if (typeof conversation['default_model_slug'] !== 'undefined') {
+            gptModel = conversation['default_model_slug'];
+          }
+
           result.push({'sender': 'System (Titel)', 'message': conversation['title']});
-          result.push({'sender': 'System (Erstellt)', 'message': dateCreated.toISOString()});
-          result.push({'sender': 'System (Aktualisiert)', 'message': dateUpdated.toISOString()});
+          result.push({'sender': 'System (Created)', 'message': dateCreated});
+          result.push({'sender': 'System (Updated)', 'message': dateUpdated});
+          result.push({'sender': 'System (GPT Model)', 'message': gptModel});
+
+          if (typeof conversation['mapping'] === 'undefined') {
+            result.push({'sender': 'System (Information)', 'message': 'no messages'});
+            continue;
+          }
+
           for (let node of Object.values(conversation['mapping'])) {
             if (
                 node.message &&
@@ -888,6 +962,7 @@ export default {
      */
     emitToParent() {
       let dataToEmit = JSON.parse(JSON.stringify(this.blueprintData));
+
       if (this.combinedConsent === false) {
         Object.keys(dataToEmit).forEach(key => {
           if (dataToEmit[key].consent === null) {
@@ -897,32 +972,24 @@ export default {
           else if (dataToEmit[key].consent === 'false') {
             dataToEmit[key].extracted_data = [];
             dataToEmit[key].consent = false;
-          } else {
+          } else if (dataToEmit[key].consent === 'true') {
             dataToEmit[key].consent = true;
           }
         })
       } else {
         let consent = this.combinedDonation;
         Object.keys(dataToEmit).forEach(key => {
-          if (consent === 'false') {
+          if (consent === null) {
+            dataToEmit[key].consent = null;
+            dataToEmit[key].extracted_data = [];
+          } else if (consent === 'false') {
             dataToEmit[key].consent = false;
             dataToEmit[key].extracted_data = [];
-          } else {
+          } else if (consent === 'true') {
             dataToEmit[key].consent = true;
           }
         })
       }
-      Object.keys(dataToEmit).forEach(key => {
-        if (dataToEmit[key].consent !== null && dataToEmit[key].consent !== 'false') {
-          for (let i = 0; i < dataToEmit[key].extracted_data.length; i++) {
-            // check checkbox value
-            let checkboxId = '#consent-' + String(i);
-            if (document.querySelector(checkboxId).checked) {
-              dataToEmit[key].extracted_data[i] = 'excluded'
-            }
-          }
-        }
-      });
 
       this.$emit('changedData', dataToEmit);
     },
@@ -989,24 +1056,33 @@ export default {
      * Status will be updated to either 'success', 'failed', or 'partial'.
      */
     updateStatus() {
-      let bpErrorCount = 0;
-      let bpNothingExtracted = 0;
+      let nNothingExtracted = 0;
+      let nSuccess = 0;
+      let nFailed = 0;
       let nBlueprints = Object.keys(this.blueprintData).length;
       for (let bp in this.blueprintData){
+        if (this.generalErrors.length !== 0) {
+          this.blueprintData[bp].status = 'failed';
+          this.blueprintData[bp].consent = 'false';
+          nFailed += 1;
+          continue;
+        }
+
         if (this.blueprintData[bp].errors.length) {
           let errorSet = new Set(this.blueprintData[bp].errors);
 
-          if (errorSet.size === 1 && errorSet.has(this.$t('error-all-fields-filtered-out'))) {
+          if (errorSet.size === 1 && (errorSet.has(this.$t('error-all-fields-filtered-out')) || errorSet.has(this.$t('error-no-data-in-file')))) {
             this.blueprintData[bp].status = 'nothing extracted';
             this.blueprintData[bp].consent = 'false';
-            bpNothingExtracted += 1;
+            nNothingExtracted += 1;
           } else {
             this.blueprintData[bp].status = 'failed';
             this.blueprintData[bp].consent = 'false';
-            bpErrorCount += 1;
+            nFailed += 1;
           }
         } else {
           this.blueprintData[bp].status = 'success';
+          nSuccess += 1;
           // this.blueprintData[bp].consent = 'true';
         }
       }
@@ -1014,23 +1090,26 @@ export default {
       this.$nextTick(function () {
         let modalIcon = document.getElementById('ul-modal-info-icon');
 
-        if (!this.generalErrors.length && bpErrorCount === 0 && bpNothingExtracted === 0) {
+        if (nSuccess === nBlueprints) {
           this.uploadStatus = 'success';
           modalIcon.className = 'bi bi-file-check text-success';
           this.ulModalInfoTitle = this.$t('ul-success-modal-title');
           this.ulModalInfoMsg = this.$t('ul-success-modal-body');
 
-        } else if (!this.generalErrors.length && bpNothingExtracted > 0 && bpErrorCount === 0) {
+        } else if (nNothingExtracted === nBlueprints) {
           this.uploadStatus = 'partial';
           modalIcon.className = 'bi bi-exclamation-diamond text-orange';
           this.ulModalInfoTitle = this.$t('ul-nothing-extracted-modal-title');
           this.ulModalInfoMsg = this.$t('ul-nothing-extracted-modal-body');
 
-        } else if (!this.generalErrors.length && (bpErrorCount < nBlueprints)) {
-          this.uploadStatus = 'partial';
-          modalIcon.className = 'bi bi-exclamation-diamond text-orange';
-          this.ulModalInfoTitle = this.$t('ul-partial-modal-title');
-          this.ulModalInfoMsg = this.$t('ul-partial-modal-body');
+          this.$refs.ulInfoModal.style.display = 'block';
+          this.$refs.modalBackdrop.style.display = 'block';
+
+        } else if ((nSuccess + nNothingExtracted) === nBlueprints) {
+          this.uploadStatus = 'success';
+          modalIcon.className = 'bi bi-file-check text-success';
+          this.ulModalInfoTitle = this.$t('ul-success-modal-title');
+          this.ulModalInfoMsg = this.$t('ul-success-modal-body');
 
         } else {
           this.uploadStatus = 'failed';
@@ -1041,10 +1120,9 @@ export default {
           for (let bp in this.blueprintData){
             this.blueprintData[bp].status = 'failed';
           }
+          this.$refs.ulInfoModal.style.display = 'block';
+          this.$refs.modalBackdrop.style.display = 'block';
         }
-
-        this.$refs.ulInfoModal.style.display = 'block';
-        this.$refs.modalBackdrop.style.display = 'block';
       });
     },
 
@@ -1073,17 +1151,18 @@ export default {
     },
 
     updateFbPos(bpId, dir) {
+      let stepSize = 10;
       let bp = this.blueprintData[bpId];
       if (dir === 'up') {
-        bp.fb_pos_lower += 15;
-        bp.fb_pos_upper += 15;
+        bp.fb_pos_lower += stepSize;
+        bp.fb_pos_upper += stepSize;
       } else {
-        if (bp.fb_pos_lower < 15) {
+        if (bp.fb_pos_lower < stepSize) {
           bp.fb_pos_lower = 0;
-          bp.fb_pos_upper = 15;
+          bp.fb_pos_upper = stepSize;
         } else {
-          bp.fb_pos_lower -= 15;
-          bp.fb_pos_upper -= 15;
+          bp.fb_pos_lower -= stepSize;
+          bp.fb_pos_upper -= stepSize;
         }
       }
     },
@@ -1095,6 +1174,7 @@ export default {
         this.activeDDTable -= 1;
       }
     }
+
   },
 }
 </script>
@@ -1150,15 +1230,10 @@ export default {
   display: block;
 }
 .ul-data-condensed {
-  max-height: 250px;
+  max-height: 180px;
   overflow: hidden;
 }
-.ul-data-condensed table {
-  color: gray;
-}
 .ul-data-expanded {
-  /* max-height: 500px; */
-  /* overflow-y: scroll; */
   color: black;
 }
 .ul-data-container th {
@@ -1174,7 +1249,6 @@ export default {
   z-index: 10;
   position: relative;
   cursor: pointer;
-  border-bottom: 1px solid black;
 }
 .control-expanded {
   background: white;
@@ -1182,23 +1256,25 @@ export default {
   height:30px;
 }
 .control-condensed {
-  background: rgb(255,255,255);
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(250,250,250,1) 50%);
-  height: 75px;
-  margin-top: -74px;
-  padding-top: 45px;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 70%);
+  height: 120px;
+  margin-top: -120px;
+  padding-top: 80px;
 }
 .fs-09 {
   font-size: 0.9rem;
 }
 .w-small {
-  max-width: 33px;
+  max-width: 20px;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
 }
 .consent-question-container {
   width: 100%;
 }
 .feedback-col {
-  padding-left: 46px;
+  padding-left: 33px;
 }
 .extraction-information-container {
   padding-top: 6px;
@@ -1219,7 +1295,6 @@ export default {
   padding-left: 25px;
 }
 .ul-data-container table {
-  background: #e3e3e31c;
   table-layout: auto;
   min-width: 100%;
 }
@@ -1233,10 +1308,79 @@ export default {
   margin-bottom: 15px;
   display: block;
 }
-.btn-secondary:not(.btn-muted):hover {
+.data-donation-table tbody {
+  border-top: none;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+.table-container {
+  max-height: 500px;
+  height: 500px;
+  overflow-y: scroll;
+}
+.uploader-container {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+}
+.btn-pagination {
+  background: #f4f4f4;
+  border: none;
+  color: black;
+}
+.btn-active:hover {
+  color: black !important;
+  background: #cacaca;
+}
+.btn-muted {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.selected-donate-agree {
+  background: #069143 !important;
   color: white !important;
+  font-weight: bold;
+}
+
+.selected-donate-disagree {
+  background: #f38896 !important;
+  font-weight: bold;
+}
+
+.donation-btn {
+  width: 120px;
+  color: #000;
+  background-color: #dfdfdf;
+  border: none;
+  margin: 5px;
 }
 .hide-table {
   display: none;
 }
+.exclude-conv-btn {
+  transform: scale(1.6);
+  margin-left: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.exclude-conv-label {
+  cursor: pointer;
+}
+@media (min-width: 576px) {}
+
+@media (min-width: 768px) {
+  .uploader-container {
+    box-shadow: 6px 7px 20px #80808040;
+    border-radius: 8px;
+    border: none;
+  }
+}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {}
+
 </style>

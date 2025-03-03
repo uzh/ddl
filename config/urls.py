@@ -35,7 +35,7 @@ urlpatterns = [
     ),
     path(
         '', include('ddl.urls')
-    )
+    ),
 ]
 
 # DDM Integration
@@ -74,6 +74,10 @@ urlpatterns += [
         'ckeditor5/',
         include('django_ckeditor_5.urls')
     ),
+    path(
+        '',
+        include('gpt.urls')
+    )
 ]
 
 urlpatterns += i18n_patterns(
