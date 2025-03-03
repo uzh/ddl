@@ -218,6 +218,7 @@ ATTRIBUTES_TO_ALLOW = {
     'type': True,
     'data-bs-toggle': True,
     'data-bs-target': True,
+    'data-bs-parent': True,
     'aria-expanded': True,
     'aria-controls': True,
     'aria-labelledby': True,
