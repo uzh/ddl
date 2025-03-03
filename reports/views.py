@@ -347,8 +347,8 @@ class ChatGPTReport(BaseReport, TemplateView):
             context['status'] = 'not okay'
             return context
 
-        responses = responses_api['responses'][0]
-        context['responses'] = responses['response_data']
+        responses = responses_api['responses'][0]['response_data']
+        context['responses'] = responses
         variables = [
             'trust-chatgpt',
             'trust-science',

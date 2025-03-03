@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'ddm.projects',
     'ddm.core',
     'gpt',
+    'reports',
     'django_ckeditor_5',
     'webpack_loader',
     'rest_framework',

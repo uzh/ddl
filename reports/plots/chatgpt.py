@@ -2,24 +2,23 @@ from bokeh.embed import components
 from bokeh.models import Span
 from bokeh.plotting import figure
 
-INSTA_CATEGORIES = ['Parteien', 'Politiker:innen', 'Medien', 'Organisationen']
 FIRE_PALETTE = ['#b0020f', '#fe2d2d', '#fb7830', '#fecf02']  #, '#ffeea3']
 
 TRUST_SCALE = [
-    'vertraue ich\nvoll und ganz',
-    'vertraue ich eher',
-    'unentschieden',
-    'vertraue ich\neher nicht',
-    'vertraue ich\nnicht'
+    'I fully trust',
+    'I tend to trust',
+    'Undecided',
+    'I tend not to trust',
+    'I do not trust'
 ]
 TRUST_VALUES = [1, 2, 3, 4, 5]
 
 AGREEMENT_SCALE = [
-    'stimme voll und\nganz zu',
-    'stimme eher zu',
-    'unentschieden',
-    'stimme eher\nnicht zu',
-    'stimme nicht zu'
+    'Fully agree',
+    'Tend to agree',
+    'Undecided',
+    'Tend to disagree',
+    'Fully disagree'
 ]
 AGREEMENT_VALUES = [1, 2, 3, 4, 5]
 
@@ -75,7 +74,7 @@ def get_bar_plot(var_name, response):
 
     p = figure(x_range=categories, height=350,
                toolbar_location=None, tools="",
-               y_axis_label="Anteil der Befragten (in %)")
+               y_axis_label="Proportion of Respondents (in %)")
 
     p.vbar(x=categories, top=counts, width=0.9)
 

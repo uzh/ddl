@@ -25,12 +25,13 @@
 <div id="report">
   {% block report_header %}
     <div class="container pt-5 pb-5">
-      <div class="report-header d-flex flex-wrap justify-content-center align-items-center">
-        <div class="ps-4 pe-4">
-          <img alt="Data Donation Day Logo" src="{% static 'reports/img/DDDayLogo.svg' %}" height="150px">
+      <div class="report-header d-flex flex-wrap flex-column justify-content-center align-items-center">
+        <div class="ps-4 pe-4 pb-5">
+          <img alt="Data Donation Lab Logo" src="{% static 'ddl/img/logos/ddl/ddl_logo_black.svg' %}" height="60px">
+          <img alt="UZH Logo" src="{% static 'ddl/img/logos/external/uzh_logo_d_pos.svg' %}" height="60px">
         </div>
         <div class="text-center">
-          <p class="report-title">{% block report_title %}Ihr persönlicher Report{% endblock %}</p>
+          <p class="report-title fw-bold">{% block report_title %}Ihr persönlicher Report{% endblock %}</p>
         </div>
       </div>
     </div>
@@ -48,15 +49,10 @@
 
     <div class="row">
       <div class="col text-center">
-        <p>
-          <!-- [Platzhalter DDDay Footer] -->
-        </p>
 
         <div class="text-center">
-          <img alt="Data Donation Day Logo" src="{% static 'reports/img/DDDayLogo.svg' %}" height="70px">
           <img alt="Data Donation Lab Logo" src="{% static 'ddl/img/logos/ddl/ddl_logo_black.svg' %}" height="70px">
           <img alt="UZH Logo" src="{% static 'ddl/img/logos/external/uzh_logo_d_pos.svg' %}" height="70px">
-          <img alt="DIZH Logo" src="{% static 'ddl/img/logos/external/dizh_logo.png' %}" height="70px">
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@
 
 {% block page_title %}ChatGPT Report{% endblock %}
 
-{% block report_title %}Ihr persönlicher Report{% endblock %}
+{% block report_title %}Your personal report{% endblock %}
 
 
 {% block report_body %}
@@ -12,33 +12,33 @@
   {% if status != "okay" %}
   <div class="row pt-5 pb-5 border-bottom">
     <div class="col text-center">
-      <h3>Da ist etwas schiefgegangen</h3>
-      <p>Bitte stellen Sie sicher, dass die eingegebene URL korrekt ist.</p>
+      <h3>Something went wrong</h3>
+      <p>Please make sure that the URL is correct.</p>
     </div>
   </div>
   {% else %}
 
   <div class="row pt-5 pb-5 border-bottom">
     <div class="col text-center">
-      <h3>Wie verhalten sich Ihre Antworten im Fragebogen zur breiteren Bevölkerung?</h3>
+      <h3>How do your responses in the questionnaire compare to the broader population?</h3>
 
-      <div>
-        <p>
-          In diesem Report zeigen wir Ihnen, wie sich Ihre Antworten, die Sie in unserem Fragebogen gegeben haben, im Vergleich
-          zu den Antworten der breiten Bevölkerung verhalten. Die <span class="span-population">Antworten der Bevölkerung sind in blau</span> dargestellt,
-          Ihre <span class="span-self">eigene Antwort ist mit einem orangenen Strich</span> gekennzeichnet.
-        </p>
-      </div>
+    <div>
+      <p>
+        In this report, we show you how your responses in our questionnaire compare to those of the broader population.
+        The <span class="span-population">population's responses are shown in blue</span>,
+        while <span class="span-self">your own response is marked with an orange line</span>.
+      </p>
+    </div>
 
       <div class="pt-5">
-        <h5>Nutzung ChatGPT</h5>
-        <p>Wie oft, wenn überhaupt, nutzen Sie ChatGPT?</p>
+        <h5>ChatGPT Use</h5>
+        <p>How often, if at all, do you typically use ChatGPT?</p>
 
         <div class="overflow-scroll">
           <table class="table table-striped">
             <thead>
             <tr>
-              <th scope="col">Altersgruppe</th>
+              <th scope="col">Age groups</th>
               <th scope="col">18-24</th>
               <th scope="col">25-34</th>
               <th scope="col">35-44</th>
@@ -48,7 +48,7 @@
             </thead>
             <tbody>
             <tr>
-              <td>Täglich</td>
+              <td>Daily</td>
               <td {% if highlight == "1-1" %}class="highlight-cell"{% endif %}>8.9 %</td>
               <td {% if highlight == "2-1" %}class="highlight-cell"{% endif %}>6.4 %</td>
               <td {% if highlight == "3-1" %}class="highlight-cell"{% endif %}>4.1 %</td>
@@ -56,7 +56,7 @@
               <td {% if highlight == "5-1" %}class="highlight-cell"{% endif %}>0.9 %</td>
             </tr>
             <tr>
-              <td>Wöchentlich</td>
+              <td>Weekly</td>
               <td {% if highlight == "1-2" %}class="highlight-cell"{% endif %}>17.8 %</td>
               <td {% if highlight == "2-2" %}class="highlight-cell"{% endif %}>13.4 %</td>
               <td {% if highlight == "3-2" %}class="highlight-cell"{% endif %}>7.9 %</td>
@@ -64,7 +64,7 @@
               <td {% if highlight == "5-2" %}class="highlight-cell"{% endif %}>2.7 %</td>
             </tr>
             <tr>
-              <td>Monatlich</td>
+              <td>Monthly</td>
               <td {% if highlight == "1-3" %}class="highlight-cell"{% endif %}>11.7 %</td>
               <td {% if highlight == "2-3" %}class="highlight-cell"{% endif %}>7.9 %</td>
               <td {% if highlight == "3-3" %}class="highlight-cell"{% endif %}>6.9 %</td>
@@ -72,7 +72,7 @@
               <td {% if highlight == "5-3" %}class="highlight-cell"{% endif %}>2.5 %</td>
             </tr>
             <tr>
-              <td>1- oder 2-mal</td>
+              <td>Once or twice</td>
               <td {% if highlight == "1-4" %}class="highlight-cell"{% endif %}>17.2 %</td>
               <td {% if highlight == "2-4" %}class="highlight-cell"{% endif %}>15 %</td>
               <td {% if highlight == "3-4" %}class="highlight-cell"{% endif %}>13.6 %</td>
@@ -83,55 +83,105 @@
           </table>
         </div>
 
-        <p class="text-black-50 fw-light-pt-2"><small>Vergleichswerte basieren auf der <a class="text-black-50" href="https://reutersinstitute.politics.ox.ac.uk/what-does-public-six-countries-think-generative-ai-news" target="_blank">Studie von Fletcher & Nielsen (2024)</a></small></p> <!-- TODO: Link Studie -->
+        <p class="text-black-50 fw-light pt-2">
+          <small>Comparison values are based on the
+            <a class="text-black-50" href="https://reutersinstitute.politics.ox.ac.uk/what-does-public-six-countries-think-generative-ai-news" target="_blank">
+              study by Fletcher & Nielsen (2024)
+            </a>
+          </small>
+        </p>
       </div>
 
       <div class="pt-5">
-        <h5>Vertrauen in ChatGPT</h5>
-        <p>Wie sehr vertrauen Sie persönlich Programmen wie ChatGPT bei der Wiedergabe wissenschaftlicher Inhalte?</p>
+        <h5>Trust in ChatGPT</h5>
+        <p>How much do you personally trust programmes such as ChatGPT when reproducing scientific content?</p>
         <div class="d-flex justify-content-center pt-3">{{ trust_chatgpt_plot.div | safe }}</div>
-        <p class="text-black-50 fw-light-pt-2"><small>Vergleichswerte basieren auf dem <a class="text-black-50" href="https://wissenschaft-im-dialog.de/projekte/wissenschaftsbarometer/#ubersicht" target="_blank">Wissenschaftsbarometer 2023</a></small></p> <!-- TODO: Link Studie -->
+        <p class="text-black-50 fw-light pt-2">
+          <small>Comparison values are based on the
+            <a class="text-black-50" href="https://wissenschaft-im-dialog.de/projekte/wissenschaftsbarometer/#ubersicht" target="_blank">
+              Science Barometer 2023
+            </a>
+          </small>
+        </p>
       </div>
 
       <div class="pt-5">
-        <h5>Vertrauen in die Wissenschaft</h5>
-        <p>Ganz allgemein: Wie sehr vertrauen Sie in die Wissenschaft?</p>
+        <h5>Trust in Science</h5>
+        <p>In general, how much do you trust science?</p>
         <div class="d-flex justify-content-center pt-3">{{ trust_science_plot.div | safe }}</div>
-        <p class="text-black-50 fw-light-pt-2"><small>Vergleichswerte basieren auf dem <a class="text-black-50" href="https://wissenschaftsbarometer.ch/ergebnisse-2022/" target="_blank">Wissenschaftsbarometer Schweiz von 2022</a></small></p> <!-- TODO: Link Studie -->
+        <p class="text-black-50 fw-light pt-2">
+          <small>Comparison values are based on the
+            <a class="text-black-50" href="https://wissenschaftsbarometer.ch/ergebnisse-2022/" target="_blank">
+              Swiss Science Barometer 2022
+            </a>
+          </small>
+        </p>
       </div>
 
       <div class="pt-5">
-        <h5>Wahrgenommener Nutzen von KI</h5>
-        <p>Es ist positiv, dass man sich mit Programmen wie ChatGPT komplexe Sachverhalte aus Wissenschaft und Forschung stark vereinfacht erklären lassen kann.</p>
+        <h5>Perceived Benefits of AI</h5>
+        <p>It is positive that programmes such as ChatGPT can be used to explain complex scientific and research issues in a highly simplified way.</p>
         <div class="d-flex justify-content-center pt-3">{{ benefit_chatgpt_1_plot.div | safe }}</div>
-        <p class="text-black-50 fw-light-pt-2"><small>Vergleichswerte basieren auf dem <a class="text-black-50" href="https://wissenschaft-im-dialog.de/projekte/wissenschaftsbarometer/#ubersicht" target="_blank">Wissenschaftsbarometer 2023</a></small></p> <!-- TODO: Link Studie -->
+        <p class="text-black-50 fw-light pt-2">
+          <small>Comparison values are based on the
+            <a class="text-black-50" href="https://wissenschaft-im-dialog.de/projekte/wissenschaftsbarometer/#ubersicht" target="_blank">
+              Science Barometer 2023
+            </a>
+          </small>
+        </p>
 
-
-        <p class="pt-5">Es ist positiv, dass man sich mit Programmen wie ChatGPT wie mit einem echten Menschen über Wissenschaft und Forschung unterhalten kann.</p>
+        <p class="pt-5">It is positive that programmes such as ChatGPT you can talk about science and research as if you were talking to a real person.</p>
         <div class="d-flex justify-content-center pt-3">{{ benefit_chatgpt_2_plot.div | safe }}</div>
-        <p class="text-black-50 fw-light-pt-2"><small>Vergleichswerte basieren auf dem <a class="text-black-50" href="https://wissenschaft-im-dialog.de/projekte/wissenschaftsbarometer/#ubersicht" target="_blank">Wissenschaftsbarometer 2023</a></small></p> <!-- TODO: Link Studie -->
+        <p class="text-black-50 fw-light pt-2">
+          <small>Comparison values are based on the
+            <a class="text-black-50" href="https://wissenschaft-im-dialog.de/projekte/wissenschaftsbarometer/#ubersicht" target="_blank">
+              Science Barometer 2023
+            </a>
+          </small>
+        </p>
 
-
-        <p class="pt-5">Es ist positiv, dass man sich mit Programmen wie ChatGPT bei Unklarheiten bezüglich wissenschaftlicher Themen Beispiele geben lassen und Nachfragen stellen kann.</p>
+        <p class="pt-5">It is positive that programmes such as ChatGPT can give examples and you can ask questions if you are unclear about scientific topics.</p>
         <div class="d-flex justify-content-center pt-3">{{ benefit_chatgpt_3_plot.div | safe }}</div>
-        <p class="text-black-50 fw-light-pt-2"><small>Vergleichswerte basieren auf dem <a class="text-black-50" href="https://wissenschaft-im-dialog.de/projekte/wissenschaftsbarometer/#ubersicht" target="_blank">Wissenschaftsbarometer 2023</a></small></p> <!-- TODO: Link Studie -->
+        <p class="text-black-50 fw-light pt-2">
+          <small>Comparison values are based on the
+            <a class="text-black-50" href="https://wissenschaft-im-dialog.de/projekte/wissenschaftsbarometer/#ubersicht" target="_blank">
+              Science Barometer 2023
+            </a>
+          </small>
+        </p>
       </div>
 
       <div class="pt-5">
-        <h5>Wahrgenommene Risiken von KI</h5>
-        <p>Es ist bedenklich, dass Programme wie ChatGPT es schwieriger machen festzustellen, ob wissenschaftliche Inhalte von einem Menschen oder einem Programm verfasst wurden.</p>
+        <h5>Perceived risks of AI</h5>
+        <p>It is a concern that programmes such as ChatGPT make it more difficult to determine whether scientific content was written by a human or a programme.</p>
         <div class="d-flex justify-content-center pt-3">{{ risk_chatgpt_1_plot.div | safe }}</div>
-        <p class="text-black-50 fw-light-pt-2"><small>Vergleichswerte basieren auf dem <a class="text-black-50" href="https://wissenschaft-im-dialog.de/projekte/wissenschaftsbarometer/#ubersicht" target="_blank">Wissenschaftsbarometer 2023</a></small></p> <!-- TODO: Link Studie -->
+        <p class="text-black-50 fw-light pt-2">
+          <small>Comparison values are based on the
+            <a class="text-black-50" href="https://wissenschaft-im-dialog.de/projekte/wissenschaftsbarometer/#ubersicht" target="_blank">
+              Science Barometer 2023
+            </a>
+          </small>
+        </p>
 
-
-        <p class="pt-5">Es ist bedenklich, dass Programme wie ChatGPT die Quellen der Informationen zu wissenschaftlichen Themen nicht so gründlich überprüfen können wie ein Mensch.</p>
+        <p class="pt-5">It is a concern that programmes such as ChatGPT cannot check the sources of information on scientific topics as thoroughly as a human being.</p>
         <div class="d-flex justify-content-center pt-3">{{ risk_chatgpt_2_plot.div | safe }}</div>
-        <p class="text-black-50 fw-light-pt-2"><small>Vergleichswerte basieren auf dem <a class="text-black-50" href="https://wissenschaft-im-dialog.de/projekte/wissenschaftsbarometer/#ubersicht" target="_blank">Wissenschaftsbarometer 2023</a></small></p> <!-- TODO: Link Studie -->
+        <p class="text-black-50 fw-light pt-2">
+          <small>Comparison values are based on the
+            <a class="text-black-50" href="https://wissenschaft-im-dialog.de/projekte/wissenschaftsbarometer/#ubersicht" target="_blank">
+              Science Barometer 2023
+            </a>
+          </small>
+        </p>
 
-
-        <p class="pt-5">Es ist bedenklich, dass Programme wie ChatGPT manchmal auch Falschinformationen zu wissenschaftlichen Themen wiedergeben.</p>
+        <p class="pt-5">It is a concern that programmes such as ChatGPT sometimes reproduce false information on scientific topics.</p>
         <div class="d-flex justify-content-center pt-3">{{ risk_chatgpt_3_plot.div | safe }}</div>
-        <p class="text-black-50 fw-light-pt-2"><small>Vergleichswerte basieren auf dem <a class="text-black-50" href="https://wissenschaft-im-dialog.de/projekte/wissenschaftsbarometer/#ubersicht" target="_blank">Wissenschaftsbarometer 2023</a></small></p> <!-- TODO: Link Studie -->
+        <p class="text-black-50 fw-light pt-2">
+          <small>Comparison values are based on the
+            <a class="text-black-50" href="https://wissenschaft-im-dialog.de/projekte/wissenschaftsbarometer/#ubersicht" target="_blank">
+              Science Barometer 2023
+            </a>
+          </small>
+        </p>
       </div>
 
     </div>
@@ -139,14 +189,14 @@
 
   <div class="row pt-5 pb-5 border-bottom">
     <div class="col text-center">
-      <h3>Weitere Informationen und Tipps zur Nutzung von ChatGPT und anderen KI-Applikationen</h3>
-      <p>Hier finden Sie ein paar Links zu effektiven Prompting-Techniken und KI-Tools, die Ihnen helfen kann, das Potenzial von künstlicher Intelligenz optimal auszuschöpfen:</p>
-      <p><b>Tipps zur Formulierung von Anweisungen für ChatGPT:</b> <a href="https://teachingtools.uzh.ch/asset/651d3d597918a3f3cf0012c2/download" target="_blank">https://teachingtools.uzh.ch</a></p>
-      <p><b>Leitfaden zur Erstellung von Effektiven Anweisungen an ChatGPT:</b> <a href="https://ethz.ch/de/die-eth-zuerich/lehre/ai-in-education/ressourcen.html" target="_blank">https://ethz.ch/de/die-eth-zuerich/lehre/ai-in-education/ressourcen.html</a></p>
-      <p><b>Eine Übersicht von KI-Tools für verschiedene Anwendungen:</b> <a href="https://padlet.com/teachingtools/ki-tools-aydo325iervm77gb" target="_blank">https://padlet.com/teachingtools/ki-tools-aydo325iervm77gb</a></p>
-
+      <h3>Further Information and Tips for Using ChatGPT and Other AI Applications</h3>
+      <p>Here are some links to effective prompting techniques and AI tools that can help you maximize the potential of artificial intelligence:</p>
+      <p><b>Tips for Formulating Instructions for ChatGPT:</b> <a href="https://teachingtools.uzh.ch/asset/651d3d597918a3f3cf0012c2/download" target="_blank">https://teachingtools.uzh.ch</a></p>
+      <p><b>Guide to Creating Effective Instructions for ChatGPT:</b> <a href="https://ethz.ch/de/die-eth-zuerich/lehre/ai-in-education/ressourcen.html" target="_blank">https://ethz.ch/de/die-eth-zuerich/lehre/ai-in-education/ressourcen.html</a></p>
+      <p><b>An Overview of AI Tools for Various Applications:</b> <a href="https://padlet.com/teachingtools/ki-tools-aydo325iervm77gb" target="_blank">https://padlet.com/teachingtools/ki-tools-aydo325iervm77gb</a></p>
     </div>
   </div>
+
   {% endif %}
 
 </div>
