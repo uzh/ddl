@@ -21,11 +21,35 @@ load_dotenv()
 
 class ZipPostAPI(APIView, DDMAPIMixin):
     """
-    Custom view to post zip files to the database and make them accessible
-    through the DDM interface and endpoints.
+    This endpoint allows users to upload a ZIP file containing one or several
+    JSON files. The extracted JSON data is encrypted and stored in the
+    database in a `DataDonation` linked to a `Participant` and
+    `DonationBlueprint`.
 
-    This endpoint is created to integrate projects of the Digital Device Use
-    Self-Monitoring Platform (D2USP) with DDM.
+    Endpoint: `/api/zip-post/<project_url_id>/`
+    Method: `POST`
+
+    Authentication:
+    - Requires `Token Authentication` using a ` ProjectAccessToken`.
+    - Only authenticated users can access this endpoint.
+
+    Request Format:
+    - Content-Type: `multipart/form-data`
+    - Required fields:
+      - `file`: A ZIP file containing one or more JSON files.
+    - Optional URL request parameters:
+      - blueprint_name: Only required if you want to overwrite the
+        default blueprint_name (“D2USP_Default”).
+
+    Response Codes:
+    - `201 Created` – When the ZIP is successfully processed and stored.
+    - `400 Bad Request` – If an invalid ZIP is uploaded or JSON is malformed.
+    - `404 Not Found` – If the project or blueprint is not found.
+
+    Example Request:
+    curl -X POST https://<main_domain>/api/zip-post/<project_url_id>/ \
+    -H "Authorization: Token <your_project_token>" \
+    -F file=@your_zip_file.zip
     """
     authentication_classes = [ProjectTokenAuthenticator]
     permission_classes = [permissions.IsAuthenticated]
