@@ -131,7 +131,6 @@ class SearchReport(BaseReport, TemplateView):
             n_langs_with_score += 1
 
         context['n_langs_with_score'] = n_langs_with_score
-        context['test_data'] = donation['Google Suchverlauf'][0]
         return context
 
     def get_donation_context(self, context):
