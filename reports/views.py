@@ -1,3 +1,5 @@
+import json
+
 import pandas as pd
 import pytz
 import requests
@@ -80,15 +82,16 @@ class SearchReport(BaseReport, TemplateView):
         context['status'] = 'okay'
         donation = self.get_donation_context(context)
 
-        if 'Google Suchverlauf' not in donation.keys():
+        google_blueprint_id = '78'
+        if google_blueprint_id not in donation.keys():
             context['status'] = 'Etwas ist schiefgelaufen und der Report konnte nicht generiert werden.'
             return context
 
-        if not donation['Google Suchverlauf']:
+        if not donation[google_blueprint_id]:
             context['status'] = 'Etwas ist schiefgelaufen und der Report konnte nicht generiert werden.'
             return context
 
-        events = donation['Google Suchverlauf'][0]
+        events = donation[google_blueprint_id]['donations'][0]['data']
 
         searches = search_data.get_clean_search_events(events)
         search_dates = [e['time'] for e in searches]
@@ -133,11 +136,11 @@ class SearchReport(BaseReport, TemplateView):
 
     def get_donation_context(self, context):
         data = self.get_data()
-
-        # For local testing:
-        # file_path = os.path.join(settings.BASE_DIR, 'reports/static/temp/search_donation.json')
-        # with open(file_path, encoding='latin1') as f:
-        #     data = json.loads(f.read())
+        try:
+            data = data.get('blueprints', None)
+        except:
+            data = json.loads(data)
+            data = data.get('blueprints', None)
         return data
 
 

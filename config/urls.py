@@ -36,6 +36,10 @@ urlpatterns = [
     path(
         '', include('ddl.urls')
     ),
+    path(
+        'reports/',
+        include('reports.urls')
+    )
 ]
 
 # DDM Integration
