@@ -8,6 +8,7 @@ from django.views.generic import TemplateView
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
+from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.documents import urls as wagtaildocs_urls
 
 
@@ -29,6 +30,7 @@ urlpatterns = [
         TemplateView.as_view(
             template_name='ddl/robots.txt', content_type='text/plain')
     ),
+    path('sitemap.xml', sitemap),
     path(
         'cookies/',
         include('cookie_consent.urls')

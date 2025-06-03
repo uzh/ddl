@@ -3,3 +3,5 @@ Disallow: /admin/
 Disallow: /cms/
 Disallow: /ddm/projects/
 Disallow: /ddm/studies/
+
+Sitemap: https://datadonation.uzh.ch/sitemap.xml

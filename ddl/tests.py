@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.core.files.uploadedfile import SimpleUploadedFile
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.urls import reverse
 from rest_framework.test import APIClient
 from rest_framework import status
@@ -13,6 +13,21 @@ import json
 from io import BytesIO
 
 User = get_user_model()
+
+
+class WebsiteUrlTests(TestCase):
+    def setUp(self):
+        self.client = Client()
+
+    def test_robots_txt(self):
+        """Test that robots.txt is accessible."""
+        response = self.client.get('/robots.txt')
+        self.assertEqual(response.status_code, 200)
+
+    def test_sitemap(self):
+        """Test that sitemap is accessible."""
+        response = self.client.get('/sitemap.xml')
+        self.assertEqual(response.status_code, 200)
 
 
 class TestZipPostAPI(TestCase):
