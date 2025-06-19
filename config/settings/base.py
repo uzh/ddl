@@ -169,7 +169,7 @@ OIDC_OP_AUTHORIZATION_ENDPOINT = os.getenv('OIDC_OP_AUTHORIZATION_ENDPOINT', 'ht
 OIDC_OP_TOKEN_ENDPOINT = os.getenv('OIDC_OP_TOKEN_ENDPOINT', 'https://login.eduid.ch/idp/profile/oidc/token')
 OIDC_OP_USER_ENDPOINT = os.getenv('OIDC_OP_USER_ENDPOINT', 'https://login.eduid.ch/idp/profile/oidc/userinfo')
 
-OIDC_RP_SCOPES = 'openid email swissEduIDAssociatedMail'
+OIDC_RP_SCOPES = 'openid email https://login.eduid.ch/authz/User.Read'
 
 # Redirect targets:
 LOGIN_REDIRECT_URL = '/ddm/projects/'
@@ -196,9 +196,9 @@ WEBPACK_LOADER = {
         'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
     }
 }
-DDM_SETTINGS = {
-    'EMAIL_PERMISSION_CHECK':  r'.*(\.|@)uzh\.ch$',
-}
+# DDM_SETTINGS = {
+#     'EMAIL_PERMISSION_CHECK':  r'.*(\.|@)uzh\.ch$',
+# }
 
 DDM_DEFAULT_HEADER_IMG_LEFT = '/static/ddl/img/logos/ddl/ddl_logo_black.svg'
 DDM_DEFAULT_HEADER_IMG_RIGHT = '/static/ddl/img/logos/external/uzh_logo_d_pos.svg'
