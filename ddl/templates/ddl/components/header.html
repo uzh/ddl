@@ -32,7 +32,7 @@
   <div class="modal-background"></div>
   <div class="modal-content">
 
-    <div class="modal-nav-item child{% if page and page.get_parent.title == 'Root' %} selected{% endif %}">
+    <div class="modal-nav-item child{% if page %}{% if page.get_parent.title == 'Root' %} selected{% endif %}{% endif %}">
       <a class="modal-nav-link" href="/{{ request.LANGUAGE_CODE }}/">Home</a>
     </div>
     
