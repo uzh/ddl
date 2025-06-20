@@ -74,6 +74,11 @@ urlpatterns += [
         name='ddm_logout'
     ),
     path(
+        'oidc/callback/ddm/login/failed/',
+        RedirectView.as_view(url='/ddm/login/failed/', permanent=False),
+        name='ddm_login_failed_redirect'
+    ),
+    path(
         'ddm/login/failed/',
         TemplateView.as_view(template_name='ddl/auth/oidc_login_failed.html'),
         name='ddm_login_failed'
