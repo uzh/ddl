@@ -74,6 +74,11 @@ urlpatterns += [
         name='ddm_logout'
     ),
     path(
+        'ddm/login/failed/',
+        TemplateView.as_view(template_name='ddl/auth/oidc_login_failed.html'),
+        name='ddm_login_failed'
+    ),
+    path(
         'ddm/contact/',
         TemplateView.as_view(template_name='ddl/custom-ddm/contact.html'),
         name='ddm-contact'

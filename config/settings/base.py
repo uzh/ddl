@@ -173,6 +173,7 @@ OIDC_RP_SCOPES = 'openid email https://login.eduid.ch/authz/User.Read'
 
 # Redirect targets:
 LOGIN_REDIRECT_URL = '/ddm/projects/'
+LOGIN_REDIRECT_URL_FAILURE = 'ddm/login/failed/'
 LOGOUT_REDIRECT_URL = '/ddm/login/'
 
 OIDC_RENEW_ID_TOKEN_EXPIRY_SECONDS = 60 * 60 * 4
