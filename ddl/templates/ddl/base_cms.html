@@ -1,0 +1,14 @@
+{% extends 'ddl/base.html' %}
+{% load wagtailuserbar %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block pre_body %}
+  {% if page %}{% wagtailuserbar %}{% endif %}
+{% endblock %}
+
+{% block header_content %}
+  <div class="container has-text-centered pl-6 pr-6">
+    {% include "ddl/components/header_cms.html" %}
+  </div>
+{% endblock header_content %}

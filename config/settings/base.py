@@ -72,7 +72,7 @@ MIDDLEWARE = [
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
+    'ddl.auth.DDLOIDCAuthenticationBackend',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -170,8 +170,11 @@ OIDC_OP_AUTHORIZATION_ENDPOINT = os.getenv('OIDC_OP_AUTHORIZATION_ENDPOINT', 'ht
 OIDC_OP_TOKEN_ENDPOINT = os.getenv('OIDC_OP_TOKEN_ENDPOINT', 'https://login.eduid.ch/idp/profile/oidc/token')
 OIDC_OP_USER_ENDPOINT = os.getenv('OIDC_OP_USER_ENDPOINT', 'https://login.eduid.ch/idp/profile/oidc/userinfo')
 
+OIDC_RP_SCOPES = 'openid email https://login.eduid.ch/authz/User.Read'
+
 # Redirect targets:
 LOGIN_REDIRECT_URL = '/ddm/projects/'
+LOGIN_REDIRECT_URL_FAILURE = 'ddm/login/failed/'
 LOGOUT_REDIRECT_URL = '/ddm/login/'
 
 OIDC_RENEW_ID_TOKEN_EXPIRY_SECONDS = 60 * 60 * 4
@@ -195,9 +198,9 @@ WEBPACK_LOADER = {
         'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
     }
 }
-DDM_SETTINGS = {
-    'EMAIL_PERMISSION_CHECK':  r'.*(\.|@)uzh\.ch$',
-}
+# DDM_SETTINGS = {
+#     'EMAIL_PERMISSION_CHECK':  r'.*(\.|@)uzh\.ch$',
+# }
 
 DDM_DEFAULT_HEADER_IMG_LEFT = '/static/ddl/img/logos/ddl/ddl_logo_black.svg'
 DDM_DEFAULT_HEADER_IMG_RIGHT = '/static/ddl/img/logos/external/uzh_logo_d_pos.svg'

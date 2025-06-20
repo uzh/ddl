@@ -1,0 +1,34 @@
+{% extends 'ddl/components/header.html' %}
+
+{% block head_nav %}
+  {% include 'ddl/navigation/head_nav.html' %}
+{% endblock %}
+
+{% block language_selector %}
+  <div class="navbar-item navbar-item-add">
+    {% include 'ddl/components/language_selector.html' %}
+  </div>
+{% endblock %}
+
+{% block modal_nav %}
+  <div class="modal-nav-item child{% if page %}{% if page.get_parent.title == 'Root' %} selected{% endif %}{% endif %}">
+    <a class="modal-nav-link" href="/{{ request.LANGUAGE_CODE }}/">Home</a>
+  </div>
+  
+  {% if page %}
+
+    {% for  menu_page in page.get_root.get_children.0.get_children.live.in_menu %}
+    <div class="modal-nav-item child{% if menu_page.get_url in request.path %} selected{% endif %}">
+      <a class="modal-nav-link" href="{{ menu_page.url }}">{{ menu_page.title }}</a>
+    </div>
+    {% endfor %}
+    
+  {% endif %}
+
+  <div class="modal-nav-addition">
+    <div class="navbar-item navbar-item-add modal-language">
+      {% include 'ddl/components/language_selector.html' %}
+    </div>
+  </div>
+  
+{% endblock %}

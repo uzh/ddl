@@ -1,0 +1,60 @@
+{% extends 'ddl/base.html' %}
+
+{% load static %}
+
+{% block title %}DDM: Login Failed{% endblock %}
+
+{% block page_title %}Data Donation Module: Login Failed{% endblock %}
+
+{% block header %}{% endblock header %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'ddm/css/research-interface-base.css' %}">
+<link rel="stylesheet" href="{% static 'ddm/css/bootstrap/bootstrap.min.css' %}">
+{% endblock extra_head %}
+
+{% block main_content %}
+
+<div class="container">
+  <div class="columns">
+    <div class="column is-1-tablet is-hidden-desktop-only is-2-fullhd"></div>
+    <div class="column content has-text-black">
+      <div class="row">
+        <img alt="Data Donation Module" style="height: 100px" alt="" src="{% static 'ddm/img/logos/DDM_Logo_Schwarz.svg' %}">
+      </div>
+      <h2 class="text-center">Data Donation Module: Login Failed</h2>
+      
+      <p class="mt-4">
+        Unfortunately, your login attempt to the DDM failed, and it was not possible to create an account.
+      </p>
+      
+      <p>
+        Currently, DDM is only accessible for researchers associated with the University of Zurich. To access DDM,
+        you must log in with a Switch edu-ID account that is affiliated with the University of Zurich.
+      </p>
+      
+      <p>
+        If you are affiliated with the University of Zurich but struggle to log in, please check if your edu-ID account is 
+        affiliated with the UZH by visiting <a href="https://eduid.ch/account/profile" target="_blank">https://eduid.ch/account/profile</a> 
+        and checking the "Organisations" tab.
+      </p>
+      
+      <p>
+        If you want to try to log in again with a different edu-ID account, please first 
+        <a href="https://eduid.ch/account/profile" target="_blank">log out of the account you are currently logged in with</a> 
+        and try to <a href="/ddm/">log in again</a>.
+      </p>
+      
+      <p>
+        If problems persist, <a href="https://datadonation.uzh.ch/en/contact/">contact us</a>.
+      </p>
+
+      <div class="row mt-3 justify-content-center text-center">
+        <a class="mt-3" href="/">Home</a>
+      </div>
+    </div>
+    <div class="column is-1-tablet is-hidden-desktop-only is-2-fullhd"></div>
+  </div>
+</div>
+
+{% endblock %}

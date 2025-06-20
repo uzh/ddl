@@ -4,7 +4,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
@@ -13,6 +13,10 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 
 urlpatterns = [
+    path(
+        '',
+        RedirectView.as_view(url=f'/{settings.LANGUAGE_CODE}/', permanent=False)
+    ),
     path(
         'admin/',
         admin.site.urls
@@ -72,6 +76,16 @@ urlpatterns += [
         name='ddm_logout'
     ),
     path(
+        'oidc/callback/ddm/login/failed/',
+        RedirectView.as_view(url='/ddm/login/failed/', permanent=False),
+        name='ddm_login_failed_redirect'
+    ),
+    path(
+        'ddm/login/failed/',
+        TemplateView.as_view(template_name='ddl/auth/oidc_login_failed.html'),
+        name='ddm_login_failed'
+    ),
+    path(
         'ddm/contact/',
         TemplateView.as_view(template_name='ddl/custom-ddm/contact.html'),
         name='ddm-contact'
@@ -87,9 +101,9 @@ urlpatterns += [
 ]
 
 urlpatterns += i18n_patterns(
-     path('', include(wagtail_urls)),
-     path('', include('ddl.urls')),
-     prefix_default_language=True
+    path('', include(wagtail_urls)),
+    path('', include('ddl.urls')),
+    prefix_default_language=True
 )
 
 if settings.DEBUG:

@@ -1,4 +1,4 @@
-{% load static i18n wagtailuserbar cookie_consent_tags %}
+{% load static i18n cookie_consent_tags %}
 {% get_current_language as LANGUAGE_CODE %}
 {% url "cookie_consent_cookie_group_list" as url_cookies %}
 
@@ -10,7 +10,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>{% block title %}{{ page.title }}{% endblock %}</title>
+  <title>{% block title %}Digital Meal{% endblock %}</title>
   <meta name="description"
         content="This is the official website of the Data Donation Lab.">
 
@@ -42,7 +42,7 @@
 </head>
 
 <body>
-  {% wagtailuserbar %}
+  {% block pre_body %}{% endblock %}
   <div class="body_wrapper">
     <div id="header">
       {% block header_content %}
