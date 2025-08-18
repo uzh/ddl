@@ -48,21 +48,28 @@ LOGGING = {
     },
     'handlers': {
         'file': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(BASE_DIR, 'datadlab.log'),
+            'filename': os.path.join(BASE_DIR, 'logs', 'datadlab.log'),
             'maxBytes': 1024*1024*15,
             'formatter': 'verbose'
         },
+        'error_file': {
+            'level': 'ERROR',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs', 'errors.log'),
+            'maxBytes': 1024 * 1024 * 15,
+            'formatter': 'verbose'
+        }
     },
     'loggers': {
         'django': {
-            'handlers': ['file'],
+            'handlers': ['file', 'error_file'],
             'propagate': True,
-            'level': 'DEBUG',
+            'level': 'INFO',
         },
         'root': {
-            'handlers': ['file'],
+            'handlers': ['file', 'error_file'],
             'level': 'INFO'
         }
     }
