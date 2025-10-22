@@ -315,6 +315,10 @@ CKEDITOR_5_CONFIGS = {
                     'attributes': ATTRIBUTES_TO_ALLOW
                 },
                 {
+                    'name': 'tr',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
                     'name': 'td',
                     'attributes': ATTRIBUTES_TO_ALLOW
                 },
