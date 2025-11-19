@@ -124,7 +124,9 @@ USE_TZ = True
 WAGTAIL_I18N_ENABLED = True
 WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
     ('en', "English"),
-    ('de', "Deutsch")
+    ('de', "Deutsch"),
+    ('it', "Italienisch"),
+    ('fr', "Französisch")
 ]
 
 
@@ -316,6 +318,10 @@ CKEDITOR_5_CONFIGS = {
                 },
                 {
                     'name': 'table',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'tr',
                     'attributes': ATTRIBUTES_TO_ALLOW
                 },
                 {
