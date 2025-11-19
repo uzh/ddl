@@ -242,6 +242,7 @@ ATTRIBUTES_TO_ALLOW = {
     'aria-expanded': True,
     'aria-controls': True,
     'aria-labelledby': True,
+    'style': True,
 }
 
 CKEDITOR_5_CONFIGS = {
@@ -346,6 +347,10 @@ CKEDITOR_5_CONFIGS = {
                 },
                 {
                     'name': 'style',
+                    'attributes': ATTRIBUTES_TO_ALLOW
+                },
+                {
+                    'name': 'img',
                     'attributes': ATTRIBUTES_TO_ALLOW
                 },
             ],
