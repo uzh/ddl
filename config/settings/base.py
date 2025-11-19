@@ -1,3 +1,4 @@
+import json
 import os
 
 from dotenv import load_dotenv
@@ -12,6 +13,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # APPLICATION DEFINITIONS
 # ------------------------------------------------------------------------------
 SECRET_KEY = os.environ['DJANGO_SECRET']
+
+ADMINS = [tuple(admin) for admin in json.loads(os.environ.get('ADMINS', '[]'))]
+SERVER_EMAIL = os.environ['DEFAULT_FROM_EMAIL']
 
 INSTALLED_APPS = [
     'ddl.apps.DdlConfig',

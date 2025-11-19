@@ -60,7 +60,13 @@ LOGGING = {
             'filename': os.path.join(BASE_DIR, 'logs', 'errors.log'),
             'maxBytes': 1024 * 1024 * 15,
             'formatter': 'verbose'
-        }
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'include_html': False,
+            'filters': ['require_debug_false'],
+        },
     },
     'loggers': {
         'django': {
@@ -68,9 +74,9 @@ LOGGING = {
             'propagate': True,
             'level': 'INFO',
         },
-        'root': {
-            'handlers': ['file', 'error_file'],
-            'level': 'INFO'
+        '': {
+            'handlers': ['file', 'error_file', 'mail_admins'],
+            'level': 'WARNING'
         }
     }
 }
