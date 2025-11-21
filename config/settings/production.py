@@ -80,7 +80,7 @@ LOGGING = {
             'level': 'INFO',
         },
         '': {
-            'handlers': ['file', 'error_file', 'mail_admins'],
+            'handlers': ['file', 'error_file'],
             'level': 'WARNING'
         }
     }
