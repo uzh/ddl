@@ -1,7 +1,7 @@
 bokeh==3.1.1  # https://github.com/bokeh/bokeh
 Django==4.2.26  # https://github.com/django/django
 django-cookie-consent==0.9.0  # https://github.com/django-commons/django-cookie-consent
-django-ddm==2.1.6  # https://github.com/uzh/ddm
+django-ddm==2.1.7  # https://github.com/uzh/ddm
 langdetect==1.0.9
 mozilla-django-oidc==4.0.1  # https://github.com/mozilla/mozilla-django-oidc
 mysqlclient==2.2.7  # https://github.com/PyMySQL/mysqlclient
