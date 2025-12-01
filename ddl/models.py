@@ -1,19 +1,16 @@
-from ckeditor.fields import RichTextField
-
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 from modelcluster.fields import ParentalKey
 
 from wagtail.models import Page
-from wagtail.fields import StreamField
+from wagtail.fields import StreamField, RichTextField
 from wagtail import blocks
 from wagtail import fields
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel, FieldRowPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.contrib.forms.panels import FormSubmissionsPanel
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.snippets.models import register_snippet
 
 
 # CUSTOM USER MODEL
