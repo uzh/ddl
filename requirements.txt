@@ -1,10 +1,9 @@
 bokeh==3.1.1  # https://github.com/bokeh/bokeh
-Django==4.2.26  # https://github.com/django/django
-django-cookie-consent==0.9.0  # https://github.com/django-commons/django-cookie-consent
+Django==5.2.12  # https://github.com/django/django
 django-ddm==2.1.7  # https://github.com/uzh/ddm
 langdetect==1.0.9
-mozilla-django-oidc==4.0.1  # https://github.com/mozilla/mozilla-django-oidc
-mysqlclient==2.2.7  # https://github.com/PyMySQL/mysqlclient
-pandas==2.3.3
-python-dotenv==1.2.1  # https://github.com/theskumar/python-dotenv
-wagtail==6.3.1
+mozilla-django-oidc==5.0.2  # https://github.com/mozilla/mozilla-django-oidc
+mysqlclient==2.2.8  # https://github.com/PyMySQL/mysqlclient
+pandas==3.0.2
+python-dotenv==1.2.2  # https://github.com/theskumar/python-dotenv
+wagtail==7.3.1
