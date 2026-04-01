@@ -36,10 +36,6 @@ urlpatterns = [
     ),
     path('sitemap.xml', sitemap),
     path(
-        'cookies/',
-        include('cookie_consent.urls')
-    ),
-    path(
         '', include('ddl.urls')
     ),
     path(
