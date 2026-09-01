@@ -1,7 +1,9 @@
-import os
-import ddm.core
-from .base import *
+from pathlib import Path
 
+import ddm.core
+
+from .base import *  # noqa: F403
+from .base import BASE_DIR, INSTALLED_APPS, MIDDLEWARE
 
 ALLOWED_HOSTS = []
 
@@ -14,40 +16,56 @@ SITE_ID = 1
 # DATABASE
 # ------------------------------------------------------------------------------
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'datadlab.sqlite',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "datadlab.sqlite",
     }
 }
 
+
+# DDM
+# ------------------------------------------------------------------------------
 WEBPACK_LOADER = {
-    'DDM_UPLOADER': {
-        'CACHE': True,
-        'BUNDLE_DIR_NAME': 'ddm_core/frontend/uploader/',
-        'STATS_FILE': os.path.join(
-            os.path.dirname(ddm.core.__file__),
-            'static/ddm_core/frontend/uploader/webpack-stats.json'
-        ),
-        'POLL_INTERVAL': 0.1,
-        'TIMEOUT': None,
-        'IGNORE': [r'.+\.hot-update.js', r'.+\.map']
+    "DDM_UPLOADER": {
+        "CACHE": True,
+        "BUNDLE_DIR_NAME": "ddm_core/frontend/uploader/",
+        "STATS_FILE": Path(ddm.core.__file__).parent
+        / "static/ddm_core/frontend/uploader/webpack-stats.json",
+        "POLL_INTERVAL": 0.1,
+        "TIMEOUT": None,
+        "IGNORE": [r".+\.hot-update.js", r".+\.map"],
     },
-    'DDM_QUESTIONNAIRE': {
-        'CACHE': True,
-        'BUNDLE_DIR_NAME': 'ddm_core/frontend/questionnaire/',
-        'STATS_FILE': os.path.join(
-            os.path.dirname(ddm.core.__file__),
-            'static/ddm_core/frontend/questionnaire/webpack-stats.json'
-        ),
-        'POLL_INTERVAL': 0.1,
-        'TIMEOUT': None,
-        'IGNORE': [r'.+\.hot-update.js', r'.+\.map']
+    "DDM_QUESTIONNAIRE": {
+        "CACHE": True,
+        "BUNDLE_DIR_NAME": "ddm_core/frontend/questionnaire/",
+        "STATS_FILE": Path(ddm.core.__file__).parent
+        / "static/ddm_core/frontend/questionnaire/webpack-stats.json",
+        "POLL_INTERVAL": 0.1,
+        "TIMEOUT": None,
+        "IGNORE": [r".+\.hot-update.js", r".+\.map"],
     },
-    'GPT': {
-        'CACHE': True,
-        'BUNDLE_DIR_NAME': 'gpt/vue/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'gpt', 'static', 'gpt', 'vue', 'webpack-stats.json'),
-        'POLL_INTERVAL': 0.1,
-        'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
-    }
+    "GPT": {
+        "CACHE": True,
+        "BUNDLE_DIR_NAME": "gpt/vue/",
+        "STATS_FILE": BASE_DIR / "gpt/static/gpt/vue/webpack-stats.json",
+        "POLL_INTERVAL": 0.1,
+        "IGNORE": [r".+\.hot-update.js", r".+\.map"],
+    },
 }
+
+
+# django-debug-toolbar - https://github.com/django-commons/django-debug-toolbar
+# ------------------------------------------------------------------------------
+if DEBUG:
+    INSTALLED_APPS += ["debug_toolbar"]
+    MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
+    DEBUG_TOOLBAR_CONFIG = {
+        "DISABLE_PANELS": [
+            "debug_toolbar.panels.redirects.RedirectsPanel",
+            # Disable profiling panel due to an issue with Python 3.12:
+            # https://github.com/jazzband/django-debug-toolbar/issues/1875
+            "debug_toolbar.panels.profiling.ProfilingPanel",
+        ],
+        "SHOW_TEMPLATE_CONTEXT": True,
+    }
+    INTERNAL_IPS = ["127.0.0.1"]
