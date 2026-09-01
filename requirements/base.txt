@@ -1,10 +1,9 @@
 bokeh==3.1.1  # https://github.com/bokeh/bokeh
-Django==5.2.12  # https://github.com/django/django
+Django==5.2.17  # https://github.com/django/django
 django-ddm==2.1.7  # https://github.com/uzh/ddm
-langdetect==1.0.9
+langdetect==1.0.9  # https://github.com/Mimino666/langdetect
 mozilla-django-oidc==5.0.2  # https://github.com/mozilla/mozilla-django-oidc
-mysqlclient==2.2.8  # https://github.com/PyMySQL/mysqlclient
-pandas==3.0.2
-python-dotenv==1.2.2  # https://github.com/theskumar/python-dotenv
+pandas==3.0.5  # https://github.com/pandas-dev/pandas
+python-dotenv==1.2.3  # https://github.com/theskumar/python-dotenv
 pytz==2024.2  # https://github.com/stub42/pytz/tree/master
-wagtail==7.3.1
+wagtail==7.4.3  # https://github.com/wagtail/wagtail (7.4 has LTS until 2.11.27)
