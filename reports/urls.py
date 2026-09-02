@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import SearchReport, DigitalMealReport, ChatGPTReport
+from .views import SearchReport, DigitalMealReport
 
 
 urlpatterns = [
