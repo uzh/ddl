@@ -44,13 +44,6 @@ WEBPACK_LOADER = {
         "TIMEOUT": None,
         "IGNORE": [r".+\.hot-update.js", r".+\.map"],
     },
-    "GPT": {
-        "CACHE": True,
-        "BUNDLE_DIR_NAME": "gpt/vue/",
-        "STATS_FILE": BASE_DIR / "gpt/static/gpt/vue/webpack-stats.json",
-        "POLL_INTERVAL": 0.1,
-        "IGNORE": [r".+\.hot-update.js", r".+\.map"],
-    },
 }
 
 

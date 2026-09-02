@@ -11,11 +11,10 @@ from django.conf import settings
 from django.views.generic import TemplateView
 from requests import JSONDecodeError
 
-from .plots import youtube as yt_plots
-from .plots import search as search_plots
-from .plots import chatgpt as gpt_plots
-from .utils.get_scores import get_scores_for_report
-from .utils import yt_data, search_data
+from reports.plots import youtube as yt_plots
+from reports.plots import search as search_plots
+from reports.utils.get_scores import get_scores_for_report
+from reports.utils import yt_data, search_data
 
 
 utc = pytz.UTC

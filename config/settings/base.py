@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'ddm.participation',
     'ddm.projects',
     'ddm.core',
-    'gpt',
     'reports',
     'django_ckeditor_5',
     'webpack_loader',
@@ -204,13 +203,6 @@ WEBPACK_LOADER = {
         'TIMEOUT': None,
         'IGNORE': [r'.+\.hot-update.js', r'.+\.map']
     },
-    'GPT': {
-        'CACHE': True,
-        'BUNDLE_DIR_NAME': 'gpt/vue/',
-        'STATS_FILE': os.path.join(STATIC_ROOT, 'gpt/vue/webpack-stats.json'),
-        'POLL_INTERVAL': 0.1,
-        'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
-    }
 }
 # DDM_SETTINGS = {
 #     'EMAIL_PERMISSION_CHECK':  r'.*(\.|@)uzh\.ch$',
@@ -372,7 +364,3 @@ SEARCH_API_KEY = os.getenv('SEARCH_API_KEY', None)
 # Digital Meal Report
 DIGITALMEAL_PROJECT_PK = os.getenv('DIGITALMEAL_PROJECT_PK', None)
 DIGITALMEAL_API_KEY = os.getenv('DIGITALMEAL_API_KEY', None)
-
-# ChatGPT Report
-CHATGPT_PROJECT_PK = os.getenv('CHATGPT_PROJECT_PK', None)
-CHATGPT_API_KEY = os.getenv('CHATGPT_API_KEY', None)
