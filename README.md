@@ -1,6 +1,17 @@
 # Data Donation Lab (ddl)
 This is the source code for the Data Donation Lab website: https://datadonation.uzh.ch
 
+## About
+
+The Data Donation Lab at the University of Zurich helps researchers run *data
+donation* studies: participants request a copy of their data from a platform
+(Instagram, YouTube, …) and donate selected parts of it for research.
+
+`ddl` is the public website (a Wagtail CMS) built around
+[`django-ddm`](https://github.com/uzh/ddm) — the reusable Django app that
+implements the donation flow and the researcher interface. This repository wires
+DDM into the site, themes it, and adds a few site-specific pieces.
+
 ## Repository Structure
 
 **App components:**
@@ -22,7 +33,12 @@ This is the source code for the Data Donation Lab website: https://datadonation.
 ### Prerequisites
 
 - Python 3.12
-- SQLite - used as dev database; MariaDB is used in production
+- SQLite for local development; MariaDB in CI and production
+- Signing in to the researcher interface (`/ddm/`) locally also needs SWITCH
+  eduID OIDC credentials (`OIDC_RP_CLIENT_ID` / `OIDC_RP_CLIENT_SECRET`); the CMS
+  and Django admin work without them
+
+DDM ships its frontend as pre-built bundles, so there is no Node/npm build step.
 
 ### Initial Setup
 
@@ -41,6 +57,7 @@ pip install -r requirements/dev.txt
 
 # 4. Set up environment variables
 cp .env.example .env
+# then edit .env and set DJANGO_SECRET (see the comment in the file)
 
 # 5. Install pre-commit hooks
 pre-commit install
@@ -56,6 +73,39 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
+### Authentication
+
+The site has two separate login paths:
+
+| Path                                        | Users                                 | Backend                                                                                       |
+|---------------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------|
+| `/admin/` (Django admin), `/cms/` (Wagtail) | Local accounts from `createsuperuser` | Username / password                                                                           |
+| `/ddm/` (researcher interface)              | UZH researchers                       | SWITCH eduID (OIDC); a linked affiliation mail ending in `uzh.ch` is required (`ddl/auth.py`) |
+
+Study participants are not authenticated — they reach a donation project through
+its public participation URL.
+
+---
+
+## Environment Variables
+
+All configuration is read from the environment; a local `.env` file is loaded
+automatically. [`.env.example`](.env.example) is the complete, annotated list —
+the essentials:
+
+| Variable                                       | Scope                       | Notes                                                                                 |
+|------------------------------------------------|-----------------------------|---------------------------------------------------------------------------------------|
+| `DJANGO_SECRET`                                | all                         | Required. Generate with the command in `.env.example`.                                |
+| `DJANGO_SETTINGS_MODULE`                       | all                         | `config.settings.local` (default), `.ci`, or `.production`.                           |
+| `ALLOWED_HOSTS`                                | production                  | Comma- or space-separated host list.                                                  |
+| `DJANGO_DB_HOST` / `_NAME` / `_USER` / `_PW`   | production                  | MariaDB connection.                                                                   |
+| `EMAIL_HOST` / `_HOST_USER` / `_HOST_PASSWORD` | production                  | Authenticated SMTP, required. `EMAIL_PORT` (587) and `EMAIL_USE_TLS` (true) optional. |
+| `SERVER_EMAIL` / `DEFAULT_FROM_EMAIL`          | production                  | From-addresses for error reports / ordinary mail.                                     |
+| `ADMINS`                                       | production                  | JSON `[["Name", "mail"], …]`; recipients of error reports.                            |
+| `OIDC_RP_CLIENT_ID` / `OIDC_RP_CLIENT_SECRET`  | any env using `/ddm/` login | SWITCH eduID client credentials.                                                      |
+| `ZIP_BLUEPRINT_NAME`                           | where the ZIP API is used   | `DonationBlueprint` targeted by `ddl.apis.ZipPostAPI`.                                |
+| `SEARCH_*`, `DIGITALMEAL_*`                    | `reports` app               | Project PKs / API keys for the legacy report views.                                   |
+
 ---
 
 ## Repository Management
@@ -70,14 +120,46 @@ We work with three central branches:
 
 ---
 
+## Deployment
+
+`stage` and `main` are deployed to the stage and production servers
+respectively. Each target runs with `DJANGO_SETTINGS_MODULE=config.settings.production`
+and, on the server:
+
+```bash
+pip install -r requirements/production.txt   # adds gunicorn + mysqlclient
+python manage.py migrate
+python manage.py collectstatic --noinput
+```
+
+- **App server:** gunicorn serving `config.wsgi:application`.
+- **Database:** MariaDB (see the `DJANGO_DB_*` variables).
+- **Static / media:** served by the reverse proxy from `STATIC_ROOT`
+  (`<repo>/../staticfiles/`) and `MEDIA_ROOT` (`<repo>/../media/`).
+- **TLS:** terminated at the proxy, which must set `X-Forwarded-Proto` (trusted
+  via `SECURE_PROXY_SSL_HEADER`) and forward the real `Host` header.
+
+Infrastructure specifics (web server, process manager) live outside this
+repository.
+
+---
+
 ## Day-to-day Development
 
 ### Running tests
 
 ```bash
-python manage.py test
+python manage.py test                      # SQLite (config.settings.local)
 python -m coverage run manage.py test
-python -m coverage report          # fails if coverage drops below 80 %
+python -m coverage report                  # fails if coverage drops below 80 %
+```
+
+CI runs the suite against MariaDB with `config.settings.ci`. To reproduce that
+locally, start a MariaDB with the credentials in `config/settings/ci.py`
+(`127.0.0.1`, `root` / `password`, database `ddmtestdb`) and run:
+
+```bash
+DJANGO_SETTINGS_MODULE=config.settings.ci python manage.py test
 ```
 
 ### Linting and formatting
@@ -88,8 +170,8 @@ Usually, auto-run when committing, but good to know:
 ruff check .                        # lint
 ruff check . --fix                  # lint and auto-fix
 ruff format .                       # format
-djlint ddcs/ --check                # check templates
-djlint ddcs/ --reformat             # reformat templates
+djlint ddl/ --check                 # check templates (runs via pre-commit)
+djlint ddl/ --reformat              # reformat templates
 ```
 
 ### Skipping pre-commit hooks
@@ -107,3 +189,11 @@ git push --no-verify
 ```
 
 `SKIP` accepts a comma-separated list of hook IDs: `SKIP=pip-audit,check-translations git push`.
+
+---
+
+## Contact
+
+- Website: https://datadonation.uzh.ch
+- Issues: https://github.com/uzh/ddl/issues
+- DDM documentation: https://uzh.github.io/ddm/ddm/

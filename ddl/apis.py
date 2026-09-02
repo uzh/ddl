@@ -28,20 +28,20 @@ class ZipPostAPI(APIView, DDMAPIMixin):
     database in a `DataDonation` linked to a `Participant` and
     `DonationBlueprint`.
 
-    Endpoint: `/api/zip-post/<project_url_id>/`
+    Endpoint: `/api/zip/<project_url_id>`
     Method: `POST`
 
     Authentication:
-    - Requires `Token Authentication` using a ` ProjectAccessToken`.
+    - Requires `Token Authentication` using a `ProjectAccessToken`.
     - Only authenticated users can access this endpoint.
 
     Request Format:
     - Content-Type: `multipart/form-data`
     - Required fields:
       - `file`: A ZIP file containing one or more JSON files.
-    - Optional URL request parameters:
-      - blueprint_name: Only required if you want to overwrite the
-        default blueprint_name (“D2USP_Default”).
+
+    The target `DonationBlueprint` is resolved by name from the
+    `ZIP_BLUEPRINT_NAME` environment variable.
 
     Response Codes:
     - `201 Created`: When the ZIP is successfully processed and stored.
@@ -49,10 +49,11 @@ class ZipPostAPI(APIView, DDMAPIMixin):
     - `404 Not Found`: If the project or blueprint is not found.
 
     Example Request:
-    curl -X POST https://<main_domain>/api/zip-post/<project_url_id>/ \
+    curl -X POST https://<main_domain>/api/zip/<project_url_id> \
     -H "Authorization: Token <your_project_token>" \
     -F file=@your_zip_file.zip
     """
+
     authentication_classes = [ProjectTokenAuthenticator]
     permission_classes = [permissions.IsAuthenticated]
 
@@ -89,7 +90,7 @@ class ZipPostAPI(APIView, DDMAPIMixin):
             time_submitted=timezone.now(),
             consent=True,
             data=data,
-            status="success"
+            status="success",
         )
 
     @staticmethod
@@ -97,9 +98,7 @@ class ZipPostAPI(APIView, DDMAPIMixin):
         """Reject oversized archives and zip bombs before reading any member."""
         infos = zip_ref.infolist()
         if len(infos) > settings.ZIP_UPLOAD_MAX_MEMBERS:
-            raise ValidationError(
-                {"error": "ZIP contains too many files."}
-            )
+            raise ValidationError({"error": "ZIP contains too many files."})
 
         total_uncompressed = 0
         for info in infos:
@@ -153,33 +152,28 @@ class ZipPostAPI(APIView, DDMAPIMixin):
         uploaded_file = request.data.get("file")
         if uploaded_file is None:
             return Response(
-                {"error": "No file was submitted."},
-                status=status.HTTP_400_BAD_REQUEST
+                {"error": "No file was submitted."}, status=status.HTTP_400_BAD_REQUEST
             )
         if not uploaded_file.name.endswith(".zip"):
             return Response(
                 {"error": "Only zip files are allowed."},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_400_BAD_REQUEST,
             )
         if uploaded_file.size > settings.ZIP_UPLOAD_MAX_BYTES:
             return Response(
                 {"error": "Uploaded ZIP file is too large."},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
         file_data = uploaded_file.read()
         result, errors = self.extract_zip(file_data)
 
         if errors and not len(result.keys()) > len(errors.keys()):
-            return Response(
-                {"errors": errors},
-                status=status.HTTP_400_BAD_REQUEST
-            )
+            return Response({"errors": errors}, status=status.HTTP_400_BAD_REQUEST)
 
         participant = self.create_participant()
         self.create_donation(participant, result)
 
         return Response(
-            "ZIP has been saved in database",
-            status=status.HTTP_201_CREATED
+            "ZIP has been saved in database", status=status.HTTP_201_CREATED
         )
