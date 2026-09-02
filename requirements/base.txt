@@ -3,9 +3,11 @@ Django==5.2.17  # https://github.com/django/django
 django-ckeditor-5==0.2.20  # https://github.com/hvlads/django-ckeditor-5
 django-csp==4.0  # https://github.com/mozilla/django-csp
 django-ddm==3.0.0b3  # https://github.com/uzh/ddm
+django-otp==1.7.0  # https://github.com/django-otp/django-otp
 langdetect==1.0.9  # https://github.com/Mimino666/langdetect
 mozilla-django-oidc==5.0.2  # https://github.com/mozilla/mozilla-django-oidc
 pandas==3.0.5  # https://github.com/pandas-dev/pandas
 python-dotenv==1.2.3  # https://github.com/theskumar/python-dotenv
 pytz==2024.2  # https://github.com/stub42/pytz/tree/master
 wagtail==7.4.3  # https://github.com/wagtail/wagtail (7.4 has LTS until 2.11.27)
+wagtail-2fa==1.8.0  # https://github.com/labd/wagtail-2fa

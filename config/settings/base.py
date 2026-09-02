@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     "reports",
     "django_ckeditor_5",
     "webpack_loader",
+    "django_otp",
+    "django_otp.plugins.otp_totp",
+    "wagtail_2fa",
     "rest_framework",
     "rest_framework.authtoken",
     "wagtail.contrib.forms",
@@ -70,6 +73,9 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    # Subclasses django_otp's OTPMiddleware; enforces 2FA for admin/CMS users
+    # when WAGTAIL_2FA_REQUIRED is True (production only).
+    "wagtail_2fa.middleware.VerifyUserMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",

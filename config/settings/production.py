@@ -23,6 +23,10 @@ CSRF_COOKIE_SECURE = True
 X_FRAME_OPTIONS = "DENY"
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
+# Require TOTP 2FA for every user that can reach the Django admin or Wagtail CMS
+# (wagtail_2fa.middleware.VerifyUserMiddleware, added in base.py).
+WAGTAIL_2FA_REQUIRED = True
+
 # HSTS. Preload is intentionally not set: datadonation.uzh.ch cannot be added to
 # the browser preload list independently of uzh.ch.
 SECURE_HSTS_SECONDS = 31536000  # 1 year

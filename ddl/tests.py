@@ -32,22 +32,59 @@ class WebsiteUrlTests(TestCase):
         self.assertEqual(response.status_code, 200)
 
 
+class TwoFactorEnforcementTests(TestCase):
+    """wagtail_2fa.VerifyUserMiddleware gates /admin/ and /cms/ for admin users."""
+
+    def setUp(self):
+        self.client = Client()
+        self.staff = User.objects.create_user(
+            "staffer", "staffer@mail.com", "pw", is_staff=True, is_superuser=True
+        )
+        self.plain = User.objects.create_user("plain", "plain@mail.com", "pw")
+
+    def _redirects_to_2fa(self, response):
+        return response.status_code == 302 and "/2fa/" in response["Location"]
+
+    @override_settings(WAGTAIL_2FA_REQUIRED=True)
+    def test_staff_pushed_to_2fa_on_cms(self):
+        self.client.force_login(self.staff)
+        self.assertTrue(self._redirects_to_2fa(self.client.get("/cms/")))
+
+    @override_settings(WAGTAIL_2FA_REQUIRED=True)
+    def test_staff_pushed_to_2fa_on_admin(self):
+        self.client.force_login(self.staff)
+        self.assertTrue(self._redirects_to_2fa(self.client.get("/admin/")))
+
+    @override_settings(WAGTAIL_2FA_REQUIRED=True)
+    def test_enrolment_page_reachable(self):
+        """A device-less user must be able to reach enrolment (no lockout loop)."""
+        self.client.force_login(self.staff)
+        self.assertEqual(self.client.get("/cms/2fa/devices/new").status_code, 200)
+
+    @override_settings(WAGTAIL_2FA_REQUIRED=True)
+    def test_non_staff_not_affected(self):
+        self.client.force_login(self.plain)
+        self.assertFalse(self._redirects_to_2fa(self.client.get("/cms/")))
+
+    def test_disabled_by_default(self):
+        self.client.force_login(self.staff)
+        self.assertFalse(self._redirects_to_2fa(self.client.get("/cms/")))
+
+
 class TestZipPostAPI(TestCase):
     def setUp(self):
         self.client = APIClient()
 
         self.base_creds = {
-            "username": "owner", "password": "123", "email": "owner@mail.com"
+            "username": "owner",
+            "password": "123",
+            "email": "owner@mail.com",
         }
         base_user = User.objects.create_user(**self.base_creds)
-        base_profile = ResearchProfile.objects.create(
-            user=base_user
-        )
+        base_profile = ResearchProfile.objects.create(user=base_user)
 
         self.project = DonationProject.objects.create(
-            name="Test Project",
-            slug="zip",
-            owner=base_profile
+            name="Test Project", slug="zip", owner=base_profile
         )
         self.blueprint = DonationBlueprint.objects.create(
             project=self.project,
@@ -55,7 +92,7 @@ class TestZipPostAPI(TestCase):
             description="description",
             exp_file_format="json",
             expected_fields='"field"',
-            parser_config = JSONParserConfig().model_dump(),
+            parser_config=JSONParserConfig().model_dump(),
         )
 
         token = self.project.create_token()
@@ -70,22 +107,17 @@ class TestZipPostAPI(TestCase):
         zip_buffer.seek(0)
 
         self.zip_file = SimpleUploadedFile(
-            "test.zip",
-            zip_buffer.read(),
-            content_type="application/zip"
+            "test.zip", zip_buffer.read(), content_type="application/zip"
         )
 
     @patch("os.getenv")
     def test_successful_zip_upload(self, mock_getenv):
         mock_getenv.return_value = str(self.blueprint.name)
 
-        post_url = reverse(
-            "zip_post", kwargs={"project_url_id": self.project.url_id})
+        post_url = reverse("zip_post", kwargs={"project_url_id": self.project.url_id})
 
         response = self.client.post(
-            post_url,
-            {"file": self.zip_file},
-            format="multipart"
+            post_url, {"file": self.zip_file}, format="multipart"
         )
 
         # Assert response
@@ -103,25 +135,27 @@ class TestZipPostAPI(TestCase):
         # Verify saved data
         expected_data = {
             "test.json": {"field": "value"},
-            "test2.json": {"field2": "value2"}
+            "test2.json": {"field2": "value2"},
         }
         saved_data = donation.get_decrypted_data(
-            self.project.secret, self.project.get_salt())
+            self.project.secret, self.project.get_salt()
+        )
         self.assertEqual(saved_data, expected_data)
 
     def _post_zip(self, zip_bytes):
-        post_url = reverse(
-            "zip_post", kwargs={"project_url_id": self.project.url_id})
+        post_url = reverse("zip_post", kwargs={"project_url_id": self.project.url_id})
         return self.client.post(
             post_url,
-            {"file": SimpleUploadedFile(
-                "test.zip", zip_bytes, content_type="application/zip")},
-            format="multipart"
+            {
+                "file": SimpleUploadedFile(
+                    "test.zip", zip_bytes, content_type="application/zip"
+                )
+            },
+            format="multipart",
         )
 
     def test_missing_file(self):
-        post_url = reverse(
-            "zip_post", kwargs={"project_url_id": self.project.url_id})
+        post_url = reverse("zip_post", kwargs={"project_url_id": self.project.url_id})
         response = self.client.post(post_url, {}, format="multipart")
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
@@ -137,8 +171,7 @@ class TestZipPostAPI(TestCase):
         response = self._post_zip(buffer.read())
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(
-            response.data, {"error": "Uploaded ZIP file is too large."})
+        self.assertEqual(response.data, {"error": "Uploaded ZIP file is too large."})
 
     @override_settings(ZIP_UPLOAD_MAX_MEMBERS=1)
     def test_zip_too_many_members(self):
@@ -151,8 +184,7 @@ class TestZipPostAPI(TestCase):
         response = self._post_zip(buffer.read())
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(
-            response.data, {"error": "ZIP contains too many files."})
+        self.assertEqual(response.data, {"error": "ZIP contains too many files."})
 
     def test_zip_bomb_compression_ratio(self):
         buffer = BytesIO()
@@ -165,8 +197,8 @@ class TestZipPostAPI(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(
-            response.data,
-            {"error": "ZIP rejected: suspicious compression ratio."})
+            response.data, {"error": "ZIP rejected: suspicious compression ratio."}
+        )
 
     @override_settings(ZIP_UPLOAD_MAX_UNCOMPRESSED_BYTES=50)
     def test_zip_uncompressed_total_too_large(self):
@@ -180,66 +212,52 @@ class TestZipPostAPI(TestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(
             response.data,
-            {"error": "Uncompressed ZIP content exceeds the allowed size."})
+            {"error": "Uncompressed ZIP content exceeds the allowed size."},
+        )
 
     def test_non_zip_file_upload(self):
         txt_file = SimpleUploadedFile(
-            "test.txt",
-            b"Hello, World!",
-            content_type="text/plain"
+            "test.txt", b"Hello, World!", content_type="text/plain"
         )
-        post_url = reverse(
-            "zip_post", kwargs={"project_url_id": self.project.url_id})
-        response = self.client.post(
-            post_url,
-            {"file": txt_file},
-            format="multipart"
-        )
+        post_url = reverse("zip_post", kwargs={"project_url_id": self.project.url_id})
+        response = self.client.post(post_url, {"file": txt_file}, format="multipart")
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(
-            response.data, {"error": "Only zip files are allowed."})
+        self.assertEqual(response.data, {"error": "Only zip files are allowed."})
 
     def test_corrupted_zip_upload(self):
         corrupted_zip_file = SimpleUploadedFile(
-            "corrupt.zip",
-            b"not a real zip file",
-            content_type="application/zip"
+            "corrupt.zip", b"not a real zip file", content_type="application/zip"
         )
-        post_url = reverse(
-            "zip_post", kwargs={"project_url_id": self.project.url_id})
+        post_url = reverse("zip_post", kwargs={"project_url_id": self.project.url_id})
         response = self.client.post(
-            post_url,
-            {"file": corrupted_zip_file},
-            format="multipart"
+            post_url, {"file": corrupted_zip_file}, format="multipart"
         )
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_invalid_json_in_zip(self):
         invalid_json_zip_buffer = BytesIO()
-        with zipfile.ZipFile(invalid_json_zip_buffer, "w", zipfile.ZIP_DEFLATED) as zip_file:  # noqa: E501
+        with zipfile.ZipFile(
+            invalid_json_zip_buffer, "w", zipfile.ZIP_DEFLATED
+        ) as zip_file:
             zip_file.writestr("invalid.json", "{invalid json")
         invalid_json_zip_buffer.seek(0)
 
         invalid_zip_file = SimpleUploadedFile(
             "invalid.zip",
             invalid_json_zip_buffer.read(),
-            content_type="application/zip"
+            content_type="application/zip",
         )
 
-        post_url = reverse(
-            "zip_post", kwargs={"project_url_id": self.project.url_id})
+        post_url = reverse("zip_post", kwargs={"project_url_id": self.project.url_id})
         response = self.client.post(
-            post_url,
-            {"file": invalid_zip_file},
-            format="multipart"
+            post_url, {"file": invalid_zip_file}, format="multipart"
         )
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertIn(
-            "Invalid JSON format",
-            response.data["errors"]["invalid.json"]["error"]
+            "Invalid JSON format", response.data["errors"]["invalid.json"]["error"]
         )
 
     @patch("os.getenv")
@@ -253,17 +271,12 @@ class TestZipPostAPI(TestCase):
         json_zip_buffer.seek(0)
 
         invalid_zip_file = SimpleUploadedFile(
-            "file.zip",
-            json_zip_buffer.read(),
-            content_type="application/zip"
+            "file.zip", json_zip_buffer.read(), content_type="application/zip"
         )
 
-        post_url = reverse(
-            "zip_post", kwargs={"project_url_id": self.project.url_id})
+        post_url = reverse("zip_post", kwargs={"project_url_id": self.project.url_id})
         response = self.client.post(
-            post_url,
-            {"file": invalid_zip_file},
-            format="multipart"
+            post_url, {"file": invalid_zip_file}, format="multipart"
         )
 
         # Assert response
@@ -281,8 +294,9 @@ class TestZipPostAPI(TestCase):
         # Verify saved data
         expected_data = {
             "invalid.json": {"error": "Invalid JSON format"},
-            "valid.json": {"field": "value"}
+            "valid.json": {"field": "value"},
         }
         saved_data = donation.get_decrypted_data(
-            self.project.secret, self.project.get_salt())
+            self.project.secret, self.project.get_salt()
+        )
         self.assertEqual(saved_data, expected_data)

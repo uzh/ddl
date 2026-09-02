@@ -79,11 +79,19 @@ The site has two separate login paths:
 
 | Path                                        | Users                                 | Backend                                                                                       |
 |---------------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------|
-| `/admin/` (Django admin), `/cms/` (Wagtail) | Local accounts from `createsuperuser` | Username / password                                                                           |
+| `/admin/` (Django admin), `/cms/` (Wagtail) | Local accounts from `createsuperuser` | Username / password + TOTP 2FA (enforced in production)                                       |
 | `/ddm/` (researcher interface)              | UZH researchers                       | SWITCH eduID (OIDC); a linked affiliation mail ending in `uzh.ch` is required (`ddl/auth.py`) |
 
 Study participants are not authenticated — they reach a donation project through
 its public participation URL.
+
+**Two-factor authentication** (`wagtail-2fa`) is required for every admin/CMS
+account when `WAGTAIL_2FA_REQUIRED` is set (on in `config.settings.production`,
+off in local/CI). On first sign-in a user is sent to enrol an authenticator app;
+afterwards each session prompts once for a TOTP code. Manage your own devices via
+the Wagtail account menu → *Manage your 2FA devices*; a superuser can reset a
+locked-out user from Wagtail → Users → *Manage 2FA*. To exercise it locally, set
+`WAGTAIL_2FA_REQUIRED = True` in `config/settings/local.py`.
 
 ---
 
