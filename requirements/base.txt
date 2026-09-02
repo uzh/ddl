@@ -1,4 +1,4 @@
-bokeh==3.1.1  # https://github.com/bokeh/bokeh
+bokeh==3.10.0  # https://github.com/bokeh/bokeh
 Django==5.2.17  # https://github.com/django/django
 django-ckeditor-5==0.2.20  # https://github.com/hvlads/django-ckeditor-5
 django-csp==4.0  # https://github.com/mozilla/django-csp
