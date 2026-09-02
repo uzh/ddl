@@ -8,6 +8,7 @@ from ddm.auth.models import ProjectTokenAuthenticator
 from ddm.datadonation.models import DataDonation, DonationBlueprint
 from ddm.participation.models import Participant
 from ddm.projects.models import DonationProject
+from django.conf import settings
 from django.http import HttpRequest
 from django.utils import timezone
 from dotenv import load_dotenv
@@ -92,17 +93,51 @@ class ZipPostAPI(APIView, DDMAPIMixin):
         )
 
     @staticmethod
-    def extract_zip(file_data: bytes) -> tuple[dict, dict]:
+    def _check_zip_safety(zip_ref: zipfile.ZipFile) -> None:
+        """Reject oversized archives and zip bombs before reading any member."""
+        infos = zip_ref.infolist()
+        if len(infos) > settings.ZIP_UPLOAD_MAX_MEMBERS:
+            raise ValidationError(
+                {"error": "ZIP contains too many files."}
+            )
+
+        total_uncompressed = 0
+        for info in infos:
+            total_uncompressed += info.file_size
+            if total_uncompressed > settings.ZIP_UPLOAD_MAX_UNCOMPRESSED_BYTES:
+                raise ValidationError(
+                    {"error": "Uncompressed ZIP content exceeds the allowed size."}
+                )
+            ratio = info.file_size / info.compress_size if info.compress_size else 0
+            if ratio > settings.ZIP_UPLOAD_MAX_COMPRESSION_RATIO:
+                raise ValidationError(
+                    {"error": "ZIP rejected: suspicious compression ratio."}
+                )
+
+    @staticmethod
+    def _load_json_member(json_file: zipfile.ZipExtFile) -> object:
+        """Read a single member with a hard byte cap (declared sizes can lie)."""
+        max_bytes = settings.ZIP_UPLOAD_MAX_UNCOMPRESSED_BYTES
+        raw = json_file.read(max_bytes + 1)
+        if len(raw) > max_bytes:
+            raise ValidationError(
+                {"error": "Uncompressed ZIP content exceeds the allowed size."}
+            )
+        return json.loads(raw)
+
+    @classmethod
+    def extract_zip(cls, file_data: bytes) -> tuple[dict, dict]:
         result = {}
         errors = {}
 
         try:
             with zipfile.ZipFile(BytesIO(file_data), "r") as zip_ref:
+                cls._check_zip_safety(zip_ref)
                 for file_name in zip_ref.namelist():
                     if file_name.endswith(".json"):
                         with zip_ref.open(file_name) as json_file:
                             try:
-                                file_content = json.load(json_file)
+                                file_content = cls._load_json_member(json_file)
                                 result[file_name] = file_content
                             except json.JSONDecodeError:
                                 msg = {"error": "Invalid JSON format"}
@@ -115,10 +150,20 @@ class ZipPostAPI(APIView, DDMAPIMixin):
 
     def post(self, request: HttpRequest, *args, **kwargs) -> Response:
         # Extract files.
-        uploaded_file = request.data["file"]
+        uploaded_file = request.data.get("file")
+        if uploaded_file is None:
+            return Response(
+                {"error": "No file was submitted."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
         if not uploaded_file.name.endswith(".zip"):
             return Response(
                 {"error": "Only zip files are allowed."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        if uploaded_file.size > settings.ZIP_UPLOAD_MAX_BYTES:
+            return Response(
+                {"error": "Uploaded ZIP file is too large."},
                 status=status.HTTP_400_BAD_REQUEST
             )
 

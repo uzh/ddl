@@ -352,6 +352,24 @@ CKEDITOR_5_CONFIGS = {
 }
 
 
+# ZIP DONATION UPLOAD API (ddl.apis.ZipPostAPI)
+# ------------------------------------------------------------------------------
+# Guards for the token-authenticated ZIP upload endpoint. All values are bytes
+# unless noted; override via environment where the defaults are too tight/loose.
+# Max size of the uploaded (compressed) ZIP file.
+ZIP_UPLOAD_MAX_BYTES = int(os.getenv("ZIP_UPLOAD_MAX_BYTES") or 100 * 1024 * 1024)
+# Max combined uncompressed size of all archive members (zip-bomb guard).
+ZIP_UPLOAD_MAX_UNCOMPRESSED_BYTES = int(
+    os.getenv("ZIP_UPLOAD_MAX_UNCOMPRESSED_BYTES") or 500 * 1024 * 1024
+)
+# Max number of entries in the archive.
+ZIP_UPLOAD_MAX_MEMBERS = int(os.getenv("ZIP_UPLOAD_MAX_MEMBERS") or 1000)
+# Reject any member whose uncompressed/compressed size ratio exceeds this.
+ZIP_UPLOAD_MAX_COMPRESSION_RATIO = int(
+    os.getenv("ZIP_UPLOAD_MAX_COMPRESSION_RATIO") or 100
+)
+
+
 # Reports
 # ------------------------------------------------------------------------------
 # Search Report

@@ -9,7 +9,7 @@ from ddm.participation.models import Participant
 from ddm.projects.models import DonationProject, ResearchProfile
 from django.contrib.auth import get_user_model
 from django.core.files.uploadedfile import SimpleUploadedFile
-from django.test import Client, TestCase
+from django.test import Client, TestCase, override_settings
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APIClient
@@ -108,6 +108,79 @@ class TestZipPostAPI(TestCase):
         saved_data = donation.get_decrypted_data(
             self.project.secret, self.project.get_salt())
         self.assertEqual(saved_data, expected_data)
+
+    def _post_zip(self, zip_bytes):
+        post_url = reverse(
+            "zip_post", kwargs={"project_url_id": self.project.url_id})
+        return self.client.post(
+            post_url,
+            {"file": SimpleUploadedFile(
+                "test.zip", zip_bytes, content_type="application/zip")},
+            format="multipart"
+        )
+
+    def test_missing_file(self):
+        post_url = reverse(
+            "zip_post", kwargs={"project_url_id": self.project.url_id})
+        response = self.client.post(post_url, {}, format="multipart")
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(response.data, {"error": "No file was submitted."})
+
+    @override_settings(ZIP_UPLOAD_MAX_BYTES=10)
+    def test_zip_file_too_large(self):
+        buffer = BytesIO()
+        with zipfile.ZipFile(buffer, "w", zipfile.ZIP_DEFLATED) as zip_file:
+            zip_file.writestr("test.json", json.dumps({"field": "value"}))
+        buffer.seek(0)
+
+        response = self._post_zip(buffer.read())
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(
+            response.data, {"error": "Uploaded ZIP file is too large."})
+
+    @override_settings(ZIP_UPLOAD_MAX_MEMBERS=1)
+    def test_zip_too_many_members(self):
+        buffer = BytesIO()
+        with zipfile.ZipFile(buffer, "w", zipfile.ZIP_DEFLATED) as zip_file:
+            zip_file.writestr("a.json", '{"field": "value"}')
+            zip_file.writestr("b.json", '{"field": "value"}')
+        buffer.seek(0)
+
+        response = self._post_zip(buffer.read())
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(
+            response.data, {"error": "ZIP contains too many files."})
+
+    def test_zip_bomb_compression_ratio(self):
+        buffer = BytesIO()
+        with zipfile.ZipFile(buffer, "w", zipfile.ZIP_DEFLATED) as zip_file:
+            # ~2 MB of a single repeated character deflates far beyond 100x.
+            zip_file.writestr("bomb.json", json.dumps({"x": "A" * 2_000_000}))
+        buffer.seek(0)
+
+        response = self._post_zip(buffer.read())
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(
+            response.data,
+            {"error": "ZIP rejected: suspicious compression ratio."})
+
+    @override_settings(ZIP_UPLOAD_MAX_UNCOMPRESSED_BYTES=50)
+    def test_zip_uncompressed_total_too_large(self):
+        buffer = BytesIO()
+        with zipfile.ZipFile(buffer, "w", zipfile.ZIP_STORED) as zip_file:
+            zip_file.writestr("data.json", json.dumps({"field": "x" * 200}))
+        buffer.seek(0)
+
+        response = self._post_zip(buffer.read())
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(
+            response.data,
+            {"error": "Uncompressed ZIP content exceeds the allowed size."})
 
     def test_non_zip_file_upload(self):
         txt_file = SimpleUploadedFile(
