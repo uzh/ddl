@@ -5,7 +5,8 @@ from csp.constants import NONE, SELF, UNSAFE_INLINE
 from .base import *  # noqa: F403
 from .base import BASE_DIR
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split()
+# Accepts a comma- and/or whitespace-separated list, e.g. "a.example b.example".
+ALLOWED_HOSTS = os.environ["ALLOWED_HOSTS"].replace(",", " ").split()
 
 SITE_ID = 1
 
@@ -22,9 +23,9 @@ CSRF_COOKIE_SECURE = True
 X_FRAME_OPTIONS = "DENY"
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
-# HSTS
-SECURE_HSTS_SECONDS = 3600
-SECURE_HSTS_PRELOAD = True
+# HSTS. Preload is intentionally not set: datadonation.uzh.ch cannot be added to
+# the browser preload list independently of uzh.ch.
+SECURE_HSTS_SECONDS = 31536000  # 1 year
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 # Content Security Policy (django-csp).
