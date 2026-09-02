@@ -1,3 +1,4 @@
+from ddm.datadonation.schemas import JSONParserConfig
 from django.contrib.auth import get_user_model
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, Client
@@ -52,8 +53,8 @@ class TestZipPostAPI(TestCase):
             name='Test Blueprint',
             description='description',
             exp_file_format='json',
-            json_extraction_root='placeholder',
-            expected_fields='"field"'
+            expected_fields='"field"',
+            parser_config = JSONParserConfig().model_dump(),
         )
 
         token = self.project.create_token()
