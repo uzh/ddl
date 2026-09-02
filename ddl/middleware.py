@@ -1,3 +1,4 @@
+from django.http import HttpRequest, HttpResponseRedirect, JsonResponse
 from mozilla_django_oidc.middleware import SessionRefresh
 
 OIDC_AUTH_REQUIRED_PATHS = ["/ddm/projects"]
@@ -5,7 +6,10 @@ OIDC_AUTH_REQUIRED_PATHS = ["/ddm/projects"]
 class ConditionalSessionRefreshMiddleware(SessionRefresh):
     """Disables OIDC authentication check on certain paths."""
 
-    def process_request(self, request):
+    def process_request(
+            self,
+            request: HttpRequest
+    ) -> JsonResponse | HttpResponseRedirect | None:
         if request.path in OIDC_AUTH_REQUIRED_PATHS:
             return super().process_request(request)
         return None

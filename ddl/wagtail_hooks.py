@@ -1,17 +1,17 @@
 from django.utils.html import escape
 from wagtail import hooks
-from wagtail.rich_text import LinkHandler
+from wagtail.rich_text import FeatureRegistry, LinkHandler
 
 
 class NewWindowExternalLinkHandler(LinkHandler):
-    identifier = 'external'
+    identifier = "external"
 
     @classmethod
-    def expand_db_attributes(cls, attrs):
+    def expand_db_attributes(cls, attrs: dict) -> str:
         href = attrs["href"]
-        return '<a href="%s" target="_blank" rel="noopener noreferrer">' % escape(href)
+        return f'<a href="{escape(href)}" target="_blank" rel="noopener noreferrer">'
 
 
-@hooks.register('register_rich_text_features')
-def register_external_link(features):
+@hooks.register("register_rich_text_features")
+def register_external_link(features: FeatureRegistry) -> None:
     features.register_link_type(NewWindowExternalLinkHandler)

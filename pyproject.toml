@@ -45,6 +45,7 @@ extend-exclude = [
     "*/migrations/*.py",
     "staticfiles/*",
     "docs/*",
+    "reports/*"
 ]
 
 [tool.ruff.lint]

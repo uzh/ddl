@@ -8,9 +8,10 @@ from ddm.auth.models import ProjectTokenAuthenticator
 from ddm.datadonation.models import DataDonation, DonationBlueprint
 from ddm.participation.models import Participant
 from ddm.projects.models import DonationProject
+from django.http import HttpRequest
 from django.utils import timezone
 from dotenv import load_dotenv
-from rest_framework import status, permissions
+from rest_framework import permissions, status
 from rest_framework.exceptions import ValidationError
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
@@ -42,9 +43,9 @@ class ZipPostAPI(APIView, DDMAPIMixin):
         default blueprint_name (“D2USP_Default”).
 
     Response Codes:
-    - `201 Created` – When the ZIP is successfully processed and stored.
-    - `400 Bad Request` – If an invalid ZIP is uploaded or JSON is malformed.
-    - `404 Not Found` – If the project or blueprint is not found.
+    - `201 Created`: When the ZIP is successfully processed and stored.
+    - `400 Bad Request`: If an invalid ZIP is uploaded or JSON is malformed.
+    - `404 Not Found`: If the project or blueprint is not found.
 
     Example Request:
     curl -X POST https://<main_domain>/api/zip-post/<project_url_id>/ \
@@ -54,24 +55,24 @@ class ZipPostAPI(APIView, DDMAPIMixin):
     authentication_classes = [ProjectTokenAuthenticator]
     permission_classes = [permissions.IsAuthenticated]
 
-    def setup(self, request, *args, **kwargs):
+    def setup(self, request: HttpRequest, *args, **kwargs) -> None:
         super().setup(request, *args, **kwargs)
         self.project = self.get_project()
         self.blueprint = self.get_blueprint()
 
-    def get_project(self):
-        project_id = self.kwargs.get('project_url_id')
+    def get_project(self) -> DonationProject:
+        project_id = self.kwargs.get("project_url_id")
         return get_object_or_404(DonationProject, url_id=project_id)
 
-    def get_blueprint(self):
-        blueprint_name = self.kwargs.get('blueprint_name', None)
+    def get_blueprint(self) -> DonationBlueprint | None:
+        blueprint_name = self.kwargs.get("blueprint_name", None)
         if blueprint_name is None:
-            blueprint_name = os.getenv('ZIP_BLUEPRINT_NAME')
+            blueprint_name = os.getenv("ZIP_BLUEPRINT_NAME")
         return DonationBlueprint.objects.filter(
             name=blueprint_name, project=self.project
         ).first()
 
-    def create_participant(self):
+    def create_participant(self) -> Participant:
         return Participant.objects.create(
             project=self.project,
             start_time=timezone.now(),
@@ -79,7 +80,7 @@ class ZipPostAPI(APIView, DDMAPIMixin):
             current_step=3,
         )
 
-    def create_donation(self, participant, data):
+    def create_donation(self, participant: Participant, data: dict) -> DataDonation:
         return DataDonation.objects.create(
             project=self.project,
             blueprint=self.blueprint,
@@ -87,37 +88,37 @@ class ZipPostAPI(APIView, DDMAPIMixin):
             time_submitted=timezone.now(),
             consent=True,
             data=data,
-            status='success'
+            status="success"
         )
 
     @staticmethod
-    def extract_zip(file_data):
+    def extract_zip(file_data: bytes) -> tuple[dict, dict]:
         result = {}
         errors = {}
 
         try:
-            with zipfile.ZipFile(BytesIO(file_data), 'r') as zip_ref:
+            with zipfile.ZipFile(BytesIO(file_data), "r") as zip_ref:
                 for file_name in zip_ref.namelist():
-                    if file_name.endswith('.json'):
+                    if file_name.endswith(".json"):
                         with zip_ref.open(file_name) as json_file:
                             try:
                                 file_content = json.load(json_file)
                                 result[file_name] = file_content
                             except json.JSONDecodeError:
-                                msg = {'error': 'Invalid JSON format'}
+                                msg = {"error": "Invalid JSON format"}
                                 errors[file_name] = msg
                                 result[file_name] = msg
-        except zipfile.BadZipFile:
-            raise ValidationError({'error': 'Invalid or corrupted ZIP file.'})
+        except zipfile.BadZipFile as e:
+            raise ValidationError({"error": "Invalid or corrupted ZIP file."}) from e
 
         return result, errors
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request: HttpRequest, *args, **kwargs) -> Response:
         # Extract files.
-        uploaded_file = request.data['file']
-        if not uploaded_file.name.endswith('.zip'):
+        uploaded_file = request.data["file"]
+        if not uploaded_file.name.endswith(".zip"):
             return Response(
-                {'error': 'Only zip files are allowed.'},
+                {"error": "Only zip files are allowed."},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
@@ -126,7 +127,7 @@ class ZipPostAPI(APIView, DDMAPIMixin):
 
         if errors and not len(result.keys()) > len(errors.keys()):
             return Response(
-                {'errors': errors},
+                {"errors": errors},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
@@ -134,6 +135,6 @@ class ZipPostAPI(APIView, DDMAPIMixin):
         self.create_donation(participant, result)
 
         return Response(
-            'ZIP has been saved in database',
+            "ZIP has been saved in database",
             status=status.HTTP_201_CREATED
         )

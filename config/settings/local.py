@@ -3,7 +3,7 @@ from pathlib import Path
 import ddm.core
 
 from .base import *  # noqa: F403
-from .base import BASE_DIR, INSTALLED_APPS, MIDDLEWARE
+from .base import INSTALLED_APPS, MIDDLEWARE
 
 ALLOWED_HOSTS = []
 

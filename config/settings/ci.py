@@ -1,8 +1,8 @@
-from .base import *
-import os
+
+from .base import *  # noqa: F403
 
 DEBUG = False
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 SITE_ID = 1
 
@@ -18,15 +18,15 @@ LOGGING = {
 # DATABASE
 # ------------------------------------------------------------------------------
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': '127.0.0.1',
-        'PORT': '',
-        'NAME': 'ddmtestdb',
-        'USER': 'root',
-        'PASSWORD': 'password',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "HOST": "127.0.0.1",
+        "PORT": "",
+        "NAME": "ddmtestdb",
+        "USER": "root",
+        "PASSWORD": "password",
+        "OPTIONS": {
+            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
         }
     }
 }
