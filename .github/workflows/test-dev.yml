@@ -8,6 +8,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
+      DJANGO_SETTINGS_MODULE: config.settings.ci
+      OIDC_RP_CLIENT_ID: ${{ secrets.OIDC_RP_CLIENT_ID }}
+      OIDC_RP_CLIENT_SECRET: ${{ secrets.OIDC_RP_CLIENT_SECRET }}
     services:
       mysql:
         image: mysql
@@ -34,32 +39,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements/base.txt
     - name: Run Migrations
-      env:
-        DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
-        DEFAULT_FROM_EMAIL: some@test.com
-        ALLOWED_HOSTS: localhost,0.0.0.0,127.0.0.1
-        DJANGO_SETTINGS_MODULE: config.settings.production
-        DJANGO_DB_NAME: ddmtestdb
-        DJANGO_DB_USER: root
-        DJANGO_DB_PW: password
-        DJANGO_DB_HOST: 127.0.0.1
-        OIDC_RP_CLIENT_ID: ${{ secrets.OIDC_RP_CLIENT_ID }}
-        OIDC_RP_CLIENT_SECRET: ${{ secrets.OIDC_RP_CLIENT_SECRET }}
       run: |
         python manage.py migrate
         python manage.py collectstatic
     - name: Run Tests
-      env:
-        DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
-        DEFAULT_FROM_EMAIL: some@test.com
-        ALLOWED_HOSTS: localhost,0.0.0.0,127.0.0.1
-        DJANGO_SETTINGS_MODULE: config.settings.production
-        DJANGO_DB_NAME: ddmtestdb
-        DJANGO_DB_USER: root
-        DJANGO_DB_PW: password
-        DJANGO_DB_HOST: 127.0.0.1
-        OIDC_RP_CLIENT_ID: ${{ secrets.OIDC_RP_CLIENT_ID }}
-        OIDC_RP_CLIENT_SECRET: ${{ secrets.OIDC_RP_CLIENT_SECRET }}
       run: |
         python manage.py test
 

@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = os.environ['DJANGO_SECRET']
 
 ADMINS = [tuple(admin) for admin in json.loads(os.environ.get('ADMINS', '[]'))]
-SERVER_EMAIL = os.environ['DEFAULT_FROM_EMAIL']
+SERVER_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', None)
 
 INSTALLED_APPS = [
     'ddl.apps.DdlConfig',

@@ -34,6 +34,7 @@ SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 
 # LOGGING
 # ------------------------------------------------------------------------------
+LOG_DIR = BASE_DIR / 'logs'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -55,14 +56,14 @@ LOGGING = {
         'file': {
             'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs', 'datadlab.log'),
+            'filename': LOG_DIR / 'datadlab.log',
             'maxBytes': 1024*1024*15,
             'formatter': 'verbose'
         },
         'error_file': {
             'level': 'ERROR',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs', 'errors.log'),
+            'filename': LOG_DIR / 'errors.log',
             'maxBytes': 1024 * 1024 * 15,
             'formatter': 'verbose'
         },
