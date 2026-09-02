@@ -1,6 +1,22 @@
 # Data Donation Lab (ddl)
 This is the source code for the Data Donation Lab website: https://datadonation.uzh.ch
 
+## Repository Structure
+
+**App components:**
+- `config`: Contains the main Django configuration; wires everything together.
+- `ddl`: Integrates Wagtail into the webapp and defines website components.
+  Additionally, integrates a custom API endpoint that allows directly uploading
+  a ZIP file containing one or several JSON files, bypassing the DDM frontend
+  (see `ddl.apis.ZipPostAPI`).
+- `reports`: Legacy app that was used at the Data Donation Days to display reports
+  based on received data donations. Deprecated and will be deleted in the future.
+
+**Other directories:**
+- `.github`: Contains the GitHub Action workflows.
+- `requirements`: Contains the requirements for this application, divided into
+  `base`, `dev`, and `production`.
+
 ## Development Setup
 
 ### Prerequisites
