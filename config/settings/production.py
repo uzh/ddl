@@ -56,6 +56,18 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 
 
+# EMAIL (authenticated SMTP)
+# ------------------------------------------------------------------------------
+# Django's default SMTP backend is used. Errors are mailed to ADMINS via the
+# mail_admins logging handler below; From address is SERVER_EMAIL (see base.py).
+EMAIL_HOST = os.environ["EMAIL_HOST"]
+EMAIL_PORT = int(os.environ.get("EMAIL_PORT") or 587)
+EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
+EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
+EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", "true").lower() == "true"
+EMAIL_TIMEOUT = 10
+
+
 # LOGGING
 # ------------------------------------------------------------------------------
 LOG_DIR = BASE_DIR / "logs"
@@ -94,7 +106,7 @@ LOGGING = {
     },
     "loggers": {
         "django": {
-            "handlers": ["file", "error_file"],
+            "handlers": ["file", "error_file", "mail_admins"],
             "propagate": True,
             "level": "INFO",
         },
