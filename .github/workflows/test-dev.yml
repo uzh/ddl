@@ -34,6 +34,7 @@ jobs:
     - name: Run Migrations
       env:
         DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
+        DEFAULT_FROM_EMAIL: some@test.com
         DJANGO_SETTINGS_MODULE: config.settings.production
         DJANGO_DB_NAME: ddmtestdb
         DJANGO_DB_USER: root
@@ -47,6 +48,7 @@ jobs:
     - name: Run Tests
       env:
         DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
+        DEFAULT_FROM_EMAIL: some@test.com
         DJANGO_SETTINGS_MODULE: config.settings.production
         DJANGO_DB_NAME: ddmtestdb
         DJANGO_DB_USER: root
