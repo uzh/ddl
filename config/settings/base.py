@@ -61,6 +61,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "csp.middleware.CSPMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -105,10 +106,12 @@ WSGI_APPLICATION = "config.wsgi.application"
 AUTH_USER_MODEL = "ddl.User"
 
 AUTH_PASSWORD_VALIDATORS = [
-    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator" },  # noqa: E501
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator" },
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator" },
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator" },
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"  # noqa: E501
+    },
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
 
@@ -117,14 +120,13 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = "en"
 TIME_ZONE = "Europe/Zurich"
 USE_I18N = True
-USE_L10N = True
 USE_TZ = True
 WAGTAIL_I18N_ENABLED = True
 WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
     ("en", "English"),
     ("de", "Deutsch"),
     ("it", "Italienisch"),
-    ("fr", "Französisch")
+    ("fr", "Französisch"),
 ]
 
 
@@ -152,14 +154,16 @@ THUMBNAIL_PROCESSORS = (
     "easy_thumbnails.processors.colorspace",
     "easy_thumbnails.processors.autocrop",
     "filer.thumbnail_processors.scale_and_crop_with_subject_location",
-    "easy_thumbnails.processors.filters"
+    "easy_thumbnails.processors.filters",
 )
 
 
 # WAGTAIL
 # ------------------------------------------------------------------------------
 WAGTAIL_SITE_NAME = "Data Donation Lab"
-WAGTAILADMIN_BASE_URL = os.getenv("WAGTAILADMIN_BASE_URL", "https://datadonation.uzh.ch")
+WAGTAILADMIN_BASE_URL = os.getenv(
+    "WAGTAILADMIN_BASE_URL", "https://datadonation.uzh.ch"
+)
 
 
 # OIDC Authentication (mozilla_django_oidc)
@@ -170,9 +174,16 @@ OIDC_RP_CLIENT_ID = os.getenv("OIDC_RP_CLIENT_ID", None)
 OIDC_RP_CLIENT_SECRET = os.getenv("OIDC_RP_CLIENT_SECRET", None)
 
 # Stage Settings
-OIDC_OP_AUTHORIZATION_ENDPOINT = os.getenv("OIDC_OP_AUTHORIZATION_ENDPOINT", "https://login.eduid.ch/idp/profile/oidc/authorize")
-OIDC_OP_TOKEN_ENDPOINT = os.getenv("OIDC_OP_TOKEN_ENDPOINT", "https://login.eduid.ch/idp/profile/oidc/token")
-OIDC_OP_USER_ENDPOINT = os.getenv("OIDC_OP_USER_ENDPOINT", "https://login.eduid.ch/idp/profile/oidc/userinfo")
+OIDC_OP_AUTHORIZATION_ENDPOINT = os.getenv(
+    "OIDC_OP_AUTHORIZATION_ENDPOINT",
+    "https://login.eduid.ch/idp/profile/oidc/authorize",
+)
+OIDC_OP_TOKEN_ENDPOINT = os.getenv(
+    "OIDC_OP_TOKEN_ENDPOINT", "https://login.eduid.ch/idp/profile/oidc/token"
+)
+OIDC_OP_USER_ENDPOINT = os.getenv(
+    "OIDC_OP_USER_ENDPOINT", "https://login.eduid.ch/idp/profile/oidc/userinfo"
+)
 
 OIDC_RP_SCOPES = "openid email https://login.eduid.ch/authz/User.Read"
 
@@ -193,15 +204,16 @@ WEBPACK_LOADER = {
         "STATS_FILE": STATIC_ROOT / "ddm_core/frontend/uploader/webpack-stats.json",
         "POLL_INTERVAL": 0.1,
         "TIMEOUT": None,
-        "IGNORE": [r".+\.hot-update.js", r".+\.map"]
+        "IGNORE": [r".+\.hot-update.js", r".+\.map"],
     },
     "DDM_QUESTIONNAIRE": {
         "CACHE": True,
         "BUNDLE_DIR_NAME": "ddm_core/frontend/questionnaire/",
-        "STATS_FILE": STATIC_ROOT / "ddm_core/frontend/questionnaire/webpack-stats.json",  # noqa: E501
+        "STATS_FILE": STATIC_ROOT
+        / "ddm_core/frontend/questionnaire/webpack-stats.json",
         "POLL_INTERVAL": 0.1,
         "TIMEOUT": None,
-        "IGNORE": [r".+\.hot-update.js", r".+\.map"]
+        "IGNORE": [r".+\.hot-update.js", r".+\.map"],
     },
 }
 
@@ -234,48 +246,102 @@ ATTRIBUTES_TO_ALLOW = {
 }
 
 CKEDITOR_5_CONFIGS = {
-    "ddm_ckeditor":  {
+    "ddm_ckeditor": {
         "blockToolbar": [
-            "paragraph", "heading1", "heading2", "heading3",
+            "paragraph",
+            "heading1",
+            "heading2",
+            "heading3",
             "|",
-            "bulletedList", "numberedList",
+            "bulletedList",
+            "numberedList",
             "|",
             "blockQuote",
         ],
         "toolbar": [
-            "heading", "|",
-            "alignment", "outdent", "indent", "|",
-            "bold", "italic", "underline", "link", "highlight", "|",
+            "heading",
+            "|",
+            "alignment",
+            "outdent",
+            "indent",
+            "|",
+            "bold",
+            "italic",
+            "underline",
+            "link",
+            "highlight",
+            "|",
             {
                 "label": "Fonts",
                 "icon": "text",
-                "items": ["fontSize", "fontFamily", "fontColor"]
-            }, "|",
-            "bulletedList", "numberedList", "insertTable", "blockQuote", "code", "removeFormat", "|",
-            "insertImage", "fileUpload", "mediaEmbed", "|",
-            "sourceEditing"
+                "items": ["fontSize", "fontFamily", "fontColor"],
+            },
+            "|",
+            "bulletedList",
+            "numberedList",
+            "insertTable",
+            "blockQuote",
+            "code",
+            "removeFormat",
+            "|",
+            "insertImage",
+            "fileUpload",
+            "mediaEmbed",
+            "|",
+            "sourceEditing",
         ],
         "image": {
-            "toolbar": ["imageTextAlternative", "|", "imageStyle:alignLeft",
-                        "imageStyle:alignRight", "imageStyle:alignCenter", "imageStyle:side",  "|"],
+            "toolbar": [
+                "imageTextAlternative",
+                "|",
+                "imageStyle:alignLeft",
+                "imageStyle:alignRight",
+                "imageStyle:alignCenter",
+                "imageStyle:side",
+                "|",
+            ],
             "styles": [
                 "full",
                 "side",
                 "alignLeft",
                 "alignRight",
                 "alignCenter",
-            ]
+            ],
         },
         "table": {
-            "contentToolbar": ["tableColumn", "tableRow", "mergeTableCells",
-                               "tableProperties", "tableCellProperties"],
+            "contentToolbar": [
+                "tableColumn",
+                "tableRow",
+                "mergeTableCells",
+                "tableProperties",
+                "tableCellProperties",
+            ],
         },
         "heading": {
             "options": [
-                { "model": "paragraph", "title": "Paragraph", "class": "ck-heading_paragraph" },
-                { "model": "heading1", "view": "h1", "title": "Heading 1", "class": "ck-heading_heading1" },
-                { "model": "heading2", "view": "h2", "title": "Heading 2", "class": "ck-heading_heading2" },
-                { "model": "heading3", "view": "h3", "title": "Heading 3", "class": "ck-heading_heading3" }
+                {
+                    "model": "paragraph",
+                    "title": "Paragraph",
+                    "class": "ck-heading_paragraph",
+                },
+                {
+                    "model": "heading1",
+                    "view": "h1",
+                    "title": "Heading 1",
+                    "class": "ck-heading_heading1",
+                },
+                {
+                    "model": "heading2",
+                    "view": "h2",
+                    "title": "Heading 2",
+                    "class": "ck-heading_heading2",
+                },
+                {
+                    "model": "heading3",
+                    "view": "h3",
+                    "title": "Heading 3",
+                    "class": "ck-heading_heading3",
+                },
             ]
         },
         "htmlSupport": {
@@ -287,67 +353,28 @@ CKEDITOR_5_CONFIGS = {
                         "width": True,
                         "controls": True,
                     },
-                    "styles": True
+                    "styles": True,
                 },
-                {
-                    "name": "p",
-                    "attributes": ATTRIBUTES_TO_ALLOW
-                },
-                {
-                    "name": "span",
-                    "attributes": ATTRIBUTES_TO_ALLOW
-                },
-                {
-                    "name": "div",
-                    "attributes": ATTRIBUTES_TO_ALLOW
-                },
-                {
-                    "name": "a",
-                    "attributes": ATTRIBUTES_TO_ALLOW
-                },
-                {
-                    "name": "table",
-                    "attributes": ATTRIBUTES_TO_ALLOW
-                },
-                {
-                    "name": "tr",
-                    "attributes": ATTRIBUTES_TO_ALLOW
-                },
-                {
-                    "name": "td",
-                    "attributes": ATTRIBUTES_TO_ALLOW
-                },
-                {
-                    "name": "th",
-                    "attributes": ATTRIBUTES_TO_ALLOW
-                },
-                {
-                    "name": "button",
-                    "attributes": ATTRIBUTES_TO_ALLOW
-                },
-                {
-                    "name": "h1",
-                    "attributes": ATTRIBUTES_TO_ALLOW
-                },
-                {
-                    "name": "h2",
-                    "attributes": ATTRIBUTES_TO_ALLOW
-                },
-                {
-                    "name": "style",
-                    "attributes": ATTRIBUTES_TO_ALLOW
-                },
-                {
-                    "name": "img",
-                    "attributes": ATTRIBUTES_TO_ALLOW
-                },
+                {"name": "p", "attributes": ATTRIBUTES_TO_ALLOW},
+                {"name": "span", "attributes": ATTRIBUTES_TO_ALLOW},
+                {"name": "div", "attributes": ATTRIBUTES_TO_ALLOW},
+                {"name": "a", "attributes": ATTRIBUTES_TO_ALLOW},
+                {"name": "table", "attributes": ATTRIBUTES_TO_ALLOW},
+                {"name": "tr", "attributes": ATTRIBUTES_TO_ALLOW},
+                {"name": "td", "attributes": ATTRIBUTES_TO_ALLOW},
+                {"name": "th", "attributes": ATTRIBUTES_TO_ALLOW},
+                {"name": "button", "attributes": ATTRIBUTES_TO_ALLOW},
+                {"name": "h1", "attributes": ATTRIBUTES_TO_ALLOW},
+                {"name": "h2", "attributes": ATTRIBUTES_TO_ALLOW},
+                {"name": "style", "attributes": ATTRIBUTES_TO_ALLOW},
+                {"name": "img", "attributes": ATTRIBUTES_TO_ALLOW},
             ],
-            "disallow": []
+            "disallow": [],
         },
         "wordCount": {
             "displayCharacters": False,
             "displayWords": False,
-        }
+        },
     }
 }
 
